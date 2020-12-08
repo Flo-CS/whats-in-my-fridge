@@ -1,8 +1,8 @@
 # Features & Ideas
 - When manually adding/scanning the product barcode
     - Select if it's a product removing or adding
-    - Possibilty to select a quantity by product or product division
-    - Possibilty to select a product division (for instance for yogurts) *Only in adding mode
+    - Possibility to select a quantity by product or product division
+    - Possibility to select a product division (for instance for yogurts) *Only in adding mode
 - When a user totally remove a product don't remove it from the database, just set the quantity to 0 to avoid user to set product division each time he add it again
 
 # Server
@@ -13,7 +13,7 @@
 - Users (doc)
     - User ID
     - User email
-    - User password (hashed + saled)
+    - User password (hashed + salted)
     - User data (doc) link *1
     - Last login date
     - Account created date
@@ -51,7 +51,7 @@
 - React router
 - Tailwind CSS
 ## Pages
-### Behaviour
+### Behavior
 - Go to home page if user connected else if go to login
 - Go to login if not connected
 ### Login
@@ -63,7 +63,7 @@
 - Confirm button
 - Go to login page button
 ### Home
-- List of all stocked products with most importants infos
+- List of all stocked products with most important infos
 - Click on a product show one product page
 - Can sort product by:
     - Last added date
