@@ -1,10 +1,17 @@
 # Features & Ideas
-- When manually adding/scanning the product barcode
-    - Select if it's a product removing or adding
-    - Possibility to select a quantity by product or product division
-    - Possibility to select a product division (for instance for yogurts) *Only in adding mode
-- When a user totally remove a product don't remove it from the database, just set the quantity to 0 to avoid user to set product division each time he add it again
-
+## User stories 
+- User can add a product by entering barcode or by scanning barcode
+- User can select the quantity and the subdivision of the product (ex: with yogurts) when adding a product 
+- User can recover information like subdivision when adding a product if he added this product in the past
+- User can cards with picture and principal infos of products in the main view
+- User can see the remove button when he hover a product card in the main view
+- User can select quantity/subdivision to remove from product quantity
+- User can click on a card in the main view to show the details page of this product
+- User can edit infos of a product (got with the openfoodfacts API if the product is found)
+- User can reset/update (modified) infos of a product, this will get data from openfoodfacts API
+- User can search for a product
+- User can sort products by name, last date added, quantity * subdivision 
+- User can see stats about products
 # Server
 ## Database & stored info
 ### Choices
@@ -23,29 +30,25 @@
             - Product 
                 - ...Product infos (From openfoodfacts)
                 - Quantity
-                - Product division
+                - Product subdivision
                 - Last add date
-
         - Stats (doc)
             - "Still to be determined"
 ## API
 ### Endpoints
 #### Auth
-- api/auth/register => Register user (body: email, password)
-- api/auth/login => Login user (body: email, password)
-- api/auth/logout => Logout user
-- All return {auth: Bool, token: Object}
+- POST api/auth/register => Register user (body: email, password)
+- POST api/auth/login => Login user (body: email, password)
+- POST api/auth/logout => Logout user
+- All this endpoints return an object like {auth: Bool, token: Object}
 #### Products
-- api/products/?range=INT-INT => Get all products => {products and basic infos: Array}
-- api/products/:id => Get one products infos => 
-    {product:
-        {data: Object
-        quantity: Int
-        lastDateAdded: iso8601 Date}
-    }
-- api/products/stats => Get computed stats => {stats: Object}
+- GET api/products/?range=INT-INT => Get all products => {products, littleStats}
+- GET api/products/:id => Get one products infos => {product}
+- GET api/products/stats => Get computed stats => {stats}
+- PUT api/products/:id => Modify product infos (body: newData) => {product}
+- DELETE api/products/:id => Delete product
 # Client
-# Choices
+## Choices
 - React
 - Redux
 - React router
@@ -79,5 +82,5 @@
 ### Stats page
 - Create stats with all stocked products
     - Nutrition quality score
-    - Average gauges with average ingredient like sugar...
+    - Average gauges with average ingredient like sugar, fat, salt...
     - And more (still to be determined)
