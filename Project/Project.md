@@ -12,6 +12,7 @@
 - User can search for a product
 - User can sort products by name, last date added, quantity * subdivision 
 - User can see stats about products
+- User can see some info about his account
 # Server
 ## Database & stored info
 ### Choices
