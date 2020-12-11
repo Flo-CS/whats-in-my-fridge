@@ -4,7 +4,7 @@
 - User can select the quantity and the subdivision of the product (ex: with yogurts) when adding a product 
 - User can recover information like subdivision when adding a product if he added this product in the past
 - User can cards with picture and principal infos of products in the main view
-- User can see the remove button when he hover a product card in the main view
+- User can see separately products in stock and products with 0 quantity
 - User can select quantity/subdivision to remove from product quantity
 - User can click on a card in the main view to show the details page of this product
 - User can edit infos of a product (got with the openfoodfacts API if the product is found)
@@ -13,6 +13,8 @@
 - User can sort products by name, last date added, quantity * subdivision 
 - User can see stats about products
 - User can see some info about his account
+- User can modify a product quantity on the card in the home view
+- User can see an history of what he did
 # Server
 ## Database & stored info
 ### Choices
