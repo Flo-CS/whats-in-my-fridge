@@ -13,7 +13,7 @@
 - User can sort products by name, last date added, quantity * subdivision 
 - User can see stats about products
 - User can see some info about his account
-- User can modify a product quantity on the card in the home view
+- User can modify a product quantity on the card in the home view, when he hold the button for one second, change the quantity else change the subdivision, except for products without subdivision
 - User can see an history of what he did
 # Server
 ## Database & stored info
