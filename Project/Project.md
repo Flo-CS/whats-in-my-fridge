@@ -3,7 +3,7 @@
 - User can add a product by entering barcode or by scanning barcode
 - User can select the quantity and the subdivision of the product (ex: with yogurts) when adding a product 
 - User can recover information like subdivision when adding a product if he added this product in the past
-- User can cards with picture and principal infos of products in the main view
+- User can see cards with picture and principal infos of products in the main view
 - User can see separately products in stock and products with 0 quantity
 - User can select quantity/subdivision to remove from product quantity
 - User can click on a card in the main view to show the details page of this product
@@ -14,7 +14,7 @@
 - User can see stats about products
 - User can see some info about his account
 - User can modify a product quantity on the card in the home view, when he hold the button for one second, change the quantity else change the subdivision, except for products without subdivision
-- User can see an history of what he did
+- User can see an history of what he did (later)
 # Server
 ## Database & stored info
 ### Choices
