@@ -85,3 +85,9 @@
     - Nutrition quality score
     - Average gauges with average ingredient like sugar, fat, salt...
     - And more (still to be determined)
+# Plan
+- Create all API endpoints
+- Create all front components without dynamic data
+- Add dynamism to all components
+- Add authentication
+- Add more stats etc etc...
