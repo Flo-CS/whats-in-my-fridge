@@ -1,6 +1,8 @@
-# Folders
+# Client
 Client
-Server
+
+# Server
+Server/node_modules
 
 # Design files (pictures of the design will be added instead)
 Project/Design.afdesign
