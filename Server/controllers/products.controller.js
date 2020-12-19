@@ -3,6 +3,7 @@ const axios = require("axios")
 
 // Utils & cie
 const config = require("./../config")
+
 // Models
 const Products = require("../models/products.model")
 const { response } = require("express")
@@ -74,7 +75,7 @@ const getStats = async (req, res) => {
     }
 }
 
-const updateOneProductData = async (req, res) => {
+const updateOneProduct = async (req, res) => {
     const paramsBarcode = req.params.barcode
     const bodyUpdatedProductData = req.body
 
@@ -100,4 +101,4 @@ const deleteOneProduct = async (req, res) => {
 
     }
 }
-module.exports = { getAllProducts, getOneProduct, addOneProduct, getStats, updateOneProductData, deleteOneProduct }
+module.exports = { getAllProducts, getOneProduct, addOneProduct, getStats, updateOneProduct, deleteOneProduct }
