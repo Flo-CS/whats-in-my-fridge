@@ -9,7 +9,7 @@ const { response } = require("express")
 
 
 const DEFAULT_RANGE = "0-100"
-const DEFAULT_SORT = "lastDateAdded"
+const DEFAULT_SORT = "lastDateModified"
 
 const getAllProducts = async (req, res) => {
     const queryRange = req.query.range || DEFAULT_RANGE
