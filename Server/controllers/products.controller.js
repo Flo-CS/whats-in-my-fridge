@@ -22,7 +22,7 @@ const getAllProducts = async (req, res) => {
         const products = await Products.find().skip(rangeStart).limit(rangeEnd).sort({ [querySort]: "asc" })
         const totalNumberProducts = await Products.countDocuments()
 
-        res.status(200).send({ rangeStart, rangeEnd, totalNumberProducts, products, })
+        res.status(200).send({ queryRange, querySort, totalNumberProducts, products, })
 
     } catch (error) {
         res.status(500).send({ error })
