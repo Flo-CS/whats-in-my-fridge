@@ -23,10 +23,10 @@ const getAllProducts = async (req, res) => {
         const products = await Products.find().skip(rangeStart).limit(rangeEnd).sort({ [querySort]: "asc" })
         const totalNumberProducts = await Products.countDocuments()
 
-        res.status(200).send({ queryRange, querySort, totalNumberProducts, products, })
+        res.status(200).json({ queryRange, querySort, totalNumberProducts, products, })
 
     } catch (error) {
-        res.status(500).send({ error })
+        res.status(500).json({ error })
     }
 }
 
@@ -35,10 +35,10 @@ const getOneProduct = async (req, res) => {
 
     try {
         const product = await Products.findOne({ barcode: paramsBarcode })
-        res.status(200).send({ product })
+        res.status(200).json({ product })
     }
     catch (error) {
-        res.status(500).send({ error })
+        res.status(500).json({ error })
 
     }
 }
@@ -56,10 +56,10 @@ const addOneProduct = async (req, res) => {
         // Add to mongoDB
         const product = new Products(bodyProduct)
         await product.save()
-        res.status(200).send({ product })
+        res.status(200).json({ product })
     } catch (error) {
         console.log(error);
-        res.status(500).send({ error })
+        res.status(500).json({ error })
 
     }
 
@@ -71,7 +71,7 @@ const getStats = async (req, res) => {
         // TODO
     }
     catch (error) {
-        res.status(500).send({ error })
+        res.status(500).json({ error })
     }
 }
 
@@ -82,10 +82,10 @@ const updateOneProduct = async (req, res) => {
     try {
         // Use new options to true to return the updated document
         const updatedProduct = await Products.findOneAndUpdate({ barcode: paramsBarcode }, bodyUpdatedProductData, { new: true })
-        res.status(200).send({ product: updatedProduct })
+        res.status(200).json({ product: updatedProduct })
 
     } catch (error) {
-        res.status(500).send({ error })
+        res.status(500).json({ error })
 
     }
 }
@@ -95,9 +95,9 @@ const deleteOneProduct = async (req, res) => {
 
     try {
         const deletedProduct = await Products.findOneAndDelete({ barcode: paramsBarcode })
-        res.status(200).send({ product: deletedProduct })
+        res.status(200).json({ product: deletedProduct })
     } catch (error) {
-        res.status(500).send({ error })
+        res.status(500).json({ error })
 
     }
 }
