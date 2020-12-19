@@ -1,5 +1,12 @@
-const productsModel = require("../models/products.model")
+// Libraries & cie
+const axios = require("axios")
+
+// Utils & cie
+const config = require("./../config")
+// Models
 const Products = require("../models/products.model")
+const { response } = require("express")
+
 
 const DEFAULT_RANGE = "0-100"
 const DEFAULT_SORT = "lastDateAdded"
@@ -33,6 +40,30 @@ const getOneProduct = async (req, res) => {
         res.status(500).send({ error })
 
     }
+}
+
+const addOneProduct = async (req, res) => {
+    const bodyProduct = req.body
+
+    try {
+        // Get all openFoodFacts data for the product with their API
+        // TODO : Only get used data
+        const productDataResponse = await axios.get(`${config.OPENFOODFACTS_API_ENDPOINT}/product/${bodyProduct.barcode}.json`)
+        const productData = await productDataResponse.data.product
+        bodyProduct.data = productData
+
+
+
+        // Add to mongoDB
+        const product = new Products(bodyProduct)
+        await product.save()
+        res.status(200).send({ product })
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ error })
+
+    }
+
 }
 
 const getStats = async (req, res) => {
@@ -71,4 +102,4 @@ const deleteOneProduct = async (req, res) => {
 
     }
 }
-module.exports = { getAllProducts, getOneProduct, getStats, updateOneProductData, deleteOneProduct }
+module.exports = { getAllProducts, getOneProduct, addOneProduct, getStats, updateOneProductData, deleteOneProduct }

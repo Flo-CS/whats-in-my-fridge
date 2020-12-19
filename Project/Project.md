@@ -46,6 +46,7 @@
 #### Products
 - GET api/products/?range=INT-INT => Get all products => {products, littleStats}
 - GET api/products/:barcode => Get one products infos => {product}
+- POST api/products/ => Add one product
 - GET api/products/stats => Get computed stats => {stats}
 - PUT api/products/:barcode => Modify product infos (body: newData) => {product}
 - DELETE api/products/:barcode => Delete product

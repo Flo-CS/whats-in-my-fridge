@@ -2,13 +2,14 @@ const express = require("express")
 
 const productsController = require("../controllers/products.controller")
 
-const ProductsRouter = express.Router()
+const Router = express.Router()
 
-ProductsRouter.get("/", productsController.getAllProducts)
-ProductsRouter.get("/:barcode", productsController.getOneProduct)
-ProductsRouter.get("/stats", productsController.getStats)
-ProductsRouter.put("/:barcode", productsController.updateOneProductData)
-ProductsRouter.delete("/:barcode", productsController.deleteOneProduct)
+Router.get("/", productsController.getAllProducts)
+Router.get("/:barcode", productsController.getOneProduct)
+Router.post("/", productsController.addOneProduct)
+Router.get("/stats", productsController.getStats)
+Router.put("/:barcode", productsController.updateOneProductData)
+Router.delete("/:barcode", productsController.deleteOneProduct)
 
 
-module.exports = ProductsRouter
+module.exports = Router
