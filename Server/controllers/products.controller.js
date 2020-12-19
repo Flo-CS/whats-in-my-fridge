@@ -1,5 +1,5 @@
-const productsModel = require("./../models/productsModel")
-const Products = require("./../models/productsModel")
+const productsModel = require("../models/products.model")
+const Products = require("../models/products.model")
 
 const DEFAULT_RANGE = "0-100"
 const DEFAULT_SORT = "lastDateAdded"

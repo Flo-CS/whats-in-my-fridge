@@ -9,7 +9,7 @@ require("dotenv").config()
 const config = require("./config")
 
 // Routes
-const productsRoute = require("./routes/productsRoute")
+const productsRoute = require("./routes/products.route")
 
 // Setup DB connection
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true })
