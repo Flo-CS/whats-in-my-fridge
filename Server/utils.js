@@ -1,14 +1,21 @@
 const joi = require("joi")
-const { schema } = require("./models/users.model")
 
-
-const validateUser = (data) => {
-    const userSchema = joi.object({
+const registerValidation = (data) => {
+    const registerSchema = joi.object({
         email: joi.string().email().max(255).required(),
         password: joi.string().min(8).max(255).required()
     })
 
-    return userSchema.validate(data)
+    return registerSchema.validate(data)
+}
+const loginValidation = (data) => {
+    const loginSchema = joi.object({
+        email: joi.string().email().required(),
+        password: joi.string().required()
+    })
+
+    return loginSchema.validate(data)
 }
 
-module.exports = { validateUser }
+
+module.exports = { registerValidation, loginValidation }
