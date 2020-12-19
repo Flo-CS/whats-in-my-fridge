@@ -6,8 +6,6 @@ const config = require("./../config")
 
 // Models
 const Products = require("../models/products.model")
-const { response } = require("express")
-const productsModel = require("../models/products.model")
 
 
 const DEFAULT_RANGE = "0-100"
