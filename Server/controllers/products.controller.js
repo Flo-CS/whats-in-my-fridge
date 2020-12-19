@@ -7,6 +7,7 @@ const config = require("./../config")
 // Models
 const Products = require("../models/products.model")
 const { response } = require("express")
+const productsModel = require("../models/products.model")
 
 
 const DEFAULT_RANGE = "0-100"
@@ -20,10 +21,10 @@ const getAllProducts = async (req, res) => {
     const rangeEnd = parseInt(queryRange.split("-")[1])
 
     try {
+        // TODO : Make the sort order dynamic
         const products = await Products.find().skip(rangeStart).limit(rangeEnd).sort({ [querySort]: "asc" })
-        const totalNumberProducts = await Products.countDocuments()
 
-        res.status(200).json({ queryRange, querySort, totalNumberProducts, products, })
+        res.status(200).json({ products, })
 
     } catch (error) {
         res.status(500).json({ error })
@@ -68,7 +69,9 @@ const addOneProduct = async (req, res) => {
 const getStats = async (req, res) => {
     try {
         const products = await Products.find()
-        // TODO
+        const totalNumberProducts = products.length
+
+        res.status(200).json({ totalNumberProducts })
     }
     catch (error) {
         res.status(500).json({ error })
