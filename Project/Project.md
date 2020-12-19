@@ -45,10 +45,10 @@
 - All this endpoints return an object like {auth: Bool, token: Object}
 #### Products
 - GET api/products/?range=INT-INT => Get all products => {products, littleStats}
-- GET api/products/:id => Get one products infos => {product}
+- GET api/products/:barcode => Get one products infos => {product}
 - GET api/products/stats => Get computed stats => {stats}
-- PUT api/products/:id => Modify product infos (body: newData) => {product}
-- DELETE api/products/:id => Delete product
+- PUT api/products/:barcode => Modify product infos (body: newData) => {product}
+- DELETE api/products/:barcode => Delete product
 # Client
 ## Choices
 - React
