@@ -33,6 +33,7 @@
                 - ...Product infos (From openfoodfacts)
                 - Quantity
                 - Last add date
+                - Barcode
         - Stats (doc)
             - "Still to be determined"
 ## API
