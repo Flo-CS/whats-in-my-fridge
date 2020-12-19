@@ -1,8 +1,11 @@
 const express = require("express")
 
 const productsController = require("../controllers/products.controller")
+const verifyTokenMiddleware = require("../middlewares/verifyTokenMiddleware")
 
 const Router = express.Router()
+
+Router.use(verifyTokenMiddleware)
 
 Router.get("/", productsController.getAllProducts)
 Router.post("/", productsController.addOneProduct)
