@@ -53,12 +53,12 @@ const loginUser = async (req, res) => {
     // Get the user corresponding to the email address
     const user = await Users.findOne({ email })
 
-    if (!user) return res.status(400).json({ error: "There is no user with this email address" })
+    if (!user) return res.status(401).json({ error: "There is no user with this email address" })
 
     // Compare stored hashed password and login password
     const isPasswordValid = bcrypt.compareSync(password, user.password)
 
-    if (!isPasswordValid) return res.status(400).json({ error: "The password is wrong" })
+    if (!isPasswordValid) return res.status(401).json({ error: "The password is wrong" })
 
     const token = jwt.sign({ email, id: user._id }, process.env.JWT_SECRET_KEY, { expiresIn: "10h" })
 

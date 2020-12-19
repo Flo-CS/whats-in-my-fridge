@@ -56,10 +56,10 @@ const addOneProduct = async (req, res) => {
         const product = new Products(bodyProduct)
         await product.save()
         res.status(200).json({ product })
+
     } catch (error) {
         console.log(error);
         res.status(500).json({ error })
-
     }
 
 }
