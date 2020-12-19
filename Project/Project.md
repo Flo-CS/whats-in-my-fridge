@@ -32,7 +32,7 @@
             - Product 
                 - ...Product infos (From openfoodfacts)
                 - Quantity
-                - Last add date
+                - Last quantity modified
                 - Barcode
         - Stats (doc)
             - "Still to be determined"

@@ -52,8 +52,6 @@ const addOneProduct = async (req, res) => {
         const productData = await productDataResponse.data.product
         bodyProduct.data = productData
 
-
-
         // Add to mongoDB
         const product = new Products(bodyProduct)
         await product.save()
