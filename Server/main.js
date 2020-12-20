@@ -20,10 +20,11 @@ mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedT
 // Setup Express App
 const App = express()
 
-
+// Middlewares
 App.use(cors())
 App.use(bodyParser.json())
 
+// Routers
 App.use(`${config.API_ENDPOINT}/products`, productsRoute)
 App.use(`${config.API_ENDPOINT}/auth`, authRoute)
 
