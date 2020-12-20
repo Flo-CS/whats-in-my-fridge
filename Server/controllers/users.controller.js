@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken")
 
 // Models
 const Users = require("./../models/users.model")
+const UsersData = require("../models/usersData.model")
 
 // Utils
 const utils = require("./../utils")
@@ -26,7 +27,7 @@ const registerUser = async (req, res) => {
     const salt = bcrypt.genSaltSync(10)
     const hashedPassword = bcrypt.hashSync(password, salt)
 
-    // Create the user
+    // Create the user and the data documents
     try {
         const user = new Users({
             email,
@@ -34,6 +35,11 @@ const registerUser = async (req, res) => {
         })
 
         const savedUser = await user.save()
+
+        const userData = new UsersData({ userId: user._id, products: [] })
+
+        await userData.save()
+
         res.status(200).json({ email: savedUser.email, id: savedUser._id })
 
     } catch (error) {

@@ -5,11 +5,11 @@ const axios = require("axios")
 const config = require("./../config")
 
 // Models
-const Products = require("../models/products.model")
+const UsersData = require("../models/usersData.model")
 
 
 const DEFAULT_RANGE = "0-100"
-const DEFAULT_SORT = "lastDateModified"
+const DEFAULT_SORT = "lastDateModified-asc"
 
 const getAllProducts = async (req, res) => {
     const queryRange = req.query.range || DEFAULT_RANGE
@@ -18,11 +18,16 @@ const getAllProducts = async (req, res) => {
     const rangeStart = parseInt(queryRange.split("-")[0])
     const rangeEnd = parseInt(queryRange.split("-")[1])
 
-    try {
-        // TODO : Make the sort order dynamic
-        const products = await Products.find().skip(rangeStart).limit(rangeEnd).sort({ [querySort]: "asc" })
+    const sortField = querySort.split("-")[0]
+    const sortOrder = querySort.split("-")[1]
 
-        res.status(200).json({ products, })
+    try {
+        // TODO : Implement the sorting
+        const userData = await UsersData.findOne({ userId: req.verifiedToken.id })
+
+        const products = userData.products.slice(rangeStart, rangeEnd)
+
+        res.status(200).json({ products })
 
     } catch (error) {
         res.status(500).json({ error })
@@ -33,12 +38,16 @@ const getOneProduct = async (req, res) => {
     const paramsBarcode = req.params.barcode
 
     try {
-        const product = await Products.findOne({ barcode: paramsBarcode })
+        const userData = await UsersData.findOne({ userId: req.verifiedToken.id })
+
+        const product = userData.products.find((product) => {
+            return product.barcode === paramsBarcode
+        })
+
         res.status(200).json({ product })
     }
     catch (error) {
         res.status(500).json({ error })
-
     }
 }
 
@@ -50,15 +59,19 @@ const addOneProduct = async (req, res) => {
         // TODO : Only get used data
         const productDataResponse = await axios.get(`${config.OPENFOODFACTS_API_ENDPOINT}/product/${bodyProduct.barcode}.json`)
         const productData = await productDataResponse.data.product
-        bodyProduct.data = productData
+
+        // Use empty object if there is no data about product found
+        bodyProduct.data = productData || {}
 
         // Add to mongoDB
-        const product = new Products(bodyProduct)
-        await product.save()
-        res.status(200).json({ product })
+        const userData = await UsersData.findOne({ userId: req.verifiedToken.id })
+        userData.products.push(bodyProduct)
+
+        await userData.save()
+
+        res.status(200).json({ product: bodyProduct })
 
     } catch (error) {
-        console.log(error);
         res.status(500).json({ error })
     }
 
@@ -66,10 +79,13 @@ const addOneProduct = async (req, res) => {
 
 const getStats = async (req, res) => {
     try {
-        const products = await Products.find()
-        const totalNumberProducts = products.length
+        const userData = await UsersData.findOne({ userId: req.verifiedToken.id })
 
-        res.status(200).json({ totalNumberProducts })
+        const products = userData.products
+
+        const totalNumberOfProducts = products.length
+
+        res.status(200).json({ totalNumberOfProducts })
     }
     catch (error) {
         res.status(500).json({ error })
@@ -78,15 +94,28 @@ const getStats = async (req, res) => {
 
 const updateOneProduct = async (req, res) => {
     const paramsBarcode = req.params.barcode
-    const bodyUpdatedProductData = req.body
+    const bodyUpdatedProductData = req.body.data
 
     try {
-        // Use new options to true to return the updated document
-        const updatedProduct = await Products.findOneAndUpdate({ barcode: paramsBarcode }, bodyUpdatedProductData, { new: true })
-        res.status(200).json({ product: updatedProduct })
+        const userData = await UsersData.findOne({ userId: req.verifiedToken.id })
+
+        // Get the index of the product to update in the products list
+        const productIndex = userData.products.findIndex((product) => {
+            return product.barcode === paramsBarcode
+        })
+
+
+        for (const propertyToUpdate in bodyUpdatedProductData) {
+            userData.products[productIndex][propertyToUpdate] = bodyUpdatedProductData[propertyToUpdate]
+        }
+
+        await userData.save()
+
+        res.status(200).json({ product: userData.products[productIndex] })
 
     } catch (error) {
         res.status(500).json({ error })
+        console.log(error);
 
     }
 }
@@ -95,10 +124,27 @@ const deleteOneProduct = async (req, res) => {
     const paramsBarcode = req.params.barcode
 
     try {
-        const deletedProduct = await Products.findOneAndDelete({ barcode: paramsBarcode })
-        res.status(200).json({ product: deletedProduct })
+
+        const userData = await UsersData.findOne({ userId: req.verifiedToken.id })
+
+        // Get the index of the product to delete in the products list
+        const productIndex = userData.products.findIndex((product) => {
+            return product.barcode === paramsBarcode
+        })
+
+        const product = userData.products[productIndex]
+
+        // Check if there is a product corresponding to this barcode
+        if (productIndex > -1) {
+            userData.products.splice(productIndex, 1);
+        }
+        await userData.save()
+
+        // TODO Change the returned value
+        res.status(200).json({ product: product })
     } catch (error) {
         res.status(500).json({ error })
+
 
     }
 }
