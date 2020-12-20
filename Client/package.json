@@ -1,0 +1,34 @@
+{
+  "name": "Client",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "build-dev": "webpack --mode development",
+    "build-prod": "webpack --mode production",
+    "start": "webpack serve --hot --mode development",
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-hot-loader": "^4.13.0",
+    "tailwindcss": "^2.0.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.2.0",
+    "babel-loader": "^8.2.2",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@hot-loader/react-dom": "^17.0.1+4.13.0",
+    "@babel/preset-react": "^7.12.10",
+    "webpack-dev-server": "^3.11.0",
+    "css-loader": "^5.0.1",
+    "style-loader": "^2.0.0",
+    "postcss-loader": "^4.1.0",
+    "autoprefixer": "^10.1.0",
+    "jest": "^26.6.3",
+    "babel-jest": "^26.6.3"
+  }
+}
