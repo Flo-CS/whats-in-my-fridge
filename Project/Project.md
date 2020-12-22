@@ -55,7 +55,6 @@
 - React
 - Redux
 - React router
-- Tailwind CSS
 ## Pages
 ### Behavior
 - Go to home page if user connected else if go to login
