@@ -1,2 +1,5 @@
 # Design files (pictures of the design will be added instead)
 Project/Design.afdesign
+
+# Script to make a copy of the project for cloud saving
+copy.bat
