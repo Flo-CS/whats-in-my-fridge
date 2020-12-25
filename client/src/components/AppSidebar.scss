@@ -1,0 +1,65 @@
+$app-sidebar-width: 60px;
+$app-sidebar-color: #f8f9fa;
+$app-sidebar-indicator-color: #2b9348;
+
+// Temporary colors : just for the layout design
+.app-sidebar {
+  height: 100vh;
+  width: $app-sidebar_width;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $app-sidebar-color;
+  &__profile {
+    width: $app-sidebar_width;
+    height: $app-sidebar_width;
+    // To put border inside
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    position: absolute;
+  }
+  &__menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    &-item {
+      height: $app-sidebar-width;
+      width: $app-sidebar-width;
+      // To put border inside
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px 0;
+    }
+    // Remove margin for first and last items
+    & > :first-child {
+      margin-top: 0;
+    }
+    & > :last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__button {
+    width: 80%;
+    height: 80%;
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    &-icon {
+      width: 80%;
+      height: 80%;
+      fill: invert($app-sidebar-color);
+      color: invert($app-sidebar-color);
+    }
+  }
+  &__profile--active,
+  &__menu-item--active {
+    border-left: 4px solid $app-sidebar-indicator-color;
+  }
+}

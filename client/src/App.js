@@ -1,13 +1,20 @@
-import React from "react"
+import React, { useState } from "react"
 
 import './App.scss';
-import Sidebar from "./components/Sidebar.jsx";
+
+// Components
+import AppSidebar from "./components/AppSidebar.jsx";
+
+// Misc
+import { VIEWS } from "./constants/views";
 
 
 function App() {
+  const [currentView, setCurrentView] = useState(VIEWS.HOME)
+
   return (
     <div className="app">
-      <Sidebar />
+      <AppSidebar currentView={currentView} onSetCurrentView={setCurrentView} />
     </div>
   );
 }
