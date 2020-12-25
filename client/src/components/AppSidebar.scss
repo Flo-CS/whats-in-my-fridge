@@ -1,6 +1,7 @@
 $app-sidebar-width: 60px;
-$app-sidebar-color: #f8f9fa;
-$app-sidebar-indicator-color: #2b9348;
+$app-sidebar-color: #ffffff;
+$app-sidebar-indicator-color: #80b918;
+$app-sidebar-icon-color: #000000;
 
 // Temporary colors : just for the layout design
 .app-sidebar {
@@ -54,12 +55,16 @@ $app-sidebar-indicator-color: #2b9348;
     &-icon {
       width: 80%;
       height: 80%;
-      fill: invert($app-sidebar-color);
-      color: invert($app-sidebar-color);
+      fill: $app-sidebar-icon-color;
+      color: $app-sidebar-icon-color;
     }
   }
   &__profile--active,
   &__menu-item--active {
     border-left: 4px solid $app-sidebar-indicator-color;
+    svg {
+      fill: $app-sidebar-indicator-color;
+      color: $app-sidebar-indicator-color;
+    }
   }
 }
