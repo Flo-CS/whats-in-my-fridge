@@ -4,6 +4,7 @@ import './App.scss';
 
 // Components
 import AppSidebar from "./components/AppSidebar.jsx";
+import BottomPanel from "./components/BottomPanel.jsx";
 
 // Misc
 import { VIEWS } from "./constants/views";
@@ -15,6 +16,7 @@ function App() {
   return (
     <div className="app">
       <AppSidebar currentView={currentView} onSetCurrentView={setCurrentView} />
+      <BottomPanel/>
     </div>
   );
 }

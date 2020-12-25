@@ -1,0 +1,46 @@
+$bottom-panel-color: #e7e7e7;
+$bottom-panel-height: 60px;
+$bottom-panel-button-color: #80b918;
+
+.bottom-panel {
+  height: $bottom-panel-height;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
+  background-color: $bottom-panel-color;
+  &__input-group {
+    width: 60%;
+    display: flex;
+    height: 34px;
+  }
+  &__barcode-input {
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 0 10px;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+  &__add-button,
+  &__scan-button {
+    height: 34px;
+    outline: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: $bottom-panel-button-color;
+  }
+  &__add-button {
+    width: 40px;
+    min-width: 40px;
+  }
+  &__scan-button {
+    width: 30%;
+  }
+  &__add-icon {
+    color: white;
+  }
+}
