@@ -1,3 +1,5 @@
+@import "./../variables";
+
 $bottom-panel-color: #e7e7e7;
 $bottom-panel-height: 60px;
 $bottom-panel-button-color: #80b918;
@@ -7,14 +9,15 @@ $bottom-panel-button-color: #80b918;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   background-color: $bottom-panel-color;
+
   &__input-group {
-    width: 60%;
+    width: 70%;
+    height: 36px;
     display: flex;
-    height: 34px;
+    margin: 0 10px;
   }
   &__barcode-input {
     width: 100%;
@@ -26,7 +29,7 @@ $bottom-panel-button-color: #80b918;
   }
   &__add-button,
   &__scan-button {
-    height: 34px;
+    height: 36px;
     outline: none;
     border: none;
     color: white;
@@ -34,13 +37,20 @@ $bottom-panel-button-color: #80b918;
     background-color: $bottom-panel-button-color;
   }
   &__add-button {
-    width: 40px;
     min-width: 40px;
-  }
-  &__scan-button {
-    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
   }
   &__add-icon {
     color: white;
+    height: 32px;
+    width: 32px;
+  }
+  &__scan-button {
+    width: 30%;
+    margin: 0 10px;
+    border-radius: 3px;
   }
 }
