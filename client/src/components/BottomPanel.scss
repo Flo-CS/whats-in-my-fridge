@@ -24,7 +24,7 @@ $bottom-panel-button-color: #80b918;
     outline: none;
     border: none;
     padding: 0 10px;
-    font-size: 18px;
+    font-size: 1.15rem;
     letter-spacing: 2px;
   }
   &__add-button,
@@ -52,5 +52,6 @@ $bottom-panel-button-color: #80b918;
     width: 30%;
     margin: 0 10px;
     border-radius: 3px;
+    font-size: 1rem;
   }
 }
