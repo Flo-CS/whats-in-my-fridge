@@ -26,6 +26,8 @@ $bottom-panel-button-color: #80b918;
     padding: 0 10px;
     font-size: 1.15rem;
     letter-spacing: 2px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
   }
   &__add-button,
   &__scan-button {
@@ -42,6 +44,8 @@ $bottom-panel-button-color: #80b918;
     justify-content: center;
     align-items: center;
     padding: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
   }
   &__add-icon {
     color: white;
