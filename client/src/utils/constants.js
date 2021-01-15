@@ -3,4 +3,4 @@ const VIEWS = {
     STATS: "STATS",
     PROFILE: "PROFILE"
 }
-export { VIEWS, ACCORDIONS }
+export { VIEWS }
