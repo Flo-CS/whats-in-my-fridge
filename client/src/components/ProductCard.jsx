@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import propTypes from "prop-types";
 
 import "./ProductCard.scss";
@@ -14,24 +14,22 @@ export default function ProductCard({ product }) {
   const [productQuantity, setProductQuantity] = useState(product.quantity);
 
   function handleIncreaseQuantityButtonClick() {
-    setProductQuantity((quantity) => quantity + 1);
+    updateProductQuantity(productQuantity + 1);
   }
   function handleDecreaseQuantityButtonClick() {
-    setProductQuantity((quantity) => quantity - 1);
+    updateProductQuantity(productQuantity - 1);
   }
 
-  useEffect(() => {
-    async function updateProduct() {
-      try {
-        await api.updateProduct(
-          { data: { quantity: productQuantity } },
-          product.barcode
-        );
-      } catch (error) {}
-    }
+  async function updateProductQuantity(newQuantity) {
+    try {
+      await api.updateProduct(
+        { data: { quantity: newQuantity } },
+        product.barcode
+      );
 
-    updateProduct();
-  }, [productQuantity, product.barcode]);
+      setProductQuantity((quantity) => newQuantity);
+    } catch (error) {}
+  }
 
   return (
     <div className="product-card">
