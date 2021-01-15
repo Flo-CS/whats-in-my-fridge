@@ -1,17 +1,20 @@
 import React from "react";
+import propTypes from "prop-types";
+
 import ProductCard from "./ProductCard.jsx";
 
 import "./ProductsCardsGrid.scss";
 
-export default function ProductsCardsGrid() {
+export default function ProductsCardsGrid({ products }) {
   return (
     <div className="products-cards-grid">
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+      {products.map((product) => {
+        return <ProductCard key={product.barcode} product={product} />;
+      })}
     </div>
   );
 }
+
+ProductsCardsGrid.propTypes = {
+  products: propTypes.array.isRequired,
+};

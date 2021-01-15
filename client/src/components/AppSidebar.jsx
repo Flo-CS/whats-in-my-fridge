@@ -13,9 +13,9 @@ import { ReactComponent as StatsChartIcon } from "./../assets/icons/stats-chart.
 // Misc
 import { VIEWS } from "../utils/constants";
 
-export default function AppSidebar({ currentView, onSetCurrentView }) {
-  function setCurrentView(e) {
-    onSetCurrentView(e.currentTarget.dataset.view);
+export default function AppSidebar({ currentView, setCurrentView }) {
+  function handleSetCurrentViewButtonsClick(e) {
+    setCurrentView(e.currentTarget.dataset.view);
   }
 
   const profileClass = classNames("app-sidebar__profile", {
@@ -34,7 +34,7 @@ export default function AppSidebar({ currentView, onSetCurrentView }) {
         <button
           className="app-sidebar__button"
           data-view={VIEWS.PROFILE}
-          onClick={setCurrentView}
+          onClick={handleSetCurrentViewButtonsClick}
         >
           <PersonCircleIcon className="app-sidebar__button-icon" />
         </button>
@@ -44,7 +44,7 @@ export default function AppSidebar({ currentView, onSetCurrentView }) {
           <button
             className="app-sidebar__button"
             data-view={VIEWS.HOME}
-            onClick={setCurrentView}
+            onClick={handleSetCurrentViewButtonsClick}
           >
             <HomeIcon className="app-sidebar__button-icon" />
           </button>
@@ -53,7 +53,7 @@ export default function AppSidebar({ currentView, onSetCurrentView }) {
           <button
             className="app-sidebar__button"
             data-view={VIEWS.STATS}
-            onClick={setCurrentView}
+            onClick={handleSetCurrentViewButtonsClick}
           >
             <StatsChartIcon className="app-sidebar__button-icon" />
           </button>
@@ -70,5 +70,5 @@ export default function AppSidebar({ currentView, onSetCurrentView }) {
 
 AppSidebar.propTypes = {
   currentView: propTypes.string.isRequired,
-  onSetCurrentView: propTypes.func.isRequired,
+  setCurrentView: propTypes.func.isRequired,
 };
