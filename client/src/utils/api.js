@@ -5,17 +5,17 @@ export default class Api {
     constructor() {
         
         // TEMPORARY : JUST FOR DEVELOPMENT PURPOSE
-        this.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvdG9AZ21haWwuY29tIiwiaWQiOiI2MDAxYjBiODIwNjNjNTA0Njg0NDg0ZGUiLCJpYXQiOjE2MTA3MjM2MjcsImV4cCI6MTYxMDc1OTYyN30.vyy5KFQ-b9FrjYssnfoRqxIkCt_qbEQ-erNuoxufKlA";
+        this.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvdG9AZ21haWwuY29tIiwiaWQiOiI2MDAxYjBiODIwNjNjNTA0Njg0NDg0ZGUiLCJpYXQiOjE2MTA3OTE5OTMsImV4cCI6MTYxMDgyNzk5M30.DeBIffIcGmrlUDaQ0Sh-hJIRjKACZibivp5g1ce83dU";
 
       }
     
-      init () {
+      init (isTokenNeeded=true) {
 
         let headers = {
           Accept: "application/json",
         };
     
-        if (this.token) {
+        if (this.token && isTokenNeeded) {
           headers.Authorization = `${this.token}`;
         }
     
@@ -27,10 +27,10 @@ export default class Api {
         return client;
       };
       login(data) {
-          return this.init().post("/auth/login", data)
+          return this.init(false).post("/auth/login", data)
       }
       register(data){
-          return this.init().post("/auth/register", data)
+          return this.init(false).post("/auth/register", data)
       }
        getProducts() {
         return this.init().get("/products" );
