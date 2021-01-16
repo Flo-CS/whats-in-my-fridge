@@ -76,6 +76,7 @@
     - By quantity
     - By Name
     - Possibility to reverse
+- If the user change product quantity to -1, this will ask him if he want to totally remove the product
 ### One product page
 - Principal infos of the product (still to be determined)
 - Possibility to show all additional infos
