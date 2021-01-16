@@ -4,6 +4,11 @@
   min-height: 100px;
   background-color: white;
   border-radius: 5px;
+
+  &--disabled {
+    background-color: #e7e7e7;
+  }
+
   &__content {
     display: flex;
     flex-direction: column;

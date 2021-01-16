@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import classNames from "classnames";
 import propTypes from "prop-types";
 
 import "./ProductCard.scss";
@@ -31,8 +32,12 @@ export default function ProductCard({ product }) {
     } catch (error) {}
   }
 
+  const productCardClass = classNames("product-card", {
+    "product-card--disabled": productQuantity <= 0,
+  });
+
   return (
-    <div className="product-card">
+    <div className={productCardClass}>
       <div className="product-card__content">
         <div className="product-card__header">
           <p className="product-card__name">
