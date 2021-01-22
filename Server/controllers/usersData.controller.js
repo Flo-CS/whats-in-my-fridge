@@ -61,6 +61,8 @@ const addOneProduct = async (req, res) => {
 
     if (product) {
       product.quantity += 1;
+      await userData.save();
+
       return res.status(200).json({ product: bodyProduct, updated: true });
     }
 

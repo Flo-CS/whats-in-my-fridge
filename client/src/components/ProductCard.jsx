@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import propTypes from "prop-types";
 
@@ -11,8 +11,18 @@ import Api from "../utils/api";
 
 const api = new Api();
 
-export default function ProductCard({ product }) {
-  const [productQuantity, setProductQuantity] = useState(product.quantity);
+export default function ProductCard({
+  barcode,
+  quantity,
+  name,
+  brands,
+  imagUrl,
+}) {
+  const [productQuantity, setProductQuantity] = useState(quantity);
+
+  useEffect(() => {
+    setProductQuantity(quantity);
+  }, [quantity]);
 
   function handleIncreaseQuantityButtonClick() {
     updateProductQuantity(productQuantity + 1);
@@ -23,10 +33,7 @@ export default function ProductCard({ product }) {
 
   async function updateProductQuantity(newQuantity) {
     try {
-      await api.updateProduct(
-        { data: { quantity: newQuantity } },
-        product.barcode
-      );
+      await api.updateProduct({ data: { quantity: newQuantity } }, barcode);
 
       setProductQuantity(newQuantity);
     } catch (error) {}
@@ -41,15 +48,15 @@ export default function ProductCard({ product }) {
       <div className="product-card__content">
         <div className="product-card__header">
           <p className="product-card__name">
-            {product.data?.product_name} - {product.data?.brands} -{" "}
-            <span className="product-card__name--soft">{product.barcode}</span>
+            {name} - {brands} -{" "}
+            <span className="product-card__name--soft">{barcode}</span>
           </p>
         </div>
         <div className="product-card__body">
           <img
             className="product-card__image"
             alt="Product"
-            src={product.data?.image_url}
+            src={imagUrl}
           ></img>
         </div>
       </div>
@@ -74,5 +81,9 @@ export default function ProductCard({ product }) {
 }
 
 ProductCard.propTypes = {
-  product: propTypes.object.isRequired,
+  barcode: propTypes.string.isRequired,
+  quantity: propTypes.number.isRequired,
+  name: propTypes.string,
+  brands: propTypes.string,
+  imagUrl: propTypes.string,
 };

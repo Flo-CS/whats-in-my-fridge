@@ -9,7 +9,16 @@ export default function ProductsCardsGrid({ products }) {
   return (
     <div className="products-cards-grid">
       {products.map((product) => {
-        return <ProductCard key={product.barcode} product={product} />;
+        return (
+          <ProductCard
+            key={product.barcode}
+            barcode={product.barcode}
+            quantity={product.quantity}
+            brands={product.data?.brands}
+            name={product.data?.product_name}
+            imagUrl={product.data?.image_url}
+          />
+        );
       })}
     </div>
   );
