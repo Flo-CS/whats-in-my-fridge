@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import BottomPanel from "./BottomPanel.jsx";
 import ProductsCardsGrid from "./ProductsCardsGrid.jsx";
 
+import "./Home.scss";
+
 import Api from "../utils/api.js";
 
 const api = new Api();
@@ -28,9 +30,9 @@ export default function Home() {
     } catch (error) {}
   }
   return (
-    <>
+    <div className="home">
       <ProductsCardsGrid products={products} />
       <BottomPanel addProduct={addProduct} />
-    </>
+    </div>
   );
 }

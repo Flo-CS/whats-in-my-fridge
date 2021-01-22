@@ -1,22 +1,19 @@
-$app-sidebar-width: 60px;
+$app-sidebar-width: 50px;
 $app-sidebar-color: #ffffff;
 $app-sidebar-indicator-color: #80b918;
 $app-sidebar-icon-color: #000000;
-
-// Temporary colors : just for the layout design
 .app-sidebar {
-  height: 100vh;
+  height: 100%;
   width: $app-sidebar_width;
   display: flex;
-  position: relative;
   flex-direction: column;
   justify-content: center;
   background-color: $app-sidebar-color;
+
   &__profile {
     width: $app-sidebar_width;
     height: $app-sidebar_width;
-    // To put border inside
-    box-sizing: border-box;
+
     // Transparent border to avoid pushing effect
     border-left: 4px solid transparent;
     display: flex;
@@ -32,8 +29,7 @@ $app-sidebar-icon-color: #000000;
     &-item {
       height: $app-sidebar-width;
       width: $app-sidebar-width;
-      // To put border inside
-      box-sizing: border-box;
+
       // Transparent border to avoid pushing effect
       border-left: 4px solid transparent;
 

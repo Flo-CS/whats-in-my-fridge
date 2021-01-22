@@ -42,7 +42,7 @@ export default function ProductCard({ product }) {
         <div className="product-card__header">
           <p className="product-card__name">
             {product.data?.product_name} - {product.data?.brands} -{" "}
-            {product.barcode}
+            <span className="product-card__name--soft">{product.barcode}</span>
           </p>
         </div>
         <div className="product-card__body">
