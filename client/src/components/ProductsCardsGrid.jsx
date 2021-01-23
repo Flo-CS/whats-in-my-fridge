@@ -5,7 +5,7 @@ import ProductCard from "./ProductCard.jsx";
 
 import "./ProductsCardsGrid.scss";
 
-export default function ProductsCardsGrid({ products }) {
+export default function ProductsCardsGrid({ products, deleteProduct }) {
   return (
     <div className="products-cards-grid">
       {products.map((product) => {
@@ -17,6 +17,7 @@ export default function ProductsCardsGrid({ products }) {
             brands={product.data?.brands}
             name={product.data?.product_name}
             imagUrl={product.data?.image_url}
+            deleteProduct={deleteProduct}
           />
         );
       })}
@@ -26,4 +27,5 @@ export default function ProductsCardsGrid({ products }) {
 
 ProductsCardsGrid.propTypes = {
   products: propTypes.array.isRequired,
+  deleteProduct: propTypes.func.isRequired,
 };

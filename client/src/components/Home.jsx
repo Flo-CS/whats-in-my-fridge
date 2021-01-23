@@ -29,9 +29,16 @@ export default function Home() {
       getProducts();
     } catch (error) {}
   }
+
+  async function deleteProduct(barcode) {
+    try {
+      await api.deleteProduct(barcode);
+      getProducts();
+    } catch (error) {}
+  }
   return (
     <div className="home">
-      <ProductsCardsGrid products={products} />
+      <ProductsCardsGrid products={products} deleteProduct={deleteProduct} />
       <BottomPanel addProduct={addProduct} />
     </div>
   );

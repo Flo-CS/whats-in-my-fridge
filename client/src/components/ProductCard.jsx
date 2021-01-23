@@ -17,30 +17,38 @@ export default function ProductCard({
   name,
   brands,
   imagUrl,
+  deleteProduct,
 }) {
-  const [productQuantity, setProductQuantity] = useState(quantity);
+  const [quantity_, setQuantity_] = useState(quantity);
 
   useEffect(() => {
-    setProductQuantity(quantity);
+    setQuantity_(quantity);
   }, [quantity]);
 
   function handleIncreaseQuantityButtonClick() {
-    updateProductQuantity(productQuantity + 1);
+    updateProductQuantity(quantity_ + 1);
   }
   function handleDecreaseQuantityButtonClick() {
-    updateProductQuantity(productQuantity - 1);
+    updateProductQuantity(quantity_ - 1);
   }
+
+  // Verify if the quantity don't go lower or equal than 1 and delete the product if it's the case
+  useEffect(() => {
+    if (quantity_ <= -1) {
+      deleteProduct(barcode);
+    }
+  }, [quantity_, barcode, deleteProduct]);
 
   async function updateProductQuantity(newQuantity) {
     try {
       await api.updateProduct({ data: { quantity: newQuantity } }, barcode);
 
-      setProductQuantity(newQuantity);
+      setQuantity_(newQuantity);
     } catch (error) {}
   }
 
   const productCardClass = classNames("product-card", {
-    "product-card--disabled": productQuantity <= 0,
+    "product-card--disabled": quantity_ <= 0,
   });
 
   return (
@@ -68,7 +76,7 @@ export default function ProductCard({
         >
           <PlusIcon className="product-card__button-icon" />
         </button>
-        <p className="product-card__quantity-indicator">{productQuantity}</p>
+        <p className="product-card__quantity-indicator">{quantity_}</p>
         <button
           className="product-card__button"
           onClick={handleDecreaseQuantityButtonClick}
@@ -86,4 +94,5 @@ ProductCard.propTypes = {
   name: propTypes.string,
   brands: propTypes.string,
   imagUrl: propTypes.string,
+  deleteProduct: propTypes.func.isRequired,
 };
