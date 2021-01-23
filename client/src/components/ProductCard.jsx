@@ -29,17 +29,17 @@ export default function ProductCard({
     updateProductQuantity(quantity_ + 1);
   }
   function handleDecreaseQuantityButtonClick() {
-    updateProductQuantity(quantity_ - 1);
-  }
-
-  // Verify if the quantity don't go lower or equal than 1 and delete the product if it's the case
-  useEffect(() => {
-    if (quantity_ <= -1) {
+    // Verify if the quantity don't go lower or equal than 1 and delete the product if it's the case
+    if (quantity_ - 1 <= -1) {
       if (window.confirm("Do you want to definitively delete this product ?")) {
         deleteProduct(barcode);
       }
+    } else {
+      updateProductQuantity(quantity_ - 1);
     }
-  }, [quantity_, barcode, deleteProduct]);
+  }
+
+  useEffect(() => {}, [quantity_, barcode, deleteProduct]);
 
   async function updateProductQuantity(newQuantity) {
     try {
