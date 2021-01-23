@@ -35,7 +35,9 @@ export default function ProductCard({
   // Verify if the quantity don't go lower or equal than 1 and delete the product if it's the case
   useEffect(() => {
     if (quantity_ <= -1) {
-      deleteProduct(barcode);
+      if (window.confirm("Do you want to definitively delete this product ?")) {
+        deleteProduct(barcode);
+      }
     }
   }, [quantity_, barcode, deleteProduct]);
 

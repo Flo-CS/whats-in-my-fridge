@@ -5,7 +5,7 @@ export default class Api {
   constructor() {
     // TEMPORARY : JUST FOR DEVELOPMENT PURPOSE
     this.token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvdG9AZ21haWwuY29tIiwiaWQiOiI2MDAxYjBiODIwNjNjNTA0Njg0NDg0ZGUiLCJpYXQiOjE2MTE0MDQ1MTgsImV4cCI6MTYxMTQ0MDUxOH0.LXZKRj53mZWkfnbXF8Ha0UB4rmsHYUKMIp6zx-mx7w0";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvdG9AZ21haWwuY29tIiwiaWQiOiI2MDAxYjBiODIwNjNjNTA0Njg0NDg0ZGUiLCJpYXQiOjE2MTE0Mzg4MzksImV4cCI6MTYxMTQ3NDgzOX0.efXuVatYnqOoFCOCLMz6p3SL3yqwalx_eT5l07y6Y8Q";
   }
 
   init(isTokenNeeded = true) {
