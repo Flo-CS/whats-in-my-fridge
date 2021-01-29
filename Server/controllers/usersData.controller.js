@@ -49,6 +49,7 @@ const getOneProduct = async (req, res) => {
 };
 
 const addOneProduct = async (req, res) => {
+  const paramsBarcode = req.params.barcode;
   const bodyProduct = req.body;
 
   try {
@@ -56,7 +57,7 @@ const addOneProduct = async (req, res) => {
 
     // Verify if the product is not already in the database, if it's the case, just increase the quantity by 1
     const product = userData.products.find((product) => {
-      return product.barcode === bodyProduct.barcode;
+      return product.barcode === paramsBarcode;
     });
 
     if (product) {
@@ -69,7 +70,7 @@ const addOneProduct = async (req, res) => {
     // Get all openFoodFacts data for the product with their API
     // TODO : Only get used data
     const productDataResponse = await axios.get(
-      `${config.OPENFOODFACTS_API_ENDPOINT}/product/${bodyProduct.barcode}.json`
+      `${config.OPENFOODFACTS_API_ENDPOINT}/product/${paramsBarcode}.json`
     );
     const productData = await productDataResponse.data.product;
 

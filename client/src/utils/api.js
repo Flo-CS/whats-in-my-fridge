@@ -36,7 +36,7 @@ class Api {
     return this.init().get("/products");
   }
   addProduct(barcode) {
-    return this.init().post("/products", { barcode });
+    return this.init().post(`/products/${barcode}`);
   }
   updateProduct(barcode, data) {
     return this.init().put(`/products/${barcode}`, data);
