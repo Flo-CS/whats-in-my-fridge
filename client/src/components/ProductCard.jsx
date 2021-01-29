@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import classNames from "classnames";
 import propTypes from "prop-types";
 import { connect } from "react-redux";
-
-import Api from "../utils/api";
 
 import "./ProductCard.scss";
 
@@ -12,7 +10,7 @@ import { ReactComponent as MinusIcon } from "./../assets/icons/minus.svg";
 import {
   deleteUserProduct,
   updateUserProduct,
-} from "../redux/products/productsThunk";
+} from "../features/products/productsThunk";
 
 function ProductCard({
   barcode,
@@ -87,7 +85,7 @@ ProductCard.propTypes = {
   quantity: propTypes.number.isRequired,
   name: propTypes.string,
   brands: propTypes.string,
-  imagUrl: propTypes.string,
+  imageUrl: propTypes.string,
   deleteUserProduct: propTypes.func.isRequired,
   updateUserProduct: propTypes.func.isRequired,
 };

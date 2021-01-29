@@ -9,7 +9,7 @@ import Scanner from "./Scanner.jsx";
 
 // Assets
 import { ReactComponent as AddIcon } from "./../assets/icons/add.svg";
-import { addUserProduct } from "../redux/products/productsThunk";
+import { addUserProduct } from "../features/products/productsThunk";
 
 function BottomPanel({ addUserProduct }) {
   const [barcode, setBarcode] = useState("");

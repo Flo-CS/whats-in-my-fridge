@@ -5,8 +5,8 @@ import propTypes from "prop-types";
 import BottomPanel from "./BottomPanel.jsx";
 import ProductsCardsGrid from "./ProductsCardsGrid.jsx";
 
-import { selectProducts } from "../redux/products/productsSelector";
-import { fetchUserProducts } from "../redux/products/productsThunk";
+import { selectProducts } from "../features/products/productsSelector";
+import { fetchUserProducts } from "../features/products/productsThunk";
 
 import "./Home.scss";
 
