@@ -146,8 +146,7 @@ const deleteOneProduct = async (req, res) => {
     }
     await userData.save();
 
-    // TODO Change the returned value
-    res.status(200).json({ product: product });
+    res.status(200).json({ product });
   } catch (error) {
     res.status(500).json({ error });
   }
