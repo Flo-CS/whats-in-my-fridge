@@ -1,56 +1,48 @@
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import propTypes from "prop-types";
+import { connect } from "react-redux";
+
+import Api from "../utils/api";
 
 import "./ProductCard.scss";
 
 import { ReactComponent as PlusIcon } from "./../assets/icons/plus.svg";
 import { ReactComponent as MinusIcon } from "./../assets/icons/minus.svg";
+import {
+  deleteUserProduct,
+  updateUserProduct,
+} from "../redux/products/productsThunk";
 
-import Api from "../utils/api";
-
-const api = new Api();
-
-export default function ProductCard({
+function ProductCard({
   barcode,
   quantity,
   name,
   brands,
-  imagUrl,
-  deleteProduct,
+  imageUrl,
+  deleteUserProduct,
+  updateUserProduct,
 }) {
-  const [quantity_, setQuantity_] = useState(quantity);
-
-  useEffect(() => {
-    setQuantity_(quantity);
-  }, [quantity]);
-
   function handleIncreaseQuantityButtonClick() {
-    updateProductQuantity(quantity_ + 1);
+    updateProductQuantity(quantity + 1);
   }
   function handleDecreaseQuantityButtonClick() {
     // Verify if the quantity don't go lower or equal than 1 and delete the product if it's the case
-    if (quantity_ - 1 <= -1) {
+    if (quantity - 1 <= -1) {
       if (window.confirm("Do you want to definitively delete this product ?")) {
-        deleteProduct(barcode);
+        deleteUserProduct(barcode);
       }
     } else {
-      updateProductQuantity(quantity_ - 1);
+      updateProductQuantity(quantity - 1);
     }
   }
 
-  useEffect(() => {}, [quantity_, barcode, deleteProduct]);
-
-  async function updateProductQuantity(newQuantity) {
-    try {
-      await api.updateProduct({ data: { quantity: newQuantity } }, barcode);
-
-      setQuantity_(newQuantity);
-    } catch (error) {}
+  function updateProductQuantity(newQuantity) {
+    updateUserProduct(barcode, { quantity: newQuantity });
   }
 
   const productCardClass = classNames("product-card", {
-    "product-card--disabled": quantity_ <= 0,
+    "product-card--disabled": quantity <= 0,
   });
 
   return (
@@ -66,7 +58,7 @@ export default function ProductCard({
           <img
             className="product-card__image"
             alt="Product"
-            src={imagUrl}
+            src={imageUrl}
           ></img>
         </div>
       </div>
@@ -78,7 +70,7 @@ export default function ProductCard({
         >
           <PlusIcon className="product-card__button-icon" />
         </button>
-        <p className="product-card__quantity-indicator">{quantity_}</p>
+        <p className="product-card__quantity-indicator">{quantity}</p>
         <button
           className="product-card__button"
           onClick={handleDecreaseQuantityButtonClick}
@@ -96,5 +88,16 @@ ProductCard.propTypes = {
   name: propTypes.string,
   brands: propTypes.string,
   imagUrl: propTypes.string,
-  deleteProduct: propTypes.func.isRequired,
+  deleteUserProduct: propTypes.func.isRequired,
+  updateUserProduct: propTypes.func.isRequired,
 };
+
+function mapDispatchToProps(dispatch) {
+  return {
+    deleteUserProduct: (barcode) => deleteUserProduct(dispatch, barcode),
+    updateUserProduct: (barcode, data) =>
+      updateUserProduct(dispatch, barcode, data),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(ProductCard);

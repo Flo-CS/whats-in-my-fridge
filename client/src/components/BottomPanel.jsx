@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import propTypes from "prop-types";
+import { connect } from "react-redux";
 
 import "./BottomPanel.scss";
 
@@ -8,13 +9,14 @@ import Scanner from "./Scanner.jsx";
 
 // Assets
 import { ReactComponent as AddIcon } from "./../assets/icons/add.svg";
+import { addUserProduct } from "../redux/products/productsThunk";
 
-export default function BottomPanel({ addProduct }) {
+function BottomPanel({ addUserProduct }) {
   const [barcode, setBarcode] = useState("");
   const [isScanning, setIsScanning] = useState(false);
 
   function handleAddProductButtonClick() {
-    addProduct(barcode);
+    addUserProduct(barcode);
   }
 
   function handleScanButtonClick() {
@@ -57,5 +59,10 @@ export default function BottomPanel({ addProduct }) {
 }
 
 BottomPanel.propTypes = {
-  addProduct: propTypes.func.isRequired,
+  addUserProduct: propTypes.func.isRequired,
 };
+
+function mapDispatchToProps(dispatch) {
+  return { addUserProduct: (barcode) => addUserProduct(dispatch, barcode) };
+}
+export default connect(null, mapDispatchToProps)(BottomPanel);

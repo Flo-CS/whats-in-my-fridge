@@ -1,36 +1,37 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
 
-import './App.scss';
+import "./App.scss";
 
 // Components
 import AppSidebar from "./components/AppSidebar.jsx";
-import Home from "./components/Home.jsx"
-
+import Home from "./components/Home.jsx";
 
 // Misc
 import { VIEWS } from "./utils/constants";
 
-import Api from "./utils/api"
-const api = new Api()
+import Api from "./utils/api";
 
 function App() {
-  const [currentView, setCurrentView] = useState(VIEWS.HOME)
+  const [currentView, setCurrentView] = useState(VIEWS.HOME);
 
   // TEMPORARY : JUST FOR DEVELOPMENT PURPOSES
-  useEffect(()=> {
+  useEffect(() => {
     async function login() {
-      const response = await api.login({email: "toto@gmail.com", password:"totototo"})
+      const response = await Api.login({
+        email: "toto@gmail.com",
+        password: "totototo",
+      });
       console.log(response);
     }
-    login()
-  }, [])
+    login();
+  }, []);
 
   function renderView(view) {
     switch (view) {
       case VIEWS.HOME:
-        return <Home/>
-  default:
-        return "Error"
+        return <Home />;
+      default:
+        return "Error";
     }
   }
 

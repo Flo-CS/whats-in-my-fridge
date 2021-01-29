@@ -1,11 +1,11 @@
 import axios from "axios";
 import { API } from "./config";
 
-export default class Api {
+class Api {
   constructor() {
     // TEMPORARY : JUST FOR DEVELOPMENT PURPOSE
     this.token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvdG9AZ21haWwuY29tIiwiaWQiOiI2MDAxYjBiODIwNjNjNTA0Njg0NDg0ZGUiLCJpYXQiOjE2MTE0Mzg4MzksImV4cCI6MTYxMTQ3NDgzOX0.efXuVatYnqOoFCOCLMz6p3SL3yqwalx_eT5l07y6Y8Q";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvdG9AZ21haWwuY29tIiwiaWQiOiI2MDAxYjBiODIwNjNjNTA0Njg0NDg0ZGUiLCJpYXQiOjE2MTE5MjU5NjAsImV4cCI6MTY0MzQ4MzU2MH0.ayF5W0v4qxTKQkX-dO6JDdEHw6ayTMD_oIei0RC0fRc";
   }
 
   init(isTokenNeeded = true) {
@@ -31,17 +31,19 @@ export default class Api {
     return this.init(false).post("/auth/register", data);
   }
 
-  // TODO : Uniformize requests url
+  // TODO : Uniformize requests url (also on server side)
   getProducts() {
     return this.init().get("/products");
   }
-  addProduct(data) {
-    return this.init().post("/products", data);
+  addProduct(barcode) {
+    return this.init().post("/products", { barcode });
   }
-  updateProduct(data, barcode) {
+  updateProduct(barcode, data) {
     return this.init().put(`/products/${barcode}`, data);
   }
   deleteProduct(barcode) {
     return this.init().delete(`/products/${barcode}`);
   }
 }
+
+export default new Api();
