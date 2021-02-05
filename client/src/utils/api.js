@@ -30,8 +30,6 @@ class Api {
   register(data) {
     return this.init(false).post("/auth/register", data);
   }
-
-  // TODO : Uniformize requests url (also on server side)
   getProducts() {
     return this.init().get("/products");
   }

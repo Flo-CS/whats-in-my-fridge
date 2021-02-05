@@ -3,6 +3,7 @@ const axios = require("axios");
 
 // Utils & cie
 const config = require("../config");
+const { createDefaultProduct } = require("../factories");
 
 // Models
 const UsersData = require("../models/usersData.model");
@@ -50,40 +51,40 @@ const getOneProduct = async (req, res) => {
 
 const addOneProduct = async (req, res) => {
   const paramsBarcode = req.params.barcode;
-  const bodyProduct = req.body;
 
   try {
     const userData = await UsersData.findOne({ userId: req.verifiedToken.id });
 
     // Verify if the product is not already in the database, if it's the case, just increase the quantity by 1
-    const product = userData.products.find((product) => {
+    let product = userData.products.find((product) => {
       return product.barcode === paramsBarcode;
     });
 
     if (product) {
       product.quantity += 1;
       await userData.save();
-
-      return res.status(200).json({ product: bodyProduct, updated: true });
+      return res.status(200).json({ product, updated: true });
+    } else {
+      product = createDefaultProduct(paramsBarcode);
     }
 
     // Get all openFoodFacts data for the product with their API
     // TODO : Only get used data
-    const productDataResponse = await axios.get(
+    const openFoodFactsResponse = await axios.get(
       `${config.OPENFOODFACTS_API_ENDPOINT}/product/${paramsBarcode}.json`
     );
-    const productData = await productDataResponse.data.product;
+    const openFoodFactsProductData = await openFoodFactsResponse.data.product;
 
-    // Use empty object if there is no data about product found
-    bodyProduct.data = productData || {};
+    product.data = openFoodFactsProductData || {};
 
-    // Add to mongoDB
-    userData.products.push(bodyProduct);
+    // Add in the products
+    userData.products.push(product);
 
-    await userData.save();
+    const userDataSaved = await userData.save();
 
-    res.status(200).json({ product: bodyProduct, updated: false });
+    res.status(200).json({ product, updated: false });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error });
   }
 };
@@ -102,9 +103,10 @@ const getStats = async (req, res) => {
   }
 };
 
+//TODO : Change lastDateModified on update
 const updateOneProduct = async (req, res) => {
   const paramsBarcode = req.params.barcode;
-  const bodyUpdatedProductData = req.body.data;
+  const bodyUpdatedProduct = req.body.data;
 
   try {
     const userData = await UsersData.findOne({ userId: req.verifiedToken.id });
@@ -114,9 +116,9 @@ const updateOneProduct = async (req, res) => {
       return product.barcode === paramsBarcode;
     });
 
-    for (const propertyToUpdate in bodyUpdatedProductData) {
+    for (const propertyToUpdate in bodyUpdatedProduct) {
       userData.products[productIndex][propertyToUpdate] =
-        bodyUpdatedProductData[propertyToUpdate];
+        bodyUpdatedProduct[propertyToUpdate];
     }
 
     await userData.save();

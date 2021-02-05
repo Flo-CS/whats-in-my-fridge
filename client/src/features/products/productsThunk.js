@@ -30,7 +30,6 @@ export async function addUserProduct(dispatch, barcode) {
     if (response.data.updated === false) {
       dispatch(addProduct(response.data.product));
     } else {
-      console.log(response);
       dispatch(updateProduct(response.data.product));
     }
   } catch (error) {
