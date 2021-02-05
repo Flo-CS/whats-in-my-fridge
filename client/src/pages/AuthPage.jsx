@@ -1,9 +1,15 @@
 import React from "react";
 
-import CredentialsInputs from "../components/auth/CredentialsInputs.jsx";
+import LoginInputs from "../components/auth/LoginInputs.jsx";
+import RegisterInputs from "../components/auth/RegisterInputs.jsx";
 
 function AuthPage() {
-  return <CredentialsInputs />;
+  return <>
+    <h2>LOGIN</h2>
+    <LoginInputs />
+    <h2>REGISTER</h2>
+    <RegisterInputs />
+  </>
 }
 
 export default AuthPage;

@@ -3,7 +3,7 @@ import propTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../features/auth/authThunk";
 
-function CredentialsInputs({ loginUser }) {
+function LoginInputs({ loginUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -27,7 +27,7 @@ function CredentialsInputs({ loginUser }) {
   );
 }
 
-CredentialsInputs.propTypes = {
+LoginInputs.propTypes = {
   loginUser: propTypes.func.isRequired,
 };
 
@@ -36,4 +36,4 @@ function mapDispatchToProps(dispatch) {
     loginUser: (email, password) => loginUser(dispatch, { email, password }),
   };
 }
-export default connect(null, mapDispatchToProps)(CredentialsInputs);
+export default connect(null, mapDispatchToProps)(LoginInputs);
