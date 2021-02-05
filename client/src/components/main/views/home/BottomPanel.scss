@@ -1,4 +1,4 @@
-@import "./../../variables";
+@import "../../../../variables";
 
 $bottom-panel-color: #e7e7e7;
 $bottom-panel-height: 50px;
@@ -19,6 +19,7 @@ $bottom-panel-button-color: #80b918;
     margin: 0 10px;
     margin-right: 0;
   }
+
   &__barcode-input {
     width: 100%;
     outline: none;
@@ -29,6 +30,7 @@ $bottom-panel-button-color: #80b918;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
   }
+
   &__add-button,
   &__scan-button {
     height: 30px;
@@ -38,6 +40,7 @@ $bottom-panel-button-color: #80b918;
     cursor: pointer;
     background-color: $bottom-panel-button-color;
   }
+
   &__add-button {
     min-width: 36px;
     display: flex;
@@ -47,11 +50,13 @@ $bottom-panel-button-color: #80b918;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
   }
+
   &__add-icon {
     color: white;
     height: 28px;
     width: 28px;
   }
+
   &__scan-button {
     width: 25%;
     margin: 0 10px;

@@ -18,4 +18,4 @@ const loginValidation = (data) => {
 }
 
 
-module.exports = { registerValidation, loginValidation }
+module.exports = {registerValidation, loginValidation}

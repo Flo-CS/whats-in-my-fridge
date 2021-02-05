@@ -1,4 +1,5 @@
-@import "./../../variables";
+@import "../../../../variables";
+
 .products-cards-grid {
   overflow-y: scroll;
   width: 100%;
@@ -9,11 +10,13 @@
   grid-template-columns: repeat(1, 1fr);
   align-content: start;
 }
+
 @media all and (min-width: $md-screen) {
   .products-cards-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 @media all and (min-width: $xl-screen) {
   .products-cards-grid {
     grid-template-columns: repeat(3, 1fr);

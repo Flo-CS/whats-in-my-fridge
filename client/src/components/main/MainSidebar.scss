@@ -1,18 +1,18 @@
-$app-sidebar-width: 50px;
-$app-sidebar-color: #ffffff;
-$app-sidebar-indicator-color: #80b918;
-$app-sidebar-icon-color: #000000;
-.app-sidebar {
+$main-sidebar-width: 50px;
+$main-sidebar-color: #ffffff;
+$main-sidebar-indicator-color: #80b918;
+$main-sidebar-icon-color: #000000;
+.main-sidebar {
   height: 100%;
-  width: $app-sidebar_width;
+  width: $main-sidebar-width;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: $app-sidebar-color;
+  background-color: $main-sidebar-color;
 
   &__profile {
-    width: $app-sidebar_width;
-    height: $app-sidebar_width;
+    width: $main-sidebar-width;
+    height: $main-sidebar-width;
 
     // Transparent border to avoid pushing effect
     border-left: 4px solid transparent;
@@ -22,13 +22,15 @@ $app-sidebar-icon-color: #000000;
     top: 0;
     position: absolute;
   }
+
   &__menu {
     width: 100%;
     display: flex;
     flex-direction: column;
+
     &-item {
-      height: $app-sidebar-width;
-      width: $app-sidebar-width;
+      height: $main-sidebar-width;
+      width: $main-sidebar-width;
 
       // Transparent border to avoid pushing effect
       border-left: 4px solid transparent;
@@ -38,14 +40,17 @@ $app-sidebar-icon-color: #000000;
       justify-content: center;
       margin: 10px 0;
     }
+
     // Remove margin for first and last items
     & > :first-child {
       margin-top: 0;
     }
+
     & > :last-child {
       margin-bottom: 0;
     }
   }
+
   &__button {
     width: 80%;
     height: 80%;
@@ -53,18 +58,21 @@ $app-sidebar-icon-color: #000000;
     border: none;
     background: none;
     cursor: pointer;
+
     &-icon {
       width: 80%;
       height: 80%;
-      fill: $app-sidebar-icon-color;
-      color: $app-sidebar-icon-color;
+      fill: $main-sidebar-icon-color;
+      color: $main-sidebar-icon-color;
     }
   }
+
   &__profile--active,
   &__menu-item--active {
-    border-left: 4px solid $app-sidebar-indicator-color;
+    border-left: 4px solid $main-sidebar-indicator-color;
+
     svg {
-      fill: $app-sidebar-indicator-color;
+      fill: $main-sidebar-indicator-color;
       transition: fill 0.3s;
     }
   }

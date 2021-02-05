@@ -1,3 +1,3 @@
 export function selectProducts(state) {
-  return state.products.products;
+    return state.products.products;
 }

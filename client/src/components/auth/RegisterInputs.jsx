@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import propTypes from "prop-types";
-import { connect } from "react-redux";
-import { registerUser } from "../../features/auth/authThunk";
+import {connect} from "react-redux";
+import {registerUser} from "../../features/auth/authThunk";
 
-function RegisterInputs({ registerUser }) {
+function RegisterInputs({registerUser}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     function handleSubmitButtonClick() {
         registerUser(email, password);
     }
+
     return (
         <div>
             <input
@@ -33,7 +34,8 @@ RegisterInputs.propTypes = {
 
 function mapDispatchToProps(dispatch) {
     return {
-        registerUser: (email, password) => registerUser(dispatch, { email, password }),
+        registerUser: (email, password) => registerUser(dispatch, {email, password}),
     };
 }
+
 export default connect(null, mapDispatchToProps)(RegisterInputs);

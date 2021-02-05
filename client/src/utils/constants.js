@@ -1,12 +1,12 @@
 const VIEWS = {
-  HOME: "HOME",
-  STATS: "STATS",
-  PROFILE: "PROFILE",
+    HOME: "HOME",
+    STATS: "STATS",
+    PROFILE: "PROFILE",
 };
 
 const PAGES = {
-  MAIN: "MAIN",
-  AUTH: "AUTH",
+    MAIN: "MAIN",
+    AUTH: "AUTH",
 };
 
-export { VIEWS, PAGES };
+export {VIEWS, PAGES};
