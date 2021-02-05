@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f191ea15-0bfc-49fa-8e4e-4ffdec406774" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Server/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Server/controllers/user.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AppSidebar.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AppSidebar.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/BottomPanel.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/BottomPanel.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Home.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Home.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ProductCard.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ProductCard.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ProductsCardsGrid.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ProductsCardsGrid.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Scanner.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Scanner.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/products/productsConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/products/productsConstants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/features/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/features/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/constants.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
+  <component name="ProjectId" id="1o4oaiWZ0xEtVgHnBXBWG2053OI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f191ea15-0bfc-49fa-8e4e-4ffdec406774" name="Default Changelist" comment="" />
+      <created>1612555289478</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1612555289478</updated>
+      <workItem from="1612555292691" duration="1289000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

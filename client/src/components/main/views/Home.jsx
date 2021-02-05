@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import propTypes from "prop-types";
 
-import BottomPanel from "./BottomPanel.jsx";
-import ProductsCardsGrid from "./ProductsCardsGrid.jsx";
+import BottomPanel from "../BottomPanel.jsx";
+import ProductsCardsGrid from "../ProductsCardsGrid.jsx";
 
-import { selectProducts } from "../features/products/productsSelector";
-import { fetchUserProducts } from "../features/products/productsThunk";
+import { selectProducts } from "../../../features/products/productsSelector";
+import { fetchUserProducts } from "../../../features/products/productsThunk";
 
 import "./Home.scss";
 
@@ -22,7 +22,6 @@ function Home({ products, fetchUserProducts }) {
     </div>
   );
 }
-
 Home.propTypes = {
   products: propTypes.array.isRequired,
   fetchUserProducts: propTypes.func.isRequired,

@@ -31,7 +31,8 @@ const registerUser = async (req, res) => {
       password: hashedPassword,
     });
     await user.save();
-    res.status(200).json({ email: user.email, id: user._id });
+
+    res.status(200).json({ email });
   } catch (error) {
     res.status(500).json({ error });
   }
@@ -64,10 +65,11 @@ const loginUser = async (req, res) => {
     return res.status(401).json({ error: "The password is wrong" });
 
   const token = jwt.sign({ email, id: user._id }, process.env.JWT_SECRET_KEY, {
+    // TODO : Change the token expiration delay
     expiresIn: "1y",
   });
 
-  res.status(200).json({ token });
+  res.status(200).json({ email, token });
 };
 
 module.exports = { registerUser, loginUser };

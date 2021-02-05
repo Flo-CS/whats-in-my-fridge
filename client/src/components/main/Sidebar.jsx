@@ -2,18 +2,18 @@ import React from "react";
 import propTypes from "prop-types";
 import classNames from "classnames";
 
-import "./AppSidebar.scss";
+import "./Sidebar.scss";
 
 // Components / assets
-import { ReactComponent as HomeIcon } from "./../assets/icons/home.svg";
-import { ReactComponent as PersonCircleIcon } from "./../assets/icons/person-circle.svg";
-import { ReactComponent as ReturnIcon } from "./../assets/icons/return-up-back.svg";
-import { ReactComponent as StatsChartIcon } from "./../assets/icons/stats-chart.svg";
+import { ReactComponent as HomeIcon } from "./../../assets/icons/home.svg";
+import { ReactComponent as PersonCircleIcon } from "./../../assets/icons/person-circle.svg";
+import { ReactComponent as ReturnIcon } from "./../../assets/icons/return-up-back.svg";
+import { ReactComponent as StatsChartIcon } from "./../../assets/icons/stats-chart.svg";
 
 // Misc
-import { VIEWS } from "../utils/constants";
+import { VIEWS } from "../../utils/constants";
 
-export default function AppSidebar({ currentView, setCurrentView }) {
+export default function Sidebar({ currentView, setCurrentView }) {
   function handleSetCurrentViewButtonsClick(e) {
     setCurrentView(e.currentTarget.dataset.view);
   }
@@ -68,7 +68,7 @@ export default function AppSidebar({ currentView, setCurrentView }) {
   );
 }
 
-AppSidebar.propTypes = {
+Sidebar.propTypes = {
   currentView: propTypes.string.isRequired,
   setCurrentView: propTypes.func.isRequired,
 };

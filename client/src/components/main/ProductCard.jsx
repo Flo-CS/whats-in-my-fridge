@@ -5,12 +5,12 @@ import { connect } from "react-redux";
 
 import "./ProductCard.scss";
 
-import { ReactComponent as PlusIcon } from "./../assets/icons/plus.svg";
-import { ReactComponent as MinusIcon } from "./../assets/icons/minus.svg";
+import { ReactComponent as PlusIcon } from "./../../assets/icons/plus.svg";
+import { ReactComponent as MinusIcon } from "./../../assets/icons/minus.svg";
 import {
   deleteUserProduct,
   updateUserProduct,
-} from "../features/products/productsThunk";
+} from "../../features/products/productsThunk";
 
 function ProductCard({
   barcode,

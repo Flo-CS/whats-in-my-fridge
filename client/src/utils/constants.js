@@ -4,4 +4,9 @@ const VIEWS = {
   PROFILE: "PROFILE",
 };
 
-export { VIEWS };
+const PAGES = {
+  MAIN: "MAIN",
+  AUTH: "AUTH",
+};
+
+export { VIEWS, PAGES };

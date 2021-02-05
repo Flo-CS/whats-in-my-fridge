@@ -1,46 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import propTypes from "prop-types";
 
 import "./App.scss";
 
-// Components
-import AppSidebar from "./components/AppSidebar.jsx";
-import Home from "./components/Home.jsx";
+import MainPage from "./pages/MainPage.jsx";
+import AuthPage from "./pages/AuthPage.jsx";
 
-// Misc
-import { VIEWS } from "./utils/constants";
+import { PAGES } from "./utils/constants";
+import { selectAuthStatus } from "./features/auth/authSelector";
+import { AUTH_STATUS } from "./features/auth/authConstants";
 
-import Api from "./utils/api";
+function App({ authStatus }) {
+  const [page, setPage] = useState(PAGES.AUTH);
 
-function App() {
-  const [currentView, setCurrentView] = useState(VIEWS.HOME);
-
-  // TEMPORARY : JUST FOR DEVELOPMENT PURPOSES
   useEffect(() => {
-    async function login() {
-      const response = await Api.login({
-        email: "toto@gmail.com",
-        password: "totototo",
-      });
-      console.log(response);
+    if (authStatus === AUTH_STATUS.DISCONNECTED) {
+      setPage(PAGES.AUTH);
+    } else if (authStatus === AUTH_STATUS.CONNECTED) {
+      setPage(PAGES.MAIN);
     }
-    login();
-  }, []);
+  }, [authStatus]);
 
-  function renderView(view) {
-    switch (view) {
-      case VIEWS.HOME:
-        return <Home />;
-      default:
-        return "Error";
+  function renderPage(page) {
+    switch (page) {
+      case PAGES.AUTH:
+        return <AuthPage />;
+      case PAGES.MAIN:
+        return <MainPage />;
     }
   }
-
-  return (
-    <div className="app">
-      <AppSidebar currentView={currentView} setCurrentView={setCurrentView} />
-      {renderView(currentView)}
-    </div>
-  );
+  return <div className="app">{renderPage(page)}</div>;
 }
 
-export default App;
+App.propTypes = {
+  authStatus: propTypes.string.isRequired,
+};
+
+function mapStateToProps(state) {
+  return {
+    authStatus: selectAuthStatus(state),
+  };
+}
+
+export default connect(mapStateToProps)(App);

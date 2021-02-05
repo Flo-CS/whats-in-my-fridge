@@ -1,11 +1,11 @@
 import axios from "axios";
 import { API } from "./config";
+import store from "./../features/store";
+import { selectAuthToken } from "../features/auth/authSelector";
 
 class Api {
   constructor() {
-    // TEMPORARY : JUST FOR DEVELOPMENT PURPOSE
-    this.token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvdG9AZ21haWwuY29tIiwiaWQiOiI2MDFkNTdhNjAxNWM2NjNhODgxMWYxMmIiLCJpYXQiOjE2MTI1MzU4NTUsImV4cCI6MTY0NDA5MzQ1NX0.6pNP2uaZxGfmVp_bqtiGSSrVyJwND9Dbcq75uGmYQmA";
+    this.token = null;
   }
 
   init(isTokenNeeded = true) {
@@ -44,4 +44,10 @@ class Api {
   }
 }
 
-export default new Api();
+const api = new Api();
+
+store.subscribe(() => {
+  api.token = selectAuthToken(store.getState());
+});
+
+export default api;

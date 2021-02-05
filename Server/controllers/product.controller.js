@@ -90,7 +90,7 @@ const addOneProduct = async (req, res) => {
 
 const getStats = async (req, res) => {
   try {
-    const products = await UsersData.find({ user: req.verifiedToken.id });
+    const products = await models.Product.find({ user: req.verifiedToken.id });
 
     const totalNumberOfProducts = products.length;
 

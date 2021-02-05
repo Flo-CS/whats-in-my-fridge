@@ -1,7 +1,7 @@
-const PRODUCTS_STATUS = {
+export const PRODUCTS_STATUS = {
   LOADING: "LOADING",
   ERROR: "ERROR",
   LOADED: "LOADED",
 };
 
-export { PRODUCTS_STATUS };
+
