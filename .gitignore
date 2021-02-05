@@ -2,4 +2,6 @@
 Project/Design.afdesign
 
 # Script to make a copy of the project for cloud saving
-copy.bat
+copy.ps1
+
+.idea
