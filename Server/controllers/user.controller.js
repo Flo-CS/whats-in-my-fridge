@@ -3,11 +3,10 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 // Models
-const Users = require("./../models/users.model");
-const UsersData = require("../models/usersData.model");
+const models = require("./../models/index");
 
 // Utils
-const utils = require("./../utils");
+const utils = require("../utils");
 
 const registerUser = async (req, res) => {
   const email = req.body.email;
@@ -21,32 +20,18 @@ const registerUser = async (req, res) => {
       .status(400)
       .json({ error: registerValidation.error.details[0].message });
 
-  // Verify if the email address is not already used
-  const isUserAlreadyExists = await Users.findOne({ email });
-
-  if (isUserAlreadyExists)
-    return res
-      .status(400)
-      .json({ error: "User with this email address already exists" });
-
   // Hash the password
   const salt = bcrypt.genSaltSync(10);
   const hashedPassword = bcrypt.hashSync(password, salt);
 
   // Create the user and the data documents
   try {
-    const user = new Users({
+    const user = new models.User({
       email,
       password: hashedPassword,
     });
-
-    const savedUser = await user.save();
-
-    const userData = new UsersData({ userId: user._id, products: [] });
-
-    await userData.save();
-
-    res.status(200).json({ email: savedUser.email, id: savedUser._id });
+    await user.save();
+    res.status(200).json({ email: user.email, id: user._id });
   } catch (error) {
     res.status(500).json({ error });
   }
@@ -65,7 +50,7 @@ const loginUser = async (req, res) => {
       .json({ error: loginValidation.error.details[0].message });
 
   // Get the user corresponding to the email address
-  const user = await Users.findOne({ email });
+  const user = await models.User.findOne({ email });
 
   if (!user)
     return res

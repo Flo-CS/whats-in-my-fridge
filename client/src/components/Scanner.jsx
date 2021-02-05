@@ -25,9 +25,9 @@ export default function Scanner({ onDetected }) {
           readers: ["ean_reader"],
         },
       },
-      function (err) {
-        if (err) {
-          return console.log(err);
+      function (error) {
+        if (error) {
+          return console.log(error);
         }
         quagga.start();
         return () => {
