@@ -1,0 +1,28 @@
+$auth-inputs-button-color: #80b918;
+
+.login-inputs, .register-inputs {
+display: flex;
+  flex-direction: column;
+  &__email, &__password {
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px $auth-inputs-button-color solid;
+  }
+
+  label[for=email], label[for=password] {
+    margin-bottom: 5px;
+  }
+
+  &__submit-button {
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: $auth-inputs-button-color;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+
+  }
+
+}

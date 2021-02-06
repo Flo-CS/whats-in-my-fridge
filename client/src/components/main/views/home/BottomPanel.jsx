@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 
 import "./BottomPanel.scss";
 
-import Scanner from "./Scanner.jsx";
+import Scanner from "./Scanner";
 
 import {ReactComponent as AddIcon} from "../../../../assets/icons/add.svg";
 import {addUserProduct} from "../../../../features/products/productsThunk";

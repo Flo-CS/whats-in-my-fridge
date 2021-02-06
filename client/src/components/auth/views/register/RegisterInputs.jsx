@@ -1,30 +1,39 @@
 import React, {useState} from "react";
 import propTypes from "prop-types";
 import {connect} from "react-redux";
-import {registerUser} from "../../features/auth/authThunk";
+import {registerUser} from "../../../../features/auth/authThunk";
+
+import "./../AuthInputs.scss"
 
 function RegisterInputs({registerUser}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    function handleSubmitButtonClick() {
+    function handleSubmit(e) {
+        e.preventDefault()
         registerUser(email, password);
     }
 
     return (
-        <div>
+        <form className="register-inputs" onSubmit={handleSubmit}>
+            <label htmlFor="email">Email</label>
             <input
+                className="register-inputs__email"
+                id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
+            <label htmlFor="password">Password</label>
             <input
+                className="register-inputs__password"
+                id="password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <button onClick={handleSubmitButtonClick}>Submit</button>
-        </div>
+            <button type="submit" className="register-inputs__submit-button">Submit</button>
+        </form>
     );
 }
 

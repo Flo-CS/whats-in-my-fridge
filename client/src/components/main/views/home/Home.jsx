@@ -2,8 +2,8 @@ import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import propTypes from "prop-types";
 
-import BottomPanel from "./BottomPanel.jsx";
-import ProductsCardsGrid from "./ProductsCardsGrid.jsx";
+import BottomPanel from "./BottomPanel";
+import ProductsCardsGrid from "./ProductsCardsGrid";
 
 import {selectProducts} from "../../../../features/products/productsSelector";
 import {fetchUserProducts} from "../../../../features/products/productsThunk";

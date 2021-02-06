@@ -2,20 +2,22 @@ import React, {useState} from "react";
 import {connect} from "react-redux";
 import propTypes from "prop-types";
 
-import {VIEWS} from "../utils/constants";
+import {MAIN_VIEWS} from "../utils/constants";
 
-import MainSidebar from "../components/main/MainSidebar.jsx";
-import Home from "../components/main/views/home/Home.jsx";
-import MainView from "../components/main/MainView.jsx";
+import MainSidebar from "../components/main/MainSidebar";
+import Home from "../components/main/views/home/Home";
+import MainContent from "../components/main/MainContent";
 
 import {selectAuthToken} from "../features/auth/authSelector";
 
+// TODO : Remove token : not needed
 function MainPage({token}) {
-    const [currentView, setCurrentView] = useState(VIEWS.HOME);
+    //TODO : Use redux state instead of local state
+    const [currentView, setCurrentView] = useState(MAIN_VIEWS.HOME);
 
     function renderView(view) {
         switch (view) {
-            case VIEWS.HOME:
+            case MAIN_VIEWS.HOME:
                 return <Home/>;
             default:
                 return <p>{token}</p>;
@@ -25,7 +27,9 @@ function MainPage({token}) {
     return (
         <>
             <MainSidebar currentView={currentView} setCurrentView={setCurrentView}/>
-            <MainView> {renderView(currentView)}</MainView>
+            <MainContent>
+                {renderView(currentView)}
+            </MainContent>
         </>
     );
 }

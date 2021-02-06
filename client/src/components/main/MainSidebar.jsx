@@ -11,7 +11,7 @@ import {ReactComponent as ReturnIcon} from "../../assets/icons/return-up-back.sv
 import {ReactComponent as StatsChartIcon} from "../../assets/icons/stats-chart.svg";
 
 // Misc
-import {VIEWS} from "../../utils/constants";
+import {MAIN_VIEWS} from "../../utils/constants";
 
 export default function MainSidebar({currentView, setCurrentView}) {
     function handleSetCurrentViewButtonsClick(e) {
@@ -19,13 +19,13 @@ export default function MainSidebar({currentView, setCurrentView}) {
     }
 
     const profileClass = classNames("main-sidebar__profile", {
-        "main-sidebar__profile--active": currentView === VIEWS.PROFILE,
+        "main-sidebar__profile--active": currentView === MAIN_VIEWS.PROFILE,
     });
     const homeClass = classNames("main-sidebar__menu-item", {
-        "main-sidebar__menu-item--active": currentView === VIEWS.HOME,
+        "main-sidebar__menu-item--active": currentView === MAIN_VIEWS.HOME,
     });
     const statsClass = classNames("main-sidebar__menu-item", {
-        "main-sidebar__menu-item--active": currentView === VIEWS.STATS,
+        "main-sidebar__menu-item--active": currentView === MAIN_VIEWS.STATS,
     });
 
     return (
@@ -33,7 +33,7 @@ export default function MainSidebar({currentView, setCurrentView}) {
             <div className={profileClass}>
                 <button
                     className="main-sidebar__button"
-                    data-view={VIEWS.PROFILE}
+                    data-view={MAIN_VIEWS.PROFILE}
                     onClick={handleSetCurrentViewButtonsClick}
                 >
                     <PersonCircleIcon className="main-sidebar__button-icon"/>
@@ -43,7 +43,7 @@ export default function MainSidebar({currentView, setCurrentView}) {
                 <div className={homeClass}>
                     <button
                         className="main-sidebar__button"
-                        data-view={VIEWS.HOME}
+                        data-view={MAIN_VIEWS.HOME}
                         onClick={handleSetCurrentViewButtonsClick}
                     >
                         <HomeIcon className="main-sidebar__button-icon"/>
@@ -52,7 +52,7 @@ export default function MainSidebar({currentView, setCurrentView}) {
                 <div className={statsClass}>
                     <button
                         className="main-sidebar__button"
-                        data-view={VIEWS.STATS}
+                        data-view={MAIN_VIEWS.STATS}
                         onClick={handleSetCurrentViewButtonsClick}
                     >
                         <StatsChartIcon className="main-sidebar__button-icon"/>

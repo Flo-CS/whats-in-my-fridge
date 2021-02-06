@@ -4,8 +4,8 @@ import propTypes from "prop-types";
 
 import "./App.scss";
 
-import MainPage from "./pages/MainPage.jsx";
-import AuthPage from "./pages/AuthPage.jsx";
+import MainPage from "./pages/MainPage";
+import AuthPage from "./pages/AuthPage";
 
 import {PAGES} from "./utils/constants";
 import {selectAuthStatus} from "./features/auth/authSelector";

@@ -1,7 +1,7 @@
 import React from "react";
 import propTypes from "prop-types";
 
-import ProductCard from "./ProductCard.jsx";
+import ProductCard from "./ProductCard";
 
 import "./ProductsCardsGrid.scss";
 
