@@ -70,12 +70,23 @@ const addOneProduct = async (req, res) => {
         const openFoodFactsResponse = await axios.get(
             `${config.OPEN_FOOD_FACTS_API_ENDPOINT}/product/${barcode}.json`
         );
-        const openFoodFactsProductData = openFoodFactsResponse.data.product;
+        const productData = openFoodFactsResponse.data.product;
+        const filteredProductData = {
+            brands: productData?.brands,
+            name: productData?.product_name,
+            image_url: productData?.image_url,
+            quantity: productData?.quantity,
+            nutriscore: productData?.nutriscore_grade,
+            nova: productData?.nova_group,
+            categories: productData?.categories,
+            ingredients: productData?.ingredients_text,
+            nutriments: productData?.nutriments
+        }
 
         const productToCreate = new models.Product({
             user: req.verifiedToken.id,
             barcode: barcode,
-            data: openFoodFactsProductData,
+            data: filteredProductData,
         });
 
         await productToCreate.save();

@@ -14,9 +14,9 @@ export default function ProductsCardsGrid({products}) {
                         key={product.barcode}
                         barcode={product.barcode}
                         quantity={product.quantity}
-                        brands={product.data?.brands}
-                        name={product.data?.product_name}
-                        imageUrl={product.data?.image_url}
+                        brands={product.data.brands}
+                        name={product.data.name}
+                        imageUrl={product.data.image_url}
                     />
                 );
             })}
