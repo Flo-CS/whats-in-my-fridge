@@ -6,13 +6,13 @@ import {VIEWS} from "../utils/constants";
 
 import MainSidebar from "../components/main/MainSidebar.jsx";
 import Home from "../components/main/views/home/Home.jsx";
+import MainView from "../components/main/MainView.jsx";
 
 import {selectAuthToken} from "../features/auth/authSelector";
 
 function MainPage({token}) {
     const [currentView, setCurrentView] = useState(VIEWS.HOME);
 
-    // TEMPORARY : JUST FOR DEVELOPMENT PURPOSES
     function renderView(view) {
         switch (view) {
             case VIEWS.HOME:
@@ -25,7 +25,7 @@ function MainPage({token}) {
     return (
         <>
             <MainSidebar currentView={currentView} setCurrentView={setCurrentView}/>
-            {renderView(currentView)}
+            <MainView> {renderView(currentView)}</MainView>
         </>
     );
 }

@@ -8,7 +8,7 @@ import ProductsCardsGrid from "./ProductsCardsGrid.jsx";
 import {selectProducts} from "../../../../features/products/productsSelector";
 import {fetchUserProducts} from "../../../../features/products/productsThunk";
 
-import "./Home.scss";
+
 
 function Home({products, fetchUserProducts}) {
     useEffect(() => {
