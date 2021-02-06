@@ -1,5 +1,6 @@
 const joi = require("joi")
 
+// TODO : Add custom messages
 const registerValidation = (data) => {
     const registerSchema = joi.object({
         email: joi.string().email().max(255).required(),

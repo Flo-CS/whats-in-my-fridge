@@ -14,7 +14,7 @@ class Api {
         };
         //TODO : Add Bearer
         if (this.token && isTokenNeeded) {
-            headers.Authorization = `${this.token}`;
+            headers.Authorization = `Bearer ${this.token}`;
         }
 
         const client = axios.create({
