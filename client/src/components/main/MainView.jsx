@@ -3,12 +3,12 @@ import propTypes from "prop-types"
 
 import "./MainView.scss"
 
-export default function MainView({child}) {
+export default function MainView({children}) {
     return <div className="main-view">
-        {child}
+        {children}
     </div>
 }
 MainView.propTypes = {
-    child: propTypes.element.isRequired
+    children: propTypes.element.isRequired
 }
 
