@@ -12,6 +12,7 @@ function LoginInputs({loginUser}) {
     function handleSubmit(e) {
         e.preventDefault()
         loginUser(email, password);
+
     }
 
     return (

@@ -4,15 +4,14 @@ import {SERVER_API_ENDPOINT} from "./config";
 
 class Api {
     init() {
-        let headers = {
+        const headers = {
             Accept: "application/json",
         };
-
         return axios.create({
             baseURL: SERVER_API_ENDPOINT,
             headers: headers,
             withCredentials: true
-        });
+        }) ;
     }
 
     login(data) {
