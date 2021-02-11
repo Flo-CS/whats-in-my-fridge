@@ -1,4 +1,4 @@
-import {setStatus, setToken} from "./authSlice";
+import {setStatus} from "./authSlice";
 
 import Api from "../../utils/api";
 
@@ -8,7 +8,6 @@ export async function loginUser(dispatch, data) {
     try {
         dispatch(setStatus(AUTH_STATUS.DISCONNECTED));
         const response = await Api.login(data);
-        dispatch(setToken(response.data.token));
         dispatch(setStatus(AUTH_STATUS.CONNECTED));
     } catch (error) {
         dispatch(setStatus(AUTH_STATUS.ERROR));

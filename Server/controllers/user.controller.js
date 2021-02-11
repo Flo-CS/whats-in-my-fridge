@@ -1,9 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-
 const models = require("./../models/index");
-
 
 const utils = require("../utils");
 
@@ -68,7 +66,9 @@ const loginUser = async (req, res) => {
         expiresIn: "1y",
     });
 
-    res.status(200).json({email, token});
+    res.cookie("token", token, { httpOnly: true })
+
+    res.status(200).json({email});
 };
 
 module.exports = {registerUser, loginUser};

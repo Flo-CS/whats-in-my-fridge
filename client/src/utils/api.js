@@ -1,36 +1,26 @@
 import axios from "axios";
-import {API} from "./config";
-import store from "./../features/store";
-import {selectAuthToken} from "../features/auth/authSelector";
+import {SERVER_API_ENDPOINT} from "./config";
+
 
 class Api {
-    constructor() {
-        this.token = null;
-    }
-
-    init(isTokenNeeded = true) {
+    init() {
         let headers = {
             Accept: "application/json",
         };
-        //TODO : Add Bearer
-        if (this.token && isTokenNeeded) {
-            headers.Authorization = `Bearer ${this.token}`;
-        }
 
-        const client = axios.create({
-            baseURL: API.ENDPOINT,
+        return axios.create({
+            baseURL: SERVER_API_ENDPOINT,
             headers: headers,
+            withCredentials: true
         });
-
-        return client;
     }
 
     login(data) {
-        return this.init(false).post("/auth/login", data);
+        return this.init().post("/auth/login", data);
     }
 
     register(data) {
-        return this.init(false).post("/auth/register", data);
+        return this.init().post("/auth/register", data);
     }
 
     getProducts() {
@@ -52,8 +42,5 @@ class Api {
 
 const api = new Api();
 
-store.subscribe(() => {
-    api.token = selectAuthToken(store.getState());
-});
 
 export default api;

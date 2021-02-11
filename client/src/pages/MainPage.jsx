@@ -1,6 +1,4 @@
 import React, {useState} from "react";
-import {connect} from "react-redux";
-import propTypes from "prop-types";
 
 import {MAIN_VIEWS} from "../utils/constants";
 
@@ -8,10 +6,9 @@ import MainSidebar from "../components/main/MainSidebar";
 import Home from "../components/main/views/home/Home";
 import MainContent from "../components/main/MainContent";
 
-import {selectAuthToken} from "../features/auth/authSelector";
 
-// TODO : Remove token : not needed
-function MainPage({token}) {
+
+function MainPage() {
     //TODO : Use redux state instead of local state
     const [currentView, setCurrentView] = useState(MAIN_VIEWS.HOME);
 
@@ -20,7 +17,7 @@ function MainPage({token}) {
             case MAIN_VIEWS.HOME:
                 return <Home/>;
             default:
-                return <p>{token}</p>;
+                return <p>Error</p>;
         }
     }
 
@@ -34,14 +31,5 @@ function MainPage({token}) {
     );
 }
 
-MainPage.propTypes = {
-    token: propTypes.string.isRequired,
-};
 
-function mapStateToProps(state) {
-    return {
-        token: selectAuthToken(state),
-    };
-}
-
-export default connect(mapStateToProps, null)(MainPage);
+export default MainPage;

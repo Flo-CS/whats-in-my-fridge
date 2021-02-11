@@ -4,17 +4,14 @@ import {AUTH_STATUS} from "./authConstants";
 
 const authSlice = createSlice({
     name: "auth",
-    initialState: {status: AUTH_STATUS.DISCONNECTED, token: null},
+    initialState: {status: AUTH_STATUS.DISCONNECTED},
     reducers: {
-        setToken(state, action) {
-            state.token = action.payload;
-        },
         setStatus(state, action) {
             state.status = action.payload;
         },
     },
 });
 
-export const {setToken, setStatus} = authSlice.actions;
+export const {setStatus} = authSlice.actions;
 
 export default authSlice.reducer;

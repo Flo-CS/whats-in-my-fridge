@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser")
 require("dotenv").config();
 
 
@@ -26,7 +27,8 @@ const userRoute = require("./routes/user.route");
 const App = express();
 
 // Middlewares
-App.use(cors());
+App.use(cookieParser())
+App.use(cors({credentials: true, origin: config.CLIENT_ORIGIN}));
 App.use(bodyParser.json());
 
 // Routers

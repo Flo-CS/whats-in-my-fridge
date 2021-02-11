@@ -1,5 +1,5 @@
-const API = {
-    ENDPOINT: "http://192.168.0.68:8080/api/",
+const SERVER_API_ENDPOINT = {
+    ENDPOINT: "http://localhost:8080/api/",
 }
 
-export {API}
+export {SERVER_API_ENDPOINT}
