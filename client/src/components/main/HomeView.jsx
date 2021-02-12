@@ -5,12 +5,12 @@ import propTypes from "prop-types";
 import BottomPanel from "./BottomPanel";
 import ProductsCardsGrid from "./ProductsCardsGrid";
 
-import {selectProducts} from "../../../../features/products/productsSelector";
-import {fetchUserProducts} from "../../../../features/products/productsThunk";
+import {selectProducts} from "../../features/products/productsSelector";
+import {fetchUserProducts} from "../../features/products/productsThunk";
 
-import "./Home.scss"
+import "./HomeView.scss"
 
-function Home({products, fetchUserProducts}) {
+function HomeView({products, fetchUserProducts}) {
     useEffect(() => {
         fetchUserProducts();
     }, [fetchUserProducts]);
@@ -23,7 +23,7 @@ function Home({products, fetchUserProducts}) {
     );
 }
 
-Home.propTypes = {
+HomeView.propTypes = {
     products: propTypes.array.isRequired,
     fetchUserProducts: propTypes.func.isRequired,
 };
@@ -36,4 +36,4 @@ function mapDispatchToProps(dispatch) {
     return {fetchUserProducts: () => fetchUserProducts(dispatch)};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeView);

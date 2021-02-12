@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import propTypes from "prop-types";
 import {connect} from "react-redux";
-import {registerUser} from "../../../../features/auth/authThunk";
+import {registerUser} from "../../../features/auth/authThunk";
 
-import "./../AuthInputs.scss"
+import "../AuthInputs.scss"
 
 function RegisterInputs({registerUser}) {
     const [email, setEmail] = useState("");

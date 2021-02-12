@@ -1,47 +1,32 @@
-import React, {useEffect, useState} from "react";
-import {connect} from "react-redux";
-import propTypes from "prop-types";
+import React from "react";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import "./App.scss";
 
 import MainPage from "./pages/MainPage";
-import AuthPage from "./pages/AuthPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import AuthRoute from "./components/auth/AuthRoute";
 
-import {PAGES} from "./utils/constants";
-import {selectAuthStatus} from "./features/auth/authSelector";
-import {AUTH_STATUS} from "./features/auth/authConstants";
 
-function App({authStatus}) {
-    const [page, setPage] = useState(PAGES.AUTH);
+function App() {
 
-    useEffect(() => {
-        if (authStatus === AUTH_STATUS.DISCONNECTED) {
-            setPage(PAGES.AUTH);
-        } else if (authStatus === AUTH_STATUS.CONNECTED) {
-            setPage(PAGES.MAIN);
-        }
-    }, [authStatus]);
-
-    function renderPage(page) {
-        switch (page) {
-            case PAGES.AUTH:
-                return <AuthPage/>;
-            case PAGES.MAIN:
-                return <MainPage/>;
-        }
-    }
-
-    return <div className="app">{renderPage(page)}</div>;
+    return <div className="app">
+        <Router>
+            <Switch>
+                <AuthRoute exact path="/login">
+                    <LoginPage/>
+                </AuthRoute>
+                <Route exact path="/register">
+                    <RegisterPage/>
+                </Route>
+                <ProtectedRoute path="/">
+                    <MainPage/>
+                </ProtectedRoute>
+            </Switch>
+        </Router>
+    </div>;
 }
 
-App.propTypes = {
-    authStatus: propTypes.string.isRequired,
-};
-
-function mapStateToProps(state) {
-    return {
-        authStatus: selectAuthStatus(state),
-    };
-}
-
-export default connect(mapStateToProps)(App);
+export default App

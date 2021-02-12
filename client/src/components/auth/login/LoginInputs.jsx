@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import propTypes from "prop-types";
 import {connect} from "react-redux";
-import {loginUser} from "../../../../features/auth/authThunk";
+import {loginUser} from "../../../features/auth/authThunk";
 
-import "./../AuthInputs.scss"
+import "../AuthInputs.scss"
 
 function LoginInputs({loginUser}) {
     const [email, setEmail] = useState("");

@@ -63,12 +63,13 @@ const loginUser = async (req, res) => {
 
     const token = jwt.sign({email, id: user._id}, process.env.JWT_SECRET_KEY, {
         // TODO : Change the token expiration delay
-        expiresIn: "1y",
+        expiresIn: "30d"
     });
 
-    res.cookie("token", token, { httpOnly: true})
+    res.cookie("token", token, {httpOnly: true})
 
     res.status(200).json({email});
 };
+
 
 module.exports = {registerUser, loginUser};
