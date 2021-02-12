@@ -5,8 +5,8 @@ import propTypes from "prop-types";
 import BottomPanel from "./BottomPanel";
 import ProductsCardsGrid from "./ProductsCardsGrid";
 
-import {selectProducts} from "../../features/products/productsSelector";
-import {fetchUserProducts} from "../../features/products/productsThunk";
+import {selectProducts} from "../../features/products/products.selector";
+import {fetchUserProducts} from "../../features/products/products.thunk";
 
 import "./Views.scss"
 

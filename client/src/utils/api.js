@@ -25,6 +25,10 @@ class Api {
         return this.init().get("/products");
     }
 
+    getProduct(barcode) {
+        return this.init().get(`/products/${barcode}`)
+    }
+
     addProduct(barcode) {
         return this.init().post(`/products/${barcode}`);
     }

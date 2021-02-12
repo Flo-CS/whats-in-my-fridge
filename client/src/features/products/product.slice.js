@@ -1,13 +1,17 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-import {PRODUCTS_STATUS} from "./productsConstants";
+import {PRODUCTS_STATUS} from "./products.constants";
 
-const productsSlice = createSlice({
+const productSlice = createSlice({
     name: "products",
-    initialState: {status: PRODUCTS_STATUS.LOADING, products: []},
+    initialState: {status: PRODUCTS_STATUS.LOADING, products: [], product: {}},
     reducers: {
+
         setProducts(state, action) {
             state.products = action.payload;
+        },
+        setProduct(state, action) {
+            state.product = action.payload
         },
         addProduct(state, action) {
             state.products.push(action.payload);
@@ -40,6 +44,7 @@ export const {
     updateProduct,
     deleteProduct,
     setStatus,
-} = productsSlice.actions;
+    setProduct
+} = productSlice.actions;
 
-export default productsSlice.reducer;
+export default productSlice.reducer;

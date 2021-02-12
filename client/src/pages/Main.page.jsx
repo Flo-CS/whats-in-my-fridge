@@ -3,6 +3,7 @@ import {Redirect, Route, Switch} from "react-router-dom"
 
 import MainSidebar from "../components/main/MainSidebar";
 import HomeView from "../components/main/Home.view";
+import ProductView from "../components/main/Product.view";
 
 function MainPage() {
     return (
@@ -11,6 +12,9 @@ function MainPage() {
             <Switch>
                 <Route exact path="/">
                     <HomeView/>
+                </Route>
+                <Route path="/products/:barcode">
+                    <ProductView/>
                 </Route>
                 <Redirect from="*" to="/"/>
             </Switch>

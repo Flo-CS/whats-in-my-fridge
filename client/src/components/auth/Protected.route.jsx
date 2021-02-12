@@ -2,8 +2,8 @@ import React from "react"
 import {Redirect, Route} from "react-router-dom";
 import propTypes from "prop-types"
 import {connect} from "react-redux";
-import {selectAuthStatus} from "../../features/auth/authSelector";
-import {AUTH_STATUS} from "../../features/auth/authConstants";
+import {selectAuthStatus} from "../../features/auth/auth.selector";
+import {AUTH_STATUS} from "../../features/auth/auth.constants";
 
 function ProtectedRoute({children, authStatus, ...rest}) {
     return <Route {...rest}>

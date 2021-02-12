@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-import {AUTH_STATUS} from "./authConstants";
+import {AUTH_STATUS} from "./auth.constants";
 
 const authSlice = createSlice({
     name: "auth",

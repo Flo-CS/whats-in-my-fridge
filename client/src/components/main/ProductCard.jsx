@@ -7,7 +7,8 @@ import "./ProductCard.scss";
 
 import {ReactComponent as PlusIcon} from "../../assets/icons/plus.svg";
 import {ReactComponent as MinusIcon} from "../../assets/icons/minus.svg";
-import {deleteUserProduct, updateUserProduct,} from "../../features/products/productsThunk";
+import {deleteUserProduct, updateUserProduct,} from "../../features/products/products.thunk";
+import {useHistory} from "react-router-dom";
 
 function ProductCard({
                          barcode,
@@ -18,6 +19,9 @@ function ProductCard({
                          deleteUserProduct,
                          updateUserProduct,
                      }) {
+
+    const history = useHistory()
+
     function handleIncreaseQuantityButtonClick() {
         updateProductQuantity(quantity + 1);
     }
@@ -33,6 +37,10 @@ function ProductCard({
         }
     }
 
+    function handleCardClick() {
+        history.push(`/products/${barcode}`)
+    }
+
     function updateProductQuantity(newQuantity) {
         updateUserProduct(barcode, {quantity: newQuantity});
     }
@@ -41,6 +49,7 @@ function ProductCard({
         "product-card--disabled": quantity <= 0,
     });
 
+    /* eslint-disable  jsx-a11y/no-noninteractive-element-interactions */
     return (
         <div className={productCardClass}>
             <div className="product-card__content">
@@ -53,9 +62,11 @@ function ProductCard({
                 <div className="product-card__body">
                     <img
                         className="product-card__image"
+                        onClick={handleCardClick}
+                        onKeyDown={handleCardClick}
                         alt="Product"
                         src={imageUrl}
-                    ></img>
+                    />
                 </div>
             </div>
 

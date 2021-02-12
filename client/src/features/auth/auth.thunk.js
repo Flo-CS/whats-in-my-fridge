@@ -1,8 +1,8 @@
-import {setStatus} from "./authSlice";
+import {setStatus} from "./auth.slice";
 
 import Api from "../../utils/api";
 
-import {AUTH_STATUS} from "./authConstants";
+import {AUTH_STATUS} from "./auth.constants";
 
 export async function loginUser(dispatch, data) {
     try {

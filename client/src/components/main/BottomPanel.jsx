@@ -8,7 +8,7 @@ import "./BottomPanel.scss";
 import Scanner from "./Scanner";
 
 import {ReactComponent as AddIcon} from "../../assets/icons/add.svg";
-import {addUserProduct} from "../../features/products/productsThunk";
+import {addUserProduct} from "../../features/products/products.thunk";
 
 function BottomPanel({addUserProduct}) {
     const [barcode, setBarcode] = useState("");

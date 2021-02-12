@@ -35,7 +35,7 @@ const getOneProduct = async (req, res) => {
     const barcode = req.params.barcode;
 
     try {
-        const product = await models.product.findOne({
+        const product = await models.Product.findOne({
             user: req.verifiedToken.id,
             barcode: barcode,
         });
