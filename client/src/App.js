@@ -3,11 +3,11 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import "./App.scss";
 
-import MainPage from "./pages/Main.page";
-import LoginPage from "./pages/Login.page";
-import RegisterPage from "./pages/Register.page";
-import ProtectedRoute from "./components/auth/Protected.route";
-import AuthRoute from "./components/auth/Auth.route";
+import MainPage from "./pages/MainPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import AuthRoute from "./components/auth/AuthRoute";
 
 
 function App() {

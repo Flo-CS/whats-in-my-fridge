@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import propTypes from "prop-types";
 import {connect} from "react-redux";
-import {loginUser} from "../../../features/auth/auth.thunk";
+import {loginUser} from "../../../features/auth/authThunk";
 
 import "../AuthInputs.scss"
 

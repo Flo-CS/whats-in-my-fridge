@@ -66,7 +66,6 @@ const addOneProduct = async (req, res) => {
 
         // CREATE NEW PART
         // Get all openFoodFacts data for the product with their API
-        // TODO : Only get used data
         const openFoodFactsResponse = await axios.get(
             `${config.OPEN_FOOD_FACTS_API_ENDPOINT}/product/${barcode}.json`
         );
@@ -80,7 +79,8 @@ const addOneProduct = async (req, res) => {
             nova: productData?.nova_group,
             categories: productData?.categories,
             ingredients: productData?.ingredients_text,
-            nutriments: productData?.nutriments
+            nutriments: productData?.nutriments,
+            additives_tags: productData?.additives_tags
         }
 
         const productToCreate = new models.Product({

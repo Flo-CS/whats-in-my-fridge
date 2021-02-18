@@ -20,8 +20,8 @@ mongoose
     .catch((error) => console.log(error));
 
 // Routes
-const productRoute = require("./routes/product.route");
-const userRoute = require("./routes/user.route");
+const productRoute = require("./routes/productRoute");
+const userRoute = require("./routes/userRoute");
 
 // Setup Express App
 const App = express();
