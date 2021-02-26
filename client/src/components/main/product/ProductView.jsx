@@ -1,14 +1,16 @@
-import React, {useEffect} from "react"
-import {connect} from "react-redux";
 import propTypes from "prop-types";
-import {selectOneProduct, selectOneProductStatus} from "../../../features/products/productsSelector";
-import {fetchUserProduct} from "../../../features/products/productsThunk";
+import React, {useEffect} from "react";
+import {connect} from "react-redux";
 import {useParams} from "react-router";
 import {PRODUCTS_STATUS} from "../../../features/products/productsConstants";
+import {selectOneProduct, selectOneProductStatus} from "../../../features/products/productsSelector";
+import {fetchUserProduct} from "../../../features/products/productsThunk";
+import ProductContent from "./ProductContent";
+import ProductHeader from "./ProductHeader";
 
 
 function ProductView({product, productStatus, fetchUserProduct}) {
-    const {barcode} = useParams()
+    const {barcode} = useParams();
 
     useEffect(() => {
         fetchUserProduct(barcode);
@@ -16,14 +18,14 @@ function ProductView({product, productStatus, fetchUserProduct}) {
 
 
     if (productStatus === PRODUCTS_STATUS.LOADED) {
-        const {name, brands} = product.data
-        return <div className="product">
-            <h1>
-                {name} - {brands} - {product.barcode} - {product.quantity}
-            </h1>
-        </div>
+
+
+        return <div className="product-view">
+            <ProductHeader barcode={product.barcode} productData={product.data}/>
+            <ProductContent productData={product.data}/>
+        </div>;
     } else {
-        return <p>Loading...</p>
+        return <p>Loading...</p>;
     }
 
 

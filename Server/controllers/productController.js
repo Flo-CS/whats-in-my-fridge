@@ -69,19 +69,35 @@ const addOneProduct = async (req, res) => {
         const openFoodFactsResponse = await axios.get(
             `${config.OPEN_FOOD_FACTS_API_ENDPOINT}/product/${barcode}.json`
         );
+
+
         const productData = openFoodFactsResponse.data.product;
+
+        // We verify that the product exists and if we have a name for it in open food facts, 0 means "ERROR"
+        if (openFoodFactsResponse.data.status === 0 || !productData.product_name) return res.status(404).json();
+
         const filteredProductData = {
-            brands: productData?.brands,
-            name: productData?.product_name,
-            image_url: productData?.image_url,
-            quantity: productData?.quantity,
-            nutriscore: productData?.nutriscore_grade,
-            nova: productData?.nova_group,
-            categories: productData?.categories,
-            ingredients: productData?.ingredients_text,
-            nutriments: productData?.nutriments,
-            additives_tags: productData?.additives_tags
-        }
+            brands_text: productData.brands,
+            name: productData.product_name,
+            image_url: productData.image_url,
+            quantity: productData.quantity,
+            nutriscore: productData.nutriscore_grade,
+            nova: productData.nova_group,
+            categories_tags: productData.categories_tags,
+            ingredients_tags: productData.ingredients_tags,
+            nutriments: productData.nutriments,
+            additives_tags: productData.additives_tags,
+            origins_tags: productData.origins_tags,
+            brands_tags: productData.brands_tags,
+            vending_countries_tags: productData.countries_tags,
+            traces_tags: productData.traces_tags,
+            labels_tags: productData.labels_tags,
+            serving_quantity: productData.serving_quantity,
+            allergens_tags: productData.allergens_tags,
+            ecoscore: productData.ecoscore_grade
+
+        };
+
 
         const productToCreate = new models.Product({
             user: req.verifiedToken.id,

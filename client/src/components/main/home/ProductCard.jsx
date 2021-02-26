@@ -1,26 +1,25 @@
-import React from "react";
 import classNames from "classnames";
 import propTypes from "prop-types";
+import React from "react";
 import {connect} from "react-redux";
-
-import "./ProductCard.scss";
+import {useHistory} from "react-router-dom";
+import {ReactComponent as MinusIcon} from "../../../assets/icons/minus.svg";
 
 import {ReactComponent as PlusIcon} from "../../../assets/icons/plus.svg";
-import {ReactComponent as MinusIcon} from "../../../assets/icons/minus.svg";
 import {deleteUserProduct, updateUserProduct,} from "../../../features/products/productsThunk";
-import {useHistory} from "react-router-dom";
+
+import "./ProductCard.scss";
 
 function ProductCard({
                          barcode,
                          quantity,
-                         name,
-                         brands,
-                         imageUrl,
+                         productData,
                          deleteUserProduct,
                          updateUserProduct,
                      }) {
 
-    const history = useHistory()
+    const history = useHistory();
+
 
     function handleIncreaseQuantityButtonClick() {
         updateProductQuantity(quantity + 1);
@@ -38,7 +37,7 @@ function ProductCard({
     }
 
     function handleCardClick() {
-        history.push(`/products/${barcode}`)
+        history.push(`/products/${barcode}`);
     }
 
     function updateProductQuantity(newQuantity) {
@@ -48,6 +47,7 @@ function ProductCard({
     const productCardClass = classNames("product-card", {
         "product-card--disabled": quantity <= 0,
     });
+    const {image_url: imageUrl, brands_text: brandsText, name} = productData;
 
     /* eslint-disable  jsx-a11y/no-noninteractive-element-interactions */
     return (
@@ -55,7 +55,7 @@ function ProductCard({
             <div className="product-card__content">
                 <div className="product-card__header">
                     <p className="product-card__name">
-                        {name} - {brands} -{" "}
+                        {name} - {brandsText} -{" "}
                         <span className="product-card__name--soft">{barcode}</span>
                     </p>
                 </div>
@@ -92,9 +92,7 @@ function ProductCard({
 ProductCard.propTypes = {
     barcode: propTypes.string.isRequired,
     quantity: propTypes.number.isRequired,
-    name: propTypes.string,
-    brands: propTypes.string,
-    imageUrl: propTypes.string,
+    productData: propTypes.object.isRequired,
     deleteUserProduct: propTypes.func.isRequired,
     updateUserProduct: propTypes.func.isRequired,
 };

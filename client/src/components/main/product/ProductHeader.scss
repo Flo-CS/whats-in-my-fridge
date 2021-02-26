@@ -1,3 +1,40 @@
 .product-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  background-color: #e7e7e7;
+
+  &__image {
+    height: 100%;
+    margin-right: 20px;
+    border-radius: 5px;
+  }
+
+  &__center {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 60px;
+    margin-right: 20px;
+  }
+
+  &__name {
+    font-size: 1.3rem;
+  }
+
+  &__barcode {
+    font-size: 0.9rem;
+  }
+
+  &__brands {
+
+  }
+
+  &__quantity {
+    font-weight: 700;
+  }
 
 }

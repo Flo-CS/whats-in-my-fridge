@@ -1,9 +1,9 @@
 .product-card {
   position: relative;
-  width: 100%;
   display: flex;
-  background-color: white;
+  width: 100%;
   border-radius: 5px;
+  background-color: white;
 
   &--disabled {
     background-color: #e7e7e7;
@@ -34,15 +34,16 @@
   }
 
   &__image {
-    height: 50px;
+    overflow: hidden;
     width: auto;
-    border-radius: 5px;
-    background-color: black;
+    height: 50px;
+    cursor: pointer;
+    white-space: nowrap;
 
     // Hide the alt text
     text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
+    border-radius: 5px;
+    background-color: black;
   }
 
   &__controls {

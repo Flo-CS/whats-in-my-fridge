@@ -2,12 +2,11 @@ import React from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import "./App.scss";
+import AuthRoute from "./components/auth/AuthRoute";
+import LoginPage from "./pages/LoginPage";
 
 import MainPage from "./pages/MainPage";
-import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
-import AuthRoute from "./components/auth/AuthRoute";
 
 
 function App() {
@@ -21,9 +20,10 @@ function App() {
                 <Route exact path="/register">
                     <RegisterPage/>
                 </Route>
-                <ProtectedRoute path="/">
+                {/* TODO : CHANGE THAT ROUTE TO PROTECTED ROUTE => DISABLED FOR DEVELOPMENT PURPOSE*/}
+                <Route path="/">
                     <MainPage/>
-                </ProtectedRoute>
+                </Route>
             </Switch>
         </Router>
     </div>;

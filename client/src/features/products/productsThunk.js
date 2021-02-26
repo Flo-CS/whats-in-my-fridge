@@ -1,3 +1,6 @@
+import Api from "../../utils/api";
+
+import {PRODUCTS_STATUS} from "./productsConstants";
 import {
     addProductToAllProducts,
     deleteProductFromAllProducts,
@@ -7,10 +10,6 @@ import {
     setOneProductStatus,
     updateProductFromAllProducts,
 } from "./productSlice";
-
-import Api from "../../utils/api";
-
-import {PRODUCTS_STATUS} from "./productsConstants";
 
 // TODO : Rename all the redux "things" because names are not clear and it's not maintainable
 export async function fetchUserProducts(dispatch) {
@@ -28,7 +27,7 @@ export async function addUserProduct(dispatch, barcode) {
     try {
         const response = await Api.addProduct(barcode);
 
-        // Check if the product has been created or just updated because it already exist and create or update
+        // Check if the product has been created or just updated and create or update
         if (response.data.updated === false) {
             dispatch(addProductToAllProducts(response.data.product));
         } else {
