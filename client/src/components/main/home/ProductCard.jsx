@@ -49,10 +49,10 @@ function ProductCard({
     });
     const {image_url: imageUrl, brands_text: brandsText, name} = productData;
 
-    /* eslint-disable  jsx-a11y/no-noninteractive-element-interactions */
     return (
         <div className={productCardClass}>
-            <div className="product-card__content">
+            <div className="product-card__content" onClick={handleCardClick}
+                 onKeyDown={handleCardClick} role="button" tabIndex="0"> {/*role is mandatory to respect a11y*/}
                 <div className="product-card__header">
                     <p className="product-card__name">
                         {name} - {brandsText} -{" "}
@@ -62,8 +62,7 @@ function ProductCard({
                 <div className="product-card__body">
                     <img
                         className="product-card__image"
-                        onClick={handleCardClick}
-                        onKeyDown={handleCardClick}
+
                         alt="Product"
                         src={imageUrl}
                     />
