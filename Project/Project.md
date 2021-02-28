@@ -3,10 +3,10 @@
 ## User stories
 
 - User can add a product by entering barcode or by scanning barcode
-- User can select the quantity of the product (ex: with yogurts) when adding a product
+- ~~User can select the quantity of the product (ex: with yogurts) when adding a product~~
 - User can see cards with picture and principal infos of products in the main view
 - User can see separately products in stock and products with 0 quantity
-- User can select quantity to remove from product quantity
+- ~~User can select quantity to remove from product quantity~~
 - User can click on a card in the main view to show the details page of this product
 - User can edit infos of a product (got with the openfoodfacts API if the product is found)
 - User can reset/update (modified) infos of a product, this will get data from openfoodfacts API

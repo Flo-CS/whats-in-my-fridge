@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
-import {loginUser} from "../../../features/auth/authSlice";
+import {loginUser} from "../../../features/authSlice";
 
 import "../AuthInputs.scss";
 

@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchProducts, selectProductsFeatures} from "../../../features/products/productSlice";
+import {fetchProducts, selectProductsFeatures} from "../../../features/productSlice";
 
 import "../Views.scss";
 

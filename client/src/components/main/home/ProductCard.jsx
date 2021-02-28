@@ -6,7 +6,7 @@ import {useHistory} from "react-router-dom";
 import {ReactComponent as MinusIcon} from "../../../assets/icons/minus.svg";
 
 import {ReactComponent as PlusIcon} from "../../../assets/icons/plus.svg";
-import {deleteProduct, updateProduct} from "../../../features/products/productSlice";
+import {deleteProduct, updateProduct} from "../../../features/productSlice";
 
 import "./ProductCard.scss";
 

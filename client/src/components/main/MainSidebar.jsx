@@ -8,7 +8,7 @@ import {useHistory, useLocation} from "react-router-dom";
 import {ReactComponent as HomeIcon} from "../../assets/icons/home.svg";
 import {ReactComponent as PersonCircleIcon} from "../../assets/icons/person-circle.svg";
 import {ReactComponent as StatsChartIcon} from "../../assets/icons/stats-chart.svg";
-import {logoutUser} from "../../features/auth/authSlice";
+import {logoutUser} from "../../features/authSlice";
 
 
 import "./MainSidebar.scss";

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import {useDispatch} from "react-redux";
 
 import {ReactComponent as AddIcon} from "../../../assets/icons/add.svg";
-import {addProduct} from "../../../features/products/productSlice";
+import {addProduct} from "../../../features/productSlice";
 
 import "./BottomPanel.scss";
 
