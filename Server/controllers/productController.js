@@ -50,7 +50,7 @@ const addOneProduct = async (req, res) => {
     const barcode = req.params.barcode;
 
     try {
-        // UPDATE PART
+        // UPDATE PRODUCT PART
         const productToUpdate = await models.Product.findOneAndUpdate(
             {
                 user: req.verifiedToken.id,
@@ -64,10 +64,11 @@ const addOneProduct = async (req, res) => {
             return res.status(200).json({product: productToUpdate, updated: true});
         }
 
-        // CREATE NEW PART
+        // CREATE NEW PRODUCT PART
+        const fields = config.USEFUL_OPEN_FOOD_FACTS_FIELDS.join(",");
         // Get all openFoodFacts data for the product with their API
         const openFoodFactsResponse = await axios.get(
-            `${config.OPEN_FOOD_FACTS_API_ENDPOINT}/product/${barcode}.json`
+            `${config.OPEN_FOOD_FACTS_API_ENDPOINT}/product/${barcode}.json?fields=${fields}`
         );
 
 
@@ -76,6 +77,7 @@ const addOneProduct = async (req, res) => {
         // We verify that the product exists and if we have a name for it in open food facts, 0 means "ERROR"
         if (openFoodFactsResponse.data.status === 0 || !productData.product_name) return res.status(404).json();
 
+        // Necessary for some fields renaming
         const filteredProductData = {
             brands_text: productData.brands,
             name: productData.product_name,
