@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const morgan = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser")
@@ -27,7 +28,8 @@ const userRoute = require("./routes/userRoute");
 const App = express();
 
 // Middlewares
-App.use(cookieParser())
+App.use(morgan("combined"));
+App.use(cookieParser());
 App.use(cors({credentials: true, origin: config.CLIENT_ORIGIN}));
 App.use(bodyParser.json());
 

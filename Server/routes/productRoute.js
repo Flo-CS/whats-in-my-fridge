@@ -5,7 +5,7 @@ const verifyTokenMiddleware = require("../middlewares/verifyTokenMiddleware");
 
 const Router = express.Router();
 
-Router.use(verifyTokenMiddleware);
+Router.use(verifyTokenMiddleware());
 
 Router.get("/", productsController.getAllProducts);
 Router.get("/stats", productsController.getStats);

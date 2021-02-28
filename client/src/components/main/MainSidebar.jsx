@@ -1,24 +1,28 @@
-import React from "react";
 import classNames from "classnames";
+import React from "react";
+import {useDispatch} from "react-redux";
 
 import {useHistory, useLocation} from "react-router-dom";
-
-
-import "./MainSidebar.scss";
 
 // Components / assets
 import {ReactComponent as HomeIcon} from "../../assets/icons/home.svg";
 import {ReactComponent as PersonCircleIcon} from "../../assets/icons/person-circle.svg";
 import {ReactComponent as StatsChartIcon} from "../../assets/icons/stats-chart.svg";
+import {logoutUser} from "../../features/auth/authSlice";
+
+
+import "./MainSidebar.scss";
 
 
 export default function MainSidebar() {
 
-    const history = useHistory()
-    const location = useLocation()
+    const history = useHistory();
+    const location = useLocation();
+
+    const dispatch = useDispatch();
 
     function changePath(path) {
-        history.push(path)
+        history.push(path);
     }
 
 
@@ -41,7 +45,11 @@ export default function MainSidebar() {
     return (
         <div className="main-sidebar">
             <div className={profileClass}>
-                <button onClick={() => changePath(paths.profile)}
+                <button onClick={() => {
+                    /*changePath(paths.profile)*/
+                    // TEMPORARY
+                    dispatch(logoutUser());
+                }}
                         className="main-sidebar__button"
                 >
                     <PersonCircleIcon className="main-sidebar__button-icon"/>

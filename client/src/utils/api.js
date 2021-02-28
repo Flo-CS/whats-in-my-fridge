@@ -10,7 +10,7 @@ class Api {
             baseURL: SERVER_API_ENDPOINT,
             headers: headers,
             withCredentials: true
-        }) ;
+        });
     }
 
     login(data) {
@@ -21,12 +21,20 @@ class Api {
         return this.init().post("/auth/register", data);
     }
 
+    checkToken() {
+        return this.init().post("/auth/checkToken");
+    }
+
+    logout() {
+        return this.init().post("/auth/logout");
+    }
+
     getProducts() {
         return this.init().get("/products");
     }
 
     getProduct(barcode) {
-        return this.init().get(`/products/${barcode}`)
+        return this.init().get(`/products/${barcode}`);
     }
 
     addProduct(barcode) {

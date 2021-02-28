@@ -12,6 +12,16 @@ const registerUser = createAsyncThunk("auth/registerUser", async ({data}) => {
     return response.data;
 });
 
+const checkUserToken = createAsyncThunk("auth/checkToken", async () => {
+    const response = await Api.checkToken();
+    return response.data;
+});
+
+const logoutUser = createAsyncThunk("auth/logout", async () => {
+    const response = await Api.logout();
+    return response.data;
+});
+
 //SLICE
 const authSlice = createSlice({
     name: "auth",
@@ -41,6 +51,29 @@ const authSlice = createSlice({
         [registerUser.rejected]: (state, action) => {
             // For the moment nothing
         },
+
+        [checkUserToken.pending]: (state, action) => {
+            state.isLoading = true;
+
+        },
+        [checkUserToken.fulfilled]: (state, action) => {
+            state.isLoading = false;
+            state.isAuthenticated = true;
+            state.user = action.payload;
+        },
+        [checkUserToken.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.isAuthenticated = false;
+            state.error = action.error;
+        },
+
+        [logoutUser.fulfilled]: (state, action) => {
+            state.isAuthenticated = false;
+            state.user = {};
+        },
+        [logoutUser.rejected]: (state, action) => {
+            state.error = action.error;
+        }
     }
 });
 
@@ -49,6 +82,6 @@ function selectAuthFeatures(state) {
     return state.auth;
 }
 
-export {loginUser, registerUser, selectAuthFeatures};
+export {loginUser, registerUser, checkUserToken, logoutUser, selectAuthFeatures};
 
 export default authSlice.reducer;

@@ -71,5 +71,17 @@ const loginUser = async (req, res) => {
     res.status(200).json({email});
 };
 
+const checkUserToken = async (req, res) => {
+    // We just return that we are good here because the verifyTokenMiddleware do the rest
 
-module.exports = {registerUser, loginUser};
+    // TODO: RETURN USER
+    res.status(200).json();
+};
+
+const logoutUser = async (req, res) => {
+    // In the future logout will be more advanced than a simple token deletion
+    res.cookie("token", {maxAge: 0});
+    res.status(200).json();
+};
+
+module.exports = {registerUser, loginUser, checkUserToken, logoutUser};
