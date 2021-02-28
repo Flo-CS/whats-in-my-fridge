@@ -30,7 +30,7 @@ const App = express();
 // Middlewares
 App.use(morgan("combined"));
 App.use(cookieParser());
-App.use(cors({credentials: true, origin: config.CLIENT_ORIGIN}));
+App.use(cors({credentials: true, origin: true}));
 App.use(bodyParser.json());
 
 // Routers
