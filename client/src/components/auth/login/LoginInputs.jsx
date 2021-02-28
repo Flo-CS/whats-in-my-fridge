@@ -1,17 +1,18 @@
 import React, {useState} from "react";
-import propTypes from "prop-types";
-import {connect} from "react-redux";
-import {loginUser} from "../../../features/auth/authThunk";
+import {useDispatch} from "react-redux";
+import {loginUser} from "../../../features/auth/authSlice";
 
-import "../AuthInputs.scss"
+import "../AuthInputs.scss";
 
-function LoginInputs({loginUser}) {
+export default function LoginInputs() {
+    const dispatch = useDispatch();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     function handleSubmit(e) {
-        e.preventDefault()
-        loginUser(email, password);
+        e.preventDefault();
+        dispatch(loginUser({data: {email, password}}));
 
     }
 
@@ -37,15 +38,3 @@ function LoginInputs({loginUser}) {
         </form>
     );
 }
-
-LoginInputs.propTypes = {
-    loginUser: propTypes.func.isRequired,
-};
-
-function mapDispatchToProps(dispatch) {
-    return {
-        loginUser: (email, password) => loginUser(dispatch, {email, password}),
-    };
-}
-
-export default connect(null, mapDispatchToProps)(LoginInputs);

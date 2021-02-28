@@ -1,26 +1,19 @@
-import React from "react"
+import propTypes from "prop-types";
+import React from "react";
+import {useSelector} from "react-redux";
 import {Redirect, Route} from "react-router-dom";
-import propTypes from "prop-types"
-import {connect} from "react-redux";
-import {selectAuthStatus} from "../../features/auth/authSelector";
-import {AUTH_STATUS} from "../../features/auth/authConstants";
+import {selectAuthFeatures} from "../../features/auth/authSlice";
 
-function ProtectedRoute({children, authStatus, ...rest}) {
+export default function ProtectedRoute({children, ...rest}) {
+    const {isAuthenticated} = useSelector((state) => selectAuthFeatures(state));
     return <Route {...rest}>
-        {authStatus === AUTH_STATUS.CONNECTED ?
+        {isAuthenticated === true ?
             children :
             <Redirect to="/login"/>
         }
-    </Route>
+    </Route>;
 }
 
 ProtectedRoute.propTypes = {
-    authStatus: propTypes.string.isRequired,
     children: propTypes.element.isRequired
 }
-
-function mapStateToProps(state) {
-    return {authStatus: selectAuthStatus(state)}
-}
-
-export default connect(mapStateToProps)(ProtectedRoute)

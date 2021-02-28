@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import "./App.scss";
 import AuthRoute from "./components/auth/AuthRoute";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
 
 import MainPage from "./pages/MainPage";
@@ -21,9 +22,9 @@ function App() {
                     <RegisterPage/>
                 </Route>
                 {/* TODO : CHANGE THAT ROUTE TO PROTECTED ROUTE => DISABLED FOR DEVELOPMENT PURPOSE*/}
-                <Route path="/">
+                <ProtectedRoute path="/">
                     <MainPage/>
-                </Route>
+                </ProtectedRoute>
             </Switch>
         </Router>
     </div>;

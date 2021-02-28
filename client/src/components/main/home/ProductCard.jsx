@@ -1,24 +1,19 @@
 import classNames from "classnames";
 import propTypes from "prop-types";
 import React from "react";
-import {connect} from "react-redux";
+import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {ReactComponent as MinusIcon} from "../../../assets/icons/minus.svg";
 
 import {ReactComponent as PlusIcon} from "../../../assets/icons/plus.svg";
-import {deleteUserProduct, updateUserProduct,} from "../../../features/products/productsThunk";
+import {deleteProduct, updateProduct} from "../../../features/products/productSlice";
 
 import "./ProductCard.scss";
 
-function ProductCard({
-                         barcode,
-                         quantity,
-                         productData,
-                         deleteUserProduct,
-                         updateUserProduct,
-                     }) {
+export default function ProductCard({barcode, quantity, productData}) {
 
     const history = useHistory();
+    const dispatch = useDispatch();
 
 
     function handleIncreaseQuantityButtonClick() {
@@ -29,7 +24,7 @@ function ProductCard({
         // Verify if the quantity don't go lower or equal than 1 and delete the product if it's the case
         if (quantity - 1 <= -1) {
             if (window.confirm("Do you want to definitively delete this product ?")) {
-                deleteUserProduct(barcode);
+                dispatch(deleteProduct({barcode}));
             }
         } else {
             updateProductQuantity(quantity - 1);
@@ -41,7 +36,7 @@ function ProductCard({
     }
 
     function updateProductQuantity(newQuantity) {
-        updateUserProduct(barcode, {quantity: newQuantity});
+        dispatch(updateProduct({barcode: barcode, data: {quantity: newQuantity}}));
     }
 
     const productCardClass = classNames("product-card", {
@@ -92,16 +87,6 @@ ProductCard.propTypes = {
     barcode: propTypes.string.isRequired,
     quantity: propTypes.number.isRequired,
     productData: propTypes.object.isRequired,
-    deleteUserProduct: propTypes.func.isRequired,
-    updateUserProduct: propTypes.func.isRequired,
+
 };
 
-function mapDispatchToProps(dispatch) {
-    return {
-        deleteUserProduct: (barcode) => deleteUserProduct(dispatch, barcode),
-        updateUserProduct: (barcode, data) =>
-            updateUserProduct(dispatch, barcode, data),
-    };
-}
-
-export default connect(null, mapDispatchToProps)(ProductCard);

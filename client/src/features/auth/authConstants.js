@@ -1,6 +1,0 @@
-export const AUTH_STATUS = {
-    DISCONNECTED: "DISCONNECTED",
-    CONNECTED: "CONNECTED",
-    ERROR: "ERROR",
-};
-
