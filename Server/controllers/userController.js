@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 const models = require("./../models/index");
 
-const utils = require("../utils");
+const utils = require("../helpers/validation");
 
 const registerUser = async (req, res) => {
     const email = req.body.email;

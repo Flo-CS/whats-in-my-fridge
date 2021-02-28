@@ -3,11 +3,15 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const cookieParser = require("cookie-parser")
+const cookieParser = require("cookie-parser");
+
 require("dotenv").config();
 
+const {SERVER_PORT} = require("./config");
+const productRoute = require("./routes/productRoute");
+const userRoute = require("./routes/userRoute");
+const {downloadAllTaxonomies} = require("./helpers/taxonomies");
 
-const config = require("./config");
 
 // Setup DB connection
 mongoose
@@ -20,9 +24,9 @@ mongoose
     .then(() => console.log("DB connected :)"))
     .catch((error) => console.log(error));
 
-// Routes
-const productRoute = require("./routes/productRoute");
-const userRoute = require("./routes/userRoute");
+// Download taxonomies files
+// TODO : Cron task for this
+//downloadAllTaxonomies()
 
 // Setup Express App
 const App = express();
@@ -33,10 +37,10 @@ App.use(cookieParser());
 App.use(cors({credentials: true, origin: true}));
 App.use(bodyParser.json());
 
-// Routers
-App.use(`${config.API_ENDPOINT}/products`, productRoute);
-App.use(`${config.API_ENDPOINT}/auth`, userRoute);
+// Routes
+App.use("/api/products", productRoute);
+App.use("/api/auth", userRoute);
 
-App.listen(config.PORT, () => {
+App.listen(SERVER_PORT, () => {
     console.log("I'm running :)");
 });

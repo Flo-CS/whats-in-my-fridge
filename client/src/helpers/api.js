@@ -1,5 +1,5 @@
 import axios from "axios";
-import {SERVER_API_ENDPOINT} from "./config";
+import {SERVER_API_ENDPOINT} from "../config";
 
 class Api {
     init() {

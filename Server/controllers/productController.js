@@ -65,7 +65,7 @@ const addOneProduct = async (req, res) => {
         }
 
         // CREATE NEW PRODUCT PART
-        const fields = config.USEFUL_OPEN_FOOD_FACTS_FIELDS.join(",");
+        const fields = config.OPEN_FOOD_FACTS_USEFUL_FIELDS.join(",");
         // Get all openFoodFacts data for the product with their API
         const openFoodFactsResponse = await axios.get(
             `${config.OPEN_FOOD_FACTS_API_ENDPOINT}/product/${barcode}.json?fields=${fields}`
