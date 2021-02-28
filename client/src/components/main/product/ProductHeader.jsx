@@ -4,7 +4,7 @@ import React from "react";
 import "./ProductHeader.scss";
 
 export default function ProductHeader({barcode, productData}) {
-    const {image_url: imageUrl, quantity, name, brands_text: brandsText} = productData;
+    const {image_url: imageUrl, quantity, product_name: name, brands: brandsText} = productData;
 
     return <div className="product-header">
 

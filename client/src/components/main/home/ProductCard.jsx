@@ -42,7 +42,7 @@ export default function ProductCard({barcode, quantity, productData}) {
     const productCardClass = classNames("product-card", {
         "product-card--disabled": quantity <= 0,
     });
-    const {image_url: imageUrl, brands_text: brandsText, name} = productData;
+    const {image_url: imageUrl, brands: brandsText, product_name: name} = productData;
 
     return (
         <div className={productCardClass}>

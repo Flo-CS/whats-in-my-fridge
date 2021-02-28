@@ -4,7 +4,12 @@ import React from "react";
 import "./ProductContent.scss";
 
 export default function ProductContent({productData}) {
-    const {nutriscore = "unknown", nova = "unknown", ecoscore = "unknown", nutriments, categories_tags} = productData;
+    const {
+        nutriscore_grade: nutriscore = "unknown",
+        nova_group: nova = "unknown",
+        ecoscore_grade: ecoscore = "unknown",
+        categories_tags = []
+    } = productData;
 
 
     return <div className="product-content">
