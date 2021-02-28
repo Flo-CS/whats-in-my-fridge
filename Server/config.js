@@ -9,7 +9,8 @@ const OPEN_FOOD_FACTS_USEFUL_FIELDS = ["brands", "brands_tags", "product_name", 
     "ecoscore_score",];
 
 const OPEN_FOOD_FACTS_TAXONOMIES_ENDPOINT = "https://world.openfoodfacts.org/data/taxonomies";
-const OPEN_FOOD_FACTS_TAXONOMIES = ["categories", "additives", "allergens", "brands", "countries", "ingredients",
+const OPEN_FOOD_FACTS_TAXONOMIES = ["categories", "additives", "additives_classes", "allergens", "brands", "countries",
+    "ingredients",
     "ingredients_analysis", "languages", "nova_groups", "nutrient_levels"];
 
 module.exports = {
