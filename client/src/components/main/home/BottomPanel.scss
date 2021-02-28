@@ -5,47 +5,51 @@ $bottom-panel-height: 50px;
 $bottom-panel-button-color: #80b918;
 
 .bottom-panel {
-  margin-top: auto;
-  width: 100%;
-  height: $bottom-panel-height;
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: $bottom-panel-height;
+  margin-top: auto;
+  padding: 5px 5px;
   background-color: $bottom-panel-color;
 
   &__input-group {
-    width: 75%;
-    height: 30px;
     display: flex;
-    margin: 0 10px;
-    margin-right: 0;
+
+    width: 75%;
+    max-width: 400px;
+    height: 100%;
   }
 
   &__barcode-input {
+    font-size: 1rem;
     width: 100%;
-    outline: none;
-    border: none;
+    height: 100%;
     padding: 0px 5px;
-    font-size: 1.1rem;
-    letter-spacing: 2px;
+    text-align: center;
+    letter-spacing: 1px;
+    border: none;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
+    outline: none;
   }
 
   &__add-button,
   &__scan-button {
-    height: 30px;
-    outline: none;
-    border: none;
-    color: white;
+    height: 100%;
     cursor: pointer;
+    color: white;
+    border: none;
+    outline: none;
     background-color: $bottom-panel-button-color;
   }
 
   &__add-button {
-    min-width: 36px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    min-width: 35px;
     padding: 0;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
@@ -58,9 +62,10 @@ $bottom-panel-button-color: #80b918;
   }
 
   &__scan-button {
-    width: 25%;
-    margin: 0 10px;
-    border-radius: 3px;
     font-size: 1rem;
+    width: 25%;
+    max-width: 120px;
+    margin-left: 5px;
+    border-radius: 3px;
   }
 }

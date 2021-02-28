@@ -1,26 +1,28 @@
 .product-content {
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 10px;
 
   &__attributes {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 60px;
   }
 
   &__attribute-box {
-    height: 80px;
-    margin-right: 20px;
+    height: 100%;
+    margin-right: 10px;
 
     &:last-child {
       margin-right: 0;
     }
   }
 
-  &__nutriscore, &__nova, &__ecoscore {
+  &__attribute {
     max-width: 100%;
     height: 100%;
+    object-fit: contain;
   }
 
 }

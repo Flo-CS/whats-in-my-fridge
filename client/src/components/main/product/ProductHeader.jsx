@@ -7,20 +7,23 @@ export default function ProductHeader({barcode, productData}) {
     const {image_url: imageUrl, quantity, name, brands_text: brandsText} = productData;
 
     return <div className="product-header">
+
         <img className="product-header__image" src={imageUrl} alt="product"/>
         <div className="product-header__center">
-            <h1 className="product-header__name">{name} - <span className="product-header__barcode">{barcode}</span>
+            <h1 className="product-header__name">
+                {name}
             </h1>
+            <p className="product-header__barcode">{barcode}</p>
             <h2 className="product-header__brands">{brandsText}</h2>
         </div>
 
         <p className="product-header__quantity">{quantity}</p>
 
-    </div>
+    </div>;
 }
 
 ProductHeader.propTypes = {
     barcode: propTypes.string.isRequired,
     productData: propTypes.object.isRequired,
 
-}
+};

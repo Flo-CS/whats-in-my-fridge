@@ -22,3 +22,10 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+@media all and (min-width: $xxl-screen) {
+  .products-cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+}
