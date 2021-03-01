@@ -10,7 +10,7 @@ require("dotenv").config();
 const {SERVER_PORT} = require("./config");
 const productRoute = require("./routes/productRoute");
 const userRoute = require("./routes/userRoute");
-const {downloadAllTaxonomies} = require("./helpers/taxonomies");
+const {downloadTaxonomiesFiles, downloadFacetsFiles} = require("./helpers/productData");
 
 
 // Setup DB connection
@@ -24,9 +24,11 @@ mongoose
     .then(() => console.log("DB connected :)"))
     .catch((error) => console.log(error));
 
-// Download taxonomies files
-// TODO : Cron task for this
-//downloadAllTaxonomies()
+// Download taxonomies and facets files task (to maintain data updated)
+setInterval(() => {
+    downloadFacetsFiles();
+    downloadTaxonomiesFiles();
+}, 30 * 60 * 1000);
 
 // Setup Express App
 const App = express();

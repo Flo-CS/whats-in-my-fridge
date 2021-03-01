@@ -1,0 +1,1671 @@
+{
+  "en:glazing-agent": {
+    "wikidata": {
+      "en": "Q334582"
+    },
+    "description": {
+      "hu": "Fényezőanyagok -beleértve a kenőanyagokat is-: olyan anyagok, amelyek ha az élelmiszer külső felületén alkalmazzák őket, csillogó megjelenést adnak vagy védőbevonatot biztosítanak.",
+      "pl": "Substancje glazurujące -w tym środki do smarowania- to substancje, które po nałożeniu na zewnętrzną powierzchnię środka spożywczego tworzą warstwę ochroną lub nadają jej błyszczący wygląd.",
+      "en": "Glazing agents -including lubricants- are substances which, when applied to the external surface of a foodstuff, impart a shiny appearance or provide a protective coating.",
+      "cs": "Lešticími látkami -včetně lubrikantů- se rozumějí látky, které po nanesení na vnější povrch udělují potravině lesklý vzhled nebo vytvářejí ochranný povlak.",
+      "lv": "Glazētājvielas -tostarp smērvielas- ir vielas, ko izmanto pārtikas produktu ārējās virsmas apstrādei, lai padarītu to spīdīgu vai lai izveidotu aizsargslāni.",
+      "sk": "Polevové činidlá -vrátane lubrikantov- sú látky, ktoré pri aplikovaní na povrch potraviny dodávajú potravine lesklý vzhľad alebo na nej vytvárajú ochranný povlak.",
+      "de": "Überzugmittel -einschließlich Gleitmittel- sind Stoffe, die der Außenoberfläche eines Lebensmittels ein glänzendes Aussehen verleihen oder einen Schutzüberzug bilden.",
+      "pt": "Agentes de revestimento -incluindo lubrificantes-: substâncias que, quando aplicadas na superfície externa dos géneros alimentícios, lhes conferem uma aparência brilhante ou um revestimento protector.",
+      "sl": "Sredstva za glaziranje so snovi -vključno z mazivi-, ki dajejo živilu lesk ali tvorijo zaščitno oblogo na njegovi zunanji površini.",
+      "da": "Overfladebehandlingsmidler -herunder glittemidler-: stoffer, der giver en fødevare et skinnende udseende eller udgør et beskyttende lag, når de påføres fødevarens overflade.",
+      "fr": "Les agents d'enrobage -y compris les agents de glisse- sont des substances qui, appliquées à la surface d'une denrée alimentaire, lui confèrent un aspect brillant ou constituent une couche protectrice.",
+      "fi": "Kiillotusaineet -mukaan luettuina voiteluaineet- ovat aineita, jotka elintarvikkeen ulkopintaan käytettyinä jättävät kiiltävän pinnan tai muodostavat suojakerroksen.",
+      "el": "Υλικά για γλασάρισμα -συμπεριλαμβανομένων των λιπαντικών μέσων-, οι ουσίες που, τοποθετούμενες στην εξωτερική επιφάνεια τροφίμου, του προσδίδουν στιλπνότητα ή του παρέχουν προστατευτική επικάλυψη·",
+      "et": "Glaseerained -sealhulgas määrdeained- – ained, mille abil tekitatakse toidu välispinnale läige või kaitsekate.",
+      "sv": "Ytbehandlingsmedel -inklusive smörjmedel-: ämnen som ger ett blankt utseende eller ett skyddande skikt när de appliceras på ytan av ett livsmedel.",
+      "es": "Agentes de recubrimiento -incluidos los lubricantes-: sustancias que, cuando se aplican en la superficie exterior de un producto alimenticio, confieren a este un aspecto brillante o lo revisten con una capa protectora.",
+      "nl": "Glansmiddelen -met inbegrip van glijmiddelen-: stoffen die op het oppervlak van een levensmiddel worden aangebracht om het een glanzend uiterlijk te geven of om een beschermende deklaag te vormen.",
+      "lt": "Glazūros medžiagos -įskaitant užtepus- – medžiagos, suteikiančios maisto produkto paviršiui blizgesį arba sudarančios apsauginę plėvelę.",
+      "it": "Gli agenti di rivestimento -inclusi gli agenti lubrificanti- sono sostanze che, quando vengono applicate alla superficie esterna di un prodotto alimentare, gli conferiscono un aspetto brillante o forniscono un rivestimento protettivo."
+    },
+    "name": {
+      "da": "Overfladebehandlingsmiddel",
+      "sl": "Sredstvo za glaziranje",
+      "fi": "Pintakäsittelyaine",
+      "el": "Υλικό για γλασάρισμα",
+      "fr": "Agent d'enrobage",
+      "ca": "Agent de recobriment",
+      "nl": "Glansmiddel",
+      "es": "Agente de recubrimiento",
+      "sv": "Ytbehandlingsmedel",
+      "bg": "Глазиращ агент",
+      "ro": "Agent de glazurare",
+      "et": "Glaseeraine",
+      "it": "Agente di rivestimento",
+      "lt": "Glajinė medžiaga",
+      "cs": "Lešticí látka",
+      "en": "Glazing agent",
+      "pl": "Substancja glazurująca",
+      "hu": "Fényezőanyag",
+      "lv": "Glazētājviela",
+      "de": "Überzugsmittel",
+      "mt": "Aġent li jagħmel l-ikel ileqq",
+      "sk": "Povlaková látka",
+      "nb": "Overflatebehandlingsmiddel",
+      "pt": "Agente de revestimento",
+      "ga": "Oibreán glónrúcháin"
+    }
+  },
+  "en:natural-thickener": {
+    "name": {
+      "en": "Natural thickener"
+    },
+    "parents": [
+      "en:thickener"
+    ]
+  },
+  "en:cooking-enhancer": {
+    "name": {
+      "it": "Esaltatore di cottura",
+      "fr": "Améliorant de cuisson",
+      "de": "Kochverstärker",
+      "en": "Cooking enhancer"
+    },
+    "parents": [
+      "en:enhancer"
+    ]
+  },
+  "en:gelling-agent": {
+    "name": {
+      "hu": "Zselésítőanyag",
+      "pl": "Substancja żelująca",
+      "en": "Gelling agent",
+      "cs": "Želírující látka",
+      "lv": "Recinātājs",
+      "sk": "Želírujúca látka",
+      "mt": "Aġent li jgħaqqad f'ġel",
+      "de": "Geliermittel",
+      "ru": "Загустители",
+      "ga": "Oibreán glóthúcháin",
+      "pt": "Gelificante",
+      "sl": "Želirno sredstvo",
+      "da": "Geleringsmiddel",
+      "fr": "Gélifiant",
+      "el": "Πηκτωματογόνο",
+      "fi": "Hyytelöimisaine",
+      "sv": "Geleringsmedel",
+      "et": "Želeeriv aine",
+      "ro": "Agent gelatinizant",
+      "bg": "Желиращ агент",
+      "es": "Gelificante",
+      "nl": "Geleermiddel",
+      "ca": "Gelificant",
+      "lt": "Stingdiklis",
+      "it": "Gelificante"
+    },
+    "description": {
+      "hu": "Zselésítőanyagok: olyan anyagok, amelyek gélképzéssel alakítják ki az élelmiszer szerkezetét.",
+      "pl": "Substancje żelujące to substancje nadające środkom spożywczym konsystencję poprzez tworzenie żelu.",
+      "en": "Gelling agents are substances which give a foodstuff texture through formation of a gel.",
+      "cs": "Želírujícími látkami se rozumějí látky, které udělují potravině texturu tím, že vytvářejí gel.",
+      "lv": "Recinātāji ir vielas, kas, veidojot želeju, rada pārtikas produkta struktūru.",
+      "sk": "Želírujúce činidlá sú látky, ktoré vytvorením gélu tvoria textúru potraviny.",
+      "de": "Geliermittel sind Stoffe, die Lebensmitteln durch Gelbildung eine festere Konsistenz verleihen.",
+      "pt": "Gelificantes: substâncias que dão textura aos géneros alimentícios através da formação de um gel.",
+      "sl": "Želirna sredstva so snovi, ki dajejo živilu teksturo s tvorbo želeja.",
+      "da": "Geleringsmidler: stoffer, der giver en fødevare konsistens ved geldannelse.",
+      "fr": "Les gélifiants sont des substances qui, ajoutées à une denrée alimentaire, lui confèrent de la consistance par la formation d'un gel.",
+      "el": "Πηκτωματογόνοι παράγοντες, οι ουσίες που προσδίδουν σ' ένα τρόφιμο υφή μέσω του σχηματισμού πηκτώματος·",
+      "fi": "Hyytelöimisaineet ovat aineita, jotka antavat elintarvikkeelle hyytelömäisen rakenteen.",
+      "sv": "Geleringsmedel: ämnen som ger ett livsmedel struktur genom att bilda ett gel.",
+      "et": "Tarret andvad ained – ained, mis želee tekkimisega annavad toidule tekstuuri.",
+      "nl": "Geleermiddelen: stoffen die een levensmiddel vorm geven door een gel te vormen.",
+      "es": "Gelificantes: sustancias que dan textura a un producto alimenticio mediante la formación de un gel.",
+      "lt": "Stingdikliai – medžiagos, suteikiančios maisto produktui gelio savybių.",
+      "it": "Gli agenti gelificanti sono sostanze che danno consistenza ad un prodotto alimentare tramite la formazione di un gel."
+    },
+    "wikidata": {
+      "en": "Q27862636"
+    }
+  },
+  "en:concentrated-plant-colour": {
+    "parents": [
+      "en:colour"
+    ],
+    "name": {
+      "de": "Färbendes Pflanzenkonzentrat",
+      "en": "Concentrated plant colour"
+    }
+  },
+  "en:vitamin-and-mineral-blend": {
+    "parents": [
+      "en:minerals",
+      "en:vitamins"
+    ],
+    "name": {
+      "en": "Vitamin and mineral blend"
+    }
+  },
+  "en:natural-colours": {
+    "name": {
+      "fr": "Colorant naturel",
+      "fi": "Luontainen väriaine",
+      "hu": "Természetes színezék",
+      "en": "Natural colours",
+      "it": "Coloranti naturali",
+      "es": "Color natural",
+      "nl": "Natuurlijke kleurstoffen",
+      "de": "Natürliche Farbstoffe",
+      "ca": "Color natural"
+    },
+    "parents": [
+      "en:colour"
+    ]
+  },
+  "en:colour-retention-agent": {
+    "name": {
+      "es": "Agente de retención de color",
+      "de": "Farbstabilisator",
+      "en": "Colour retention agent",
+      "pt": "Estabilizador de cor",
+      "fr": "Agent de rétention de la couleur"
+    },
+    "description": {
+      "es": "Aditivos alimentarios que estabilizan, retienen o intensifican el color de un alimento.",
+      "fr": "Additif alimentaire qui stabilise, retient ou intensifie la couleur d'une denrée alimentaire."
+    }
+  },
+  "fr:additifs-alimentaires": {
+    "name": {
+      "fr": "Additifs alimentaires"
+    }
+  },
+  "en:sweetener": {
+    "wikidata": {
+      "en": "Q626292"
+    },
+    "description": {
+      "pl": "Substancje słodzące to substancje stosowane do nadania środkom spożywczym słodkiego smaku lub stosowane w słodzikach stołowych.",
+      "hu": "Édesítőszerek: olyan anyagok, amelyek édes ízt kölcsönöznek az élelmiszernek vagy az asztali édesítőszereknek.",
+      "en": "Sweeteners are substances used to impart a sweet taste to foods or in table-top sweeteners.",
+      "cs": "Náhradními sladidly se rozumějí látky používané k tomu, aby se potravinám nebo stolním sladidlům dodala sladká chuť.",
+      "lv": "Saldinātāji ir vielas, ko lieto, lai piešķirtu pārtikas produktiem saldu garšu, vai kā galda saldinātājus.",
+      "sk": "Sladidlá sú látky, ktoré sa používajú na dodanie sladkej chuti potravinám alebo ako stolové sladidlá.",
+      "de": "Süßungsmittel sind Stoffe, die zum Süßen von Lebensmitteln und in Tafelsüßen verwendet werden.",
+      "pt": "Edulcorantes: substâncias utilizadas para conferir um sabor doce aos géneros alimentícios ou utilizadas nos edulcorantes de mesa.",
+      "da": "Sødestoffer: stoffer, der anvendes til at give fødevarer en sød smag eller i sødestoffer til bordbrug.",
+      "sl": "Sladila so snovi, ki se uporabljajo za sladkanje živil ali kot namizna sladila.",
+      "fr": "Les édulcorants sont des substances qui servent à donner une saveur sucrée aux denrées alimentaires ou qui sont utilisées dans des édulcorants de table.",
+      "el": "Γλυκαντικά, οι ουσίες που χρησιμοποιούνται για να προσδώσουν γλυκιά γεύση σε τρόφιμα ή σε επιτραπέζια γλυκαντικά·",
+      "fi": "Makeutusaineet ovat aineita, joita käytetään antamaan makeaa makua elintarvikkeisiin tai pöytämakeuttajiin.",
+      "nl": "Zoetstoffen: stoffen die worden gebruikt om levensmiddelen een zoete smaak te geven of in tafelzoetstoffen.",
+      "es": "Edulcorantes: sustancias que se emplean para dar un sabor dulce a los alimentos o en edulcorantes de mesa.",
+      "et": "Magusained – ained, mida kasutatakse toidule magusa maitse andmiseks või lauamagusainetes.",
+      "sv": "Sötningsmedel: ämnen som används för att ge livsmedel söt smak eller i bordssötningsmedel.",
+      "it": "Gli edulcoranti sono sostanze utilizzate per conferire un sapore dolce agli alimenti o come edulcoranti da tavola.",
+      "lt": "Saldikliai – medžiagos, naudojamos siekiant suteikti saldų skonį maisto produktams arba medžiagos, naudojamos saldikliuose, skirtuose pasaldinti maistą valgant."
+    },
+    "name": {
+      "it": "Edulcorante",
+      "lt": "Saldiklis",
+      "ca": "Edulcorant",
+      "nl": "Zoetstof",
+      "es": "Edulcorante",
+      "et": "Magusaine",
+      "sv": "Sötningsmedel",
+      "ro": "Îndulcitor",
+      "bg": "Подсладител",
+      "el": "Γλυκαντικό",
+      "fi": "Makeutusaine",
+      "fr": "Édulcorant",
+      "zh": "甜味劑",
+      "da": "Sødestof",
+      "sl": "Stabilizator",
+      "nb": "Søtningsmiddel",
+      "pt": "Edulcorante",
+      "ga": "Milseoir",
+      "ru": "Подсластитель",
+      "de": "Süßungsmittel",
+      "mt": "Dolċifikant",
+      "sk": "Sladidlo",
+      "lv": "Saldinātājs",
+      "ja": "甘味料",
+      "en": "Sweetener",
+      "cs": "Sladidlo",
+      "hu": "Édesítőszer",
+      "pl": "Substancja słodząca"
+    }
+  },
+  "en:bulking-agent": {
+    "name": {
+      "lt": "Užpildas",
+      "it": "Agente di carica",
+      "ca": "Incrementador de volum",
+      "sv": "Fyllnadsmedel",
+      "ro": "Agent de încărcare",
+      "bg": "Пълнител",
+      "et": "Mahuaine",
+      "es": "Agente de carga",
+      "nl": "Vulstof",
+      "fi": "Täyteaine",
+      "el": "Διογκωτικό",
+      "fr": "Agent de charge",
+      "sl": "Sredstvo za povečanje prostornine",
+      "da": "Fyldemiddel",
+      "nb": "Fyllstoff",
+      "ga": "Toirteoir",
+      "pt": "Agente de volume",
+      "de": "Füllstoff",
+      "sk": "Objemové činidlo",
+      "mt": "Aġent li jżid il-volum",
+      "lv": "Apjoma palielinātājs",
+      "en": "Bulking agent",
+      "cs": "Plnidlo",
+      "pl": "Substancja wypełniająca",
+      "hu": "Tömegnövelő szer"
+    },
+    "description": {
+      "da": "Fyldemidler: stoffer, der øger en fødevares volumen uden at øge dens energiindhold væsentligt.",
+      "sl": "Sredstva za povečanje prostornine so snovi, ki povečajo prostornino živila, ne da bi bistveno povečale njegovo energetsko vrednost.",
+      "fr": "Les agents de charge sont des substances qui accroissent le volume d'une denrée alimentaire, sans pour autant augmenter de manière significative sa valeur énergétique.",
+      "el": "Διογκωτικοί παράγοντες, οι ουσίες που συμβάλλουν στη διόγκωση τροφίμου χωρίς να συμβάλλουν σημαντικά στη διαθέσιμη ενεργειακή αξία του·",
+      "fi": "Täyteaineet ovat aineita, jotka vaikuttavat elintarvikkeen tilavuuteen vaikuttamatta olennaisesti sen energia-arvoon.",
+      "es": "Agentes de carga: sustancias que aumentan el volumen de un producto alimenticio sin contribuir significativamente a su valor energético disponible.",
+      "nl": "Vulstoffen: stoffen die het volume van een levensmiddel vergroten zonder noemenswaardig tot de beschikbare energiewaarde ervan bij te dragen.",
+      "et": "Mahuained – ained, mis suurendavad toidu mahtu selle energiasisaldust oluliselt suurendamata.",
+      "sv": "Fyllnadsmedel: ämnen som ökar ett livsmedels volym utan att väsentligt bidra till dess tillgängliga näringsvärde.",
+      "it": "Gli agenti di carica sono sostanze che contribuiscono ad aumentare il volume di un prodotto alimentare senza contribuire in modo significativo al suo valore energetico disponibile.",
+      "lt": "Užpildai – medžiagos, didinančios maisto produkto tūrį, beveik nedidindamos jo energinės vertės.",
+      "pl": "Substancje wypełniające to substancje zwiększające objętość środka spożywczego nie zwiększając znacząco jego wartości energetycznej.",
+      "hu": "Tömegnövelő szerek: olyan anyagok, amelyek növelik az élelmiszer tömegét, anélkül, hogy lényegesen növelnék hasznosuló energiatartalmát.",
+      "en": "Bulking agents are substances which contribute to the volume of a foodstuff without contributing significantly to its available energy value.",
+      "cs": "Plnidly se rozumějí látky, které přispívají k objemu potraviny, aniž významně zvyšují její využitelnou energetickou hodnotu.",
+      "lv": "Apjoma palielinātāji ir vielas, kas sekmē pārtikas produktu tilpuma palielināšanos, ievērojami nepalielinot to enerģētisko vērtību.",
+      "sk": "Objemové činidlá sú látky, ktoré prispievajú k zväčšovaniu objemu potraviny bez toho, aby významne zvyšovali jej využiteľnú energetickú hodnotu.",
+      "de": "Füllstoffe sind Stoffe, die einen Teil des Volumens eines Lebensmittels bilden, ohne nennenswert zu dessen Gehalt an verwertbarer Energie beizutragen.",
+      "pt": "Agentes de volume: substâncias que contribuem para dar volume aos géneros alimentícios sem contribuírem significativamente para o seu valor energético disponível."
+    }
+  },
+  "en:anti-caking-agent": {
+    "wikidata": {
+      "en": "Q726460"
+    },
+    "name": {
+      "fr": "Antiagglomérant",
+      "fi": "Paakkuuntumisenestoaine",
+      "el": "Αντισυσσωματωτικό",
+      "sl": "Sredstvo proti sprijemanju",
+      "da": "Antiklumpningsmiddel",
+      "lt": "Lipnumą reguliuojanti medžiaga",
+      "it": "Agente antiagglomerante",
+      "bg": "Антислепващ агент",
+      "sv": "Klumpförebyggande medel",
+      "ro": "Agent antiaglomerant",
+      "et": "Paakumisvastane aine",
+      "es": "Antiaglomerante",
+      "nl": "Antiklontermiddel",
+      "ca": "Antiaglomerant",
+      "lv": "Pretsalipes viela",
+      "pl": "Substancja przeciwzbrylająca",
+      "hu": "Csomósodást és lesülést gátló anyag",
+      "en": "Anti-caking agent",
+      "cs": "Protispékavá látka",
+      "ga": "Oibreán frithstolptha",
+      "pt": "Antiaglomerante",
+      "nb": "Antiklumpemiddel",
+      "sk": "Protihrudkovacia látka",
+      "mt": "Aġent kontra t-tagħqid",
+      "de": "Rieselhilfe"
+    },
+    "description": {
+      "lv": "Pretsalipes vielas ir vielas, kas mazina pārtikas produktu daļiņu salipšanu.",
+      "pl": "Substancje przeciwzbrylające to substancje ograniczające tendencję pojedynczych cząstek środka spożywczego do zlepiania się.",
+      "hu": "Csomósodást és lesülést gátló anyagok: olyan anyagok, amelyek csökkentik az élelmiszer önálló részeinek egymáshoz tapadását.",
+      "en": "Anti-caking agents are substances which reduce the tendency of individual particles of a foodstuff to adhere to one another.",
+      "cs": "Protispékavými látkami se rozumějí látky, které snižují sklon jednotlivých částic potraviny ulpívat vzájemně na sobě.",
+      "pt": "Antiaglomerantes: substâncias que reduzem a tendência das partículas isoladas dos géneros alimentícios para aderirem umas às outras.",
+      "sk": "Protihrudkové činidlá sú látky, ktoré znižujú vzájomnú priľnavosť jednotlivých častíc potraviny.",
+      "de": "Trennmittel sind Stoffe, die die Tendenz der einzelnen Partikel eines Lebensmittels, aneinander haften zu bleiben, herabsetzen.",
+      "fr": "Les anti-agglomérants sont des substances qui, dans une denrée alimentaire, limitent l'agglutination des particules.",
+      "el": "Αντισυσσωματοποιητικοί παράγοντες, οι ουσίες που μειώνουν την τάση μεμονωμένων σωματιδίων τροφίμου να προσκολλώνται μεταξύ τους·",
+      "fi": "Paakkuuntumisenestoaineet ovat aineita, jotka vähentävät elintarvikkeen yksittäisten hiukkasten taipumusta tarttua toisiinsa.",
+      "sl": "Sredstva proti sprijemanju so snovi, ki zmanjšujejo težnjo posameznih delcev v živilu, da bi se sprijemali med seboj.",
+      "da": "Antiklumpningsmidler: stoffer, der reducerer en fødevares individuelle partiklers tendens til at klæbe sammen.",
+      "lt": "Lipnumą reguliuojančios medžiagos – medžiagos, sumažinančios atskirų maisto produktų dalelių tarpusavio sulipimo galimybę.",
+      "it": "Gli antiagglomeranti sono sostanze che riducono la tendenza di particelle individuali di un prodotto alimentare ad aderire l'una all'altra.",
+      "et": "Paakumisvastased ained – ained, mis vähendavad toidu üksikute osakeste kokkukleepuvust.",
+      "sv": "Klumpförebyggande medel: ämnen som minskar tendensen hos enskilda partiklar i ett livsmedel att klumpa ihop sig.",
+      "es": "Antiaglomerantes: sustancias que reducen la tendencia de las partículas de un producto alimenticio a adherirse unas a otras.",
+      "nl": "Antiklontermiddelen: stoffen die de neiging van afzonderlijke levensmiddelendeeltjes om aan elkaar te kleven, verkleinen."
+    }
+  },
+  "en:coagulant": {
+    "name": {
+      "es": "Agente coagulante",
+      "de": "Koagulat",
+      "en": "Coagulant",
+      "ca": "Agent coagulant",
+      "it": "Agente coagulante",
+      "fr": "Agent de coagulation",
+      "fi": "Hyydyte"
+    }
+  },
+  "en:colour": {
+    "wikidata": {
+      "en": "Q753009"
+    },
+    "name": {
+      "lv": "Krāsa",
+      "pl": "Barwnik",
+      "hu": "Színezék",
+      "cs": "Barvivo",
+      "en": "Colour",
+      "he": "צבע",
+      "pt": "Corante",
+      "hr": "Boja",
+      "ru": "Краситель",
+      "ga": "Dath",
+      "nb": "Farge",
+      "mt": "Kulur",
+      "sk": "Farbivo",
+      "de": "Farbstoff",
+      "fr": "Colorant",
+      "is": "Litarefni",
+      "el": "Χρωστική ουσία",
+      "fi": "Väri",
+      "da": "Farvestof",
+      "zh": "色素",
+      "sl": "Barvilo",
+      "it": "Colorante",
+      "lt": "Dažiklis",
+      "nl": "Kleuren",
+      "es": "Colorante",
+      "ro": "Colorant",
+      "sv": "Färg",
+      "bg": "Оцветител",
+      "et": "Toiduvärv",
+      "ca": "Color"
+    },
+    "description": {
+      "es": "Colorantes: sustancias que dan color a un alimento o le devuelven su color original; pueden ser componentes naturales de los alimentos y sustancias naturales que normalmente no se consumen como alimentos en sí mismas ni se emplean como ingredientes característicos de los alimentos.",
+      "nl": "Kleurstoffen: stoffen die aan een levensmiddel kleur geven of teruggeven en die natuurlijke bestanddelen van levensmiddelen en andere natuurlijke bronnen bevatten die gewoonlijk noch op zich als levensmiddelen worden geconsumeerd, noch als kenmerkende voedselingrediënten worden gebruikt.",
+      "sv": "Färgämnen: ämnen som tillför eller återställer färg hos livsmedel, inklusive naturliga beståndsdelar i livsmedel och naturliga ursprungsmaterial, som normalt inte i sig konsumeras som livsmedel och som normalt inte används som en karakteristisk ingrediens i livsmedel.",
+      "et": "Toiduvärvid – aineid, mis annavad toidule värvuse või taastavad selle; need võivad olla toidu loomulikud komponendid või looduslikud allikad, mida tavapäraselt toiduna ega toidule omaste koostisainetena ei kasutata.",
+      "it": "I coloranti sono sostanze che conferiscono un colore a un alimento o ne restituiscono la colorazione originaria, e includono componenti naturali degli alimenti e altri elementi di origine naturale, normalmente non consumati come alimento né usati come ingrediente tipico degli alimenti.",
+      "lt": "Dažikliai – medžiagos, suteikiančios maistui spalvą arba atstatančios ją, turinčios natūralių maisto sudedamųjų dalių ir natūralių žaliavų, kurie paprastai nėra vartojami kaip maisto produktai ar pagrindiniai maisto produktų ingredientai.",
+      "da": "Farvestoffer: stoffer, der giver en fødevare farve eller giver den dens farve tilbage og omfatter naturlige bestanddele af fødevarer og andre naturlige kildematerialer, som normalt ikke i sig selv fortæres som fødevarer, og som ikke normalt anvendes som karakteristiske ingredienser i fødevarer.",
+      "sl": "Barvila so snovi, ki dodajo ali obnovijo barvo živila ter vsebujejo naravne sestavine živil in so naravnega izvora ter ki se običajno kot take ne zaužijejo kot živilo in se običajno ne uporabljajo kot tipične sestavine živil.",
+      "fi": "Väriaineet ovat aineita, jotka lisäävät tai antavat uudelleen väriä elintarvikkeeseen; kyseessä voivat olla elintarvikkeen omat luontaiset ainesosat tai muista luontaisista lähteistä olevat aineet, joita ei tavanomaisesti sellaisenaan käytetä elintarvikkeina ja joita ei tavanomaisesti käytetä elintarvikkeille ominaisina ainesosina.",
+      "el": "Χρωστικές, οι ουσίες που προσθέτουν ή αποκαθιστούν το χρώμα ενός τροφίμου και περιλαμβάνουν φυσικά συστατικά τροφίμων και φυσικές ουσίες που συνήθως δεν καταναλώνονται ως τρόφιμα και δεν χρησιμοποιούνται κανονικά ως χαρακτηριστικά συστατικά τροφίμων.",
+      "fr": "Les colorants sont des substances qui ajoutent ou redonnent de la couleur à des denrées alimentaires; il peut s'agir de constituants naturels de denrées alimentaires ou d'autres substances naturelles qui ne sont pas normalement consommés comme aliments en soi et qui ne sont pas habituellement utilisés comme ingrédients caractéristiques dans l'alimentation.",
+      "de": "Farbstoffe sind Stoffe, die einem Lebensmittel Farbe geben oder die Farbe in einem Lebensmittel wiederherstellen; hierzu gehören natürliche Bestandteile von Lebensmitteln sowie natürliche Ausgangsstoffe, die normalerweise weder als Lebensmittel verzehrt noch als charakteristische Lebensmittelzutaten verwendet werden.",
+      "sk": "Farbivá sú látky, ktoré dodávajú farbu potravine alebo obnovujú farbu v potravine, a zahŕňajú prírodné zložky potravín a prírodné zdroje, ktoré sa obvykle nekonzumujú ako potraviny, ani sa obvykle nepoužívajú ako charakteristické zložky potravín.",
+      "pt": "Corantes: substâncias que conferem ou restituem cor a um género alimentício; incluem componentes naturais de géneros alimentícios e substâncias naturais, que normalmente não são consumidos como géneros alimentícios em si mesmos nem utilizados como ingredientes característicos dos géneros alimentícios.",
+      "en": "Colours are substances which add or restore colour in a food, and include natural constituents of foods and natural sources which are normally not consumed as foods as such and not normally used as characteristic ingredients of food.",
+      "cs": "Barvivy se rozumějí látky, které potravině dodávají barvu nebo barvu obnovují a zahrnují přírodní složky potravin a přírodních zdrojů, jež jako takové nejsou obvykle požívány jako potraviny a nejsou obvykle používány jako charakteristické složky potravin.",
+      "hu": "Színezékek: olyan anyagok, amelyek felerősítik vagy helyreállítják az élelmiszerek színét; ide tartoznak az élelmiszerek természetes összetevői vagy más természetes források, amelyeket önmagukban élelmiszerként nem fogyasztanak, és élelmiszerek jellegzetes összetevőiként általában nem használnak.",
+      "pl": "Barwniki to substancje nadające lub przywracające żywności barwę, obejmujące naturalne składniki żywności i naturalne źródła, które w normalnych warunkach ani nie są same spożywane jako żywność ani nie są stosowane jako typowe składniki żywności.",
+      "lv": "Krāsvielas ir vielas, kas papildina vai atjauno pārtikas produktu krāsu, tostarp dabīgi pārtikas produktu komponenti un dabīgas izejvielas, kuras atsevišķi parasti uzturā nelieto un neizmanto kā raksturīgas pārtikas sastāvdaļas."
+    },
+    "children": [
+      "en:concentrated-plant-colour",
+      "en:natural-colours",
+      "fr:colorant-de-la-croute",
+      "fr:denree-alimentaire-colorante"
+    ]
+  },
+  "en:firming-agent": {
+    "wikidata": {
+      "en": "Q1408496"
+    },
+    "children": [
+      "en:natural-firming-agent"
+    ],
+    "name": {
+      "fi": "Kiinteyttämisaine",
+      "el": "Σκληρυντικό",
+      "fr": "Affermissant",
+      "da": "Konsistensmiddel",
+      "sl": "Utrjevalec",
+      "it": "Agente di resistenza",
+      "lt": "Kietiklis",
+      "ca": "Enfortidor",
+      "es": "Endurecedor",
+      "nl": "Verstevigingsmiddel",
+      "sv": "Konsistensmedel",
+      "et": "Tardaine",
+      "ro": "Agent de întărire",
+      "bg": "Втвърдител",
+      "lv": "Cietinātājs",
+      "cs": "Zpevňující látka",
+      "en": "Firming agent",
+      "hu": "Szilárdítóanyag",
+      "pl": "Substancja wiążąca",
+      "pt": "Agente de endurecimento",
+      "ga": "Oibreán teannta",
+      "de": "Festigungsmittel",
+      "mt": "Aġent li jissoda",
+      "sk": "Stužovadlo"
+    },
+    "description": {
+      "fr": "Les affermissants sont des substances qui permettent de rendre ou de garder les tissus des fruits et des légumes fermes ou croquants, ou qui, en interaction avec des gélifiants, forment ou raffermissent un gel.",
+      "fi": "Kiinteyttämisaineet ovat aineita, jotka tekevät hedelmän tai vihanneksen solukon kiinteäksi tai rapeaksi tai säilyttävät sen sellaisena tai jotka yhdessä hyytelöimisaineiden kanssa muodostavat tai vahvistavat hyytelörakennetta.",
+      "el": "Σκληρυντικοί παράγοντες, οι ουσίες που καθιστούν ή διατηρούν τους ιστούς των φρούτων ή των λαχανικών σκληρούς ή τραγανούς, ή αλληλεπιδρούν με τους πηκτωματογόνους παράγοντες για την παρασκευή ή την ενίσχυση πηκτώματος·",
+      "sl": "Utrjevalci so snovi, ki omogočajo ali ohranjajo čvrstost sadja ali zelenjave ali v povezavi z želirnimi sredstvi tvorijo ali utrdijo žele.",
+      "da": "Konsistensmidler: stoffer, som gør eller holder frugt og grøntsager faste eller sprøde, eller som reagerer med geleringsmidler og danner eller styrker en gel.",
+      "lt": "Kietikliai – medžiagos, išlaikančios ar suteikiančios vaisiams ar daržovėms stangrumą ar trapumą arba sąveikaujančios su stingdikliais, skatinant ir stiprinant tirštėjimą.",
+      "it": "Gli agenti di resistenza sono sostanze che rendono o mantengono saldi o croccanti i tessuti dei frutti o degli ortaggi, o che interagiscono con agenti gelificanti per produrre o consolidare un gel.",
+      "et": "Tardained – ained, mis muudavad puu- või köögiviljatoodete konsistentsi või annavad koos želeerivate ainetega tugeva tarde.",
+      "sv": "Konsistensmedel: ämnen som gör eller håller frukt eller grönsaker fasta eller spröda eller som reagerar med geleringsmedel och bildar eller förstärker ett gel.",
+      "nl": "Verstevigingsmiddelen: stoffen die fruit of groente stevig of knapperig maken of houden, of met geleermiddelen reageren om een gel te vormen of te verstevigen.",
+      "es": "Endurecedores: sustancias que vuelven o mantienen los tejidos de frutas u hortalizas firmes o crujientes o actúan junto con agentes gelificantes para producir o reforzar un gel.",
+      "lv": "Cietinātāji ir vielas, kas padara vai saglabā stingrus vai kraukšķīgus augļu vai dārzeņu audus, vai iedarbojoties ar recinātājiem, veido vai stiprina želeju.",
+      "pl": "Substancje wiążące to substancje powodujące lub utrzymujące jędrność lub kruchość tkanek owoców i warzyw lub współdziałające z substancjami żelującymi w tworzeniu lub wzmacnianiu żelu.",
+      "hu": "Szilárdítóanyagok: olyan anyagok, amelyek a gyümölcsök vagy zöldségek szöveteit keménnyé vagy ropogóssá teszik vagy így tartják, illetve zselésítőanyagokkal szilárd gélt képeznek.",
+      "en": "Firming agents are substances which make or keep tissues of fruit or vegetables firm or crisp, or interact with gelling agents to produce or strengthen a gel.",
+      "cs": "Zpevňujícími látkami se rozumějí látky, které činí tkáně ovoce nebo zeleniny pevnými nebo křehkými nebo udržují jejich pevnost nebo křehkost nebo látky, které reakcí se želírujícími látkami vytvářejí nebo ztužují gel.",
+      "pt": "Agentes de endurecimento: substâncias que tornam ou mantêm firmes ou estaladiços os tecidos dos frutos ou dos produtos hortícolas, ou actuam em conjunto com gelificantes para produzir ou reforçar um gel.",
+      "sk": "Stužovadlá sú látky, ktoré spevňujú tkanivá ovocia a zeleniny alebo ich zachovávajú v krehkom stave, alebo spolupôsobia s gélotvornými činidlami a tvoria alebo spevňujú gél.",
+      "de": "Festigungsmittel sind Stoffe, die dem Zellgewebe von Obst und Gemüse Festigkeit und Frische verleihen bzw. diese erhalten oder die zusammen mit einem Geliermittel ein Gel erzeugen oder festigen."
+    }
+  },
+  "en:bread-improver": {
+    "name": {
+      "it": "Miglioranti per panificazione",
+      "de": "Backmittel",
+      "en": "Bread improver"
+    },
+    "parents": [
+      "en:enhancer"
+    ]
+  },
+  "en:natural-stabilizer": {
+    "name": {
+      "en": "Natural stabilizer"
+    },
+    "parents": [
+      "en:stabiliser"
+    ]
+  },
+  "en:anti-foaming-agent": {
+    "wikidata": {
+      "en": "Q904035"
+    },
+    "description": {
+      "de": "Schaumverhüter sind Stoffe, die die Schaumbildung verhindern oder verringern.",
+      "sk": "Protipeniace činidlá sú látky, ktoré zabraňujú vzniku peny alebo obmedzujú jej tvorbu.",
+      "pt": "Antiespumas: substâncias que impedem ou reduzem a formação de espuma.",
+      "en": "Anti-foaming agents are substances which prevent or reduce foaming.",
+      "cs": "Odpěňovači se rozumějí látky, které zabraňují vytváření pěny nebo snižují pěnění.",
+      "hu": "Habzásgátlók: olyan anyagok, amelyek megakadályozzák vagy csökkentik a habzást.",
+      "pl": "Substancje przeciwpieniące to substancje zapobiegające lub ograniczające powstawanie piany.",
+      "lv": "Putu dzēsēji ir vielas, kas novērš vai samazina putošanu.",
+      "nl": "Antischuimmiddelen: stoffen die schuimvorming verhinderen of verminderen.",
+      "es": "Antiespumantes: sustancias que impiden o reducen la formación de espuma.",
+      "sv": "Skumdämpningsmedel: ämnen som förhindrar eller minskar skumbildning.",
+      "et": "Vahutamisvastased ained – ained, mis takistavad või vähendavad vahu teket.",
+      "it": "Gli agenti antischiumogeni sono sostanze che impediscono o riducono la formazione di schiuma.",
+      "lt": "Medžiagos nuo putojimo – medžiagos, kurios apsaugo nuo putojimo arba jį sumažina.",
+      "da": "Skumdæmpningsmidler: stoffer, der forhindrer eller reducerer skumning.",
+      "sl": "Sredstva proti penjenju so snovi, ki preprečujejo ali zmanjšujejo nastanek pene.",
+      "fi": "Vaahdonestoaineet ovat aineita, jotka estävät tai vähentävät vaahdonmuodostusta.",
+      "el": "Αντιαφριστικοί παράγοντες, οι ουσίες που προλαμβάνουν ή περιορίζουν το σχηματισμό αφρού·",
+      "fr": "Les antimoussants sont des substances qui empêchent ou limitent la formation de mousse."
+    },
+    "name": {
+      "lv": "Putu dzēsējs",
+      "cs": "Odpěňovač",
+      "en": "Anti-foaming agent",
+      "pl": "Substancja przeciwpieniąca",
+      "hu": "Habzásgátló",
+      "pt": "Antiespuma",
+      "ga": "Oibreán frithchúrtha",
+      "de": "Schaumverhüter",
+      "mt": "Aġent kontra r-ragħwa",
+      "sk": "Odpeňovacie činidlo",
+      "el": "Αντιαφριστικό",
+      "fi": "Vaahdonestoaine",
+      "fr": "Antimoussant",
+      "da": "Skumdæmpningsmiddel",
+      "sl": "Sredstvo proti penjenju",
+      "it": "Agente antischiumogeno",
+      "lt": "Medžiaga nuo putojimo",
+      "ca": "Antiespumant",
+      "es": "Antiespumante",
+      "nl": "Antischuimmiddel",
+      "sv": "Skumdämpningsmedel",
+      "et": "Vahutamisvastane aine",
+      "ro": "Antispumant",
+      "bg": "Антипенител"
+    }
+  },
+  "en:humectant": {
+    "wikidata": {
+      "en": "Q911854"
+    },
+    "description": {
+      "fr": "Les humectants sont des substances qui empêchent le dessèchement des denrées alimentaires en compensant les effets d'une faible humidité atmosphérique ou qui favorisent la dissolution d'une poudre en milieu aqueux.",
+      "fi": "Kosteudensäilyttäjät ovat aineita, jotka estävät elintarvikkeita kuivumasta kosteuspitoisuudeltaan alhaisen ympäröivän ilman vaikutuksesta tai edistävät jauheen liukenemista nestemäiseen aineeseen.",
+      "el": "Υγροσκοπικά μέσα, οι ουσίες που αποτρέπουν την ξήρανση των τροφίμων αντιδρώντας στην επίδραση μιας ατμόσφαιρας με χαμηλό βαθμό υγρασίας, ή που προάγουν τη διάλυση μιας σκόνης σε υδατικό μέσο·",
+      "sl": "Sredstva za ohranjanje vlage so snovi, ki preprečujejo izsušitev živil pri nizki vlažnosti zraka ali pospešujejo raztapljanje praška v vodi.",
+      "da": "Fugtighedsbevarende midler: stoffer, som beskytter fødevarer mod udtørring ved at reducere virkningen af omgivelser med lav fugtighedsgrad, eller som gør opløsning af et pulver i et vandigt medium lettere.",
+      "lt": "Drėgmę išlaikančios medžiagos – medžiagos, apsaugančios maisto produktą nuo išdžiūvimo sumažėjus drėgmei atmosferoje, arba padedančios vandenyje ištirpinti miltelius.",
+      "it": "Gli agenti umidificanti sono sostanze che impediscono l'essiccazione degli alimenti contrastando l'effetto di una umidità atmosferica scarsa, o che promuovono la dissoluzione di una polvere in un ambiente acquoso.",
+      "et": "Niiskusesäilitajad – ained, mis takistavad toidu kuivamist madala niiskusesisaldusega õhus või soodustavad pulbrite lahustumist vesikeskkonnas.",
+      "sv": "Fuktighetsbevarande medel: ämnen som förhindrar uttorkning av livsmedel genom att motverka effekten av luft med låg fuktighet, eller förbättrar upplösningen av pulver i vattenlösningar.",
+      "es": "Humectantes: sustancias que impiden la desecación de los alimentos contrarrestando el efecto de una atmósfera con un grado bajo de humedad, o que favorecen la disolución de un polvo en un medio acuoso.",
+      "nl": "Bevochtigingsmiddelen: stoffen die uitdroging van levensmiddelen beletten door de gevolgen van een lage luchtvochtigheid tegen te gaan, of een poeder makkelijker oplosbaar maken in een waterig medium.",
+      "lv": "Mitrumuzturētāji ir vielas, kas pasargā pārtikas produktus no izžūšanas, pretdarbojoties sausa gaisa ietekmei, vai veicina pulveru šķīšanu ūdeni saturošā vidē.",
+      "hu": "Nedvesítőszerek: olyan anyagok, amelyek megvédik az élelmiszert a kiszáradástól, ellensúlyozva egy alacsony relatív nedvességtartalmú légtér hatását, vagy elősegítik egy por vizes közegben való oldódását.",
+      "pl": "Substancje utrzymujące wilgoć to substancje zapobiegające wysychaniu żywności poprzez przeciwdziałanie wpływom atmosferycznym, posiadające niski stopień wilgotności, lub ułatwiające rozpuszczanie się proszku w środowisku wodnym.",
+      "en": "Humectants are substances which prevent foods from drying out by counteracting the effect of an atmosphere having a low degree of humidity, or promote the dissolution of a powder in an aqueous medium.",
+      "cs": "Zvlhčujícími látkami se rozumějí látky, které chrání potravinu před vysycháním tím, že působí proti účinkům vzduchu s nízkou relativní vlhkostí nebo podporují rozpouštění práškovitých potravin ve vodném prostředí.",
+      "pt": "Humidificantes: substâncias que impedem os géneros alimentícios de secar por contrabalançarem o efeito de uma atmosfera com baixo grau de humidade, ou promovem a dissolução de um pó num meio aquoso.",
+      "sk": "Zvlhčovadlá sú látky, ktoré chránia potraviny pred vysušením tak, že obmedzujú vplyv vzduchu s nízkou relatívnou vlhkosťou alebo podporujú rozpúšťanie prášku vo vodnom prostredí.",
+      "de": "Feuchthaltemittel sind Stoffe, die das Austrocknen von Lebensmitteln verhindern, indem sie die Auswirkungen einer Atmosphäre mit geringem Feuchtigkeitsgehalt ausgleichen, oder Stoffe, die die Auflösung eines Pulvers in einem wässrigen Medium fördern."
+    },
+    "name": {
+      "de": "Feuchthaltemittel",
+      "sk": "Zvlhčovadlo",
+      "nb": "Fuktighetsbevarer",
+      "pt": "Humidificante",
+      "ga": "Taisleán",
+      "en": "Humectant",
+      "cs": "Zvlhčující látka",
+      "hu": "Nedvesítőszer",
+      "pl": "Substancja utrzymująca wilgoć",
+      "lv": "Mitrumuzturētājs",
+      "ca": "Humectant",
+      "es": "Humectante",
+      "nl": "Bevochtigingsmiddel",
+      "sv": "Fuktighetsbevarande medel",
+      "bg": "Влагозадържащ агент",
+      "ro": "Agent de umezire",
+      "et": "Niiskusesäilitaja",
+      "it": "Umidificante",
+      "lt": "Drėgmę išlaikanti medžiaga",
+      "da": "Fugtighedsbevarende middel",
+      "zh": "水分保持劑",
+      "fi": "Kosteudensäilyttäjä",
+      "el": "Υγροσκοπικό μέσο",
+      "fr": "Humectant"
+    }
+  },
+  "en:natural-firming-agent": {
+    "parents": [
+      "en:firming-agent"
+    ],
+    "name": {
+      "en": "Natural firming agent"
+    }
+  },
+  "en:acid": {
+    "wikidata": {
+      "en": "Q337038"
+    },
+    "description": {
+      "lv": "Skābes ir vielas, kas palielina pārtikas produktu skābumu un/vai piešķir tiem skābu garšu.",
+      "en": "Acids are substances which increase the acidity of a foodstuff and/or impart a sour taste to it.",
+      "cs": "Kyselinami se rozumějí látky, které zvyšují kyselost potraviny nebo jí udělují kyselou chuť.",
+      "pl": "Kwasy to substancje, które zwiększają kwasowość środka spożywczego lub nadają mu kwaśny smak.",
+      "hu": "Étkezési savak: olyan anyagok, amelyek növelik az élelmiszer savasságát és/vagy savanyú ízt adnak neki.",
+      "pt": "Acidificantes: substâncias que aumentam a acidez dos géneros alimentícios e/ou lhes conferem um sabor acre.",
+      "de": "Säuerungsmittel sind Stoffe, die den Säuregrad eines Lebensmittels erhöhen und/oder diesem einen sauren Geschmack verleihen.",
+      "sk": "Kyseliny sú látky, ktoré zvyšujú kyslosť potravín a/alebo im dodávajú kyslú chuť.",
+      "fi": "Hapot ovat aineita, jotka lisäävät elintarvikkeen happamuutta ja/tai antavat siihen happaman maun.",
+      "el": "Οξέα, οι ουσίες που αυξάνουν την οξύτητα τροφίμων ή/και που τους προσδίδουν όξινη γεύση·",
+      "fr": "Les acidifiants sont des substances qui augmentent l'acidité d'une denrée alimentaire et/ou lui donnent une saveur acidulée.",
+      "da": "Syrer: stoffer, der øger en fødevares surhedsgrad og/eller giver den en sur smag.",
+      "sl": "Kisline so snovi, ki povečajo kislost živila in/ali mu dajejo kisel okus.",
+      "it": "Gli acidificanti sono sostanze che aumentano l'acidità di un prodotto alimentare e/o conferiscono ad esso un sapore aspro.",
+      "lt": "Rūgštys – medžiagos, padidinančios maisto produkto rūgštingumą ir -arba- suteikiančios jam rūgštų skonį.",
+      "nl": "Voedingszuren: stoffen die de zuurgraad van levensmiddelen verhogen en/of levensmiddelen een zure smaak geven.",
+      "es": "Acidulantes: sustancias que incrementan la acidez de un producto alimenticio o le confieren un sabor ácido, o ambas cosas.",
+      "sv": "Syror: ämnen som ökar surheten hos ett livsmedel och/eller ger det en syrlig smak.",
+      "et": "Happed – ained, mis suurendavad toidu happesust ja/või annavad sellele hapu maitse."
+    },
+    "name": {
+      "pl": "Kwas",
+      "hu": "Étkezési sav",
+      "cs": "Kyselina",
+      "en": "Acid",
+      "ja": "酸味料",
+      "lv": "Skābe",
+      "mt": "Aċidu",
+      "sk": "Kyselina",
+      "de": "Säuerungsmittel",
+      "he": "חומצה",
+      "pt": "Acidificante",
+      "ga": "Aigéad",
+      "ru": "Кислота",
+      "nb": "Syre",
+      "da": "Syre",
+      "sl": "Kislina",
+      "fr": "Acidifiant",
+      "fi": "Happo",
+      "el": "Μέσο οξίνισης",
+      "es": "Acidulante",
+      "nl": "Voedingszuur",
+      "bg": "Киселина",
+      "sv": "Syra",
+      "ro": "Acidifiant",
+      "et": "Hape",
+      "ca": "Àcid",
+      "it": "Acidificante",
+      "lt": "Rūgštis"
+    }
+  },
+  "en:propellent-gas": {
+    "wikidata": {
+      "en": "Q1875049"
+    },
+    "name": {
+      "pt": "Gás propulsor",
+      "ga": "Gás tiomána",
+      "de": "Treibgas",
+      "mt": "Gass propellent",
+      "sk": "Hnací plyn",
+      "lv": "Propelents",
+      "cs": "Balicí plyn",
+      "en": "Propellent gas",
+      "hu": "Hajtógáz",
+      "pl": "Gaz nośny",
+      "it": "Gas propulsore",
+      "lt": "Suslėgtosios dujos",
+      "ca": "Gas propellent",
+      "es": "Gas propulsor",
+      "nl": "Drijfgas",
+      "sv": "Drivgas",
+      "ro": "Agent de propulsare",
+      "et": "Propellent",
+      "bg": "Опаковъчен газ",
+      "fi": "Ponneaine",
+      "el": "Προωστικό αέριο",
+      "fr": "Gaz propulseur",
+      "da": "Drivgas"
+    },
+    "description": {
+      "el": "Προωστικοί παράγοντες, τα αέρια, πλην του αέρα, τα οποία προκαλούν την αποβολή τροφίμου από περιέκτη·",
+      "fi": "Ponneaineet ovat muita kaasuja kuin ilmaa, jotka poistavat elintarvikkeen astiasta.",
+      "fr": "Les propulseurs sont des gaz autres que l'air qui ont pour effet d'expulser une denrée alimentaire d'un contenant.",
+      "sl": "Potisni plini so plini, razen zraka, ki potisnejo živilo iz embalaže.",
+      "da": "Drivgasser: andre gasser end luft, som presser en fødevare ud af en beholder.",
+      "lt": "Propelentai – inertinės dujos, išskyrus orą, išstumiančios maisto produktą iš talpyklos.",
+      "it": "I propellenti sono gas differenti dall'aria che espellono un prodotto alimentare da un contenitore.",
+      "et": "Propellendid – gaasid -välja arvatud õhk-, mis suruvad toidu pakendist välja.",
+      "sv": "Drivgaser: andra gaser än luft som driver ut ett livsmedel ur en behållare.",
+      "es": "Gases propelentes: gases diferentes del aire que expulsan un producto alimenticio de un recipiente.",
+      "nl": "Drijfgassen: gassen, met uitzondering van lucht, die een levensmiddel uit een recipiënt drukken.",
+      "lv": "Propelenti ir gāzes, izņemot gaisu, kas izspiež pārtikas produktus no iepakojuma.",
+      "en": "Propellants are gases other than air which expel a foodstuff from a container.",
+      "cs": "Propelenty se rozumějí plyny jiné než vzduch, které vytlačují potravinu z obalu.",
+      "pl": "Gazy nośne oznacza gazy inne niż powietrze, które wypychają środek spożywczy z pojemnika.",
+      "hu": "Hajtógázok: azok a levegőtől eltérő gázok, amelyek az élelmiszert kiszorítják a csomagolóeszközből.",
+      "pt": "Propulsores: gases, com excepção do ar, que expelem os géneros alimentícios dos recipientes.",
+      "de": "Treibgase sind andere Gase als Luft, die ein Lebensmittel aus seinem Behältnis herauspressen.",
+      "sk": "Hnacie plyny -propelanty- sú plyny iné ako vzduch, ktoré vytláčajú potravinu z obalu."
+    }
+  },
+  "fr:agent-cremeux": {
+    "name": {
+      "fr": "Agent crémeux"
+    }
+  },
+  "en:natural-antioxidant": {
+    "name": {
+      "en": "Natural antioxidant"
+    },
+    "parents": [
+      "en:antioxidant"
+    ]
+  },
+  "en:nucleotides": {
+    "name": {
+      "it": "Nucleotidi",
+      "lt": "Nukleotidai",
+      "nl": "Nucleotiden",
+      "es": "Nucleótidos",
+      "sv": "Nukleotider",
+      "ro": "Nucleotide",
+      "et": "Nukleotiidid",
+      "bg": "Нуклеотиди",
+      "fi": "Nukleotidit",
+      "el": "Νουκλεοτίδια",
+      "fr": "Nucléotides",
+      "sl": "Nukleotidi",
+      "pt": "Nucleótidos",
+      "de": "Nukleotide",
+      "mt": "Nukleotidi",
+      "sk": "Nukleotidy",
+      "lv": "Nukleotīdi",
+      "cs": "Nukleotidy",
+      "en": "Nucleotides",
+      "hu": "Nukleotidok",
+      "pl": "Nukleotydy"
+    }
+  },
+  "en:stabiliser": {
+    "name": {
+      "pt": "Estabilizador",
+      "ga": "Cobhsaitheoir",
+      "hr": "Stabilizator",
+      "nb": "Stabilisator",
+      "mt": "Stabbilizzatur",
+      "sk": "Stabilizátor",
+      "de": "Stabilisator",
+      "lv": "Stabilizētājs",
+      "pl": "Stabilizator",
+      "hu": "Stabilizátor",
+      "en": "Stabiliser",
+      "cs": "Stabilizátor",
+      "it": "Stabilizzante",
+      "lt": "Stabilizatorius",
+      "nl": "Stabilisator",
+      "es": "Estabilizador",
+      "sv": "Stabiliseringsmedel",
+      "et": "Stabilisaator",
+      "ro": "Stabilizator",
+      "bg": "Стабилизатор",
+      "ca": "Estabilitzador",
+      "fr": "Stabilisant",
+      "is": "Bindiefni",
+      "el": "Σταθεροποιητής",
+      "fi": "Stabilointiaine",
+      "da": "Stabilisator",
+      "sl": "Vezivo"
+    },
+    "description": {
+      "pt": "Estabilizadores: substâncias que tornam possível a manutenção do estado físico-químico dos géneros alimentícios. Os estabilizadores incluem as substâncias que permitem a manutenção de uma dispersão homogénea de duas ou mais substâncias imiscíveis nos géneros alimentícios, as substâncias que estabilizam, retêm ou intensificam a cor natural dos géneros alimentícios e as substâncias que aumentam a capacidade de aglomeração do género alimentício, incluindo a formação de ligações cruzadas entre proteínas que permitem a aglomeração dos elementos alimentares para a formação de um género alimentício reconstituído.",
+      "de": "Stabilisatoren sind Stoffe, die es ermöglichen, den physikalisch-chemischen Zustand eines Lebensmittels aufrechtzuerhalten. Zu den Stabilisatoren zählen Stoffe, die es ermöglichen, die einheitliche Dispersion zweier oder mehrerer nicht mischbarer Phasen in einem Lebensmittel aufrechtzuerhalten, Stoffe, durch welche die vorhandene Farbe eines Lebensmittels stabilisiert, bewahrt oder intensiviert wird, und Stoffe, die die Bindefähigkeit eines Lebensmittels verbessern, einschließlich der Bildung von Proteinvernetzungen, die die Bindung von Lebensmittelstücken in rekonstituierten Lebensmitteln ermöglichen.",
+      "sk": "Stabilizátory sú látky, ktoré umožňujú zachovať fyzikálno-chemický stav potraviny; patria sem aj látky, ktoré umožňujú zachovávať homogénnu disperziu dvoch alebo viacerých vzájomne nemiešateľných látok v potravine, ako aj látky, ktoré stabilizujú, zachovávajú alebo zvýrazňujú existujúcu farbu potraviny, a látky, ktoré zvyšujú väzobnú kapacitu potraviny vrátane vytvárania vzájomných väzieb medzi bielkovinami, ktoré umožňujú spojenie kusov potravín do rekonštituovanej potraviny.",
+      "lv": "Stabilizētāji ir vielas, kas ļauj saglabāt pārtikas produktu fizikāli ķīmisko stāvokli; pie stabilizētājiem pieder vielas, kas ļauj saglabāt divu vai vairāku nesajaucošos vielu vienmērīgu izkliedi pārtikas produktos, vielas, kas stabilizē, saglabā vai pastiprina pārtikas produktiem piemītošo krāsu, un vielas, kas palielina pārtikas produktu saistīšanas spēju, tostarp šķērssaišu veidošanos starp olbaltumvielām, kura dod iespēju pārtikas produktus sasaistīt no jauna izveidotos pārtikas produktos.",
+      "cs": "Stabilizátory se rozumějí látky, které umožňují udržovat fyzikálně-chemický stav potraviny; mezi stabilizátory patří látky, které umožňují udržet jednotný rozptyl dvou nebo více navzájem se nesměšujících látek v potravinách, látky, které stabilizují, udržují nebo zintenzivňují stávající barvu potravin, a látky, které zvyšují pojivost určité potraviny, včetně vytváření vzájemných vazeb mezi bílkovinami, které umožňují spojení kusů potravin do rekonstituované potraviny.",
+      "en": "Stabilisers are substances which make it possible to maintain the physico-chemical state of a foodstuff; stabilisers include substances which enable the maintenance of a homogenous dispersion of two or more immiscible substances in a foodstuff, substances which stabilise, retain or intensify an existing colour of a foodstuff and substances which increase the binding capacity of the food, including the formation of cross-links between proteins enabling the binding of food pieces into re-constituted food.",
+      "pl": "Stabilizatory to substancje umożliwiające utrzymanie właściwości fizyczno-chemicznych środków spożywczych; stabilizatory obejmują substancje umożliwiające utrzymanie w środkach spożywczych jednorodnej dyspersji dwóch lub większej liczby wzajemnie nierozpuszczalnych substancji, substancje stabilizujące, zachowujące lub wzmacniające istniejącą barwę środków spożywczych i substancje zwiększające zdolność środków spożywczych do wiązania, w tym do tworzenia wiązań poprzecznych pomiędzy białkami, umożliwiających wiązanie się elementów środków spożywczych, a tym samym uzyskiwanie produktów zrekonstytuowanych.",
+      "hu": "Stabilizátorok: olyan anyagok, amelyek lehetővé teszik az élelmiszer fizikai-kémiai állapotának megőrzését; stabilizátorok azok az anyagok is, amelyek lehetővé teszik két vagy több nem elegyedő anyag homogén diszperziójának fenntartását az élelmiszerben, azok az anyagok, amelyek stabilizálják, megőrzik vagy erősítik az élelmiszer meglévő színét, továbbá azok az anyagok, amelyek fokozzák az élelmiszer kötőképességét, ideértve az élelmiszerrészeknek az előállított élelmiszerben való megkötését lehetővé tevő proteinek közötti keresztkötések kialakulását is",
+      "it": "Gli stabilizzanti sono sostanze che rendono possibile il mantenimento dello stato fisico-chimico di un prodotto alimentare; gli stabilizzanti comprendono le sostanze che rendono possibile il mantenimento di una dispersione omogenea di due o più sostanze immiscibili in un prodotto alimentare, le sostanze che stabilizzano, trattengono o intensificano la colorazione esistente di un prodotto alimentare e le sostanze che aumentano la capacità degli alimenti di formare legami, compresa la formazione di legami incrociati tra le proteine tale da consentire il legame delle particelle per la formazione dell'alimento ricostituito.",
+      "lt": "Stabilizatoriai – medžiagos, padedančios išlaikyti pastovią fizinę ir cheminę maisto produkto būseną; stabilizatoriai apima medžiagas, padedančias išlaikyti dviejų ir daugiau nesimaišančių medžiagų vienalytę dispersiją maisto produkte, taip pat medžiagas, stabilizuojančias, išlaikančias ar sustiprinančias maisto produkto esamą spalvą, ir medžiagas, padidinančias maisto rišamąsias savybes, įskaitant baltymų skersinius ryšius, padedančius atskiras maisto dalis apjungti į atskirą naujai pagamintą produktą.",
+      "es": "Estabilizantes: sustancias que posibilitan el mantenimiento del estado físico-químico de un producto alimenticio; incluyen las sustancias que permiten el mantenimiento de una dispersión homogénea de dos o más sustancias no miscibles en un producto alimenticio, las que estabilizan, retienen o intensifican el color de un producto alimenticio y las que incrementan la capacidad de enlace de los alimentos, en especial el entrecruzamiento de las proteínas, que permite unir trozos de alimento para formar un alimento reconstituido.",
+      "nl": "Stabilisatoren: stoffen die het mogelijk maken de fysisch-chemische toestand van een levensmiddel te handhaven; stabilisatoren omvatten stoffen die het mogelijk maken een homogene dispersie van twee of meer onmengbare stoffen in een levensmiddel te handhaven, stoffen die een bestaande kleur van een levensmiddel stabiliseren, fixeren of intensifiëren en stoffen die het bindend vermogen van het levensmiddel vergroten, onder meer door de vorming van crosslinks tussen eiwitten waardoor afzonderlijke deeltjes tot een gereconstitueerd levensmiddel worden gebonden.",
+      "sv": "Stabiliseringsmedel: ämnen som gör det möjligt att bevara ett livsmedels fysikaliska och kemiska tillstånd; stabiliseringsmedel inkluderar ämnen som gör det möjligt att bibehålla en homogen blandning av två eller flera icke blandbara ämnen i ett livsmedel, ämnen som stabiliserar, bevarar eller förstärker ett livsmedels existerande färg samt ämnen som ökar ett livsmedels bindande egenskaper, inklusive bildande av tvärgående bindningar mellan proteiner så att bitar av livsmedel kan bindas samman till ett rekonstituerat livsmedel.",
+      "et": "Stabilisaatorid – ained, mis võimaldavad säilitada toidu füüsikalis-keemilist olekut; stabilisaatorite hulka kuuluvad ained, mis võimaldavad säilitada kahe või enama segunematu aine ühtlast dispergeerumist toidus ning toidu värvust stabiliseerivad, säilitavad või tugevdavad ained, samuti ained, mis suurendavad toidu sidumisvõimet, k.a valkudevaheliste võrkstruktuuride teket, mis võimaldab siduda toidu osi taastatud toiduks.",
+      "el": "Σταθεροποιητές: ουσίες που επιτρέπουν τη διατήρηση της φυσικοχημικής κατάστασης ενός τροφίμου. Οι σταθεροποιητές περιλαμβάνουν ουσίες οι οποίες επιτρέπουν τη διατήρηση της ομοιογενούς διασποράς δύο ή περισσότερων μη μιγνυόμενων ουσιών σε ένα τρόφιμο, ουσίες οι οποίες σταθεροποιούν, συντηρούν ή εντείνουν το υπάρχον χρώμα ενός τροφίμου και ουσίες οι οποίες αυξάνουν τη συνδετική ικανότητα του τροφίμου, περιλαμβανομένου του σχηματισμού διασταυρούμενων δεσμών μεταξύ πρωτεϊνών που επιτρέπουν τη συνδετικότητα τεμαχίων τροφίμου κατά την ανασύσταση τροφίμου·",
+      "fi": "Stabilointiaineet ovat aineita, jotka mahdollistavat elintarvikkeen fyysis-kemiallisen tilan ylläpitämisen; stabilointiaineisiin kuuluu aineita, jotka mahdollistavat kahdesta tai useammasta sekoittumattomasta aineesta muodostetun tasaisen seoksen säilymisen elintarvikkeessa, aineita, jotka stabiloivat, ylläpitävät tai vahvistavat elintarvikkeen olemassa olevaa väriä, ja aineita, jotka lisäävät elintarvikkeen sitoutumiskykyä, mukaan luettuna ristisidosten muodostuminen proteiinien välille niin, että elintarvikkeen osat voidaan sitoa ennastetuksi elintarvikkeeksi.",
+      "fr": "Les stabilisants sont des substances qui, ajoutées à une denrée alimentaire, permettent de maintenir son état physico-chimique. Les stabilisants comprennent les substances qui permettent de maintenir la dispersion homogène de deux ou plusieurs substances non miscibles dans une denrée alimentaire, les substances qui stabilisent, conservent ou intensifient la couleur d'une denrée alimentaire, ainsi que les substances qui augmentent la capacité de liaison des denrées alimentaires, y compris la réticulation entre protéines permettant la liaison de morceaux d'aliments dans les aliments reconstitués.",
+      "da": "Stabilisatorer: stoffer, hvormed man kan opretholde en fødevares fysisk-kemiske tilstand. Til stabilisatorer hører stoffer, hvormed der kan opretholdes en homogen fordeling af to eller flere ikke-blandbare stoffer i en fødevare, stoffer, som stabiliserer, bevarer eller forstærker en fødevares farve, og stoffer, som øger fødevarens bindeevne, herunder dannelse af tværbindinger mellem proteiner, der kan binde fødevarestykker i rekonstituerede fødevarer.",
+      "sl": "Stabilizatorji so snovi, ki vzdržujejo fizikalno-kemično stanje živila; stabilizatorji vključujejo snovi, ki vzdržujejo homogeno razpršenost dveh ali več snovi, ki se v živilu med seboj ne mešajo, snovi, ki stabilizirajo, ohranijo ali poudarijo obstoječo barvo živila, ter snovi, ki povečajo sposobnost vezave živil, vključno z nastankom navzkrižnih povezav med beljakovinami, ki omogočajo vezavo delcev živil v rekonstituiranih živilih."
+    },
+    "children": [
+      "en:natural-stabilizer"
+    ],
+    "wikidata": {
+      "en": "Q7595716"
+    }
+  },
+  "en:flour-treatment-agent": {
+    "name": {
+      "fr": "Agent de traitement de la farine",
+      "fi": "Jauhonparanne",
+      "el": "Βελτιωτικό αλεύρων",
+      "sl": "Sredstvo za obdelavo moke",
+      "da": "Melbehandlingsmiddel",
+      "lt": "Miltų apdorojimo medžiaga",
+      "it": "Agente di trattamento della farina",
+      "ro": "Agent de tratare a făinii",
+      "sv": "Mjölbehandlingsmedel",
+      "bg": "Агент за обработка на брашното",
+      "et": "Jahu parendaja",
+      "nl": "Meelverbeteraar",
+      "es": "Agente de tratamiento de la harina",
+      "ca": "Agent de tractament de la farina",
+      "lv": "Miltu apstrādes līdzeklis",
+      "hu": "Lisztkezelő szer",
+      "pl": "Środek do przetwarzania mąki",
+      "cs": "Látka zlepšující mouku",
+      "en": "Flour treatment agent",
+      "ga": "Oibreán plúrchóireála",
+      "pt": "Agente de tratamento da farinha",
+      "nb": "Melbehandlingsmiddel",
+      "sk": "Múku upravujúca látka",
+      "mt": "Aġent għat-trattament tad-dqiq",
+      "de": "Mehlbehandlungsmittel"
+    },
+    "description": {
+      "de": "Mehlbehandlungsmittel sind Stoffe außer Emulgatoren, die dem Mehl oder dem Teig zugefügt werden, um deren Backfähigkeit zu verbessern.",
+      "sk": "Látky na zlepšenie vlastností múky sú látky iné ako emulgátory, ktoré sa pridávajú do múky alebo do cesta na zlepšenie ich vlastností pri pečení.",
+      "pt": "Agentes de tratamento da farinha: substâncias, com excepção dos emulsionantes, adicionadas à farinha ou à massa para melhorar a qualidade da cozedura.",
+      "en": "Flour treatment agents are substances, other than emulsifiers, which are added to flour or dough to improve its baking quality.",
+      "cs": "Látkami zlepšujícími mouku se rozumějí látky -jiné než emulgátory-, které se přidávají do mouky nebo těsta pro zlepšení jejich pekařské jakosti.",
+      "pl": "Środki do przetwarzania mąki -polepszacze- to substancje, inne niż emulgatory, dodawane do mąki lub ciasta w celu poprawy ich właściwości wypiekowych.",
+      "hu": "Lisztkezelő szerek: az emulgeáló szerektől eltérő olyan anyagok, amelyeket a liszthez vagy a tésztához adnak, hogy javítsák sütési tulajdonságaikat.",
+      "lv": "Miltu apstrādes līdzekļi ir vielas, izņemot emulgatorus, ko pievieno miltiem vai mīklai, lai uzlabotu to cepamīpašības.",
+      "et": "Jahu parendajad – ained -välja arvatud emulgaatorid-, mida lisatakse jahule või taignale selle küpsemisomaduste parandamiseks.",
+      "sv": "Mjölbehandlingsmedel: andra ämnen än emulgeringsmedel som tillförs mjöl eller deg för att förbättra dess bakegenskaper.",
+      "nl": "Meelverbeteraars: stoffen, met uitzondering van emulgatoren, die aan meel of deeg worden toegevoegd om de bakeigenschappen ervan te verbeteren.",
+      "es": "Agentes de tratamiento de las harinas: sustancias, distintas de los emulgentes, que se añaden a la harina o a la masa para mejorar su calidad de cocción.",
+      "lt": "Miltų apdorojimo medžiagos – medžiagos, išskyrus emulsiklius, dedamos į miltus ar tešlą ir gerinančios miltų ar tešlos kepimo savybes.",
+      "it": "Gli agenti di trattamento delle farine, esclusi gli emulsionanti, sono sostanze che vengono aggiunte alla farina o ad un impasto per migliorarne le qualità di cottura.",
+      "sl": "Sredstva za obdelavo moke so snovi, razen emulgatorjev, ki so dodane moki ali testu za izboljšanje njunih pecilnih lastnosti.",
+      "da": "Melbehandlingsmidler: andre stoffer end emulgatorer, som tilsættes til mel eller dej for at forbedre bageegenskaberne.",
+      "fi": "Jauhon käsittelyaineet ovat muita aineita kuin emulgointiaineita, jotka lisätään jauhoon tai taikinaan sen leivontaominaisuuksien parantamiseksi.",
+      "el": "Βελτιωτικά αλεύρων είναι ουσίες, πλην των γαλακτωματοποιητών, που προστίθενται στο αλεύρι ή τη ζύμη προκειμένου να βελτιώσουν την αρτοποιητική ικανότητά τους.",
+      "fr": "Les agents de traitement de la farine sont des substances autres que les émulsifiants qui, ajoutées à la farine ou à la pâte, améliorent sa qualité boulangère."
+    },
+    "wikidata": {
+      "en": "Q469842"
+    }
+  },
+  "en:minerals": {
+    "name": {
+      "pt": "Minerais",
+      "de": "Mineralstoffe",
+      "sk": "Minerálne látky",
+      "mt": "Minerali",
+      "lv": "Minerālvielas",
+      "en": "Minerals",
+      "cs": "Minerální látky",
+      "pl": "Składniki mineralne",
+      "hu": "Ásványi anyagok",
+      "lt": "Mineralinės medžiagos",
+      "it": "Minerali",
+      "bg": "Минерали",
+      "sv": "Mineraler",
+      "ro": "Minerale",
+      "et": "Mineraalained",
+      "es": "Minerales",
+      "nl": "Mineralen",
+      "fi": "Kivennäisaineet",
+      "el": "Ανόργανα συστατικά",
+      "fr": "Minéraux",
+      "sl": "Minerali"
+    },
+    "children": [
+      "en:vitamin-and-mineral-blend"
+    ]
+  },
+  "en:natural-emulsifier": {
+    "parents": [
+      "en:emulsifier"
+    ],
+    "name": {
+      "en": "Natural emulsifier"
+    }
+  },
+  "en:carrier": {
+    "name": {
+      "es": "Agente encapsulador",
+      "en": "Carrier",
+      "fr": "Support"
+    },
+    "description": {
+      "en": "A food additive used to dissolve, dilute, disperse or otherwise physically modify a food additive or nutrient without altering its function -and without exerting any technological effect itself- in order to facilitate its handling, application or use of the food additive or nutrient.",
+      "es": "Aditivos alimentarios que se utilizan para disolver, diluir, dispersar o modificar de otras maneras un aditivo alimentario o nutriente sin alterar su función -y sin generar por sí mismos efecto tecnológico alguno- con el fin de facilitar la manipulación, la aplicación o uso del aditivo alimentario o nutriente.",
+      "fr": "Additif alimentaire utilisé pour dissoudre, diluer, disperser ou modifier physiquement de toute autre façon un additif alimentaire ou un nutriment sans altérer sa fonction -et sans produire lui-même d'effet technologique- afin de faciliter sa manipulation, son application ou son utilisationde l'additif alimentaire ou du nutriment."
+    }
+  },
+  "en:salt-substitute": {
+    "name": {
+      "it": "Sostituto del sale",
+      "fr": "Substitut du sel",
+      "hu": "Sópótló",
+      "de": "Speisesalzersatz",
+      "en": "Salt substitute"
+    }
+  },
+  "en:emulsifying-salts": {
+    "description": {
+      "da": "Smeltesalte: stoffer, som overfører proteiner i ost til dispergeret form og derved bevirker en homogen fordeling af fedt og andre bestanddele.",
+      "sl": "Emulgirne soli so snovi, ki spremenijo beljakovine v siru v razpršeno obliko in tako pripomorejo k homogeni porazdelitvi maščobe in drugih sestavin.",
+      "fi": "Sulatesuolat ovat aineita, jotka muuttavat juuston sisältämät proteiinit dispersoituneeseen muotoon ja siten aikaansaavat rasvan ja muiden ainesosien homogeenisen jakautumisen.",
+      "el": "Γαλακτωματοποιητικά άλατα, οι ουσίες που μετατρέπουν τις πρωτεΐνες που περιέχονται στο τυρί σε διεσπαρμένη μορφή και, κατ' αυτόν τον τρόπο, επιφέρουν ομοιογενή κατανομή των λιπών και των άλλων συστατικών·",
+      "fr": "Les sels de fonte sont des substances qui dispersent les protéines contenues dans le fromage, entraînant ainsi une répartition homogène des matières grasses et des autres composants.",
+      "es": "Sales de fundido: sustancias que reordenan las proteínas contenidas en el queso de manera dispersa, con lo que producen la distribución homogénea de la grasa y otros componentes.",
+      "nl": "Smeltzouten: stoffen die kaaseiwitten in gedispergeerde vorm omzetten om een homogene verdeling van vet en andere bestanddelen te bewerkstelligen.",
+      "et": "Emulgeerivad soolad – ained, mis dispergeerivad juustuvalke ja soodustavad sellega rasva ja teiste koostisosade ühtlast jaotumist.",
+      "sv": "Smältsalter: ämnen som omvandlar proteiner i ost till en dispergerad form och därigenom ger en homogen fördelning av fett och andra beståndsdelar.",
+      "it": "I sali di fusione sono sostanze che disperdono le proteine contenute nel formaggio realizzando in tal modo una distribuzione omogenea dei grassi e altri componenti.",
+      "lt": "Emulsinimo druskos – medžiagos, išsklaidančios sūryje esančius baltymus ir tokiu būdu padedančios vienodai pasiskirstyti riebalams bei kitiems komponentams.",
+      "cs": "Tavicími solemi se rozumějí látky, které převádějí bílkoviny obsažené v sýru do disperzní formy za účelem homogenního rozložení tuků a ostatních složek.",
+      "en": "Emulsifying salts are substances which convert proteins contained in cheese into a dispersed form and thereby bring about homogenous distribution of fat and other components.",
+      "pl": "Sole emulgujące to substancje które zmieniają białka zawarte w serze w formę zdyspergowaną wprowadzając w ten sposób jednorodne rozłożenie tłuszczów i innych składników.",
+      "hu": "Emulgeáló sók: olyan anyagok, amelyek a sajtban lévő fehérjéket diszpergált formájúvá alakítják, és egyúttal a zsírt és más komponenseket közel homogén eloszlásba hozzák.",
+      "lv": "Emulģējošie sāļi ir vielas, kas pārveido siera proteīnus disperģējamā veidā, tādējādi veicinot tauku un citu sastāvdaļu vienmērīgu sadalīšanos produkta masā.",
+      "de": "Schmelzsalze sind Stoffe, die in Käse enthaltene Proteine in eine dispergierte Form überführen und hierdurch eine homogene Verteilung von Fett und anderen Bestandteilen herbeiführen.",
+      "sk": "Emulgačné soli sú látky, ktoré menia bielkoviny v syre na dispergovanú formu, a tak prispievajú k homogénnemu rozloženiu tuku a ďalších zložiek.",
+      "pt": "Sais de fusão: substâncias que convertem as proteínas contidas no queijo numa forma dispersa, daí resultando uma distribuição homogénea das gorduras e outros componentes."
+    },
+    "name": {
+      "fi": "Sulatesuola",
+      "el": "Γαλακτωματοποιητικά άλατα",
+      "is": "Bræðslusölt",
+      "fr": "Sels émulsifiants",
+      "da": "Smeltesalt",
+      "sl": "Emulgirne soli",
+      "it": "Sale di fusione",
+      "lt": "Emulsinimo druskos",
+      "ca": "Surts de fos",
+      "es": "Sales fundentes",
+      "nl": "Smeltzout",
+      "ro": "Săruri de topire",
+      "sv": "Smältsalt",
+      "bg": "Емулгаторни соли",
+      "et": "Emulgeeriv sool",
+      "lv": "Emulģējošie sāļi",
+      "cs": "Tavicí soli",
+      "en": "Emulsifying salts",
+      "pl": "Sole emulgujące",
+      "hu": "Emulgeálósók",
+      "pt": "Sais de fusão",
+      "ga": "Salainn eiblithe",
+      "de": "Schmelzsalze",
+      "mt": "Melħ emulsifikat",
+      "sk": "Emulgujúce soli"
+    },
+    "wikidata": {
+      "en": "Q50419202"
+    }
+  },
+  "en:antioxidant": {
+    "wikidata": {
+      "en": "Q133948"
+    },
+    "children": [
+      "en:natural-antioxidant"
+    ],
+    "description": {
+      "de": "Antioxidationsmittel sind Stoffe, die die Haltbarkeit von Lebensmitteln verlängern, indem sie sie vor den schädlichen Auswirkungen der Oxidation wie Ranzigwerden von Fett und Farbveränderungen schützen.",
+      "sk": "Antioxidanty sú látky, ktoré predlžujú trvanlivosť potravín tak, že ich chránia pred skazením spôsobeným oxidáciou, napríklad pred žltnutím tukov alebo farebnými zmenami.",
+      "pt": "Antioxidantes: substâncias que prolongam o prazo de conservação dos géneros alimentícios, protegendo-os contra a deterioração causada pela oxidação, tal como a rancidez das gorduras e as alterações de cor.",
+      "en": "Antioxidants are substances which prolong the shelf-life of foods by protecting them against deterioration caused by oxidation, such as fat rancidity and colour changes.",
+      "cs": "Antioxidanty se rozumějí látky, které prodlužují trvanlivost potravin tím, že je chrání proti zkáze způsobené oxidací, například proti žluknutí tuků a barevným změnám.",
+      "hu": "Antioxidánsok: olyan anyagok, amelyek az oxidáció okozta romlás – mint a zsírok avasodása és a színváltozások – megakadályozásával meghosszabbítják az élelmiszerek eltarthatóságát.",
+      "pl": "Przeciwutleniacze to substancje przedłużające okres przydatności środków spożywczych do spożycia poprzez ochronę przed zepsuciem na skutek utleniania, takim jak jełczenie tłuszczu czy zmiana barwy.",
+      "lv": "Antioksidanti ir vielas, kas pagarina pārtikas produktu glabāšanās laiku, aizsargājot tos no oksidēšanas procesu izraisītas bojāšanās, piemēram, no tauku sasmakšanas vai krāsas maiņas.",
+      "sv": "Antioxidationsmedel: ämnen som förlänger hållbarheten hos livsmedel genom att skydda dem från att försämras genom oxidering, som t.ex. härskning av fett och färgförändringar.",
+      "et": "Antioksüdandid – ained, mis pikendavad toidu säilimisaega, kaitstes seda oksüdatsiooni põhjustatud riknemise eest, nagu rasva rääsumine ja värvuse muutused.",
+      "nl": "Antioxidanten: stoffen die de houdbaarheid van levensmiddelen verlengen door ze te beschermen tegen bederf door oxidatie, zoals het ranzig worden van vet en kleurveranderingen.",
+      "es": "Antioxidantes: sustancias que prolongan la vida útil de los alimentos protegiéndolos del deterioro causado por la oxidación, como el enranciamiento de las grasas y los cambios de color.",
+      "lt": "Antioksidantai – medžiagos, kurios prailgina maisto produktų galiojimo terminą ir apsaugo juos nuo gedimo, kurį sukelia oksidacija, pavyzdžiui, riebalų gaižumo ir spalvos pakitimų.",
+      "it": "Gli antiossidanti sono sostanze che prolungano la durata di conservazione degli alimenti proteggendoli dal deterioramento provocato dall'ossidazione, come l'irrancidimento dei grassi e le variazioni di colore.",
+      "sl": "Antioksidanti so snovi, ki podaljšajo rok uporabnosti živil tako, da jih ščitijo pred kvarjenjem, ki ga povzroča oksidacija, kot sta žarkost maščob in sprememba barve.",
+      "da": "Antioxidanter: stoffer, som forlænger en fødevares holdbarhed ved at beskytte den mod ødelæggelse ved iltning som f.eks. fedtharskning og misfarvning.",
+      "fi": "Hapettumisenestoaineet ovat aineita, jotka pidentävät elintarvikkeiden säilyvyyttä suojaamalla niitä hapettumisen aiheuttamalta pilaantumiselta, kuten rasvan härskiintymiseltä ja värinmuutoksilta.",
+      "el": "Αντιοξειδωτικά, οι ουσίες οι οποίες παρατείνουν το χρόνο διατήρησης των τροφίμων προστατεύοντάς τα από τις αλλοιώσεις που προκαλούνται από την οξείδωση, όπως το τάγγισμα των λιπών και οι μεταβολές χρώματος·",
+      "fr": "Les antioxydants sont des substances qui prolongent la durée de conservation des denrées alimentaires en les protégeant des altérations provoquées par l'oxydation, telles que le rancissement des matières grasses et les modifications de la couleur."
+    },
+    "name": {
+      "hu": "Antioxidáns",
+      "pl": "Przeciwutleniacz",
+      "en": "Antioxidant",
+      "cs": "Antioxidant",
+      "ja": "酸化防止剤",
+      "lv": "Antioksidants",
+      "mt": "Antiossidant",
+      "de": "Antioxidant",
+      "ru": "Антиоксидант",
+      "ga": "Frithocsaídeoir",
+      "pt": "Antioxidante",
+      "nb": "Antioxidant",
+      "sl": "Antioksidant",
+      "da": "Antioxidant",
+      "fr": "Antioxydant",
+      "el": "Αντιοξειδωτικό",
+      "fi": "Hapettumisenestoaine",
+      "sv": "Antioxidationsmedel",
+      "ro": "Antioxidant",
+      "bg": "Антиоксидант",
+      "et": "Antioksüdant",
+      "es": "Antioxidante",
+      "nl": "Antioxidant",
+      "ca": "Antioxidant",
+      "lt": "Antioksidantas",
+      "it": "Antiossidante"
+    }
+  },
+  "en:foaming-agent": {
+    "wikidata": {
+      "en": "Q759922"
+    },
+    "description": {
+      "lt": "Putojimą sukeliančios medžiagos – medžiagos, kurios padeda susidaryti vienalytei dispersinei dujinei fazei skystame ar kietame maisto produkte.",
+      "it": "Gli agenti schiumogeni sono sostanze che rendono possibile l'ottenimento di una dispersione omogenea di una fase gassosa in un prodotto alimentare liquido o solido.",
+      "sv": "Skumbildande medel: ämnen som gör det möjligt att skapa en homogen spridning av en gasfas i ett flytande eller fast livsmedel.",
+      "et": "Vahustusained – ained, mis võimaldavad gaasifaasi homogeenset jaotumist vedelas või tahkes toidus.",
+      "es": "Espumantes: sustancias que hacen posible formar una dispersión homogénea de una fase gaseosa en un producto alimenticio líquido o sólido.",
+      "nl": "Schuimmiddelen: stoffen die het mogelijk maken een homogene dispersie van een gasvormige fase in een vloeibaar of vast levensmiddel te vormen.",
+      "fr": "Les agents moussants sont des substances qui permettent de réaliser la dispersion homogène d'une phase gazeuse dans une denrée alimentaire liquide ou solide.",
+      "fi": "Vaahdotusaineet ovat aineita, jotka mahdollistavat kaasumaisen olomuodon homogeenisen jakautumisen kiinteässä tai nestemäisessä elintarvikkeessa.",
+      "el": "Αφριστικοί παράγοντες, οι ουσίες που επιτρέπουν την ομοιογενή διασπορά αερίου φάσεως σε υγρό ή στερεό τρόφιμο·",
+      "sl": "Sredstva za penjenje so snovi, ki omogočajo homogeno razpršitev plinaste faze v tekočem ali v trdem živilu.",
+      "da": "Skumdannende midler: stoffer, hvormed man kan opnå homogen fordeling af en luftart i en flydende eller fast fødevare.",
+      "pt": "Espumantes: substâncias que tornam possível a dispersão homogénea de uma fase gasosa nos géneros alimentícios líquidos ou sólidos.",
+      "sk": "Penotvorné činidlá sú látky, ktoré umožňujú tvorbu homogénnej disperzie plynnej fázy v kvapalnej alebo tuhej potravine.",
+      "de": "Schaummittel sind Stoffe, die die Bildung einer einheitlichen Dispersion einer gasförmigen Phase in einem flüssigen oder festen Lebensmittel ermöglichen.",
+      "lv": "Putu veidotāji ir vielas, kas nodrošina gāzveida fāzes homogēnu izkliedi šķidros vai cietos pārtikas produktos.",
+      "pl": "Substancje pianotwórcze to substancje umożliwiające powstanie jednorodnej dyspersji fazy gazowej w środkach spożywczych w płynie lub w postaci stałej.",
+      "hu": "Habosító szerek: olyan anyagok, amelyek lehetővé teszik egy gázfázis homogén diszperzióját egy folyékony vagy szilárd élelmiszerben.",
+      "cs": "Pěnotvornými látkami se rozumějí látky, které umožňují vytváření stejnorodé disperze plynné fáze v kapalné nebo tuhé potravině.",
+      "en": "Foaming agents are substances which make it possible to form a homogenous dispersion of a gaseous phase in a liquid or solid foodstuff."
+    },
+    "name": {
+      "ca": "Escumant",
+      "sv": "Skumbildande medel",
+      "ro": "Agenți de spumare",
+      "bg": "Пенители",
+      "et": "Vahustusaine",
+      "nl": "Schuimmiddel",
+      "es": "Espumante",
+      "lt": "Putojimą sukelianti medžiaga",
+      "it": "Agente schiumogeno",
+      "sl": "Sredstvo za penjenje",
+      "da": "Skumdannende middel",
+      "el": "Αφριστικοί παράγοντες",
+      "fi": "Vaahdotusaine",
+      "fr": "Agent moussant",
+      "de": "Schaummittel",
+      "sk": "Penotvorná látka",
+      "mt": "Aġent li jagħmel ir-ragħwa",
+      "ga": "Oibreáin chúrtha",
+      "pt": "Agente espumante",
+      "cs": "Pěnotvorná látka",
+      "en": "Foaming agent",
+      "hu": "Habosítószer",
+      "pl": "Substancja pianotwórcza",
+      "lv": "Putu veidotājs"
+    }
+  },
+  "en:vitamins": {
+    "children": [
+      "en:vitamin-and-mineral-blend"
+    ],
+    "name": {
+      "pt": "Vitaminas",
+      "de": "Vitamine",
+      "mt": "Vitamini",
+      "sk": "Vitamíny",
+      "lv": "Vitamīni",
+      "en": "Vitamins",
+      "cs": "Vitaminy",
+      "pl": "Witaminy",
+      "hu": "Vitaminok",
+      "it": "Vitamine",
+      "lt": "Vitaminai",
+      "es": "Vitaminas",
+      "nl": "Vitaminen",
+      "et": "Vitamiinid",
+      "sv": "Vitaminer",
+      "ro": "Vitamine",
+      "bg": "Витамини",
+      "el": "Βιταμίνες",
+      "fi": "Vitamiinit",
+      "fr": "Vitamines",
+      "sl": "Vitamini"
+    }
+  },
+  "fr:colorant-de-la-croute": {
+    "parents": [
+      "en:colour"
+    ],
+    "name": {
+      "fr": "Colorant de la croûte"
+    }
+  },
+  "fr:denree-alimentaire-colorante": {
+    "name": {
+      "fr": "Denrée alimentaire colorante",
+      "it": "Sostanze alimentari coloranti",
+      "es": "Colorante alimenticio",
+      "hu": "Élelmiszer színezék",
+      "ca": "Colorant alimentari",
+      "de": "Färbendes Lebensmittel"
+    },
+    "parents": [
+      "en:colour"
+    ]
+  },
+  "en:preservative": {
+    "wikidata": {
+      "en": "Q274579"
+    },
+    "name": {
+      "da": "Konserveringsmiddel",
+      "sl": "Konzervans",
+      "el": "Συντηρητικό",
+      "fi": "Säilöntäaine",
+      "is": "Rotvarnarefni",
+      "fr": "Conservateur",
+      "ca": "Conservant",
+      "es": "Conservante",
+      "nl": "Conserveermiddel",
+      "bg": "Консервант",
+      "sv": "Konserveringsmedel",
+      "ro": "Conservant",
+      "et": "Säilitusaine",
+      "it": "Conservante",
+      "lt": "Konservantas",
+      "cs": "Konzervant",
+      "en": "Preservative",
+      "pl": "Substancja konserwująca",
+      "hu": "Tartósítószer",
+      "lv": "Konservants",
+      "de": "Konservierungsstoff",
+      "mt": "Preservattiv",
+      "sk": "Konzervačná látka",
+      "nb": "Konserveringsmiddel",
+      "pt": "Conservante",
+      "he": "חומר משמר",
+      "ru": "Консервант",
+      "ga": "Leasaitheach"
+    },
+    "description": {
+      "pt": "Conservantes: substâncias que prolongam o prazo de conservação dos géneros alimentícios protegendo-os contra a deterioração causada por microrganismos e/ou contra o desenvolvimento de microrganismos patogénicos.",
+      "de": "Konservierungsstoffe sind Stoffe, die die Haltbarkeit von Lebensmitteln verlängern, indem sie sie vor den schädlichen Auswirkungen von Mikroorganismen schützen, und/oder vor dem Wachstum pathogener Mikroorganismen schützen.",
+      "sk": "Konzervačné látky sú látky, ktoré predlžujú trvanlivosť potravín tak, že ich chránia pred skazením spôsobeným mikroorganizmami, a/alebo ktoré chránia potraviny pred množením patogénnych mikroorganizmov.",
+      "lv": "Konservanti ir vielas, kas pagarina pārtikas produktu glabāšanās laiku, aizsargājot tos no mikroorganismu izraisītas bojāšanās, un/vai kas aizsargā pret patogēnu mikroorganismu augšanu.",
+      "cs": "Konzervanty se rozumějí látky, které prodlužují trvanlivost potravin tím, že je chrání proti zkáze způsobené mikroorganismy, nebo které potraviny chrání před růstem patogenních mikroorganismů.",
+      "en": "Preservatives are substances which prolong the shelf-life of foods by protecting them against deterioration caused by micro-organisms and/or which protect against growth of pathogenic micro-organisms.",
+      "pl": "Substancje konserwujące to substancje przedłużające okres przydatności środków spożywczych do spożycia poprzez ochronę przed zepsuciem spowodowanym obecnością mikroorganizmów lub chroniące przed wzrostem mikroorganizmów patogennych.",
+      "hu": "Tartósítószerek: olyan anyagok, amelyek a mikroorganizmusok okozta romlás megakadályozásával meghosszabbítják az élelmiszerek eltarthatóságát, és/vagy védelmet biztosítanak a kórokozó mikroorganizmusokkal szemben.",
+      "it": "I conservanti sono sostanze che prolungano la durata di conservazione degli alimenti proteggendoli dal deterioramento provocato da microorganismi e/o dalla proliferazione di microorganismi patogeni.",
+      "lt": "Konservantai – medžiagos, kurios prailgina maisto produktų galiojimo terminą ir apsaugo juos nuo mikroorganizmų sukeliamo gedimo ir -arba- kurios apsaugo nuo patogeninių mikroorganizmų dauginimosi.",
+      "es": "Conservadores: sustancias que prolongan la vida útil de los alimentos protegiéndolos del deterioro causado por microorganismos o que protegen del crecimiento de microorganismos patógenos.",
+      "nl": "Conserveermiddelen: stoffen die de houdbaarheid van levensmiddelen verlengen door ze te beschermen tegen bederf door micro-organismen en/of tegen de groei van pathogene micro-organismen.",
+      "sv": "Konserveringsmedel: ämnen som förlänger hållbarheten hos livsmedel genom att skydda dem mot nedbrytning orsakad av mikroorganismer och/eller skydda dem mot tillväxt av patogena mikroorganismer.",
+      "et": "Konservandid – ained, mis pikendavad toidu säilimisaega, kaitstes seda mikroorganismide põhjustatud riknemise eest ja/või mis kaitsevad patogeensete mikroorganismide kasvu eest.",
+      "fi": "Säilöntäaineet ovat aineita, jotka pidentävät elintarvikkeiden säilyvyyttä suojelemalla niitä mikro-organismien aiheuttamalta pilaantumiselta ja/tai patogeenisten mikro-organismien kasvulta.",
+      "el": "Συντηρητικά, οι ουσίες οι οποίες παρατείνουν το χρόνο διατήρησης των τροφίμων προστατεύοντάς τα από τις αλλοιώσεις που προκαλούνται από τους μικροοργανισμούς ή/και τα προστατεύουν από την ανάπτυξη παθογόνων μικροοργανισμών·",
+      "fr": "Les conservateurs sont des substances qui prolongent la durée de conservation des denrées alimentaires en les protégeant des altérations dues aux micro-organismes et/ou qui les protègent contre la croissance de micro-organismes pathogènes.",
+      "da": "Konserveringsmidler: stoffer, som forlænger en fødevares holdbarhed ved at beskytte den mod ødelæggelse forårsaget af mikroorganismer, og/eller som beskytter mod vækst af patogene mikroorganismer.",
+      "sl": "Konzervansi so snovi, ki podaljšajo rok uporabnosti živil tako, da jih ščitijo pred kvarjenjem, ki ga povzročajo mikroorganizmi, in/ali jih ščitijo pred razvojem patogenih mikroorganizmov."
+    },
+    "children": [
+      "en:fruit-preservative",
+      "en:natural-preservative"
+    ]
+  },
+  "en:enhancer": {
+    "name": {
+      "fr": "Améliorant",
+      "it": "Miglioranti",
+      "fi": "Vahvenne",
+      "hu": "Javító",
+      "es": "Potenciador",
+      "nl": "Verbeteraar",
+      "en": "Enhancer"
+    },
+    "children": [
+      "en:bread-improver",
+      "en:cooking-enhancer"
+    ]
+  },
+  "en:fruit-preservative": {
+    "name": {
+      "fr": "Conservateur de fruit",
+      "de": "Fruchtkonserve",
+      "en": "Fruit preservative"
+    },
+    "parents": [
+      "en:preservative"
+    ]
+  },
+  "en:sequestrant": {
+    "wikidata": {
+      "en": "Q905648"
+    },
+    "description": {
+      "pt": "Sequestrantes: substâncias que formam complexos químicos com iões metálicos.",
+      "de": "Komplexbildner sind Stoffe, die mit Metallionen chemische Komplexe bilden.",
+      "sk": "Komplexotvorné látky -sekvestranty- sú látky, ktoré tvoria chemické komplexy s iónmi kovov.",
+      "lv": "Sekvestranti ir vielas, kas veido ķīmiskus kompleksus ar metālu joniem.",
+      "en": "Sequestrants are substances which form chemical complexes with metallic ions.",
+      "cs": "Sekvestranty se rozumějí látky, které vytvářejí chemické komplexy s ionty kovů.",
+      "hu": "Kelátképző anyagok: olyan anyagok, amelyek fémionokkal kémiai komplexeket képeznek.",
+      "pl": "Sekwestranty to substancje tworzące związki chemiczne z jonami metali.",
+      "lt": "Izoliuojančios medžiagos – medžiagos, sudarančios cheminius junginius su metalo jonais.",
+      "it": "Gli agenti sequestranti sono sostanze che formano complessi chimici con ioni metallici.",
+      "sv": "Komplexbildare: ämnen som bildar kemiska komplex med metalljoner.",
+      "et": "Sekvestrandid – ained, seovad toidus metalliioonid keemilisse kompleksi.",
+      "es": "Secuestrantes: sustancias que forman complejos químicos con iones metálicos.",
+      "nl": "Complexvormers: stoffen die chemische complexen vormen met metaalionen.",
+      "el": "Συμπλοκοποιητές, οι ουσίες που σχηματίζουν χημικά σύμπλοκα με μεταλλικά ιόντα·",
+      "fi": "Kompleksinmuodostajat ovat aineita, jotka muodostavat kemiallisia yhdisteitä metalli-ionien kanssa.",
+      "fr": "Les séquestrants sont des substances qui forment des complexes chimiques avec les ions métalliques.",
+      "sl": "Veziva so snovi, ki tvorijo kemične komplekse s kovinskimi ioni.",
+      "da": "Kompleksdannere: stoffer, der danner kemiske kompleksforbindelser med metalioner."
+    },
+    "name": {
+      "en": "Sequestrant",
+      "cs": "Sekvestrant",
+      "pl": "Sekwestrant",
+      "hu": "Kelátképző anyag",
+      "lv": "Sekvestrants",
+      "ja": "金属イオン封鎖剤",
+      "de": "Komplexbildner",
+      "sk": "Komplexotvorné látky",
+      "mt": "Aġenti sekwestranti",
+      "ga": "Leithliseoir",
+      "pt": "Sequestrante",
+      "sl": "Sredstvo za vzhajanje",
+      "zh": "螯合剂",
+      "da": "Kompleksdannere",
+      "fi": "Kompleksinmuodostaja",
+      "el": "Συμπλοκοποιητές",
+      "eo": "Sekvestranto",
+      "fr": "Séquestrant",
+      "ca": "Segrestant",
+      "sv": "Komplexbildare",
+      "ro": "Agenți de sechestrare",
+      "bg": "Комплексообразуватели",
+      "et": "Sekvestrant",
+      "nl": "Complexvormer",
+      "es": "Secuestrante",
+      "lt": "Atskyriklis",
+      "it": "Sequestrante",
+      "vi": "Phụ gia cô lập"
+    }
+  },
+  "en:natural-preservative": {
+    "parents": [
+      "en:preservative"
+    ],
+    "name": {
+      "en": "Natural preservative"
+    }
+  },
+  "en:emulsifier": {
+    "description": {
+      "sl": "Emulgatorji so snovi, ki omogočajo nastanek ali ohranjanje homogene mešanice dveh ali več medsebojno nezdružljivih faz, kot sta olje in voda, v živilu.",
+      "da": "Emulgatorer: stoffer, hvormed man kan danne eller opretholde en homogen blanding af to eller flere ikke-blandbare faser som f.eks. olie og vand i en fødevare.",
+      "fr": "Les émulsifiants sont des substances qui, ajoutées à une denrée alimentaire, permettent de réaliser ou de maintenir le mélange homogène de deux ou plusieurs phases non miscibles, telles que l'huile et l'eau.",
+      "el": "Γαλακτωματοποιητές, οι ουσίες που επιτρέπουν το σχηματισμό ή τη διατήρηση ομοιογενούς μείγματος δύο ή περισσοτέρων μη μιγνυόμενων φάσεων, όπως το λάδι και το νερό, σε τρόφιμο·",
+      "fi": "Emulgointiaineet ovat aineita, jotka tekevät mahdolliseksi tai säilyttävät tasaisen seoksen kahdesta tai useammasta toisiinsa sekoittumattomasta olomuodosta, kuten öljystä ja vedestä.",
+      "et": "Emulgaatorid – ained, mis muudavad toidus kaks või enam segunematut koostisfaasi, nagu õli ja vee homogeenseks emulsiooniks või säilitavad tekkinud emulsiooni.",
+      "sv": "Emulgeringsmedel: ämnen som gör det möjligt att skapa eller bibehålla en homogen blandning av två eller flera icke blandbara faser som olja och vatten i ett livsmedel.",
+      "nl": "Emulgatoren: stoffen die een homogene menging van twee of meer onmengbare fasen, zoals olie en water, in een levensmiddel mogelijk maken of in stand houden.",
+      "es": "Emulgentes: sustancias que hacen posible la formación o el mantenimiento de una mezcla homogénea de dos o más fases no miscibles, como el aceite y el agua, en un producto alimenticio.",
+      "lt": "Emulsikliai – medžiagos, padedančios sudaryti ar išlaikyti dviejų ir daugiau nesimaišančių medžiagų -pavyzdžiui, aliejaus ir vandens- pastovų mišinį maisto produkte.",
+      "it": "Gli emulsionanti sono sostanze che rendono possibile la formazione o il mantenimento di una miscela omogenea di due o più fasi immiscibili, come olio e acqua, in un prodotto alimentare.",
+      "hu": "Emulgeálószerek: olyan anyagok, amelyek lehetővé teszik két vagy több nem keveredő fázisból – mint az olaj és a víz – homogén keverék képzését vagy kialakítását az élelmiszerben.",
+      "pl": "Emulgatory to substancje umożliwiające utworzenie lub utrzymanie jednorodnej mieszaniny dwóch lub większej liczby niemieszających się faz, takich jak olej i woda w środkach spożywczych.",
+      "en": "Emulsifiers are substances which make it possible to form or maintain a homogenous mixture of two or more immiscible phases such as oil and water in a foodstuff.",
+      "cs": "Emulgátory se rozumějí látky, které umožňují vytvořit nebo uchovat v potravině stejnorodou směs dvou nebo více nemísitelných fází, například oleje a vody.",
+      "lv": "Emulgatori ir vielas, kas pārtikas produktos ļauj izveidot vai saglabāt homogēnu maisījumu, kas sastāv no divām vai vairākām fāzēm, kas savstarpēji nesajaucas, piemēram, eļļas un ūdens.",
+      "sk": "Emulgátory sú látky, ktoré umožňujú vytvoriť alebo zachovať homogénnu zmes dvoch alebo viacerých vzájomne nemiešateľných fáz v potravine, napríklad oleja s vodou.",
+      "de": "Emulgatoren sind Stoffe, die es ermöglichen, die einheitliche Dispersion zweier oder mehrerer nicht mischbarer Phasen wie z. B. Öl und Wasser in einem Lebensmittel herzustellen oder aufrechtzuerhalten.",
+      "pt": "Emulsionantes: substâncias que tornam possível a formação ou a manutenção de uma mistura homogénea de duas ou mais fases imiscíveis, como óleo e água, nos géneros alimentícios."
+    },
+    "name": {
+      "da": "Emulgator",
+      "sl": "Emulgator",
+      "fr": "Émulsifiant",
+      "is": "Yruefni",
+      "el": "Γαλακτωματοποιητής",
+      "fi": "Emulgointiaine",
+      "es": "Emulgente",
+      "nl": "Emulgator",
+      "bg": "Емулгатор",
+      "sv": "Emulgeringsmedel",
+      "ro": "Emulsifiant",
+      "et": "Emulgaator",
+      "ca": "Emulsionant",
+      "it": "Emulsionante",
+      "lt": "Emulsiklis",
+      "hu": "Emulgeálószer",
+      "pl": "Emulgator",
+      "en": "Emulsifier",
+      "cs": "Emulgátor",
+      "ja": "乳化剤",
+      "lv": "Emulgators",
+      "mt": "Emulsifikant",
+      "sk": "Emulgátor",
+      "de": "Emulgator",
+      "pt": "Emulsionante",
+      "ga": "Eiblitheoir",
+      "ru": "Эмульгатор",
+      "hr": "Emulgator",
+      "nb": "Emulgeringsmiddel"
+    },
+    "children": [
+      "en:natural-emulsifier"
+    ],
+    "wikidata": {
+      "en": "Q907356"
+    }
+  },
+  "en:acidity-regulator": {
+    "wikidata": {
+      "en": "Q898753"
+    },
+    "description": {
+      "lt": "Rūgštingumą reguliuojančios medžiagos – medžiagos, keičiančios ar reguliuojančios maisto produktų rūgštingumą ar šarmingumą.",
+      "it": "I regolatori dell'acidità sono sostanze che modificano o controllano l'acidità o l'alcalinità di un prodotto alimentare.",
+      "et": "Happesuse regulaatorid – ained, mis muudavad või reguleerivad toidu happesust või leelisust.",
+      "sv": "Surhetsreglerande medel: ämnen som förändrar eller styr ett livsmedels surhet eller alkalinitet.",
+      "es": "Correctores de la acidez: sustancias que alteran o controlan la acidez o alcalinidad de un producto alimenticio.",
+      "nl": "Zuurteregelaars: stoffen die de zuurgraad of alkaliteit van levensmiddelen wijzigen of regelen.",
+      "fr": "Les correcteurs d'acidité sont des substances qui modifient ou limitent l'acidité ou l'alcalinité d'une denrée alimentaire.",
+      "fi": "Happamuudensäätöaineet ovat aineita, jotka muuttavat tai säätelevät elintarvikkeen happamuutta tai emäksisyyttä.",
+      "el": "Ρυθμιστές οξύτητας, οι ουσίες που μεταβάλλουν ή ελέγχουν την οξύτητα ή την αλκαλικότητα τροφίμου·",
+      "sl": "Sredstva za uravnavanje kislosti so snovi, ki spremenijo ali nadzirajo kislost ali alkalnost živila.",
+      "da": "Surhedsregulerende midler: stoffer, som ændrer eller fastholder en fødevares surhedsgrad.",
+      "pt": "Reguladores de acidez: substâncias que alteram ou controlam a acidez ou a alcalinidade dos géneros alimentícios.",
+      "sk": "Regulátory kyslosti sú látky, ktoré menia alebo upravujú kyslosť alebo zásaditosť potraviny.",
+      "de": "Säureregulatoren sind Stoffe, die den Säuregrad oder die Alkalität eines Lebensmittels verändern oder steuern.",
+      "lv": "Skābuma regulētāji ir vielas, kas maina vai regulē pārtikas produktu skābumu vai bāziskumu.",
+      "pl": "Regulatory kwasowości to substancje zmieniające lub kontrolujące kwasowość lub zasadowość środka spożywczego.",
+      "hu": "Savanyúságot szabályozó anyagok: olyan anyagok, amelyek megváltoztatják vagy szabályozzák az élelmiszer savasságát vagy lúgosságát.",
+      "en": "Acidity regulators are substances which alter or control the acidity or alkalinity of a foodstuff.",
+      "cs": "Regulátory kyselosti se rozumějí látky, které mění nebo řídí kyselost nebo alkalitu potraviny."
+    },
+    "name": {
+      "fr": "Correcteur d'acidité",
+      "is": "Sýrustillir",
+      "fi": "Happamuudensäätöaine",
+      "el": "Ρυθμιστής οξύτητας",
+      "id": "Pengatur keasaman",
+      "sl": "Sredstvo za uravnavanje kislosti",
+      "da": "Surhedsregulerende middel",
+      "lt": "Rūgštingumą reguliuojanti medžiaga",
+      "it": "Correttore di acidità",
+      "sv": "Surhetsreglerande medel",
+      "ro": "Corector de aciditate",
+      "bg": "Регулатор на киселинност",
+      "et": "Happesuse regulaator",
+      "nl": "Zuurteregelaar",
+      "es": "Corrector de acidez",
+      "ca": "Corrector de l'acidesa",
+      "lv": "Skābuma regulētājs",
+      "hu": "Savanyúságot szabályozó anyag",
+      "pl": "Regulator kwasowości",
+      "cs": "Regulátor kyselosti",
+      "en": "Acidity regulator",
+      "ru": "Регулятор кислотности",
+      "ga": "Rialtán aigéadachta",
+      "pt": "Regulador de acidez",
+      "he": "מווסת חומציות",
+      "nb": "Surhetsregulerende middel",
+      "sk": "Regulátor kyslosti",
+      "mt": "Regolatur tal-Aċidità",
+      "de": "Säureregulator"
+    }
+  },
+  "en:bleaching-agent": {
+    "description": {
+      "en": "A food additive -non-flour use- used to decolourize food. Bleaching agents do not include pigments.",
+      "hu": "Élelmiszerek színtelenítésére használt adalékanyag. A fehérítőszer nem tartalmaz pigmenteket.",
+      "es": "Aditivos alimentarios utilizados -no en las harinas- para decolorar un alimento. Los decolorantes no contienen pigmentos.",
+      "fr": "Additif alimentaire utilisé pour décolorer des denrées alimentaires -mais pas la farine-. Les pigments ne sont pas des agents de blanchiment."
+    },
+    "name": {
+      "es": "Decolorante",
+      "hu": "Fehérítőszer",
+      "en": "Bleaching agent",
+      "fr": "Agent de blanchiment",
+      "fi": "Valkaisuaine"
+    }
+  },
+  "en:modified-starch": {
+    "wikidata": {
+      "en": "Q415766"
+    },
+    "name": {
+      "pl": "Skrobia modyfikowana",
+      "hu": "Módosított keményítő",
+      "cs": "Modifikovaný škrob",
+      "en": "Modified starch",
+      "lv": "Modificēta ciete",
+      "mt": "Lamtu mmodifikat",
+      "sk": "Modifikovaný škrob",
+      "de": "Modifizierte Stärke",
+      "pt": "Amido modificado",
+      "ga": "Stáirse modhnaithe",
+      "da": "Modificeret stivelse",
+      "sl": "Modificirani škrob",
+      "fr": "Amidon modifié",
+      "el": "Τροποποιημένο άμυλο",
+      "fi": "Muunnettu tärkkelys",
+      "nl": "Gemodificeerd zetmeel",
+      "es": "Almidón modificado",
+      "sv": "Modifierad stärkelse",
+      "et": "Modifitseeritud tärklis",
+      "ro": "Amidon modificat",
+      "bg": "Модифицирано нишесте",
+      "ca": "Midó modificat",
+      "it": "Amido modificato",
+      "lt": "Modifikuotas krakmolas"
+    }
+  },
+  "fr:conservateur-de-surface": {
+    "name": {
+      "fr": "Conservateur de surface"
+    }
+  },
+  "en:raising-agent": {
+    "wikidata": {
+      "en": "Q908833"
+    },
+    "description": {
+      "es": "Gasificantes: sustancias o combinaciones de sustancias que liberan gas y, de esa manera, aumentan el volumen de una masa.",
+      "nl": "Rijsmiddelen: stoffen of combinaties van stoffen die gas vrijmaken en daardoor het volume van deeg of beslag vergroten.",
+      "et": "Kergitusained – ained või ainete segud, millest vabaneva gaasi tõttu suureneb taigna maht.",
+      "sv": "Bakpulver: ämnen eller kombinationer av ämnen som frigör gaser och därigenom ökar volymen på en deg eller smet.",
+      "it": "Gli agenti lievitanti sono sostanze, o combinazioni di sostanze, che liberano gas e in questo modo aumentano il volume di un impasto o di una pastella.",
+      "lt": "Tešlos kildymo medžiagos – medžiagos arba medžiagų deriniai, išlaisvinantys dujas, kildinančias tešlą arba plaktą tešlą.",
+      "da": "Hævemidler: stoffer eller kombinationer af stoffer, som udvikler gas og dermed får dej til at svulme op.",
+      "sl": "Sredstva za vzhajanje so snovi ali njihove kombinacije, ki sproščajo plin in tako povečajo prostornino različnih vrst testa.",
+      "fr": "Les poudres à lever sont des substances ou combinaisons de substances qui, par libération de gaz, accroissent le volume d'une pâte.",
+      "fi": "Nostatusaineet ovat aineita tai seoksia, jotka vapauttavat kaasuja ja siten lisäävät taikinan tai seoksen tilavuutta.",
+      "el": "Διογκωτικά αρτοποιίας, οι ουσίες ή οι συνδυασμοί ουσιών που ελευθερώνουν αέριο και ως εκ τούτου αυξάνουν τον όγκο της ζύμης ή του παναρίσματος·",
+      "sk": "Kypriace činidlá sú látky alebo ich kombinácie, ktoré uvoľňujú plyn a tak zväčšujú objem cesta.",
+      "de": "Backtriebmittel sind Stoffe oder Kombinationen von Stoffen, die Gas freisetzen und dadurch das Volumen eines Teigs vergrößern.",
+      "pt": "Levedantes químicos: substâncias ou combinações de substâncias que libertam gás, aumentando assim o volume das massas ou polmes de farinha.",
+      "pl": "Substancje spulchniające to substancje lub mieszaniny substancji uwalniające gaz, a tym samym zwiększające objętość ciasta.",
+      "hu": "Térfogatnövelő szerek: olyan anyagok vagy anyagkeverékek, amelyek gázt szabadítanak fel, ezzel növelve a tészták térfogatát.",
+      "en": "Raising agents are substances or combinations of substances which liberate gas and thereby increase the volume of a dough or a batter.",
+      "cs": "Kypřicími látkami se rozumějí látky nebo směsi látek, které uvolňují plyn, a tak zvyšují objem těsta.",
+      "lv": "Irdinātāji ir vielas vai to maisījumi, kas, izdalot gāzes, palielina mīklas apjomu."
+    },
+    "name": {
+      "de": "Backtriebmittel",
+      "mt": "Aġent li jgħolli l-ikel",
+      "sk": "Kypriaca látka",
+      "nb": "Hevemiddel",
+      "pt": "Levedante",
+      "ru": "Разрыхлитель",
+      "ga": "Oibreán éiritheach",
+      "en": "Raising agent",
+      "cs": "Kypřicí látka",
+      "pl": "Substancja spulchniająca",
+      "hu": "Térfogatnövelő szer",
+      "lv": "Irdinātājs",
+      "es": "Gasificante",
+      "nl": "Rijsmiddel",
+      "sv": "Jäsningsmedel",
+      "ro": "Agent de afânare",
+      "et": "Kergitusaine",
+      "bg": "Набухвател",
+      "it": "Agente lievitante",
+      "lt": "Tešlos kildymo medžiaga",
+      "da": "Hævemiddel",
+      "sl": "Potisni plin",
+      "el": "Διογκωτικό αρτοποιίας",
+      "fi": "Nostatusaine",
+      "is": "Lyftiefni",
+      "fr": "Agent levant"
+    }
+  },
+  "en:packaging-gas": {
+    "name": {
+      "it": "Gas di confezionamento",
+      "fr": "Gaz de conditionnement",
+      "fi": "Pakkauskaasu",
+      "es": "Gas de envasado",
+      "en": "Packaging gas"
+    },
+    "description": {
+      "fr": "Additif alimentaire gazeux, qui est introduit dans un conteneur pendant, durant ou après son remplissage avec une denrée alimentaire avec l'intention de protéger l'aliment par exemple de l'oxydation ou de l'altération.",
+      "en": "A food additive gas, which is introduced into a container before, during or after filling with food with the intention to protect the food, for example, from oxidation or spoilage.",
+      "es": "Aditivos alimentarios gaseosos, introducidos en un envase antes, durante o después de su llenado con un alimento, con la intención de proteger el alimento, por ejemplo, de la oxidación o descomposición."
+    }
+  },
+  "en:other-nutritional-substances": {
+    "name": {
+      "hu": "Egyéb táplálkozási anyagok",
+      "es": "Otras sustancias nutricionales",
+      "de": "Andere Nährstoffe",
+      "en": "Other nutritional substances",
+      "it": "Altre sostanze nutrizionali",
+      "fr": "Autres substances nutritives",
+      "fi": "Muut ravinnolliset aineet"
+    }
+  },
+  "en:carbonating-agent": {
+    "description": {
+      "es": "Aditivos alimentarios utilizados para introducir dióxido de carbono en un alimento.",
+      "en": "A food additive used to provide carbonation in a food.",
+      "fr": "Additif alimentaire utilisé pour apporter du dioxyde de carbone à une denrée alimentaire."
+    },
+    "name": {
+      "en": "Carbonating agent",
+      "fr": "Agent de carbonation",
+      "fi": "Karbonointiaine"
+    }
+  },
+  "en:amino-acids": {
+    "name": {
+      "sl": "Aminokisline",
+      "fi": "Aminohapot",
+      "el": "Αμινοξέα",
+      "fr": "Acides aminés",
+      "es": "Aminoácidos",
+      "bg": "Аминокиселини",
+      "sv": "Aminosyror",
+      "ro": "Aminoacizi",
+      "et": "Aminohapped",
+      "it": "Amminoacidi",
+      "lt": "Aminorūgštys",
+      "cs": "Aminokyseliny",
+      "en": "Amino acids",
+      "hu": "Aminosavak",
+      "pl": "Aminokwasy",
+      "lv": "Aminoskābes",
+      "de": "Aminosäuren",
+      "mt": "Aċidi amminiċi",
+      "sk": "Aminokyseliny",
+      "pt": "Aminoácidos"
+    }
+  },
+  "en:thickener": {
+    "wikidata": {
+      "en": "Q911138"
+    },
+    "description": {
+      "et": "Paksendajad – ained, mis suurendavad toidu viskoossust.",
+      "sv": "Förtjockningsmedel: ämnen som ökar ett livsmedels viskositet.",
+      "es": "Espesantes: sustancias que aumentan la viscosidad de un alimento.",
+      "nl": "Verdikkingsmiddelen: stoffen die de viscositeit van een levensmiddel vergroten.",
+      "lt": "Tirštikliai – medžiagos, sutirštinančios maisto produktą.",
+      "it": "Gli addensanti sono sostanze che aumentano la viscosità di un prodotto alimentare.",
+      "sl": "Sredstva za zgostitev -gostila- so snovi, ki povečujejo viskoznost živila.",
+      "da": "Fortykningsmidler: stoffer, der øger en fødevares viskositet.",
+      "fr": "Les épaississants sont des substances qui, ajoutées à une denrée alimentaire, en augmentent la viscosité.",
+      "el": "Πυκνωτικά μέσα, οι ουσίες που αυξάνουν το ιξώδες ενός τροφίμου·",
+      "fi": "Sakeuttamisaineet ovat aineita, jotka lisäävät elintarvikkeen jähmeyttä.",
+      "sk": "Zahusťovadlá sú látky, ktoré zvyšujú viskozitu potraviny.",
+      "de": "Verdickungsmittel sind Stoffe, die die Viskosität eines Lebensmittels erhöhen.",
+      "pt": "Espessantes: substâncias que aumentam a viscosidade dos géneros alimentícios.",
+      "hu": "Sűrítőanyagok: olyan anyagok, amelyek növelik az élelmiszer viszkozitását.",
+      "pl": "Substancje zagęszczające to substancje zwiększające lepkość środków spożywczych.",
+      "en": "Thickeners are substances which increase the viscosity of a foodstuff.",
+      "cs": "Zahušťovadly se rozumějí látky, které zvyšují viskozitu potraviny.",
+      "lv": "Biezinātāji ir vielas, kas palielina pārtikas produktu viskozitāti."
+    },
+    "name": {
+      "el": "Πυκνωτικό μέσο",
+      "fi": "Sakeuttamisaine",
+      "fr": "Épaississant",
+      "da": "Fortykningsmiddel",
+      "sl": "Sladilo",
+      "it": "Addensante",
+      "lt": "Tirštiklis",
+      "ca": "Espessidor",
+      "nl": "Verdikkingsmiddel",
+      "es": "Espesante",
+      "sv": "Förtjockningsmedel",
+      "ro": "Agent de îngroșare",
+      "et": "Paksendaja",
+      "bg": "Сгъстител",
+      "lv": "Biezinātājs",
+      "ja": "増粘剤",
+      "cs": "Zahušťovadlo",
+      "en": "Thickener",
+      "hu": "Sűrítőanyag",
+      "pl": "Substancja zagęszczająca",
+      "nb": "Fortykningsmiddel",
+      "pt": "Espessante",
+      "ru": "Загуститель",
+      "ga": "Tiúsóir",
+      "de": "Verdickungsmittel",
+      "mt": "Aġent li jgħaqqad",
+      "sk": "Zahusťovadlo"
+    },
+    "children": [
+      "en:natural-thickener"
+    ]
+  },
+  "en:anti-bulking-agent": {
+    "name": {
+      "en": "Anti-bulking agent"
+    }
+  },
+  "en:flavour-enhancer": {
+    "description": {
+      "pt": "Intensificadores de sabor: substâncias que intensificam o sabor e/ou o cheiro dos géneros alimentícios.",
+      "sk": "Zvýrazňovače chuti a arómy sú látky, ktoré zvýrazňujú existujúcu chuť a/alebo vôňu potraviny.",
+      "de": "Geschmacksverstärker sind Stoffe, die den Geschmack und/oder Geruch eines Lebensmittels verstärken.",
+      "lv": "Garšas pastiprinātāji ir vielas, kas pastiprina pārtikas produktiem piemītošo garšu un/vai smaržu.",
+      "pl": "Wzmacniacze smaku to substancje wzmacniające istniejący smak lub zapach środków spożywczych.",
+      "hu": "Ízfokozók: olyan anyagok, amelyek fokozzák az élelmiszerek meglevő ízét és/vagy illatát.",
+      "cs": "Látkami zvýrazňujícími chuť a vůni se rozumějí látky, které zvýrazňují stávající chuť nebo vůni potraviny.",
+      "en": "Flavour enhancers are substances which enhance the existing taste and/or odour of a foodstuff.",
+      "it": "Gli esaltatori di sapidità sono sostanze che esaltano il sapore e/o la fragranza esistente di un prodotto alimentare.",
+      "lt": "Aromato ir skonio stiprikliai – medžiagos, sustiprinančios maisto produkto skonį ir -arba- aromatą.",
+      "es": "Potenciadores del sabor: sustancias que realzan el sabor o el aroma, o ambos, de un producto alimenticio.",
+      "nl": "Smaakversterkers: stoffen die de bestaande smaak en/of geur van een levensmiddel versterken.",
+      "sv": "Smakförstärkare: ämnen som förstärker den existerande smaken och/eller lukten hos ett livsmedel.",
+      "et": "Lõhna- ja maitsetugevdajad – ained, mis tugevdavad toidule omast maitset ja/või lõhna.",
+      "fr": "Les exhausteurs de goût sont des substances qui renforcent le goût et/ou l'odeur d'une denrée alimentaire.",
+      "el": "Ενισχυτικά γεύσεως, οι ουσίες που ενισχύουν την υπάρχουσα γεύση ή/και οσμή τροφίμου·",
+      "fi": "Arominvahventeet ovat aineita, jotka vahvistavat elintarvikkeen omaa makua ja/tai tuoksua.",
+      "da": "Smagsforstærkere: stoffer, der forstærker en fødevares smag og/eller lugt.",
+      "sl": "Ojačevalci arome so snovi, ki izboljšajo obstoječi okus in/ali vonj živila."
+    },
+    "name": {
+      "ca": "Potenciador del gust",
+      "nl": "Smaakversterker",
+      "es": "Potenciador del sabor",
+      "sv": "Smakförstärkare",
+      "ro": "Potențiator de aromă",
+      "bg": "Овкусител",
+      "et": "Lõhna- ja maitsetugevdaja",
+      "it": "Esaltatore di sapidità",
+      "lt": "Aromato ir skonio stipriklis",
+      "da": "Smagsforstærker",
+      "zh": "增味劑",
+      "sl": "Ojačevalec arome",
+      "fi": "Arominvahvenne",
+      "el": "Ενισχυτικό γεύσης",
+      "fr": "Exhausteur de goût",
+      "de": "Geschmacksverstärker",
+      "mt": "Tejjieb il-ħwawar",
+      "sk": "Stimulátor",
+      "nb": "Smaksforsterker",
+      "pt": "Intensificador de sabor",
+      "ga": "Méadaitheoir blais",
+      "en": "Flavour enhancer",
+      "cs": "Látka zvýrazňující chuť a vůni",
+      "hu": "Ízfokozó",
+      "pl": "Wzmacniacz smaku",
+      "lv": "Garšas pastiprinātājs"
+    },
+    "wikidata": {
+      "en": "Q898745"
+    }
+  }
+}

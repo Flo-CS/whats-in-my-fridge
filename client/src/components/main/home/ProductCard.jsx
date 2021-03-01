@@ -42,7 +42,7 @@ export default function ProductCard({barcode, quantity, productData}) {
     const productCardClass = classNames("product-card", {
         "product-card--disabled": quantity <= 0,
     });
-    const {image_url: imageUrl, brands: brandsText, product_name: name} = productData;
+    const {image_url, brands_tags = [], product_name} = productData;
 
     return (
         <div className={productCardClass}>
@@ -50,8 +50,8 @@ export default function ProductCard({barcode, quantity, productData}) {
                  onKeyDown={handleCardClick} role="button" tabIndex="0"> {/*role is mandatory to respect a11y*/}
                 <div className="product-card__header">
                     <p className="product-card__name">
-                        {name} - {brandsText} -{" "}
-                        <span className="product-card__name--soft">{barcode}</span>
+                        {product_name} - {brands_tags.map(tag => tag.name).join(", ")} - <span
+                        className="product-card__name--soft">{barcode}</span>
                     </p>
                 </div>
                 <div className="product-card__body">
@@ -59,7 +59,7 @@ export default function ProductCard({barcode, quantity, productData}) {
                         className="product-card__image"
 
                         alt="Product"
-                        src={imageUrl}
+                        src={image_url}
                     />
                 </div>
             </div>

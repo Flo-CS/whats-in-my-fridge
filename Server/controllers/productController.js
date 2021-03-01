@@ -1,15 +1,15 @@
 const axios = require("axios");
 
-const config = require("../config");
-
 const models = require("./../models/index");
 
-const DEFAULT_RANGE = "0-100";
-const DEFAULT_SORT = "lastDateModified-asc";
+const {OPEN_FOOD_FACTS_USEFUL_FIELDS, OPEN_FOOD_FACTS_API_ENDPOINT} = require("../config");
+const {transformProductDataTagsIdIntoFacets} = require("../helpers/productData");
+
 
 const getAllProducts = async (req, res) => {
-    const range = req.query.range || DEFAULT_RANGE;
-    const sort = req.query.sort || DEFAULT_SORT;
+
+    const range = req.query.range || "0-100";
+    const sort = req.query.sort || "updatedAt-asc";
 
     const rangeStart = parseInt(range.split("-")[0]);
     const rangeEnd = parseInt(range.split("-")[1]);
@@ -19,11 +19,15 @@ const getAllProducts = async (req, res) => {
 
     try {
         // TODO : Implement the sorting
-        const products = await models.Product.find({
+        let products = await models.Product.find({
             user: req.verifiedToken.id,
-        })
-            .skip(rangeStart)
-            .limit(rangeEnd);
+        }).skip(rangeStart)
+            .limit(rangeEnd)
+            .lean(true);
+
+        products = products.map((product) => {
+            return {...product, data: transformProductDataTagsIdIntoFacets(product.data)};
+        });
 
         res.status(200).json({products});
     } catch (error) {
@@ -38,7 +42,10 @@ const getOneProduct = async (req, res) => {
         const product = await models.Product.findOne({
             user: req.verifiedToken.id,
             barcode: barcode,
-        });
+        }).lean(true);
+
+        product.data = transformProductDataTagsIdIntoFacets(product.data);
+
 
         res.status(200).json({product});
     } catch (error) {
@@ -65,17 +72,17 @@ const addOneProduct = async (req, res) => {
         }
 
         // CREATE NEW PRODUCT PART
-        const fields = config.OPEN_FOOD_FACTS_USEFUL_FIELDS.join(",");
+        const fields = OPEN_FOOD_FACTS_USEFUL_FIELDS.join(",");
         // Get all openFoodFacts data for the product with their API
         const openFoodFactsResponse = await axios.get(
-            `${config.OPEN_FOOD_FACTS_API_ENDPOINT}/product/${barcode}.json?fields=${fields}`
+            `${OPEN_FOOD_FACTS_API_ENDPOINT}/product/${barcode}.json?fields=${fields}`
         );
 
 
         const productData = openFoodFactsResponse.data.product;
 
         // We verify that the product exists and if we have a name for it in open food facts, 0 is status code for error
-        if (openFoodFactsResponse.data.status === 0 || !productData.product_name) return res.status(404).json();
+        if (openFoodFactsResponse.data.status === 0 || !productData.product_name) return res.status(404).json({});
 
 
         const productToCreate = new models.Product({
