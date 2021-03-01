@@ -22,12 +22,8 @@ const getAllProducts = async (req, res) => {
         let products = await models.Product.find({
             user: req.verifiedToken.id,
         }).skip(rangeStart)
-            .limit(rangeEnd)
-            .lean(true);
+            .limit(rangeEnd);
 
-        products = products.map((product) => {
-            return {...product, data: transformProductDataTagsIdIntoFacets(product.data)};
-        });
 
         res.status(200).json({products});
     } catch (error) {
@@ -42,10 +38,7 @@ const getOneProduct = async (req, res) => {
         const product = await models.Product.findOne({
             user: req.verifiedToken.id,
             barcode: barcode,
-        }).lean(true);
-
-        product.data = transformProductDataTagsIdIntoFacets(product.data);
-
+        });
 
         res.status(200).json({product});
     } catch (error) {
@@ -79,17 +72,19 @@ const addOneProduct = async (req, res) => {
         );
 
 
-        const productData = openFoodFactsResponse.data.product;
+        let productData = openFoodFactsResponse.data.product;
 
         // We verify that the product exists and if we have a name for it in open food facts, 0 is status code for error
         if (openFoodFactsResponse.data.status === 0 || !productData.product_name) return res.status(404).json({});
 
+        productData = transformProductDataTagsIdIntoFacets(productData);
 
         const productToCreate = new models.Product({
             user: req.verifiedToken.id,
             barcode: barcode,
             data: productData,
         });
+
 
         await productToCreate.save();
         res.status(200).json({product: productToCreate, updated: false});
