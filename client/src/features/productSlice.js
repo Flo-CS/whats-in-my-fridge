@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {toast} from "react-toastify";
 import Api from "../helpers/api";
 
 // THUNKS
@@ -67,6 +68,7 @@ const productSlice = createSlice({
         },
         [addProduct.rejected]: (state, action) => {
             state.productsError = action.error;
+            toast.error("Le produit n'existe pas ou le code barre est invalide");
         },
 
         [updateProduct.fulfilled]: (state, action) => {
@@ -80,6 +82,7 @@ const productSlice = createSlice({
         },
         [updateProduct.rejected]: (state, action) => {
             state.productsError = action.error;
+            toast.error("Le produit n'a pas pu être mis à jour");
         },
 
         [deleteProduct.fulfilled]: (state, action) => {
@@ -92,6 +95,7 @@ const productSlice = createSlice({
         },
         [deleteProduct.rejected]: (state, action) => {
             state.productsError = action.error;
+            toast.error("Le produit n'a pas pu être supprimé");
         },
 
         [fetchActiveProduct.pending]: (state, action) => {

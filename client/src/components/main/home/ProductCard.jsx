@@ -23,7 +23,7 @@ export default function ProductCard({barcode, quantity, productData}) {
     function handleDecreaseQuantityButtonClick() {
         // Verify if the quantity don't go lower or equal than 1 and delete the product if it's the case
         if (quantity - 1 <= -1) {
-            if (window.confirm("Do you want to definitively delete this product ?")) {
+            if (window.confirm("Voulez vous définitivement supprimer ce produit")) {
                 dispatch(deleteProduct({barcode}));
             }
         } else {

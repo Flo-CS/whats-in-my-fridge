@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {toast} from "react-toastify";
 import Api from "../helpers/api";
 
 //THUNKS
@@ -40,6 +41,8 @@ const authSlice = createSlice({
             state.isLoading = false;
             state.isAuthenticated = false;
             state.error = action.error;
+            console.log(action.error);
+            toast.error("Impossible de se connecter: verifiez vos identifiants");
         },
 
         [registerUser.pending]: (state, action) => {
@@ -65,6 +68,7 @@ const authSlice = createSlice({
             state.isLoading = false;
             state.isAuthenticated = false;
             state.error = action.error;
+            toast.error("Votre session a expiré: veuillez vous reconnecter");
         },
 
         [logoutUser.fulfilled]: (state, action) => {
