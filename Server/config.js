@@ -24,7 +24,7 @@ const OPEN_FOOD_FACTS_USEFUL_FIELDS = ["product_name",
     "serving_size",
     "nutriments",];
 
-const DEFAULT_LANG_CODE = "en";
+const DEFAULT_LANG_CODE = "fr";
 
 module.exports = {
     SERVER_PORT,

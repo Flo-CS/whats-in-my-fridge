@@ -18,7 +18,7 @@ export default function HomeView() {
 
     return <div className="home-view">
         {productsIsLoading === false ? <ProductsCardsGrid products={products}/> :
-            <p>Loading...</p>}
+            <p>Chargement...</p>}
         <BottomPanel/>
     </div>;
 }

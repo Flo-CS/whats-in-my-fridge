@@ -23,7 +23,7 @@ export default function ProductView() {
             <ProductContent productData={activeProduct.data}/>
         </div>;
     } else {
-        return <p>Loading...</p>;
+        return <p>Chargement...</p>;
     }
 
 

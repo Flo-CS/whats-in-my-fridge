@@ -11,8 +11,10 @@ export default function LoginPage() {
 
 // Todo : Credit to open food facts (see licence for more infos)
     return <div className="login">
-        <h1>Login</h1>
+        <h1>Connexion</h1>
         <LoginInputs/>
-        <button className="login__go-register-button" onClick={() => history.push("/register")}>Go register</button>
+        <button className="login__go-register-button" onClick={() => history.push("/register")}>Aller
+            s&apos;enregistrer
+        </button>
     </div>
 }

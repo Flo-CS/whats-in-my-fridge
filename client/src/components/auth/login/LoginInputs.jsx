@@ -26,7 +26,7 @@ export default function LoginInputs() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Mot de passe</label>
             <input
                 className="login-inputs__password"
                 id="password"
@@ -34,7 +34,7 @@ export default function LoginInputs() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit" className="login-inputs__submit-button">Submit</button>
+            <button type="submit" className="login-inputs__submit-button">Envoyer</button>
         </form>
     );
 }

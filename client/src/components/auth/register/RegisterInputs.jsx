@@ -24,7 +24,7 @@ export default function RegisterInputs() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Mot de passe</label>
             <input
                 className="register-inputs__password"
                 id="password"
@@ -32,7 +32,7 @@ export default function RegisterInputs() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit" className="register-inputs__submit-button">Submit</button>
+            <button type="submit" className="register-inputs__submit-button">Envoyer</button>
         </form>
     );
 }
