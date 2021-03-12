@@ -1,18 +1,23 @@
+$stripe-color: #e5e5e5;
 .product-card {
   position: relative;
   display: flex;
   width: 100%;
   cursor: pointer;
+  transition: box-shadow 0.2s ease;
+
   border-radius: 5px;
 
-  background-color: white;
+  background-color: #f6f6f6;
 
   &:hover {
-    background-color: darken(white, 10%);
+    box-shadow: 0 5px 10px -5px transparentize(darken(#f6f6f6, 30%), 0.6), 0 -5px 10px -5px transparentize(darken(#f6f6f6, 30%), 0.6);
+
   }
 
   &--disabled {
-    background-color: #e7e7e7;
+    background-image: linear-gradient(135deg, $stripe-color 2.38%, #f6f6f6 2.38%, #f6f6f6 50%, $stripe-color 50%, $stripe-color 52.38%, #f6f6f6 52.38%, #f6f6f6 100%);
+    background-size: 29.70px 29.70px;
   }
 
   &__content {

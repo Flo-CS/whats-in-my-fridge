@@ -1,14 +1,15 @@
 @import "../../../variables";
 
 .products-cards-grid {
+  display: grid;
   overflow-y: scroll;
+  align-content: start;
   width: 100%;
   max-height: 100%;
-  display: grid;
-  gap: 10px;
+  margin-bottom: 10px;
   padding: 10px;
+  gap: 10px;
   grid-template-columns: repeat(1, 1fr);
-  align-content: start;
 }
 
 @media all and (min-width: $md-screen) {

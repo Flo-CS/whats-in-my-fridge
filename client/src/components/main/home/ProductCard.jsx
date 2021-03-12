@@ -7,6 +7,7 @@ import {ReactComponent as MinusIcon} from "../../../assets/icons/minus.svg";
 
 import {ReactComponent as PlusIcon} from "../../../assets/icons/plus.svg";
 import {deleteProduct, updateProduct} from "../../../features/productSlice";
+import {truncateString} from "../../../helpers/miscellaneous";
 
 import "./ProductCard.scss";
 
@@ -50,7 +51,7 @@ export default function ProductCard({barcode, quantity, productData}) {
                  onKeyDown={handleCardClick} role="button" tabIndex="0"> {/*role is mandatory to respect a11y*/}
                 <div className="product-card__header">
                     <p className="product-card__name">
-                        {product_name} - {brands_tags.map(tag => tag.name).join(", ")} - <span
+                        {truncateString(product_name, 30)}<br/>{brands_tags.map(tag => tag.name).join(", ")} - <span
                         className="product-card__name--soft">{barcode}</span>
                     </p>
                 </div>
