@@ -42,9 +42,9 @@ export default function ProductContent({productData}) {
         <div className="product-content__tags-fields">
             <p className="product-content__tags-field">
                 <span className="product-content__tags-field-name">Categories:</span>
-                {categories_tags.map((tag, i) => {
+                {categories_tags.map((tag) => {
                     return <span className="product-content__tags-fields-value"
-                                 key={i}>{tag.name}<br/></span>;
+                                 key={tag.name}>{tag.name}<br/></span>;
                 })}
             </p>
         </div>

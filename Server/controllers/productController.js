@@ -1,9 +1,27 @@
 const axios = require("axios");
 
 const models = require("./../models/index");
+const {OPEN_FOOD_FACTS_USEFUL_FIELDS, OPEN_FOOD_FACTS_API_ENDPOINT, DEFAULT_LANG_CODE} = require("../config");
+const {convertTagsWithTaxonomies} = require("./../helpers/taxonomies");
 
-const {OPEN_FOOD_FACTS_USEFUL_FIELDS, OPEN_FOOD_FACTS_API_ENDPOINT} = require("../config");
-const {transformProductDataTagsIdIntoFacets} = require("../helpers/productData");
+
+function convertProductsDocuments(productsDocs) {
+    return productsDocs.map(productDoc => {
+        const product = productDoc.toObject();
+        return {
+            ...product,
+            data: convertTagsWithTaxonomies(product.data, DEFAULT_LANG_CODE)
+        };
+    });
+}
+
+function convertProductDocument(productDoc) {
+    const product = productDoc.toObject();
+    return {
+        ...product,
+        data: convertTagsWithTaxonomies(product.data, DEFAULT_LANG_CODE)
+    };
+}
 
 
 const getAllProducts = async (req, res) => {
@@ -24,8 +42,7 @@ const getAllProducts = async (req, res) => {
         }).skip(rangeStart)
             .limit(rangeEnd);
 
-
-        res.status(200).json({products});
+        res.status(200).json({products: convertProductsDocuments(products)});
     } catch (error) {
         res.status(500).json({error});
     }
@@ -40,7 +57,8 @@ const getOneProduct = async (req, res) => {
             barcode: barcode,
         });
 
-        res.status(200).json({product});
+
+        res.status(200).json({product: convertProductDocument(product)});
     } catch (error) {
         res.status(500).json({error});
     }
@@ -61,7 +79,7 @@ const addOneProduct = async (req, res) => {
         );
 
         if (productToUpdate) {
-            return res.status(200).json({product: productToUpdate, updated: true});
+            return res.status(200).json({product: convertProductDocument(productToUpdate), updated: true});
         }
 
         // CREATE NEW PRODUCT PART
@@ -77,7 +95,6 @@ const addOneProduct = async (req, res) => {
         // We verify that the product exists and if we have a name for it in open food facts, 0 is status code for error
         if (openFoodFactsResponse.data.status === 0 || !productData.product_name) return res.status(404).json({});
 
-        productData = transformProductDataTagsIdIntoFacets(productData);
 
         const productToCreate = new models.Product({
             user: req.verifiedToken.id,
@@ -87,7 +104,9 @@ const addOneProduct = async (req, res) => {
 
 
         await productToCreate.save();
-        res.status(200).json({product: productToCreate, updated: false});
+
+
+        res.status(200).json({product: convertProductDocument(productToCreate), updated: false});
     } catch (error) {
         res.status(500).json({error});
     }
@@ -115,9 +134,9 @@ const updateOneProduct = async (req, res) => {
             {user: req.verifiedToken.id, barcode: barcode},
             updatedProduct,
             {new: true}
-        );
+        )
 
-        res.status(200).json({product: product});
+        res.status(200).json({product: convertProductDocument(product)});
     } catch (error) {
         res.status(500).json({error});
     }
@@ -130,9 +149,9 @@ const deleteOneProduct = async (req, res) => {
         const product = await models.Product.findOneAndDelete({
             user: req.verifiedToken.id,
             barcode: barcode,
-        });
+        })
 
-        res.status(200).json({product});
+        res.status(200).json({product: convertProductDocument(product)});
     } catch (error) {
         res.status(500).json({error});
     }

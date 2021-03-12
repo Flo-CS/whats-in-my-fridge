@@ -10,7 +10,7 @@ require("dotenv").config();
 const {SERVER_PORT} = require("./config");
 const productRoute = require("./routes/productRoute");
 const userRoute = require("./routes/userRoute");
-const {downloadTaxonomiesFiles, downloadFacetsFiles} = require("./helpers/productData");
+const {downloadTaxonomiesFiles} = require("./helpers/taxonomies");
 
 
 // Setup DB connection
@@ -26,7 +26,6 @@ mongoose
 
 // Download taxonomies and facets files task (to maintain data updated)
 setInterval(() => {
-    downloadFacetsFiles();
     downloadTaxonomiesFiles();
 }, 30 * 60 * 1000);
 
