@@ -95,7 +95,9 @@ function convertTagsWithTaxonomies(productData, langCode) {
         traces_tags,
         allergens_tags,
         additives_tags,
-        ingredients_tags
+        ingredients_tags,
+        ingredients_analysis_tags,
+        nutrient_levels_tags
     } = productData;
 
     return {
@@ -109,6 +111,8 @@ function convertTagsWithTaxonomies(productData, langCode) {
         allergens_tags: allergens_tags?.map(tag => getTagName(tag, "allergens", langCode)),
         additives_tags: additives_tags?.map(tag => getTagName(tag, "additives", langCode)),
         ingredients_tags: ingredients_tags?.map(tag => getTagName(tag, "ingredients", langCode)),
+        ingredients_analysis_tags: ingredients_analysis_tags?.map(tag => getTagName(tag, "ingredientsAnalysis", langCode)),
+        nutrient_levels_tags: nutrient_levels_tags?.map(tag => getTagName(tag, "nutrientLevels", langCode))
     };
 
 }

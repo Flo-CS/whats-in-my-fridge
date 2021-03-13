@@ -27,7 +27,7 @@ function convertProductDocument(productDoc) {
 const getAllProducts = async (req, res) => {
 
     const range = req.query.range || "0-100";
-    const sort = req.query.sort || "updatedAt-asc";
+    const sort = req.query.sort || "quantity-descending";
 
     const rangeStart = parseInt(range.split("-")[0]);
     const rangeEnd = parseInt(range.split("-")[1]);
@@ -40,7 +40,7 @@ const getAllProducts = async (req, res) => {
         let products = await models.Product.find({
             user: req.verifiedToken.id,
         }).skip(rangeStart)
-            .limit(rangeEnd);
+            .limit(rangeEnd).sort({[sortField]: sortOrder});
 
         res.status(200).json({products: convertProductsDocuments(products)});
     } catch (error) {

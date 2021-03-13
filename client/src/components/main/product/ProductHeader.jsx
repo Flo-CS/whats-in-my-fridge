@@ -15,9 +15,10 @@ export default function ProductHeader({barcode, productData}) {
             </h1>
             <h2 className="product-header__brands">{brands_tags.map(tag => tag.name).join(", ")}</h2>
             <p className="product-header__barcode">{barcode}</p>
-        </div>
 
+        </div>
         <p className="product-header__quantity">{quantity}</p>
+
 
     </div>;
 }

@@ -68,7 +68,7 @@ const authSlice = createSlice({
             state.isLoading = false;
             state.isAuthenticated = false;
             state.error = action.error;
-            toast.error("Votre session a expiré: veuillez vous reconnecter");
+            toast.error("Impossible de se connecter: veuillez vous reconnecter");
         },
 
         [logoutUser.fulfilled]: (state, action) => {

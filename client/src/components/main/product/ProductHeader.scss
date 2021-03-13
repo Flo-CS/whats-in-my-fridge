@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-  min-height: 90px;
   padding: 10px;
   background-color: #f6f6f6;
 
@@ -17,29 +16,27 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 100%;
-    margin: 10px;
+    margin: 0 10px;
+  }
+
+  &__name, &__barcode, &__brands {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+
   }
 
   &__name {
-    font-size: 0.7rem;
     font-weight: 700;
   }
 
-  &__barcode {
-    font-size: 0.7rem;
-  }
-
   &__brands {
-    font-size: 0.7rem;
     font-weight: 600;
 
   }
 
   &__quantity {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    white-space: nowrap;
 
   }
 

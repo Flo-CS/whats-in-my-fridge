@@ -1,0 +1,25 @@
+.product-tags-field {
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+
+  &__name {
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  &__bulleted-list {
+    line-height: 0.9rem;
+
+
+    &-item {
+      margin-left: 10px;
+
+    }
+  }
+
+  &__no-tags, &__empty-tags {
+    font-style: italic;
+    margin-left: 10px;
+  }
+}
+

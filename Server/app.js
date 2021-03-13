@@ -27,7 +27,7 @@ mongoose
 // Download taxonomies and facets files task (to maintain data updated)
 setInterval(() => {
     downloadTaxonomiesFiles();
-}, 30 * 60 * 1000);
+}, 60 * 60 * 1000);
 
 // Setup Express App
 const App = express();
