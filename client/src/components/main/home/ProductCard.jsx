@@ -51,7 +51,7 @@ export default function ProductCard({barcode, quantity, productData}) {
                  onKeyDown={handleCardClick} role="button" tabIndex="0"> {/*role is mandatory to respect a11y*/}
                 <div className="product-card__header">
                     <p className="product-card__name">
-                        {truncateString(product_name, 30)}<br/>{brands_tags.map(tag => tag.name).join(", ")} - <span
+                        <b className="product-card__name--bold">{truncateString(product_name, 30)}</b><br/>{brands_tags.map(tag => tag.name).join(", ")} - <span
                         className="product-card__name--soft">{barcode}</span>
                     </p>
                 </div>

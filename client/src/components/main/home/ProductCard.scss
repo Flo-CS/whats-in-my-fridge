@@ -35,10 +35,15 @@ $stripe-color: #e5e5e5;
   }
 
   &__name {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 
     &--soft {
       font-size: 0.7rem;
+    }
+
+    &--bold {
+      font-weight: 600;
+
     }
   }
 
@@ -49,7 +54,8 @@ $stripe-color: #e5e5e5;
   &__image {
     overflow: hidden;
     width: auto;
-    height: 50px;
+    max-width: 100px;
+    max-height: 50px;
     white-space: nowrap;
 
     // Hide the alt text

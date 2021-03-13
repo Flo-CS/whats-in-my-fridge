@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
-import {ToastContainer} from "react-toastify";
+import {Slide, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 import App from "./App";
@@ -16,15 +16,19 @@ ReactDOM.render(
         <Provider store={store}>
             <App/>
             <ToastContainer
+                style={{padding: "10px"}}
                 position="top-right"
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick
                 rtl={false}
-                pauseOnFocusLoss
                 draggable
+                draggablePercent={60}
+                pauseOnFocusLoss
                 pauseOnHover
+                transition={Slide}
+                limit={2}
             />
         </Provider>
     </React.StrictMode>,

@@ -1,13 +1,13 @@
-$main-sidebar-width: 50px;
+$main-sidebar-width: 45px;
 $main-sidebar-color: #f6f6f6;
 $main-sidebar-indicator-color: #80b918;
 $main-sidebar-icon-color: #000000;
 .main-sidebar {
-  height: 100%;
-  width: $main-sidebar-width;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: $main-sidebar-width;
+  height: 100%;
   background-color: $main-sidebar-color;
 
   &__profile {
@@ -52,12 +52,12 @@ $main-sidebar-icon-color: #000000;
   }
 
   &__button {
-    width: 80%;
-    height: 80%;
-    outline: none;
-    border: none;
-    background: none;
+    width: 90%;
+    height: 90%;
     cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
 
     &-icon {
       width: 80%;

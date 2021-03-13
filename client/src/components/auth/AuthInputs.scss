@@ -4,24 +4,27 @@ $auth-inputs-button-color: #80b918;
 display: flex;
   flex-direction: column;
   &__email, &__password {
-    padding: 5px;
+    font-size: 0.9rem;
     margin-bottom: 10px;
-    border-radius: 5px;
+    padding: 5px;
     border: 1px $auth-inputs-button-color solid;
+    border-radius: 5px;
   }
 
   label[for=email], label[for=password] {
+    font-size: 0.9rem;
     margin-bottom: 5px;
   }
 
   &__submit-button {
-    border: none;
+    font-size: 0.9rem;
+    padding: 10px;
     cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 5px;
     outline: none;
     background-color: $auth-inputs-button-color;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
 
   }
 

@@ -7,8 +7,8 @@
   &__attributes {
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 60px;
+    justify-content: space-evenly;
+    height: 40px;
   }
 
   &__attribute-box {
@@ -31,13 +31,15 @@
 
   }
 
-  &__tags-field {
-    &-name {
-      font-size: 0.9rem;
-    }
+  &__field {
+    font-size: 0.8rem;
 
-    &-value {
-      font-size: 0.9rem;
+  }
+
+  &__bulleted-list {
+    &-name {
+      font-weight: 600;
+      margin-bottom: 5px;
     }
   }
 

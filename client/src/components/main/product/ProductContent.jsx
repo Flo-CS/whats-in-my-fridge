@@ -39,14 +39,17 @@ export default function ProductContent({productData}) {
                                                                  alt=""/></div>
         </div>
 
-        <div className="product-content__tags-fields">
-            <p className="product-content__tags-field">
-                <span className="product-content__tags-field-name">Catégories:</span>
-                {categories_tags.map((tag) => {
-                    return <span className="product-content__tags-field-value"
-                                 key={tag.name}>{tag.name}<br/></span>;
-                })}
-            </p>
+        <div className="product-content__fields">
+
+            <div className="product-content__field">
+                <p className="product-content__bulleted-list-name">Catégories:</p>
+                <ul className="product-content__bulleted-list">
+                    {categories_tags.map((tag) => {
+                        return <li className="product-content__bulleted-list-item"
+                                   key={tag.name}>{tag.name}<br/></li>;
+                    })}
+                </ul>
+            </div>
         </div>
 
 

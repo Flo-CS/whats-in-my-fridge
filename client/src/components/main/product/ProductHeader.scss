@@ -8,8 +8,8 @@
   background-color: #f6f6f6;
 
   &__image {
-    max-width: 80px;
-    max-height: 100%;
+    max-width: 120px;
+    max-height: 70px;
     border-radius: 5px;
   }
 
@@ -19,25 +19,28 @@
     justify-content: space-evenly;
     height: 100%;
     margin: 10px;
-
   }
 
   &__name {
-    font-size: 0.9rem;
-    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
   }
 
   &__barcode {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 
   &__brands {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+
   }
 
   &__quantity {
-    font-size: 0.8rem;
-    font-weight: 700;
+    font-size: 0.7rem;
+    font-weight: 600;
+    white-space: nowrap;
+
   }
 
 }
