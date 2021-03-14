@@ -4,7 +4,9 @@ import React from "react";
 import "./ProductHeader.scss";
 
 export default function ProductHeader({barcode, productData}) {
-    const {image_url, quantity, product_name, brands_tags = []} = productData;
+    const {image_url, quantity = "", product_name, brands_tags = []} = productData;
+
+    const cleanedQuantity = quantity.replace(/(?!\d|\w)\s(?=\w|\d)/g, "");
 
     return <div className="product-header">
 
@@ -17,7 +19,7 @@ export default function ProductHeader({barcode, productData}) {
             <p className="product-header__barcode">{barcode}</p>
 
         </div>
-        <p className="product-header__quantity">{quantity}</p>
+        <p className="product-header__quantity">{cleanedQuantity}</p>
 
 
     </div>;
