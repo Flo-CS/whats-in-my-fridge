@@ -3,6 +3,7 @@ import React from "react";
 
 import "./ProductContent.scss";
 import ProductFieldsCategory from "./ProductFieldsCategory";
+import ProductNutritionTableField from "./ProductNutritionTableField";
 import ProductTagsField from "./ProductTagsField";
 
 export default function ProductContent({productData}) {
@@ -57,6 +58,7 @@ export default function ProductContent({productData}) {
         </ProductFieldsCategory>
         <ProductFieldsCategory name="Nutrition">
             <ProductTagsField fieldName="Repères nutritonnels pour 100g" tags={nutrient_levels_tags}/>
+            <ProductNutritionTableField fieldName="Informations nutritionnelles"/>
         </ProductFieldsCategory>
 
 

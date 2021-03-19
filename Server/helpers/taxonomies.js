@@ -22,6 +22,7 @@ const OPEN_FOOD_FACTS_TAXONOMIES = [
 
 const TAXONOMIES_FILES_PATH = path.join(__dirname, "./../data/taxonomies");
 
+
 async function downloadTaxonomiesFiles() {
     for (const taxonomy of OPEN_FOOD_FACTS_TAXONOMIES) {
         const url = `${OPEN_FOOD_FACTS_TAXONOMIES_ENDPOINT}/${taxonomy}.json`;
@@ -114,6 +115,13 @@ function convertTagsWithTaxonomies(productData, langCode) {
         ingredients_analysis_tags: ingredients_analysis_tags?.map(tag => getTagName(tag, "ingredientsAnalysis", langCode)),
         nutrient_levels_tags: nutrient_levels_tags?.map(tag => getTagName(tag, "nutrientLevels", langCode))
     };
+
+}
+
+
+// Nutriments is a product data field containing multiples keys for data about each nutriment,
+// and we need to transform this object in a tree shape because some nutriments have sub nutriments
+function reshapeNutrimentsInTree(nutriments) {
 
 }
 
