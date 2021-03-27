@@ -67,7 +67,6 @@ class Stats {
     computeScoreFieldStats(scoreField) {
 
         // List of all timestamps where we need to calculate average for the score
-        // TODO: THIS PART OF CODE IS SLOW (1s average)
         const flattenProductsPresencesDate = _(this.rangeFilteredProducts)
             .map(product => product.presences)
             .flatten()
