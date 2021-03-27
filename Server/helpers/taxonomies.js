@@ -1,5 +1,6 @@
 // A TAXONOMY IS A REGULATED SYNTAX DEFINITION FOR A PROPERTY; FOR EXAMPLE, ALLERGENS. THE DEFINITION INCLUDES ALL POSSIBLE ENTRIES AND TRANSLATIONS INTO OTHER LANGUAGES (SYNONYMS). TAXONOMIES ARE GLOBAL AND MULTILINGUAL AND DO NOT VARY BY COUNTRY.
 
+// TODO: Transform into class
 const axios = require("axios");
 const path = require("path");
 const _ = require("lodash");
@@ -11,6 +12,7 @@ const OPEN_FOOD_FACTS_TAXONOMIES = [
     "additives_classes",
     "ingredients_analysis",
     "nova_groups",
+    "nutrients",
     "nutrient_levels",
     "additives",
     "allergens",
@@ -35,17 +37,17 @@ async function downloadTaxonomiesFiles() {
 
 // TAXONOMIES
 try {
-    global.additivesClasses = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/additives_classes.json`);
-    global.ingredientsAnalysis = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/ingredients_analysis.json`);
-    global.novaGroups = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/nova_groups.json`);
-    global.nutrientLevels = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/nutrient_levels.json`);
-    global.categories = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/categories.json`);
-    global.labels = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/labels.json`);
-    global.countries = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/countries.json`);
-    global.origins = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/origins.json`);
-    global.allergens = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/allergens.json`);
-    global.additives = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/additives.json`);
-    global.ingredients = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/ingredients.json`);
+    global.additives_classes_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/additives_classes.json`);
+    global.ingredients_analysis_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/ingredients_analysis.json`);
+    global.nova_groups_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/nova_groups.json`);
+    global.nutrient_levels_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/nutrient_levels.json`);
+    global.categories_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/categories.json`);
+    global.labels_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/labels.json`);
+    global.countries_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/countries.json`);
+    global.origins_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/origins.json`);
+    global.allergens_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/allergens.json`);
+    global.additives_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/additives.json`);
+    global.ingredients_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/ingredients.json`);
 } catch (error) {
     console.log(error);
 }
@@ -68,6 +70,7 @@ function cleanTag(tag) {
 function getTagName(tag, taxonomyName, langCode) {
     const taxonomy = global[taxonomyName];
 
+
     if (!taxonomy) {
         return {
             converted: false,
@@ -86,7 +89,7 @@ function getTagName(tag, taxonomyName, langCode) {
 
 // Translate tags from fields preceded with _tags which are lists containing tags ids, for example, traduce "en:beverages" to Beverages (or Boissons in french)
 // TODO: Do this in a cleaner way
-function convertTagsWithTaxonomies(productData, langCode) {
+function convertTagsFieldsWithTaxonomies(productData, langCode) {
     const {
         brands_tags,
         categories_tags,
@@ -103,27 +106,19 @@ function convertTagsWithTaxonomies(productData, langCode) {
 
     return {
         ...productData,
-        brands_tags: brands_tags?.map(tag => getTagName(tag, "brands", langCode)), // No taxonomy for brands
-        categories_tags: categories_tags?.map(tag => getTagName(tag, "categories", langCode)),
-        labels_tags: labels_tags?.map(tag => getTagName(tag, "labels", langCode)),
-        origins_tags: origins_tags?.map(tag => getTagName(tag, "origins", langCode)),
-        countries_tags: countries_tags?.map(tag => getTagName(tag, "countries", langCode)),
-        traces_tags: traces_tags?.map(tag => getTagName(tag, "allergens", langCode)),
-        allergens_tags: allergens_tags?.map(tag => getTagName(tag, "allergens", langCode)),
-        additives_tags: additives_tags?.map(tag => getTagName(tag, "additives", langCode)),
-        ingredients_tags: ingredients_tags?.map(tag => getTagName(tag, "ingredients", langCode)),
-        ingredients_analysis_tags: ingredients_analysis_tags?.map(tag => getTagName(tag, "ingredientsAnalysis", langCode)),
-        nutrient_levels_tags: nutrient_levels_tags?.map(tag => getTagName(tag, "nutrientLevels", langCode))
+        brands_tags: brands_tags?.map(tag => getTagName(tag, "brands_tags", langCode)), // No taxonomy for brands
+        categories_tags: categories_tags?.map(tag => getTagName(tag, "categories_tags", langCode)),
+        labels_tags: labels_tags?.map(tag => getTagName(tag, "labels_tags", langCode)),
+        origins_tags: origins_tags?.map(tag => getTagName(tag, "origins_tags", langCode)),
+        countries_tags: countries_tags?.map(tag => getTagName(tag, "countries_tags", langCode)),
+        traces_tags: traces_tags?.map(tag => getTagName(tag, "allergens_tags", langCode)),
+        allergens_tags: allergens_tags?.map(tag => getTagName(tag, "allergens_tags", langCode)),
+        additives_tags: additives_tags?.map(tag => getTagName(tag, "additives_tags", langCode)),
+        ingredients_tags: ingredients_tags?.map(tag => getTagName(tag, "ingredients_tags", langCode)),
+        ingredients_analysis_tags: ingredients_analysis_tags?.map(tag => getTagName(tag, "ingredients_analysis_tags", langCode)),
+        nutrient_levels_tags: nutrient_levels_tags?.map(tag => getTagName(tag, "nutrient_levels_tags", langCode))
     };
 
 }
 
-
-// Nutriments is a product data field containing multiples keys for data about each nutriment,
-// and we need to transform this object in a tree shape because some nutriments have sub nutriments
-function reshapeNutrimentsInTree(nutriments) {
-
-}
-
-
-module.exports = {downloadTaxonomiesFiles, convertTagsWithTaxonomies};
+module.exports = {downloadTaxonomiesFiles, convertTagsFieldsWithTaxonomies, getTagName};

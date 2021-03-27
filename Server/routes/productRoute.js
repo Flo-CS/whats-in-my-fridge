@@ -11,7 +11,7 @@ Router.get("/", productsController.getAllProducts);
 Router.get("/stats", productsController.getStats);
 Router.get("/:barcode", productsController.getOneProduct);
 Router.post("/:barcode", productsController.addOneProduct);
-Router.put("/:barcode", productsController.updateOneProduct);
+Router.put("/quantity/:barcode", productsController.updateOneProductQuantity);
 Router.delete("/:barcode", productsController.deleteOneProduct);
 
 module.exports = Router;

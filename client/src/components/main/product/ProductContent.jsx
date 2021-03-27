@@ -23,8 +23,6 @@ export default function ProductContent({productData}) {
         ingredients_tags,
     } = productData;
 
-    console.log(JSON.stringify(productData, null, 4));
-
     // Use images from https://github.com/openfoodfacts/openfoodfacts-server/tree/master/html/images/attributes/src
     return <div className="product-content">
         <div className="product-content__attributes">

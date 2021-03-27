@@ -13,8 +13,8 @@ const addProduct = createAsyncThunk("products/add", async ({barcode}) => {
     return response.data;
 });
 
-const updateProduct = createAsyncThunk("products/update", async ({barcode, data}) => {
-    const response = await Api.updateProduct(barcode, {data: data});
+const updateProductQuantity = createAsyncThunk("products/quantity/update", async ({barcode, quantity}) => {
+    const response = await Api.updateProductQuantity(barcode, quantity);
     return response.data;
 });
 
@@ -25,6 +25,11 @@ const deleteProduct = createAsyncThunk("products/delete", async ({barcode}) => {
 
 const fetchActiveProduct = createAsyncThunk("products/fetchOne", async ({barcode}) => {
     const response = await Api.getProduct(barcode);
+    return response.data;
+});
+
+const fetchProductsStats = createAsyncThunk("products/fetchStats", async ({startTimestamp, endTimestamp}) => {
+    const response = await Api.getProductsStats(startTimestamp, endTimestamp);
     return response.data;
 });
 
@@ -39,6 +44,9 @@ const productSlice = createSlice({
         activeProduct: {},
         activeProductIsLoading: true,
         activeProductError: null,
+        productsStats: {},
+        productsStatsIsLoading: true,
+        productsStatsError: null
     },
     reducers: {},
     extraReducers: {
@@ -68,19 +76,20 @@ const productSlice = createSlice({
         },
         [addProduct.rejected]: (state, action) => {
             state.productsError = action.error;
-            toast.error("Le produit n'existe pas ou le code barre est invalide");
+            toast.error("Le produit n'a pas pu être ajouté, vérifiez le code barre");
         },
 
-        [updateProduct.fulfilled]: (state, action) => {
+        [updateProductQuantity.fulfilled]: (state, action) => {
             const productIndex = state.products.findIndex(
                 (product) => product.barcode === action.meta.arg.barcode
             );
 
             if (productIndex > -1) {
-                state.products[productIndex] = action.payload.product;
+                state.products[productIndex].presences = action.payload.presences;
+                state.products[productIndex].quantity = action.payload.quantity;
             }
         },
-        [updateProduct.rejected]: (state, action) => {
+        [updateProductQuantity.rejected]: (state, action) => {
             state.productsError = action.error;
             toast.error("Le produit n'a pas pu être mis à jour");
         },
@@ -109,6 +118,18 @@ const productSlice = createSlice({
             state.activeProductIsLoading = false;
             state.activeProductError = action.error;
         },
+
+        [fetchProductsStats.pending]: (state, action) => {
+            state.productsStatsIsLoading = true;
+        },
+        [fetchProductsStats.fulfilled]: (state, action) => {
+            state.productsStatsIsLoading = false;
+            state.productsStats = action.payload.stats;
+        },
+        [fetchProductsStats.rejected]: (state, action) => {
+            state.productsStatsIsLoading = false;
+            state.productsStatsError = action.error;
+        },
     }
 });
 
@@ -124,15 +145,21 @@ function selectActiveProductFeatures(state) {
     return {activeProduct, activeProductIsLoading, activeProductError};
 }
 
+function selectProductsStatsFeatures(state) {
+    const {productsStats, productsStatsIsLoading, productsStatsError} = state.products;
+    return {productsStats, productsStatsIsLoading, productsStatsError};
+}
 
 export {
     fetchProducts,
     addProduct,
-    updateProduct,
+    updateProductQuantity,
     deleteProduct,
     fetchActiveProduct,
+    fetchProductsStats,
     selectProductsFeatures,
-    selectActiveProductFeatures
+    selectActiveProductFeatures,
+    selectProductsStatsFeatures
 };
 
 export default productSlice.reducer;

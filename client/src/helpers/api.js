@@ -41,12 +41,16 @@ class Api {
         return this.init().post(`/products/${barcode}`);
     }
 
-    updateProduct(barcode, data) {
-        return this.init().put(`/products/${barcode}`, data);
+    updateProductQuantity(barcode, quantity) {
+        return this.init().put(`/products/quantity/${barcode}`, {quantity});
     }
 
     deleteProduct(barcode) {
         return this.init().delete(`/products/${barcode}`);
+    }
+
+    getProductsStats(startTimestamp, endTimestamp) {
+        return this.init().get(`/products/stats?startTimestamp=${startTimestamp}&endTimestamp=${endTimestamp}`);
     }
 }
 

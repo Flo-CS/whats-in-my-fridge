@@ -26,6 +26,7 @@ const OPEN_FOOD_FACTS_USEFUL_FIELDS = ["product_name",
 
 const DEFAULT_LANG_CODE = "fr";
 
+
 module.exports = {
     SERVER_PORT,
     OPEN_FOOD_FACTS_API_ENDPOINT,

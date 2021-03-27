@@ -5,11 +5,12 @@ import {Redirect, Route} from "react-router-dom";
 import {selectAuthFeatures} from "../../features/authSlice";
 
 export default function ProtectedRoute({children, ...rest}) {
-    const {isAuthenticated} = useSelector((state) => selectAuthFeatures(state));
+    const {isAuthenticated, isLoading} = useSelector((state) => selectAuthFeatures(state));
     return <Route {...rest}>
-        {isAuthenticated === true ?
-            children :
-            <Redirect to="/login"/>
+        {isAuthenticated === false && isLoading === false ?
+            <Redirect to="/login"/> :
+            children
+
         }
     </Route>;
 }

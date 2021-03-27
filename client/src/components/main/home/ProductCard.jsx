@@ -6,7 +6,7 @@ import {useHistory} from "react-router-dom";
 import {ReactComponent as MinusIcon} from "../../../assets/icons/minus.svg";
 
 import {ReactComponent as PlusIcon} from "../../../assets/icons/plus.svg";
-import {deleteProduct, updateProduct} from "../../../features/productSlice";
+import {deleteProduct, updateProductQuantity} from "../../../features/productSlice";
 import {truncateString} from "../../../helpers/miscellaneous";
 
 import "./ProductCard.scss";
@@ -18,7 +18,8 @@ export default function ProductCard({barcode, quantity, productData}) {
 
 
     function handleIncreaseQuantityButtonClick() {
-        updateProductQuantity(quantity + 1);
+        dispatch(updateProductQuantity({barcode: barcode, quantity: quantity + 1}));
+
     }
 
     function handleDecreaseQuantityButtonClick() {
@@ -28,7 +29,7 @@ export default function ProductCard({barcode, quantity, productData}) {
                 dispatch(deleteProduct({barcode}));
             }
         } else {
-            updateProductQuantity(quantity - 1);
+            dispatch(updateProductQuantity({barcode: barcode, quantity: quantity - 1}));
         }
     }
 
@@ -36,9 +37,6 @@ export default function ProductCard({barcode, quantity, productData}) {
         history.push(`/products/${barcode}`);
     }
 
-    function updateProductQuantity(newQuantity) {
-        dispatch(updateProduct({barcode: barcode, data: {quantity: newQuantity}}));
-    }
 
     const productCardClass = classNames("product-card", {
         "product-card--disabled": quantity <= 0,

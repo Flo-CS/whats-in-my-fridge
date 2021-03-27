@@ -28,7 +28,6 @@ function App() {
                 <Route exact path="/register">
                     <RegisterPage/>
                 </Route>
-                {/* TODO : CHANGE THAT ROUTE TO PROTECTED ROUTE => DISABLED FOR DEVELOPMENT PURPOSE*/}
                 <ProtectedRoute path="/">
                     <MainPage/>
                 </ProtectedRoute>

@@ -42,7 +42,7 @@ const authSlice = createSlice({
             state.isAuthenticated = false;
             state.error = action.error;
             console.log(action.error);
-            toast.error("Impossible de se connecter: verifiez vos identifiants");
+            toast.error("Impossible de se connecter, vérifiez vos identifiants");
         },
 
         [registerUser.pending]: (state, action) => {
@@ -68,7 +68,7 @@ const authSlice = createSlice({
             state.isLoading = false;
             state.isAuthenticated = false;
             state.error = action.error;
-            toast.error("Impossible de se connecter: veuillez vous reconnecter");
+            toast.error("Impossible de se connecter, veuillez vous reconnecter");
         },
 
         [logoutUser.fulfilled]: (state, action) => {

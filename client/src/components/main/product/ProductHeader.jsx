@@ -6,6 +6,7 @@ import "./ProductHeader.scss";
 export default function ProductHeader({barcode, productData}) {
     const {image_url, quantity = "", product_name, brands_tags = []} = productData;
 
+    // TODO: Move this to server side
     const cleanedQuantity = quantity.replace(/(?!\d|\w)\s(?=\w|\d)/g, "");
 
     return <div className="product-header">
