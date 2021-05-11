@@ -1,9 +1,10 @@
 import React from "react";
-import {Redirect, Route, Switch} from "react-router-dom"
+import {Redirect, Route, Switch} from "react-router-dom";
+import HomeView from "../components/main/home/HomeView";
 
 import MainSidebar from "../components/main/MainSidebar";
-import HomeView from "../components/main/home/HomeView";
 import ProductView from "../components/main/product/ProductView";
+import StatsView from "../components/main/stats/StatsView";
 
 function MainPage() {
     return (
@@ -16,6 +17,10 @@ function MainPage() {
                 <Route path="/products/:barcode">
                     <ProductView/>
                 </Route>
+                <Route path="/stats">
+                    <StatsView/>
+                </Route>
+
                 <Redirect from="*" to="/"/>
             </Switch>
         </div>

@@ -17,14 +17,14 @@ export default function ProductView() {
         dispatch(fetchActiveProduct({barcode}));
     }, [barcode, dispatch]);
 
-    if (activeProductIsLoading === false) {
-        return <div className="product-view">
-            <ProductHeader barcode={activeProduct.barcode} productData={activeProduct.data}/>
-            <ProductContent productData={activeProduct.data}/>
-        </div>;
-    } else {
-        return <p>Chargement...</p>;
-    }
 
+    return <div className="product-view">
+        {activeProductIsLoading === false ? <>
+                <ProductHeader barcode={activeProduct.barcode} productData={activeProduct.data}/>
+                <ProductContent productData={activeProduct.data}/>
+            </> :
+            <p>Chargement...</p>}
+
+    </div>;
 
 }

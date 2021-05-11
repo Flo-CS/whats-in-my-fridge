@@ -3,27 +3,26 @@ const dayjs = require("dayjs");
 require("dayjs/locale/fr");
 const isBetween = require("dayjs/plugin/isBetween");
 const {getTagName} = require("./taxonomies");
-const {DEFAULT_LANG_CODE} = require("../config");
+const {DEFAULT_LANG_CODE, DATE_FORMAT} = require("../config");
 
 dayjs.extend(isBetween);
-dayjs.locale("fr");
 
 
 class Stats {
-    constructor(products, startTimestamp, endTimestamp, langCode = DEFAULT_LANG_CODE) {
+    constructor(products, startDate, endDate, langCode = DEFAULT_LANG_CODE) {
         this.products = products;
-        this.startTimestamp = dayjs.unix(startTimestamp);
-        this.endTimestamp = dayjs.unix(endTimestamp);
+        this.startDate = dayjs(startDate, DATE_FORMAT);
+        this.endDate = dayjs(endDate, DATE_FORMAT);
         this.langCode = langCode;
 
         // Keep only those products whose quantity has been at least once greater than or equal to 1 during the specified period
         this.rangeFilteredProducts = products.filter((product) => {
-            const presencesInTimestampRange = product.presences.filter(presence => {
-                const presenceTimestamp = dayjs.unix(presence[0]);
+            const presencesInDateRange = product.presences.filter(presence => {
+                const presenceDate = dayjs(presence[0], DATE_FORMAT);
 
-                return presenceTimestamp.isBetween(this.startTimestamp, this.endTimestamp, null, "[]");
+                return presenceDate.isBetween(this.startDate, this.endDate, null, "[]");
             });
-            return presencesInTimestampRange.some(presence => presence[1] >= 1);
+            return presencesInDateRange.some(presence => presence[1] >= 1);
 
         });
     }
@@ -42,8 +41,6 @@ class Stats {
             nutriscore: this.computeScoreFieldStats("nutriscore_score"),
             nova: this.computeScoreFieldStats("nova_group"),
             ecoscore: this.computeScoreFieldStats("ecoscore_score")
-
-
         };
     }
 
@@ -66,15 +63,15 @@ class Stats {
     // Nutriscore / Nova / Ecoscore
     computeScoreFieldStats(scoreField) {
 
-        // List of all timestamps where we need to calculate average for the score
+        // List of all dates where we need to calculate average for the score
         const flattenProductsPresencesDate = _(this.rangeFilteredProducts)
             .map(product => product.presences)
             .flatten()
-            .map(presence => dayjs.unix(presence[0]))
-            .uniqBy(date => date.format('DD/MM/YYYY HH:mm'))
-            .sort()
+            .map(presence => dayjs(presence[0], DATE_FORMAT))
+            .uniqBy(date => date.format(DATE_FORMAT))
             .value();
 
+        console.log(flattenProductsPresencesDate.map(presence => presence.format(DATE_FORMAT)));
 
         const averageHistory = _(flattenProductsPresencesDate).map(date => {
             // Remove all products that had a quantity of 0 on the specified date (quantity filtered products)
@@ -83,26 +80,25 @@ class Stats {
                     const nextPresence = product.presences[i + 1];
                     const currentPresence = product.presences[i];
 
-                    const presenceStartDate = dayjs.unix(currentPresence[0]);
-                    const presenceEndDate = nextPresence ? dayjs.unix(nextPresence[0]) : dayjs();
+                    const presenceStartDate = dayjs(currentPresence[0], DATE_FORMAT);
+                    const presenceEndDate = nextPresence ? dayjs(nextPresence[0], DATE_FORMAT) : dayjs();
 
-                    if (date.isBetween(presenceStartDate, presenceEndDate, null, "[)") && currentPresence[1] > 0 && product.data[scoreField]) {
+                    if (date.isBetween(presenceStartDate, presenceEndDate, null, "[)")
+                        && currentPresence[1] === true
+                        && product.data[scoreField]) {
+
+                        console.log(date.format(DATE_FORMAT), presenceStartDate.format(DATE_FORMAT), presenceEndDate.format(DATE_FORMAT), currentPresence);
                         return true;
                     }
                 }
             }).meanBy(product => product.data[scoreField]);
 
-            return [
-                date.unix(),
-                productsAverageScoreByDate
-            ];
+            return {t: date.format(DATE_FORMAT), v: productsAverageScoreByDate};
         });
-
 
         const average = _(this.rangeFilteredProducts)
             .filter(product => product.quantity > 0 && product.data[scoreField])
             .meanBy((product) => product.data[scoreField]);
-
 
         return {
             average,

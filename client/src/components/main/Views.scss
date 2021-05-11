@@ -1,4 +1,4 @@
-.home-view, .product-view {
+.home-view, .product-view, .stats-view {
   display: flex;
   overflow: hidden;
   align-items: center;
@@ -7,6 +7,6 @@
   height: 100%;
 }
 
-.product-view {
+.product-view, .stats-view {
   overflow-y: auto;
 }
