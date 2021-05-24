@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Bar, BarChart, CartesianGrid, Tooltip, XAxis, YAxis} from "recharts";
 import {fetchProductsStats, selectProductsStatsFeatures} from "../../../features/productSlice";
+import ScoreHistoryGraph from "./ScoreHistoryGraph";
 
 
 export default function StatsView() {
@@ -11,29 +11,25 @@ export default function StatsView() {
 
 
     useEffect(() => {
-        dispatch(fetchProductsStats({startDate: "21/03/2021", endDate: "21/04/2021"}));
+        dispatch(fetchProductsStats({
+            startDate: "Sat, 22 May 2000 15:16:34 GMT",
+            endDate: "Sat, 22 May 2040 15:16:34 GMT"
+        }));
     }, [dispatch]);
 
     const novaAverageHistory = productsStats?.nova?.average_history;
     const nutriscoreAverageHistory = productsStats?.nutriscore?.average_history;
     const ecoscoreAverageHistory = productsStats?.ecoscore?.average_history;
 
-    console.log(novaAverageHistory);
-
     return <div className="stats-view">
 
         {productsStatsIsLoading === false ?
-
-            <BarChart width={600} height={300} data={novaAverageHistory}
-                      margin={{top: 5, right: 0, bottom: 5, left: 0}}>
-
-                <CartesianGrid strokeDasharray="3 3"/>
-                <XAxis dataKey="t"/>
-                <YAxis/>
-                <Tooltip/>
-                <Bar dataKey="v" fill="#8884d8"/>
-
-            </BarChart> :
+            <>
+                <ScoreHistoryGraph data={nutriscoreAverageHistory}/>
+                <ScoreHistoryGraph data={novaAverageHistory}/>
+                <ScoreHistoryGraph data={ecoscoreAverageHistory}/>
+            </>
+            :
             <p>Chargement...</p>}
     </div>;
 

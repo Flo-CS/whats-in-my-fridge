@@ -49,47 +49,44 @@ try {
     global.additives_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/additives.json`);
     global.ingredients_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/ingredients.json`);
 } catch (error) {
-    console.log(error);
+    console.error(error);
 }
 
 // To clean the tag if he was not present in taxonomy or if there is no taxonomy for this type of tag
 function cleanTag(tag) {
-
     const splitTag = tag.split(":");
+
     let tagName = splitTag[splitTag.length - 1];
     // Remove specials characters
     tagName = tagName.replace(/[-_]/g, " ");
-
     // First letter in upper case
     tagName = tagName.replace(/^\w/, (c) => c.toUpperCase());
 
     return tagName;
-
 }
 
-function getTagName(tag, taxonomyName, langCode) {
+function getTagName(tag, taxonomyName) {
     const taxonomy = global[taxonomyName];
-
 
     if (!taxonomy) {
         return {
-            converted: false,
+            converted: false, // For the frontend: to know if the tag was present in the taxonomy
             name: cleanTag(tag)
         };
     }
 
     const tagTaxonomy = taxonomy[tag];
-    const tagName = _.get(tagTaxonomy, `name.${langCode}`);
+    const tagName = _.get(tagTaxonomy, `name.fr`);
 
     return {
-        converted: !!tagName, // For the frontend: to know if the tag was present in the taxonomy
+        converted: !!tagName,
         name: !!tagName ? tagName : cleanTag(tag)
     };
 }
 
 // Translate tags from fields preceded with _tags which are lists containing tags ids, for example, traduce "en:beverages" to Beverages (or Boissons in french)
 // TODO: Do this in a cleaner way
-function convertTagsFieldsWithTaxonomies(productData, langCode) {
+function convertTagsFieldsWithTaxonomies(productData) {
     const {
         brands_tags,
         categories_tags,
@@ -106,17 +103,17 @@ function convertTagsFieldsWithTaxonomies(productData, langCode) {
 
     return {
         ...productData,
-        brands_tags: brands_tags?.map(tag => getTagName(tag, "brands_tags", langCode)), // No taxonomy for brands
-        categories_tags: categories_tags?.map(tag => getTagName(tag, "categories_tags", langCode)),
-        labels_tags: labels_tags?.map(tag => getTagName(tag, "labels_tags", langCode)),
-        origins_tags: origins_tags?.map(tag => getTagName(tag, "origins_tags", langCode)),
-        countries_tags: countries_tags?.map(tag => getTagName(tag, "countries_tags", langCode)),
-        traces_tags: traces_tags?.map(tag => getTagName(tag, "allergens_tags", langCode)),
-        allergens_tags: allergens_tags?.map(tag => getTagName(tag, "allergens_tags", langCode)),
-        additives_tags: additives_tags?.map(tag => getTagName(tag, "additives_tags", langCode)),
-        ingredients_tags: ingredients_tags?.map(tag => getTagName(tag, "ingredients_tags", langCode)),
-        ingredients_analysis_tags: ingredients_analysis_tags?.map(tag => getTagName(tag, "ingredients_analysis_tags", langCode)),
-        nutrient_levels_tags: nutrient_levels_tags?.map(tag => getTagName(tag, "nutrient_levels_tags", langCode))
+        brands_tags: brands_tags?.map(tag => getTagName(tag, "brands_tags")), // No taxonomy for brands
+        categories_tags: categories_tags?.map(tag => getTagName(tag, "categories_tags")),
+        labels_tags: labels_tags?.map(tag => getTagName(tag, "labels_tags")),
+        origins_tags: origins_tags?.map(tag => getTagName(tag, "origins_tags")),
+        countries_tags: countries_tags?.map(tag => getTagName(tag, "countries_tags")),
+        traces_tags: traces_tags?.map(tag => getTagName(tag, "allergens_tags")),
+        allergens_tags: allergens_tags?.map(tag => getTagName(tag, "allergens_tags")),
+        additives_tags: additives_tags?.map(tag => getTagName(tag, "additives_tags")),
+        ingredients_tags: ingredients_tags?.map(tag => getTagName(tag, "ingredients_tags",)),
+        ingredients_analysis_tags: ingredients_analysis_tags?.map(tag => getTagName(tag, "ingredients_analysis_tags")),
+        nutrient_levels_tags: nutrient_levels_tags?.map(tag => getTagName(tag, "nutrient_levels_tags"))
     };
 
 }

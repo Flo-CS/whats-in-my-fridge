@@ -24,14 +24,9 @@ const OPEN_FOOD_FACTS_USEFUL_FIELDS = ["product_name",
     "serving_size",
     "nutriments",];
 
-const DEFAULT_LANG_CODE = "fr";
-
-const DATE_FORMAT = "DD/MM/YYYY";
 
 module.exports = {
     SERVER_PORT,
     OPEN_FOOD_FACTS_API_ENDPOINT,
     OPEN_FOOD_FACTS_USEFUL_FIELDS,
-    DEFAULT_LANG_CODE,
-    DATE_FORMAT
 };

@@ -1,11 +1,9 @@
 const axios = require("axios");
 const dayjs = require("dayjs");
-const _ = require("lodash");
 
 const models = require("./../models/index");
-const {DATE_FORMAT} = require("../config");
 const {Stats} = require("../helpers/stats");
-const {OPEN_FOOD_FACTS_USEFUL_FIELDS, OPEN_FOOD_FACTS_API_ENDPOINT, DEFAULT_LANG_CODE} = require("../config");
+const {OPEN_FOOD_FACTS_USEFUL_FIELDS, OPEN_FOOD_FACTS_API_ENDPOINT} = require("../config");
 const {convertTagsFieldsWithTaxonomies} = require("./../helpers/taxonomies");
 
 
@@ -14,7 +12,7 @@ function convertProductsDocuments(productsDocs) {
         const product = productDoc.toObject();
         return {
             ...product,
-            data: convertTagsFieldsWithTaxonomies(product.data, DEFAULT_LANG_CODE)
+            data: convertTagsFieldsWithTaxonomies(product.data)
         };
     });
 }
@@ -23,7 +21,7 @@ function convertProductDocument(productDoc) {
     const product = productDoc.toObject();
     return {
         ...product,
-        data: convertTagsFieldsWithTaxonomies(product.data, DEFAULT_LANG_CODE)
+        data: convertTagsFieldsWithTaxonomies(product.data)
     };
 }
 
@@ -68,27 +66,21 @@ const addOneProduct = async (req, res) => {
     const barcode = req.params.barcode;
 
     try {
-        // UPDATE PRODUCT QUANTITY IF PRODUCT ALREADY EXISTS
+
         const productToUpdate = await models.Product.findOne(
             {
                 user: req.verifiedToken.id,
                 barcode: barcode,
             }
         );
+        // UPDATE PRODUCT QUANTITY IF PRODUCT ALREADY EXISTS
         if (productToUpdate) {
             productToUpdate.quantity += 1;
 
-            const currentDate = dayjs().format(DATE_FORMAT);
-            const lastPresenceElementIndex = productToUpdate.presences.length - 1;
-
-            // Modify presence if it was already in presences for current date or add it
-            if (productToUpdate.presences[lastPresenceElementIndex][0] === currentDate) {
-                productToUpdate.presences[lastPresenceElementIndex][1] = (productToUpdate.quantity === 1);
-            } else {
-                productToUpdate.presences.push([currentDate, productToUpdate.quantity === 1]);
-            }
-
+            productToUpdate.presences.push({date: dayjs(), value: productToUpdate.quantity >= 1});
             productToUpdate.markModified("presences");
+
+
             productToUpdate.save();
 
             return res.status(200).json({product: convertProductDocument(productToUpdate), updated: true});
@@ -134,6 +126,7 @@ const getStats = async (req, res) => {
 
         res.status(200).json({stats});
     } catch (error) {
+        console.log(error);
         res.status(500).json({error});
     }
 };
@@ -152,17 +145,9 @@ const updateOneProductQuantity = async (req, res) => {
 
         product.quantity = quantity;
 
-        const currentDate = dayjs().format(DATE_FORMAT);
-        const lastPresenceElementIndex = product.presences.length - 1;
-
-        // Modify presence if it was already in presences for current date or add it
-        if (product.presences[lastPresenceElementIndex][0] === currentDate) {
-            product.presences[lastPresenceElementIndex][1] = (quantity === 1);
-        } else {
-            product.presences.push([currentDate, quantity === 1]);
-        }
-
+        product.presences.push({date: dayjs(), value: product.quantity >= 1});
         product.markModified("presences");
+
         product.save();
 
         res.status(200).json({presences: product.presences, quantity: product.quantity});
