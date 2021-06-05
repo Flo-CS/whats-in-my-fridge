@@ -1,29 +1,6 @@
-const axios = require("axios");
-const dayjs = require("dayjs");
-
 const models = require("./../models/index");
+const {getOFFdata} = require("../helpers/product");
 const {Stats} = require("../helpers/stats");
-const {OPEN_FOOD_FACTS_USEFUL_FIELDS, OPEN_FOOD_FACTS_API_ENDPOINT} = require("../config");
-const {convertTagsFieldsWithTaxonomies} = require("./../helpers/taxonomies");
-
-
-function convertProductsDocuments(productsDocs) {
-    return productsDocs.map(productDoc => {
-        const product = productDoc.toObject();
-        return {
-            ...product,
-            data: convertTagsFieldsWithTaxonomies(product.data)
-        };
-    });
-}
-
-function convertProductDocument(productDoc) {
-    const product = productDoc.toObject();
-    return {
-        ...product,
-        data: convertTagsFieldsWithTaxonomies(product.data)
-    };
-}
 
 
 const getAllProducts = async (req, res) => {
@@ -40,7 +17,7 @@ const getAllProducts = async (req, res) => {
         }).skip(rangeStart)
             .limit(rangeEnd);
 
-        res.status(200).json({products: convertProductsDocuments(products)});
+        res.status(200).json({products: products.map(product => product.export())});
     } catch (error) {
         res.status(500).json({error});
     }
@@ -56,7 +33,10 @@ const getOneProduct = async (req, res) => {
         });
 
 
-        res.status(200).json({product: convertProductDocument(product)});
+        res.status(200).json({product: product.export()});
+        console.log(product.export())
+
+
     } catch (error) {
         res.status(500).json({error});
     }
@@ -75,29 +55,17 @@ const addOneProduct = async (req, res) => {
         );
         // UPDATE PRODUCT QUANTITY IF PRODUCT ALREADY EXISTS
         if (productToUpdate) {
-            productToUpdate.quantity += 1;
-
-            productToUpdate.presences.push({date: dayjs(), value: productToUpdate.quantity >= 1});
-            productToUpdate.markModified("presences");
+            productToUpdate.updateQuantity(productToUpdate.quantity + 1)
+            productToUpdate.save()
 
 
-            productToUpdate.save();
-
-            return res.status(200).json({product: convertProductDocument(productToUpdate), updated: true});
+            return res.status(200).json({product: productToUpdate.export(), updated: true});
         }
 
-        // CREATE NEW PRODUCT IF PRODUCT DOESN'T EXIST
-        const fields = OPEN_FOOD_FACTS_USEFUL_FIELDS.join(",");
-        // Get all openFoodFacts data for the product with their API
-        const openFoodFactsResponse = await axios.get(
-            `${OPEN_FOOD_FACTS_API_ENDPOINT}/product/${barcode}.json?fields=${fields}`
-        );
+        // CREATE NEW PRODUCT IF PRODUCT NOT EXISTS
+        let productData = await getOFFdata(barcode);
 
-
-        let productData = openFoodFactsResponse.data.product;
-
-        // We verify that the product exists and if we have a name for it in open food facts, 0 is status code for error
-        if (openFoodFactsResponse.data.status === 0 || !productData.product_name) return res.status(404).json({});
+        if (!productData) return res.status(404).json({});
 
 
         const productToCreate = new models.Product({
@@ -110,7 +78,7 @@ const addOneProduct = async (req, res) => {
         await productToCreate.save();
 
 
-        res.status(200).json({product: convertProductDocument(productToCreate), updated: false});
+        res.status(200).json({product: productToCreate.export(), updated: false});
     } catch (error) {
         res.status(500).json({error});
     }
@@ -131,7 +99,6 @@ const getStats = async (req, res) => {
     }
 };
 
-//TODO : Change lastDateModified on update
 const updateOneProductQuantity = async (req, res) => {
     const barcode = req.params.barcode;
     const quantity = req.body.quantity;
@@ -143,12 +110,8 @@ const updateOneProductQuantity = async (req, res) => {
 
         if (quantity < 0) return res.status(400).json();
 
-        product.quantity = quantity;
-
-        product.presences.push({date: dayjs(), value: product.quantity >= 1});
-        product.markModified("presences");
-
-        product.save();
+        product.updateQuantity(quantity)
+        product.save()
 
         res.status(200).json({presences: product.presences, quantity: product.quantity});
     } catch (error) {
@@ -165,7 +128,7 @@ const deleteOneProduct = async (req, res) => {
             barcode: barcode,
         });
 
-        res.status(200).json({product: convertProductDocument(product)});
+        res.status(200).json({product: product.export()});
     } catch (error) {
         res.status(500).json({error});
     }

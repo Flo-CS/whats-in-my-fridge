@@ -15,9 +15,7 @@ class Stats {
 
         // Only keep products whose quantity has been at least once greater than or equal to 1 (presents products) during the specified period
         this.filteredProducts = products.filter(product => {
-            return product.presences.some(presence => {
-                return dayjs(presence.date).isBetween(startDate, endDate, null, "[]") && presence.value === true;
-            });
+            return product.wasPresentBetween(startDate, endDate)
         });
 
     }
@@ -72,17 +70,7 @@ class Stats {
         const averageHistory = _(requiredCalculationDates).map(requiredDate => {
             const averageScoreByDate = _(this.filteredProducts).filter(product => {
                 // Remove all products that had a quantity of 0 on the required date
-                return product.presences.find((currentPresence, i, presences) => {
-                    const nextPresence = presences[i + 1];
-
-                    const presenceStartDate = dayjs(currentPresence.date);
-                    const presenceEndDate = nextPresence ? dayjs(nextPresence.date) : dayjs();
-
-
-                    return requiredDate.isBetween(presenceStartDate, presenceEndDate, null, "[)")
-                        && currentPresence.value === true
-                        && product.data[scoreField];
-                });
+                return product.wasPresentOn(requiredDate)
 
             }).meanBy(product => product.data[scoreField]);
 
