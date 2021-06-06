@@ -1,6 +1,6 @@
 const models = require("./../models/index");
 const {getOFFdata} = require("../helpers/product");
-const {Stats} = require("../helpers/stats");
+const {ProductsStats} = require("../helpers/productsStats");
 
 
 const getAllProducts = async (req, res) => {
@@ -32,10 +32,7 @@ const getOneProduct = async (req, res) => {
             barcode: barcode,
         });
 
-
         res.status(200).json({product: product.export()});
-        console.log(product.export())
-
 
     } catch (error) {
         res.status(500).json({error});
@@ -90,7 +87,7 @@ const getStats = async (req, res) => {
     try {
         const products = await models.Product.find({user: req.verifiedToken.id});
 
-        const stats = new Stats(products, startDate, endDate).computeStats();
+        const stats = new ProductsStats(products, startDate, endDate).getStats();
 
         res.status(200).json({stats});
     } catch (error) {
