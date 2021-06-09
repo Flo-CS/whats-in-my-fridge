@@ -25,9 +25,9 @@ export default function StatsView() {
 
         {productsStatsIsLoading === false ?
             <>
-                <ScoreHistoryGraph data={nutriscoreAverageHistory}/>
+                <ScoreHistoryGraph data={nutriscoreAverageHistory} isGrade/>
                 <ScoreHistoryGraph data={novaAverageHistory}/>
-                <ScoreHistoryGraph data={ecoscoreAverageHistory}/>
+                <ScoreHistoryGraph data={ecoscoreAverageHistory} isGrade/>
             </>
             :
             <p>Chargement...</p>}

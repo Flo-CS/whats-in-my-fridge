@@ -20,15 +20,16 @@ async function getOFFdata(barcode) {
     }
 }
 
-const gradeConversions = {
-    "a": 5,
-    "b": 4,
-    "c": 3,
-    "d": 2,
-    "e": 1
-}
 
 function scoreGradeToScore(grade) {
+    const gradeConversions = {
+        "a": 5,
+        "b": 4,
+        "c": 3,
+        "d": 2,
+        "e": 1
+    }
+
     if (!_.isString(grade) || _.isNil(grade)) return
 
     grade = grade.toLowerCase()
@@ -36,5 +37,4 @@ function scoreGradeToScore(grade) {
 }
 
 
-
-module.exports = {getOFFdata, scoreGradeToScore }
+module.exports = {getOFFdata, scoreGradeToScore}
