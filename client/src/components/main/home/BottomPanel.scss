@@ -9,6 +9,7 @@ $bottom-panel-height: 50px;
   justify-content: center;
   width: 100%;
   height: $bottom-panel-height;
+  min-height: $bottom-panel-height;
   margin-top: auto;
   padding: 5px 5px;
   background-color: $bottom-panel-color;
