@@ -24,8 +24,8 @@ export default function DateRangeTimeUnitPicker({onDatesChange}) {
     function handleTimeUnitChange(event) {
         const unit = event.target.value
         setTimeUnit(unit)
-        setStartDate(startDate.startOf(unit))
-        setEndDate(startDate.endOf(unit))
+        setStartDate(dayjs().startOf(unit))
+        setEndDate(dayjs().endOf(unit))
     }
 
     useEffect(() => {
