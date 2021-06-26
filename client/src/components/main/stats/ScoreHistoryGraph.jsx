@@ -1,33 +1,45 @@
 import dayjs from "dayjs";
 import propTypes from "prop-types";
 import React from "react";
-import {Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
+import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis,} from "recharts";
 import {scoreToScoreGrade} from "../../../helpers/product";
 
-export default function ScoreHistoryGraph({data, isGrade = false}) {
+import "./ScoreHistoryGraph.scss"
 
-    return <ResponsiveContainer>
-        <BarChart width={600} height={300} data={data} margin={{top: 10, right: 20, bottom: 10, left: 10}}>
+export default function ScoreHistoryGraph({data, isGrade = false, title}) {
 
-            <CartesianGrid strokeDasharray="3 3"/>
-            <XAxis dataKey="date" tickFormatter={(date) => dayjs(date).format("DD/MM/YY")}
-                   style={{fontSize: "0.7rem"}}/>
-            <YAxis width={30} style={{fontSize: "0.7rem"}}
-                   tickFormatter={(score) => isGrade ? scoreToScoreGrade(score) : score}
-                   type="number" domain={['dataMin', 'dataMax']}
-                   allowDataOverflow={true}
-                   allowDecimals={false}
-                   interval={0}
-            />
-            <Tooltip labelFormatter={(date => dayjs(date).format("DD/MM/YY hh:mm"))}
-                     formatter={(value) => `${Math.round(value * 10) / 10}`}/>
-            <Bar dataKey="average" fill="#8884d8" connectNulls={false}/>
+    const color = "#80b918"
 
-        </BarChart>
-    </ResponsiveContainer>;
+    return <div className="score-history-graph">
+        <p className="score-history-graph__title">
+            {title}
+        </p>
+        <ResponsiveContainer height={200}>
+
+            <LineChart data={data} margin={{top: 10, right: 10, bottom: 10}}>
+
+                <CartesianGrid strokeDasharray="3 3"/>
+                <XAxis dataKey="date" tickFormatter={(date) => dayjs(date).format("DD/MM")}
+                       style={{fontSize: "0.7rem"}}/>
+                <YAxis width={30}
+                       style={{fontSize: "0.7rem"}}
+                       tickFormatter={(score) => isGrade ? scoreToScoreGrade(score) : score}
+                       domain={['dataMin - 0.5', 'dataMax + 0.5']}
+                       allowDataOverflow={true}
+                       ticks={isGrade ? [1, 2, 3, 4, 5] : [1, 2, 3, 4]}
+                />
+                <Tooltip labelFormatter={(date => dayjs(date).format("DD/MM"))}
+                         formatter={(value) => `${Math.round(value * 10) / 10}`}/>
+
+                <Line dataKey="average" type="monotone" stroke={color} strokeWidth={2} isAnimationActive={false}
+                      dot={{fill: color, r: 2}}/>
+
+            </LineChart>
+        </ResponsiveContainer></div>;
 }
 
 ScoreHistoryGraph.propTypes = {
     data: propTypes.array.isRequired,
-    isGrade: propTypes.bool
+    isGrade: propTypes.bool,
+    title: propTypes.string.isRequired
 };

@@ -1,7 +1,9 @@
+@import "../../variables";
+
 $main-sidebar-width: 45px;
 $main-sidebar-color: #f6f6f6;
-$main-sidebar-indicator-color: #80b918;
 $main-sidebar-icon-color: #000000;
+
 .main-sidebar {
   display: flex;
   flex-direction: column;
@@ -69,10 +71,10 @@ $main-sidebar-icon-color: #000000;
 
   &__profile--active,
   &__menu-item--active {
-    border-left: 4px solid $main-sidebar-indicator-color;
+    border-left: 4px solid $accent-color;
 
     svg {
-      fill: $main-sidebar-indicator-color;
+      fill: $accent-color;
       transition: fill 0.3s;
     }
   }

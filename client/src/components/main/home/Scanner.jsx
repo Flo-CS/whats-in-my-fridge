@@ -27,7 +27,7 @@ export default function Scanner({onDetected}) {
             },
             function (error) {
                 if (error) {
-                    return console.log(error);
+                    return error;
                 }
                 quagga.start();
                 return () => {

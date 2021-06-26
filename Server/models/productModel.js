@@ -5,14 +5,11 @@ const {convertTagsFieldsWithTaxonomies} = require("../helpers/taxonomies");
 
 const productSchema = new mongoose.Schema(
     {
-            user: {type: mongoose.Schema.Types.ObjectId, ref: "User", required: true},
-            barcode: {type: mongoose.Schema.Types.String, required: true},
-            data: {type: mongoose.Schema.Types.Object, required: true},
-            presences: {
-                    type: [{date: mongoose.Schema.Types.Date, value: mongoose.Schema.Types.Boolean}],
-                    default: [{date: dayjs(), value: true}]
-            },
-            quantity: {type: mongoose.Schema.Types.Number, default: 1}
+        user: {type: mongoose.Schema.Types.ObjectId, ref: "User", required: true},
+        barcode: {type: mongoose.Schema.Types.String, required: true},
+        data: {type: mongoose.Schema.Types.Object, required: true},
+        presences: {type: mongoose.Schema.Types.Array, default: [{date: dayjs().format(), value: true}]},
+        quantity: {type: mongoose.Schema.Types.Number, default: 1}
     }
 );
 
@@ -26,26 +23,29 @@ productSchema.methods.export = function() {
 productSchema.methods.updateQuantity =  function(quantity) {
     this.quantity = quantity;
 
-    this.presences.push({date: dayjs(), value: this.quantity >= 1});
-    this.markModified("presences");
+    const lastIndex = this.presences.length - 1
 
+
+    if (dayjs().isSame(this.presences[lastIndex], "day")) {
+        this.presences[lastIndex] = this.quantity >= 1
+    } else {
+        this.presences.push({date: dayjs().format(), value: this.quantity >= 1});
+    }
+
+    this.markModified("presences");
 }
-productSchema.methods.wasPresentOn = function (date) {
-    return this.presences.find((currentPresence, i, presences) => {
+productSchema.methods.wasPresentOn = function (date, granularity) {
+    return this.presences.some((currentPresence, i, presences) => {
         const nextPresence = presences[i + 1];
 
         const presenceStartDate = dayjs(currentPresence.date);
-        const presenceEndDate = nextPresence ? dayjs(nextPresence.date) : dayjs();
+        const presenceEndDate = nextPresence ? dayjs(nextPresence.date) : dayjs().add(1, granularity);
 
-        return date.isBetween(presenceStartDate, presenceEndDate, null, "[)")
+        return date.isBetween(presenceStartDate, presenceEndDate, granularity, "[)")
             && currentPresence.value === true
-    });
+    })
+
 }
 
-productSchema.methods.wasPresentBetween = function(startDate, endDate) {
-    return this.presences.some(presence => {
-        return dayjs(presence.date).isBetween(startDate, endDate, null, "[]") && presence.value === true;
-    });
-}
 
 module.exports = mongoose.model("Product", productSchema, "Products");

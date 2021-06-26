@@ -2,7 +2,6 @@
 
 $bottom-panel-color: #f6f6f6;
 $bottom-panel-height: 50px;
-$bottom-panel-button-color: #80b918;
 
 .bottom-panel {
   display: flex;
@@ -43,7 +42,7 @@ $bottom-panel-button-color: #80b918;
     color: white;
     border: none;
     outline: none;
-    background-color: $bottom-panel-button-color;
+    background-color: $accent-color;
   }
 
   &__add-button {

@@ -82,12 +82,12 @@ const addOneProduct = async (req, res) => {
 };
 
 const getStats = async (req, res) => {
-    const {startDate, endDate} = req.query;
+    const {startDate, endDate, timeUnit} = req.query;
 
     try {
         const products = await models.Product.find({user: req.verifiedToken.id});
 
-        const stats = new ProductsStats(products, startDate, endDate).getStats();
+        const stats = new ProductsStats(products, startDate, endDate, timeUnit).getStats();
 
         res.status(200).json({stats});
     } catch (error) {

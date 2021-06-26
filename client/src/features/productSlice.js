@@ -28,8 +28,8 @@ const fetchActiveProduct = createAsyncThunk("products/fetchOne", async ({barcode
     return response.data;
 });
 
-const fetchProductsStats = createAsyncThunk("products/fetchStats", async ({startDate, endDate}) => {
-    const response = await Api.getProductsStats(startDate, endDate);
+const fetchProductsStats = createAsyncThunk("products/fetchStats", async ({startDate, endDate, timeUnit}) => {
+    const response = await Api.getProductsStats(startDate, endDate, timeUnit);
     return response.data;
 });
 

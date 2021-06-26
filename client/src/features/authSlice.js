@@ -41,7 +41,6 @@ const authSlice = createSlice({
             state.isLoading = false;
             state.isAuthenticated = false;
             state.error = action.error;
-            console.log(action.error);
             toast.error("Impossible de se connecter, vérifiez vos identifiants");
         },
 

@@ -49,8 +49,8 @@ class Api {
         return this.init().delete(`/products/${barcode}`);
     }
 
-    getProductsStats(startDate, endDate) {
-        return this.init().get(`/products/stats?startDate=${startDate}&endDate=${endDate}`);
+    getProductsStats(startDate, endDate, timeUnit) {
+        return this.init().get(`/products/stats?startDate=${startDate}&endDate=${endDate}&timeUnit=${timeUnit}`);
     }
 }
 

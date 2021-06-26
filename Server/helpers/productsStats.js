@@ -7,25 +7,29 @@ const {getTagName} = require("./taxonomies");
 
 dayjs.extend(isBetween);
 
+const timeUnitToTimeScale = {
+    "year": "month",
+    "month": "day"
+}
+
 class ProductsStats {
 
-    constructor(products, startDate, endDate) {
+    constructor(products, startDate, endDate, timeUnit) {
         this.products = products;
         this.startDate = dayjs(startDate);
         this.endDate = dayjs(endDate);
-
-        // Only keep products whose quantity has been at least once greater than or equal to 1 (presents products) during the specified period
-        this.filteredProducts = products.filter(product => {
-            return product.wasPresentBetween(startDate, endDate)
-        });
+        this.timeUnit = timeUnit
+        this.timeScale = timeUnitToTimeScale[timeUnit]
 
     }
 
+
+
     getStats() {
         return {
-            total_count: this.filteredProducts.length,
-            in_stock_count: this.filteredProducts.filter(product => product.quantity > 0).length,
-            out_of_stock_count: this.filteredProducts.filter(product => product.quantity <= 0).length,
+            total_count: this.products.length,
+            in_stock_count: this.products.filter(product => product.quantity > 0).length,
+            out_of_stock_count: this.products.filter(product => product.quantity <= 0).length,
             categories: this.computeTagsFieldStats("categories_tags"),
             additives: this.computeTagsFieldStats("additives_tags"),
             labels: this.computeTagsFieldStats("labels_tags"),
@@ -39,7 +43,7 @@ class ProductsStats {
     }
 
     getFlattenProductsTagsField(field) {
-        return _(this.filteredProducts)
+        return _(this.products)
             .map(product => product.data[field] || [])
             .flatten();
     }
@@ -62,17 +66,20 @@ class ProductsStats {
 
     // List of all dates where we need to calculate stats
     getRequiredCalculationDates() {
-        return _(this.filteredProducts)
-            .map(product => product.presences)
-            .flatten()
-            .map(presence => dayjs(presence.date))
-            .value();
+        const dates = []
+        let currentDate = this.startDate
+
+        while (currentDate <= this.endDate) {
+            dates.push(currentDate)
+            currentDate = currentDate.add(1, this.timeScale).startOf(this.timeScale)
+        }
+        return dates
     }
 
     getPresentsProductsByDate(date) {
-        return _(this.filteredProducts).filter(product => {
+        return _(this.products).filter(product => {
             // Remove all products that had a quantity of 0 on the specified date
-            return product.wasPresentOn(date)
+            return product.wasPresentOn(date, this.timeScale)
         })
     }
 
@@ -113,4 +120,4 @@ class ProductsStats {
 }
 
 
-module.exports = {ProductsStats: ProductsStats};
+module.exports = {ProductsStats};

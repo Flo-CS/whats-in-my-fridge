@@ -29,14 +29,15 @@ export default function MainSidebar() {
     const paths = {
         home: "/",
         profile: "/profile",
-        stats: "/stats"
+        stats: "/stats",
+        products: "/products"
     }
 
     const profileClass = classNames("main-sidebar__profile", {
         "main-sidebar__profile--active": location.pathname === paths.profile,
     });
     const homeClass = classNames("main-sidebar__menu-item", {
-        "main-sidebar__menu-item--active": location.pathname === paths.home,
+        "main-sidebar__menu-item--active": location.pathname === paths.home || location.pathname.startsWith(paths.products),
     });
     const statsClass = classNames("main-sidebar__menu-item", {
         "main-sidebar__menu-item--active": location.pathname === paths.stats,
