@@ -28,14 +28,22 @@ export default function BottomPanel() {
         setIsScanning(false);
     }
 
+
     return (
         <div className="bottom-panel">
             <div className="bottom-panel__input-group">
                 <input
                     className="bottom-panel__barcode-input"
-                    type="number"
+                    type="tel"
                     value={barcode}
-                    onChange={(e) => setBarcode(e.target.value)}
+                    onChange={(e) => {
+                        setBarcode(e.target.value.replace(/\D/g, ""))
+                    }}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            handleAddProductButtonClick()
+                        }
+                    }}
                 />
                 <button
                     className="bottom-panel__add-button"
