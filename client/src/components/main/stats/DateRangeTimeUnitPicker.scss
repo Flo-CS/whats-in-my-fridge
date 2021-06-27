@@ -50,8 +50,13 @@
     outline: none;
     background: none;
 
+
     svg {
       fill: $accent-color;
+
+      &:hover {
+        fill: black;
+      }
     }
 
 

@@ -20,7 +20,7 @@ export default function StockCounts({total, inStock, outOfStock}) {
     </div>
 }
 StockCounts.propTypes = {
-    total: propTypes.number.isRequired,
-    inStock: propTypes.number.isRequired,
-    outOfStock: propTypes.number.isRequired
+    total: propTypes.number,
+    inStock: propTypes.number,
+    outOfStock: propTypes.number
 }

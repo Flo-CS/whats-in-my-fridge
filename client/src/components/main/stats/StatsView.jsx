@@ -24,7 +24,8 @@ export default function StatsView() {
     const ecoscoreAverageHistory = productsStats?.ecoscore?.average_history;
 
     return <div className="stats-view">
-        <StockCounts total={productsStats.total_count}
+
+    <StockCounts total={productsStats.total_count}
                      inStock={productsStats.in_stock_count}
                      outOfStock={productsStats.out_of_stock_count}/>
 
