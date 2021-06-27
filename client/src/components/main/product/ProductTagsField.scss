@@ -11,8 +11,25 @@
     line-height: 0.95rem;
 
 
-    &-item {
+    &-item, &-show-more {
       margin-left: 10px;
+    }
+
+    &-show-more {
+      margin-top: 2px;
+
+      button {
+        outline: none;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+        font-weight: 600;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 

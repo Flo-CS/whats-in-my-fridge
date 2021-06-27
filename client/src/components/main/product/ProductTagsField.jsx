@@ -1,8 +1,15 @@
 import propTypes from "prop-types";
-import React from "react";
+import React, {useState} from "react";
 import "./ProductTagsField.scss";
 
+import {take} from "lodash"
+
 export default function ProductTagsField({fieldName, tags = []}) {
+
+    const [tagsLimit, setTagsLimit] = useState(10)
+
+    const isShowMoreButtonActive = tags.length > tagsLimit && tags.length > 10
+
 
     return <div className="product-tags-field">
         <h4 className="product-tags-field__name">{fieldName}</h4>
@@ -10,13 +17,16 @@ export default function ProductTagsField({fieldName, tags = []}) {
             <p className="product-tags-field__no-tags">Vide ou non renseigné</p>
             :
             <ul className="product-tags-field__list">
-                {tags.map((tag) => {
+                {take(tags, tagsLimit).map((tag) => {
                     return <li className="product-tags-field__list-item"
                                key={tag.name}>
                         {tag.name}
                         <br/>
                     </li>;
                 })}
+                {isShowMoreButtonActive && <li className="product-tags-field__list-show-more">
+                    <button onClick={() => setTagsLimit(tags.length)}>Afficher plus</button>
+                </li>}
             </ul>
         }
     </div>;
