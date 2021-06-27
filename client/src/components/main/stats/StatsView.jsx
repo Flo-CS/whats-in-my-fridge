@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchProductsStats, selectProductsStatsFeatures} from "../../../features/productSlice";
 import ScoreHistoryGraph from "./ScoreHistoryGraph";
 import DateRangeTimeUnitPicker from "./DateRangeTimeUnitPicker";
+import StockCounts from "./StockCounts";
 
 
 export default function StatsView() {
@@ -23,6 +24,12 @@ export default function StatsView() {
     const ecoscoreAverageHistory = productsStats?.ecoscore?.average_history;
 
     return <div className="stats-view">
+        <StockCounts total={productsStats.total_count}
+                     inStock={productsStats.in_stock_count}
+                     outOfStock={productsStats.out_of_stock_count}/>
+
+        <hr className="stats-view__separator"/>
+
         <DateRangeTimeUnitPicker onDatesChange={handleDatesChange}/>
         {productsStatsIsLoading === false ?
             <>

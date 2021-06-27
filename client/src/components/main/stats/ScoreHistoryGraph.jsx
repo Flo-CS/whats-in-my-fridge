@@ -8,7 +8,7 @@ import "./ScoreHistoryGraph.scss"
 
 export default function ScoreHistoryGraph({data, isGrade = false, title}) {
 
-    const color = "#80b918"
+    const accentColor = "#80b918"
 
     return <div className="score-history-graph">
         <p className="score-history-graph__title">
@@ -31,9 +31,9 @@ export default function ScoreHistoryGraph({data, isGrade = false, title}) {
                 <Tooltip labelFormatter={(date => dayjs(date).format("DD/MM"))}
                          formatter={(value) => Math.round(value * 10) / 10}/>
 
-                <Line dataKey="average" type="monotone" stroke={color} strokeWidth={2} isAnimationActive={false}
+                <Line dataKey="average" type="monotone" stroke={accentColor} strokeWidth={2} isAnimationActive={false}
                       connectNulls
-                      dot={{fill: color, r: 2}}/>
+                      dot={{fill: accentColor, r: 2}}/>
 
             </LineChart>
         </ResponsiveContainer></div>;

@@ -1,3 +1,5 @@
+@import "./../../variables";
+
 .home-view, .product-view, .stats-view {
   display: flex;
   overflow: hidden;
@@ -9,4 +11,12 @@
 
 .product-view, .stats-view {
   overflow-y: auto;
+}
+
+.stats-view {
+  &__separator {
+    width: 80%;
+    border: 1px solid black;
+    opacity: 0.7;
+  }
 }
