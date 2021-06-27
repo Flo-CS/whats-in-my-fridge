@@ -16,7 +16,7 @@ export default function ScoreHistoryGraph({data, isGrade = false, title}) {
         </p>
         <ResponsiveContainer height={200}>
 
-            <LineChart data={data} margin={{top: 10, right: 10, bottom: 10}}>
+            <LineChart data={data} syncId="score-history-graph" margin={{top: 10, right: 10, bottom: 10}}>
 
                 <CartesianGrid strokeDasharray="3 3"/>
                 <XAxis dataKey="date" tickFormatter={(date) => dayjs(date).format("DD/MM")}
@@ -32,6 +32,7 @@ export default function ScoreHistoryGraph({data, isGrade = false, title}) {
                          formatter={(value) => `${Math.round(value * 10) / 10}`}/>
 
                 <Line dataKey="average" type="monotone" stroke={color} strokeWidth={2} isAnimationActive={false}
+                      connectNulls
                       dot={{fill: color, r: 2}}/>
 
             </LineChart>
