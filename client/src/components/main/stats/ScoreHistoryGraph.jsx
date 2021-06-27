@@ -29,7 +29,7 @@ export default function ScoreHistoryGraph({data, isGrade = false, title}) {
                        ticks={isGrade ? [1, 2, 3, 4, 5] : [1, 2, 3, 4]}
                 />
                 <Tooltip labelFormatter={(date => dayjs(date).format("DD/MM"))}
-                         formatter={(value) => `${Math.round(value * 10) / 10}`}/>
+                         formatter={(value) => Math.round(value * 10) / 10}/>
 
                 <Line dataKey="average" type="monotone" stroke={color} strokeWidth={2} isAnimationActive={false}
                       connectNulls
