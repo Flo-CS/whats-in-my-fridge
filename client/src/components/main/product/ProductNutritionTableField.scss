@@ -8,8 +8,24 @@
   }
 
   &__table {
-    width: 100%;
-    max-width: 400px;
+    max-width: 100%;
     margin: 0 10px;
+  }
+
+  thead {
+    background-color: #eaeaea;
+  }
+
+  th, td {
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+  }
+
+}
+
+.product-nutrition-table-field__row {
+  &--is-indented td:first-child {
+    padding-left: 20px;
   }
 }

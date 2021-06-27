@@ -21,12 +21,13 @@ export default function ProductContent({productData}) {
         additives_tags,
         nutrient_levels_tags,
         ingredients_tags,
+        nutriments,
+        serving_size
     } = productData;
 
-    // Use images from https://github.com/openfoodfacts/openfoodfacts-server/tree/master/html/images/attributes/src
+
     return <div className="product-content">
         <div className="product-content__attributes">
-            {/* Show more information on hover like exact score and the meaning of the score*/}
             <div className="product-content__attribute-box"><img className="product-content__attribute"
                                                                  src={`/static/images/nutriscore-${nutriscore_grade}.svg`}
                                                                  alt=""/>
@@ -40,23 +41,24 @@ export default function ProductContent({productData}) {
                                                                  src={`/static/images/ecoscore-${ecoscore_grade}.svg`}
                                                                  alt=""/></div>
         </div>
-        <ProductFieldsCategory name="Caractéristiques">
-            <ProductTagsField fieldName="Catégories" tags={categories_tags}/>
-            <ProductTagsField fieldName="Labels" tags={labels_tags}/>
-            <ProductTagsField fieldName="Pays de vente" tags={countries_tags}/>
-            <ProductTagsField fieldName="Origines des ingrédients" tags={origins_tags}/>
-        </ProductFieldsCategory>
         <ProductFieldsCategory name="Ingrédients">
-            <ProductTagsField fieldName="Ingrédients" tags={ingredients_tags} oneLine/>
+            <ProductTagsField fieldName="Additifs" tags={additives_tags}/>
             <ProductTagsField fieldName="Analyse des ingrédients" tags={ingredients_analysis_tags}/>
-            <ProductTagsField fieldName="Traces éventuelles" tags={traces_tags}/>
             <ProductTagsField fieldName="Substances ou produits provoquant des allergies ou intolérances"
                               tags={allergens_tags}/>
-            <ProductTagsField fieldName="Additifs" tags={additives_tags}/>
+            <ProductTagsField fieldName="Traces éventuelles" tags={traces_tags}/>
+            <ProductTagsField fieldName="Ingrédients" tags={ingredients_tags}/>
         </ProductFieldsCategory>
         <ProductFieldsCategory name="Nutrition">
-            <ProductTagsField fieldName="Repères nutritonnels pour 100g" tags={nutrient_levels_tags}/>
-            <ProductNutritionTableField fieldName="Informations nutritionnelles"/>
+            <ProductTagsField fieldName="Repères nutritonnels (pour 100g)" tags={nutrient_levels_tags}/>
+            <ProductNutritionTableField fieldName="Informations nutritionnelles" nutritionData={nutriments}
+                                        servingSize={serving_size}/>
+        </ProductFieldsCategory>
+        <ProductFieldsCategory name="Caractéristiques">
+            <ProductTagsField fieldName="Labels" tags={labels_tags}/>
+            <ProductTagsField fieldName="Origines des ingrédients" tags={origins_tags}/>
+            <ProductTagsField fieldName="Pays de vente" tags={countries_tags}/>
+            <ProductTagsField fieldName="Catégories" tags={categories_tags}/>
         </ProductFieldsCategory>
 
 
