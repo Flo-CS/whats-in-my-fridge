@@ -80,7 +80,7 @@ function getTagName(tag, taxonomyName) {
 
     return {
         converted: !!tagName,
-        name: !!tagName ? tagName : cleanTag(tag)
+        name: tagName ? tagName : cleanTag(tag)
     };
 }
 

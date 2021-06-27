@@ -30,15 +30,15 @@ class ProductsStats {
             total_count: this.products.length,
             in_stock_count: this.products.filter(product => product.quantity > 0).length,
             out_of_stock_count: this.products.filter(product => product.quantity <= 0).length,
+            nutriscore: this.getScoreFieldStats("nutriscore_grade", true),
+            nova: this.getScoreFieldStats("nova_group"),
+            ecoscore: this.getScoreFieldStats("ecoscore_grade", true),
             categories: this.computeTagsFieldStats("categories_tags"),
             additives: this.computeTagsFieldStats("additives_tags"),
             labels: this.computeTagsFieldStats("labels_tags"),
             origins: this.computeTagsFieldStats("origins_tags"),
             ingredients_analysis: this.computeTagsFieldStats("ingredients_analysis_tags"),
             nutrients_levels: this.computeTagsFieldStats("nutrient_levels_tags"),
-            nutriscore: this.getScoreFieldStats("nutriscore_grade", true),
-            nova: this.getScoreFieldStats("nova_group"),
-            ecoscore: this.getScoreFieldStats("ecoscore_grade", true)
         };
     }
 
