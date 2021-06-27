@@ -1,6 +1,6 @@
 @import "../../variables";
 
-$main-sidebar-width: 45px;
+$main-sidebar-width: 35px;
 $main-sidebar-color: #f6f6f6;
 $main-sidebar-icon-color: #000000;
 
@@ -54,16 +54,16 @@ $main-sidebar-icon-color: #000000;
   }
 
   &__button {
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     cursor: pointer;
     border: none;
     outline: none;
     background: none;
 
     &-icon {
-      width: 80%;
-      height: 80%;
+      width: 100%;
+      height: 100%;
       fill: $main-sidebar-icon-color;
       color: $main-sidebar-icon-color;
     }
@@ -71,7 +71,7 @@ $main-sidebar-icon-color: #000000;
 
   &__profile--active,
   &__menu-item--active {
-    border-left: 4px solid $accent-color;
+    border-left: 3px solid $accent-color;
 
     svg {
       fill: $accent-color;
