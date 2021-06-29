@@ -1,8 +1,8 @@
 import React, {useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchProductsStats, selectProductsStatsFeatures} from "../../../features/productSlice";
-import ScoreHistoryGraph from "./ScoreHistoryGraph";
 import DateRangeTimeUnitPicker from "./DateRangeTimeUnitPicker";
+import ScoreHistoryGraph from "./ScoreHistoryGraph";
 import StockCounts from "./StockCounts";
 
 
@@ -18,16 +18,13 @@ export default function StatsView() {
         }));
     }, [dispatch])
 
-
-    const novaAverageHistory = productsStats?.nova?.average_history;
-    const nutriscoreAverageHistory = productsStats?.nutriscore?.average_history;
-    const ecoscoreAverageHistory = productsStats?.ecoscore?.average_history;
+    const {stock = {}, scores = {}, tags = {}} = productsStats;
 
     return <div className="stats-view">
 
-    <StockCounts total={productsStats.total_count}
-                     inStock={productsStats.in_stock_count}
-                     outOfStock={productsStats.out_of_stock_count}/>
+        <StockCounts total={stock.total_count}
+                     inStock={stock.in_stock_count}
+                     outOfStock={stock.out_of_stock_count}/>
 
         <hr className="stats-view__separator"/>
 
@@ -35,9 +32,11 @@ export default function StatsView() {
         {productsStatsIsLoading === false ?
             <>
 
-                <ScoreHistoryGraph data={nutriscoreAverageHistory} isGrade title="Nutriscore (plus haut est meilleur)"/>
-                <ScoreHistoryGraph data={novaAverageHistory} title="Nova score (plus bas est meilleur)"/>
-                <ScoreHistoryGraph data={ecoscoreAverageHistory} isGrade title="Ecoscore (plus haut est meilleur)"/>
+                <ScoreHistoryGraph data={scores.nutriscore.average_history} isGrade
+                                   title="Nutriscore (plus haut est meilleur)"/>
+                <ScoreHistoryGraph data={scores.nova.average_history} title="Nova score (plus bas est meilleur)"/>
+                <ScoreHistoryGraph data={scores.ecoscore.average_history} isGrade
+                                   title="Ecoscore (plus haut est meilleur)"/>
             </>
             :
             <p>Chargement...</p>}
