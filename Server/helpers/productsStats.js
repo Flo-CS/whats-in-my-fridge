@@ -35,36 +35,8 @@ class ProductsStats {
                 nutriscore: this.getScoreFieldStats("nutriscore_grade", true),
                 nova: this.getScoreFieldStats("nova_group"),
                 ecoscore: this.getScoreFieldStats("ecoscore_grade", true),
-            },
-            tags: {
-                categories: this.computeTagsFieldStats("categories_tags"),
-                additives: this.computeTagsFieldStats("additives_tags"),
-                labels: this.computeTagsFieldStats("labels_tags"),
-                origins: this.computeTagsFieldStats("origins_tags"),
-                ingredients_analysis: this.computeTagsFieldStats("ingredients_analysis_tags"),
-                nutrients_levels: this.computeTagsFieldStats("nutrient_levels_tags"),
             }
         };
-    }
-
-    getFlattenProductsTagsField(field) {
-        return _(this.products)
-            .map(product => product.data[field] || [])
-            .flatten();
-    }
-
-    // All fields preceded with _tags
-    computeTagsFieldStats(field) {
-        const fieldFlattenProductsTags = this.getFlattenProductsTagsField(field);
-
-        return _(fieldFlattenProductsTags)
-            .map(tag => getTagName(tag, field))
-            .groupBy("name")
-            .map((items) => ({
-                ...items[0],
-                count: items.length
-            }))
-            .value();
     }
 
     // List of all dates where we need to calculate stats
