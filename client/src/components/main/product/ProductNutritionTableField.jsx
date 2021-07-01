@@ -1,13 +1,13 @@
+import classNames from "classnames";
+import {map} from "lodash";
 import propTypes from "prop-types";
-import classNames from "classnames"
 import React from "react";
-import {map} from "lodash"
 
 import "./ProductNutritionTableField.scss";
 
 function ProductNutritionTableFieldRow({name, value_100g, value_serving, value_unit, isWith}) {
 
-    const rowClass = classNames("product-nutrition-table-field__row", {"product-nutrition-table-field__row--is-indented": isWith})
+    const rowClass = classNames("product-nutrition-table-field__row", {"product-nutrition-table-field__row--is-indented": isWith});
 
     return <tr className={rowClass}>
         <td> {name}</td>
@@ -35,8 +35,6 @@ export default function ProductNutritionTableField({fieldName, nutritionData, se
         "carbohydrates": {name: "Glucides"},
         "sugars": {name: "dont Sucres", isWith: true}
     }
-
-    console.log(nutritionData)
 
     return <div className="product-nutrition-table-field">
         <h4 className="product-nutrition-table-field__name">{fieldName}</h4>

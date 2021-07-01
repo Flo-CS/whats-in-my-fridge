@@ -1,7 +1,7 @@
 import React, {useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchProductsStats, selectProductsStatsFeatures} from "../../../features/productSlice";
-import DateRangeTimeUnitPicker from "./DateRangeTimeUnitPicker";
+import DateRangeAndTimeUnitPicker from "./DateRangeAndTimeUnitPicker";
 import ScoreHistoryGraph from "./ScoreHistoryGraph";
 import StockCounts from "./StockCounts";
 
@@ -28,13 +28,14 @@ export default function StatsView() {
 
         <hr className="stats-view__separator"/>
 
-        <DateRangeTimeUnitPicker onDatesChange={handleDatesChange}/>
+        <DateRangeAndTimeUnitPicker onDatesChange={handleDatesChange}/>
         {productsStatsIsLoading === false ?
             <>
 
                 <ScoreHistoryGraph data={scores.nutriscore.average_history} isGrade
                                    title="Nutriscore (plus haut est meilleur)"/>
-                <ScoreHistoryGraph data={scores.nova.average_history} title="Nova score (plus bas est meilleur)"/>
+                <ScoreHistoryGraph data={scores.nova.average_history}
+                                   title="Nova score (plus bas est meilleur)"/>
                 <ScoreHistoryGraph data={scores.ecoscore.average_history} isGrade
                                    title="Ecoscore (plus haut est meilleur)"/>
             </>
