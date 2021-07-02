@@ -18,7 +18,7 @@ export default function StatsView() {
         }));
     }, [dispatch])
 
-    const {stock = {}, scores = {}, tags = {}} = productsStats;
+    const {stock = {}, scores = {}} = productsStats;
 
     return <div className="stats-view">
 
@@ -34,10 +34,10 @@ export default function StatsView() {
 
                 <ScoreHistoryGraph data={scores.nutriscore.average_history} isGrade
                                    title="Nutriscore (plus haut est meilleur)"/>
-                <ScoreHistoryGraph data={scores.nova.average_history}
-                                   title="Nova score (plus bas est meilleur)"/>
                 <ScoreHistoryGraph data={scores.ecoscore.average_history} isGrade
                                    title="Ecoscore (plus haut est meilleur)"/>
+                <ScoreHistoryGraph data={scores.nova.average_history}
+                                   title="Nova score (plus bas est meilleur)"/>
             </>
             :
             <p>Chargement...</p>}
