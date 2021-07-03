@@ -3,7 +3,6 @@ const dayjs = require("dayjs");
 require("dayjs/locale/fr");
 const isBetween = require("dayjs/plugin/isBetween");
 const {scoreGradeToScore} = require("./product");
-const {getTagName} = require("./taxonomies");
 
 dayjs.extend(isBetween);
 
@@ -21,6 +20,9 @@ class ProductsStats {
         this.timeUnit = timeUnit;
         this.timeScale = timeUnitToTimeScale[timeUnit];
 
+        this.presentProducts = this.getPresentsProductsByDate(this.startDate, this.timeUnit)
+
+        this.requiredCalculationDates = this.getRequiredCalculationDates()
     }
 
 
@@ -28,13 +30,16 @@ class ProductsStats {
         return {
             stock: {
                 total_count: this.products.length,
-                in_stock_count: this.products.filter(product => product.quantity > 0).length,
-                out_of_stock_count: this.products.filter(product => product.quantity <= 0).length,
+                in_stock_count: this.presentProducts.length,
+                out_of_stock_count: this.products.length - this.presentProducts.length,
             },
             scores: {
                 nutriscore: this.getScoreFieldStats("nutriscore_grade", true),
                 nova: this.getScoreFieldStats("nova_group"),
                 ecoscore: this.getScoreFieldStats("ecoscore_grade", true),
+            },
+            specifics: {
+                grades_scores_heatmap: this.getGradesScoresHeatmap()
             }
         };
     }
@@ -51,15 +56,15 @@ class ProductsStats {
         return dates;
     }
 
-    getPresentsProductsByDate(date) {
+    getPresentsProductsByDate(date, timeScale) {
         return _(this.products).filter(product => {
             // Remove all products that had a quantity of 0 on the specified date
-            return product.wasPresentOn(date, this.timeScale);
-        });
+            return product.wasPresentOn(date, timeScale);
+        }).value();
     }
 
     computeProductsAverageScoreFieldByDate(field, date, isGrade = false) {
-        return this.getPresentsProductsByDate(date)
+        return _(this.getPresentsProductsByDate(date, this.timeScale))
             .map(product => {
                 if (isGrade) {
                     return scoreGradeToScore(product.data[field]);
@@ -70,10 +75,8 @@ class ProductsStats {
             .mean();
     }
 
-    computeProductsScoreFieldHistory(field, isGrade = false) {
-        const requiredCalculationDates = this.getRequiredCalculationDates();
-
-        return _(requiredCalculationDates).map(requiredDate => {
+    getProductsScoreFieldHistory(field, isGrade = false) {
+        return _(this.requiredCalculationDates).map(requiredDate => {
             const averageScoreByDate = this.computeProductsAverageScoreFieldByDate(field, requiredDate, isGrade);
 
             return {date: requiredDate, average: averageScoreByDate};
@@ -85,12 +88,34 @@ class ProductsStats {
     // Nova, ecoscore, nutriscore
     getScoreFieldStats(field, isGrade = false) {
         return {
-            average_history: this.computeProductsScoreFieldHistory(field, isGrade),
+            average_history: this.getProductsScoreFieldHistory(field, isGrade),
             current_average: this.computeProductsAverageScoreFieldByDate(field, dayjs(), isGrade),
         };
     }
 
 
+    getGradesScoresHeatmap() {
+        let xValues, yValues
+        xValues = yValues = ["A", "B", "C", "D", "E", "?"]
+
+        // Initialize a 2D array filled with 0
+        const data = new Array(yValues.length).fill(0).map(() => new Array(xValues.length).fill(0));
+
+        for (const product of this.presentProducts) {
+
+            const {nutriscore_grade, ecoscore_grade} = product.data
+            const nutriscore = nutriscore_grade.toUpperCase()
+            const ecoscore = ecoscore_grade.toUpperCase()
+
+            const xIndex = xValues.includes(nutriscore) ? xValues.indexOf(nutriscore) : xValues.length - 1
+            const yIndex = yValues.includes(ecoscore) ? yValues.indexOf(ecoscore) : yValues.length - 1
+
+            data[yIndex][xIndex] += 1
+        }
+
+        return {xValues, yValues, data}
+
+    }
 }
 
 
