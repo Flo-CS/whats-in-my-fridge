@@ -95,11 +95,11 @@ class ProductsStats {
 
 
     getGradesScoresHeatmap() {
-        let xValues, yValues
-        xValues = yValues = ["A", "B", "C", "D", "E", "?"]
+        let xLabels, yLabels
+        xLabels = yLabels = ["A", "B", "C", "D", "E", "?"]
 
         // Initialize a 2D array filled with 0
-        const data = new Array(yValues.length).fill(0).map(() => new Array(xValues.length).fill(0));
+        const data = new Array(yLabels.length).fill(0).map(() => new Array(xLabels.length).fill(0));
 
         for (const product of this.presentProducts) {
 
@@ -107,13 +107,13 @@ class ProductsStats {
             const nutriscore = nutriscore_grade.toUpperCase()
             const ecoscore = ecoscore_grade.toUpperCase()
 
-            const xIndex = xValues.includes(nutriscore) ? xValues.indexOf(nutriscore) : xValues.length - 1
-            const yIndex = yValues.includes(ecoscore) ? yValues.indexOf(ecoscore) : yValues.length - 1
+            const xIndex = xLabels.includes(nutriscore) ? xLabels.indexOf(nutriscore) : xLabels.length - 1
+            const yIndex = yLabels.includes(ecoscore) ? yLabels.indexOf(ecoscore) : yLabels.length - 1
 
             data[yIndex][xIndex] += 1
         }
 
-        return {xValues, yValues, data}
+        return {xValues: xLabels, yValues: yLabels, data}
 
     }
 }
