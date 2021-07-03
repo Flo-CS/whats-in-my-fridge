@@ -113,7 +113,7 @@ class ProductsStats {
             data[yIndex][xIndex] += 1
         }
 
-        return {xValues: xLabels, yValues: yLabels, data}
+        return {xLabels, yLabels, data}
 
     }
 }

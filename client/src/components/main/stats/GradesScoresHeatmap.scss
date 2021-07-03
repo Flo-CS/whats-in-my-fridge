@@ -1,0 +1,27 @@
+.grades-scores-heatmap {
+  margin-bottom: 10px;
+  margin-top: 0;
+  font-size: 0.8rem;
+
+  &__table {
+    border-spacing: 3px;
+    border-collapse: separate;
+
+    tr:first-child td:first-child {
+      background: none;
+    }
+
+    td {
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      vertical-align: middle;
+      background-color: #f6f6f6;
+      border-radius: 5px;
+    }
+
+    td.grades-scores-heatmap__label {
+      background: none;
+    }
+  }
+}

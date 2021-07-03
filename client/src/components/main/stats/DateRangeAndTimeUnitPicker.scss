@@ -4,7 +4,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 15px auto;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
 
   &__time-unit-select {
     margin-bottom: 10px;
@@ -20,17 +22,19 @@
       margin: 0 5px;
     }
 
-    input[type="radio"]:checked + label:after {
-      position: absolute;
-      content: '';
-      height: 2px;
-      width: 100%;
-      bottom: -2px;
+    input[type="radio"]:checked + label {
+      &:after {
+        position: absolute;
+        content: '';
+        height: 2px;
+        width: 100%;
+        bottom: -2px;
 
-      margin: 0 auto;
-      left: 0;
-      right: 0;
-      background-color: $accent-color;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        background-color: $accent-color;
+      }
     }
 
   }

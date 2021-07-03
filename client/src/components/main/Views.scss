@@ -16,12 +16,14 @@
 .stats-view {
   &__separator {
     width: 80%;
-    border: 1px solid black;
-    opacity: 0.7;
+    border: none;
+    border-top: 1px solid black;
+    margin: 10px 0;
   }
 
   &__title {
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 10px 10px 0;
   }
 }

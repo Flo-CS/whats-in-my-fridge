@@ -14,7 +14,7 @@ export default function ScoreHistoryGraph({data, isGrade = false}) {
 
         <ResponsiveContainer>
 
-            <LineChart data={data} syncId="score-history-graph" margin={{top: 10, right: 10, bottom: 10, left: 10}}>
+            <LineChart data={data} syncId="score-history-graph" margin={{top: 10, right: 10, bottom: 10, left: 0}}>
 
                 <CartesianGrid strokeDasharray="3 3"/>
                 <XAxis dataKey="date" tickFormatter={(date) => dayjs(date).format("DD/MM")}
