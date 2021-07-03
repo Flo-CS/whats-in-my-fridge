@@ -31,13 +31,12 @@ export default function StatsView() {
         <DateRangeAndTimeUnitPicker onDatesChange={handleDatesChange}/>
         {productsStatsIsLoading === false ?
             <>
-
-                <ScoreHistoryGraph data={scores.nutriscore.average_history} isGrade
-                                   title="Nutriscore (plus haut est meilleur)"/>
-                <ScoreHistoryGraph data={scores.ecoscore.average_history} isGrade
-                                   title="Ecoscore (plus haut est meilleur)"/>
-                <ScoreHistoryGraph data={scores.nova.average_history}
-                                   title="Nova score (plus bas est meilleur)"/>
+                <p className="stats-view__title">Nutriscore (plus haut est meilleur)</p>
+                <ScoreHistoryGraph data={scores.nutriscore.average_history} isGrade/>
+                <p className="stats-view__title">Ecoscore (plus haut est meilleur)</p>
+                <ScoreHistoryGraph data={scores.ecoscore.average_history} isGrade/>
+                <p className="stats-view__title">Nova score (plus bas est meilleur)</p>
+                <ScoreHistoryGraph data={scores.nova.average_history}/>
             </>
             :
             <p>Chargement...</p>}

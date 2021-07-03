@@ -6,14 +6,12 @@ import {scoreToScoreGrade} from "../../../helpers/product";
 
 import "./ScoreHistoryGraph.scss";
 
-export default function ScoreHistoryGraph({data, isGrade = false, title}) {
+export default function ScoreHistoryGraph({data, isGrade = false}) {
 
     const accentColor = "#80b918"
 
     return <div className="score-history-graph">
-        <p className="score-history-graph__title">
-            {title}
-        </p>
+
         <ResponsiveContainer>
 
             <LineChart data={data} syncId="score-history-graph" margin={{top: 10, right: 10, bottom: 10, left: 10}}>
@@ -41,6 +39,5 @@ export default function ScoreHistoryGraph({data, isGrade = false, title}) {
 
 ScoreHistoryGraph.propTypes = {
     data: propTypes.array.isRequired,
-    isGrade: propTypes.bool,
-    title: propTypes.string.isRequired
+    isGrade: propTypes.bool
 };
