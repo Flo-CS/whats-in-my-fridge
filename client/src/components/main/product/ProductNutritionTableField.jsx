@@ -30,10 +30,12 @@ export default function ProductNutritionTableField({fieldName, nutritionData, se
         "energy-kcal": {name: "Energie (kCal)"},
         "fat": {name: "Matières grasses"},
         "saturated-fat": {name: "dont Acides gras saturés", isWith: true},
-        "proteins": {name: "Proteines"},
-        "salt": {name: "Sel"},
         "carbohydrates": {name: "Glucides"},
-        "sugars": {name: "dont Sucres", isWith: true}
+        "sugars": {name: "dont Sucres", isWith: true},
+        "salt": {name: "Sel"},
+        "sodium": {name: "dont Sodium", isWith: true},
+        "fiber": {name: "Fibres"},
+        "proteins": {name: "Proteines"},
     }
 
     return <div className="product-nutrition-table-field">
