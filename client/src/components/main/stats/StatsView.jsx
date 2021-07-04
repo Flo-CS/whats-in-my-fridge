@@ -33,14 +33,14 @@ export default function StatsView() {
                              inStock={stock.in_stock_count}
                              outOfStock={stock.out_of_stock_count}/>
                 <hr className="stats-view__separator"/>
-                <p className="stats-view__title">Nutriscore (plus haut est meilleur)</p>
+                <p className="stats-view__title">Nutriscore moyen (plus haut est meilleur)</p>
                 <ScoreHistoryGraph data={scores.nutriscore.average_history} isGrade/>
-                <p className="stats-view__title">Ecoscore (plus haut est meilleur)</p>
+                <p className="stats-view__title">Ecoscore moyen (plus haut est meilleur)</p>
                 <ScoreHistoryGraph data={scores.ecoscore.average_history} isGrade/>
-                <p className="stats-view__title">Nova score (plus bas est meilleur)</p>
+                <p className="stats-view__title">Novascore moyen (plus bas est meilleur)</p>
                 <ScoreHistoryGraph data={scores.nova.average_history}/>
-                <p className="stats-view__title">Nombre de produits en fonction de leur nutriscore (horizontal) et
-                    ecoscore (vertical)</p>
+                <p className="stats-view__title">Nombre de produits en fonction du nutriscore (horizontal) et ecoscore
+                    (vertical)</p>
                 <GradesScoresHeatmap xLabels={specifics.grades_scores_heatmap.xLabels}
                                      yLabels={specifics.grades_scores_heatmap.yLabels}
                                      data={specifics.grades_scores_heatmap.data}/>
