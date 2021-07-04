@@ -25,12 +25,15 @@ export default function ProductContent({productData}) {
         serving_size
     } = productData;
 
-    const validScoresGrades = ["A", "B", "C", "D", "E"]
+
+    const validScoresGrades = ["a", "b", "c", "d", "e"]
     const validNovaGroups = [1, 2, 3, 4]
 
-    const nutriscore = validScoresGrades.includes(nutriscore_grade) ? nutriscore_grade : "unknown"
-    const ecoscore = validScoresGrades.includes(ecoscore_grade) ? ecoscore_grade : "unknown"
-    const nova = validNovaGroups.includes(nova_group) ? nova_group : "unknown"
+    let nutriscore = nutriscore_grade.toLowerCase()
+    nutriscore = validScoresGrades.includes(nutriscore) ? nutriscore_grade : "unknown"
+    let ecoscore = ecoscore_grade.toLowerCase()
+    ecoscore = validScoresGrades.includes(ecoscore) ? ecoscore_grade : "unknown"
+    let nova = validNovaGroups.includes(nova_group) ? nova_group : "unknown"
 
 
     return <div className="product-content">
