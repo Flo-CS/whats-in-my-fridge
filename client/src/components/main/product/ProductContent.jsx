@@ -33,13 +33,14 @@ export default function ProductContent({productData}) {
                                                                  alt=""/>
             </div>
 
+
+            <div className="product-content__attribute-box"><img className="product-content__attribute"
+                                                                 src={`/static/images/ecoscore-${ecoscore_grade}.svg`}
+                                                                 alt=""/></div>
             <div className="product-content__attribute-box"><img className="product-content__attribute"
                                                                  src={`/static/images/nova-group-${nova_group}.svg`}
                                                                  alt=""/>
             </div>
-            <div className="product-content__attribute-box"><img className="product-content__attribute"
-                                                                 src={`/static/images/ecoscore-${ecoscore_grade}.svg`}
-                                                                 alt=""/></div>
         </div>
         <ProductFieldsCategory name="Ingrédients">
             <ProductTagsField fieldName="Additifs" tags={additives_tags}/>
