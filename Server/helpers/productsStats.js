@@ -104,8 +104,8 @@ class ProductsStats {
         for (const product of this.presentProducts) {
 
             const {nutriscore_grade, ecoscore_grade} = product.data
-            const nutriscore = nutriscore_grade.toUpperCase()
-            const ecoscore = ecoscore_grade.toUpperCase()
+            const nutriscore = nutriscore_grade?.toUpperCase()
+            const ecoscore = ecoscore_grade?.toUpperCase()
 
             const xIndex = xLabels.includes(nutriscore) ? xLabels.indexOf(nutriscore) : xLabels.length - 1
             const yIndex = yLabels.includes(ecoscore) ? yLabels.indexOf(ecoscore) : yLabels.length - 1
