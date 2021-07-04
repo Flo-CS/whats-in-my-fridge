@@ -8,9 +8,9 @@ import ProductTagsField from "./ProductTagsField";
 
 export default function ProductContent({productData}) {
     const {
-        nutriscore_grade = "unknown",
-        nova_group = "unknown",
-        ecoscore_grade = "unknown",
+        nutriscore_grade,
+        nova_group,
+        ecoscore_grade,
         categories_tags,
         labels_tags,
         origins_tags,
@@ -25,20 +25,27 @@ export default function ProductContent({productData}) {
         serving_size
     } = productData;
 
+    const validScoresGrades = ["A", "B", "C", "D", "E"]
+    const validNovaGroups = [1, 2, 3, 4]
+
+    const nutriscore = validScoresGrades.includes(nutriscore_grade) ? nutriscore_grade : "unknown"
+    const ecoscore = validScoresGrades.includes(ecoscore_grade) ? ecoscore_grade : "unknown"
+    const nova = validNovaGroups.includes(nova_group) ? nova_group : "unknown"
+
 
     return <div className="product-content">
         <div className="product-content__attributes">
             <div className="product-content__attribute-box"><img className="product-content__attribute"
-                                                                 src={`/static/images/nutriscore-${nutriscore_grade}.svg`}
+                                                                 src={`/static/images/nutriscore-${nutriscore}.svg`}
                                                                  alt=""/>
             </div>
 
 
             <div className="product-content__attribute-box"><img className="product-content__attribute"
-                                                                 src={`/static/images/ecoscore-${ecoscore_grade}.svg`}
+                                                                 src={`/static/images/ecoscore-${ecoscore}.svg`}
                                                                  alt=""/></div>
             <div className="product-content__attribute-box"><img className="product-content__attribute"
-                                                                 src={`/static/images/nova-group-${nova_group}.svg`}
+                                                                 src={`/static/images/nova-group-${nova}.svg`}
                                                                  alt=""/>
             </div>
         </div>
