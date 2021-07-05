@@ -1,25 +1,26 @@
 import React from "react";
-import {Redirect, Route, Switch} from "react-router-dom";
+import {Redirect, Switch} from "react-router-dom";
 import HomeView from "../components/main/home/HomeView";
 
 import MainSidebar from "../components/main/MainSidebar";
 import ProductView from "../components/main/product/ProductView";
 import StatsView from "../components/main/stats/StatsView";
+import ProtectedRoute from "../components/auth/ProtectedRoute";
 
 function MainPage() {
     return (
         <div className="main">
             <MainSidebar/>
             <Switch>
-                <Route exact path="/">
+                <ProtectedRoute exact path="/">
                     <HomeView/>
-                </Route>
-                <Route path="/products/:barcode">
+                </ProtectedRoute>
+                <ProtectedRoute path="/products/:barcode">
                     <ProductView/>
-                </Route>
-                <Route path="/stats">
+                </ProtectedRoute>
+                <ProtectedRoute path="/stats">
                     <StatsView/>
-                </Route>
+                </ProtectedRoute>
 
                 <Redirect from="*" to="/"/>
             </Switch>

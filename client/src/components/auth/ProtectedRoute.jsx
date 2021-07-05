@@ -6,15 +6,21 @@ import {selectAuthFeatures} from "../../features/authSlice";
 
 export default function ProtectedRoute({children, ...rest}) {
     const {isAuthenticated, isLoading} = useSelector((state) => selectAuthFeatures(state));
+    console.log({isAuthenticated, isLoading})
     return <Route {...rest}>
-        {isAuthenticated === false && isLoading === false ?
-            <Redirect to="/login"/> :
-            children
-
+        {!isLoading &&
+        <>
+            {isAuthenticated ?
+                children :
+                <Redirect to="/login"/>}
+        </>
         }
+
+
     </Route>;
 }
 
-ProtectedRoute.propTypes = {
-    children: propTypes.element.isRequired
-}
+ProtectedRoute.propTypes =
+    {
+        children: propTypes.element.isRequired
+    }

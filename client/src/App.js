@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import "./App.scss";
 import AuthRoute from "./components/auth/AuthRoute";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
 import {checkUserToken} from "./features/authSlice";
 import LoginPage from "./pages/LoginPage";
 
@@ -28,9 +27,9 @@ function App() {
                 <Route exact path="/register">
                     <RegisterPage/>
                 </Route>
-                <ProtectedRoute path="/">
+                <Route path="/">
                     <MainPage/>
-                </ProtectedRoute>
+                </Route>
             </Switch>
         </Router>
     </div>;
