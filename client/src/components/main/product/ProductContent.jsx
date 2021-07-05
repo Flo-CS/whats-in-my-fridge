@@ -39,7 +39,7 @@ export default function ProductContent({productData, quantity, barcode}) {
         allergens_tags = [],
         ingredients_analysis_tags = [],
         additives_tags = [],
-        nutrient_levels_tags = [],
+        nutrient_levels = {},
         ingredients_tags = [],
         nutriments = {},
         serving_size = "?"
@@ -88,8 +88,8 @@ export default function ProductContent({productData, quantity, barcode}) {
             <ProductTagsField fieldName="Ingrédients" tags={ingredients_tags}/>
         </ProductFieldsCategory>
         <ProductFieldsCategory name="Nutrition">
-            <ProductTagsField fieldName="Repères nutritonnels (pour 100g)" tags={nutrient_levels_tags}/>
-            <ProductNutritionTableField fieldName="Informations nutritionnelles" nutritionData={nutriments}
+            <ProductNutritionTableField fieldName="Informations nutritionnelles" nutriments={nutriments}
+                                        nutrientLevels={nutrient_levels}
                                         servingSize={serving_size}/>
         </ProductFieldsCategory>
         <ProductFieldsCategory name="Caractéristiques">

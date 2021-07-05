@@ -18,7 +18,7 @@ const OPEN_FOOD_FACTS_USEFUL_FIELDS = ["product_name",
     "ingredients_analysis_tags",
     "additives_tags",
     "ecoscore_grade",
-    "nutrient_levels_tags",
+    "nutrient_levels",
     "serving_size",
     "nutriments",];
 
