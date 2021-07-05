@@ -17,6 +17,15 @@ const registerUser = async (req, res) => {
             .status(400)
             .json({error: registerValidation.error.details[0].message});
 
+    // Get the user corresponding to the email address if he exists
+    const user = await models.User.findOne({email});
+
+    // Cancel if the user already exists
+    if (user)
+        return res
+            .status(400)
+            .json({error: "Il y a deja un utilisateur avec cette adresse mail"});
+
     // Hash the password
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
@@ -31,6 +40,7 @@ const registerUser = async (req, res) => {
 
         res.status(200).json({email});
     } catch (error) {
+        console.log(error)
         res.status(500).json({error});
     }
 };
@@ -53,13 +63,13 @@ const loginUser = async (req, res) => {
     if (!user)
         return res
             .status(401)
-            .json({error: "There is no user with this email address"});
+            .json({error: "Il n'y a aucun utilisateur avec cette adresse mail"});
 
     // Compare stored hashed password and login password
     const isPasswordValid = bcrypt.compareSync(password, user.password);
 
     if (!isPasswordValid)
-        return res.status(401).json({error: "The password is wrong"});
+        return res.status(401).json({error: "Le mot de passe est incorrect"});
 
     const token = jwt.sign({email, id: user._id}, process.env.JWT_SECRET_KEY, {
         // TODO : Change the token expiration delay
