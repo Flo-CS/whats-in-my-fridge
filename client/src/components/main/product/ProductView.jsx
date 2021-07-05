@@ -5,6 +5,7 @@ import {fetchActiveProduct, selectActiveProductFeatures} from "../../../features
 
 import ProductContent from "./ProductContent";
 import ProductHeader from "./ProductHeader";
+import ProductFooter from "./ProductFooter";
 
 
 export default function ProductView() {
@@ -22,6 +23,7 @@ export default function ProductView() {
         {activeProductIsLoading === false ? <>
                 <ProductHeader barcode={activeProduct.barcode} productData={activeProduct.data}/>
                 <ProductContent productData={activeProduct.data} quantity={activeProduct.quantity} barcode={barcode}/>
+                <ProductFooter presences={activeProduct.presences}/>
             </> :
             <p>Chargement...</p>}
 
