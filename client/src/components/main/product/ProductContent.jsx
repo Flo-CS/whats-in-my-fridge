@@ -29,9 +29,9 @@ export default function ProductContent({productData}) {
     const validScoresGrades = ["a", "b", "c", "d", "e"]
     const validNovaGroups = [1, 2, 3, 4]
 
-    let nutriscore = nutriscore_grade.toLowerCase()
+    let nutriscore = nutriscore_grade?.toLowerCase()
     nutriscore = validScoresGrades.includes(nutriscore) ? nutriscore_grade : "unknown"
-    let ecoscore = ecoscore_grade.toLowerCase()
+    let ecoscore = ecoscore_grade?.toLowerCase()
     ecoscore = validScoresGrades.includes(ecoscore) ? ecoscore_grade : "unknown"
     let nova = validNovaGroups.includes(nova_group) ? nova_group : "unknown"
 
