@@ -31,18 +31,18 @@ export default function ProductContent({productData, quantity, barcode}) {
         nutriscore_grade,
         nova_group,
         ecoscore_grade,
-        categories_tags,
-        labels_tags,
-        origins_tags,
-        countries_tags,
-        traces_tags,
-        allergens_tags,
-        ingredients_analysis_tags,
-        additives_tags,
-        nutrient_levels_tags,
-        ingredients_tags,
-        nutriments,
-        serving_size
+        categories_tags = [],
+        labels_tags = [],
+        origins_tags = [],
+        countries_tags = [],
+        traces_tags = [],
+        allergens_tags = [],
+        ingredients_analysis_tags = [],
+        additives_tags = [],
+        nutrient_levels_tags = [],
+        ingredients_tags = [],
+        nutriments = {},
+        serving_size = "?"
     } = productData;
 
 
@@ -50,9 +50,9 @@ export default function ProductContent({productData, quantity, barcode}) {
     const validNovaGroups = [1, 2, 3, 4]
 
     let nutriscore = nutriscore_grade?.toLowerCase()
-    nutriscore = validScoresGrades.includes(nutriscore) ? nutriscore_grade : "unknown"
+    nutriscore = validScoresGrades.includes(nutriscore) ? nutriscore : "unknown"
     let ecoscore = ecoscore_grade?.toLowerCase()
-    ecoscore = validScoresGrades.includes(ecoscore) ? ecoscore_grade : "unknown"
+    ecoscore = validScoresGrades.includes(ecoscore) ? ecoscore : "unknown"
     let nova = validNovaGroups.includes(nova_group) ? nova_group : "unknown"
 
 
