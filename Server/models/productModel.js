@@ -26,9 +26,11 @@ productSchema.methods.updateQuantity =  function(quantity) {
     const lastIndex = this.presences.length - 1
 
 
-    if (dayjs().isSame(this.presences[lastIndex], "day")) {
-        this.presences[lastIndex] = this.quantity >= 1
+    if (dayjs().isSame(this.presences[lastIndex].date, "day")) {
+        console.log("modify")
+        this.presences[lastIndex] = {date: dayjs().format(), value: this.quantity >= 1}
     } else {
+        console.log("add")
         this.presences.push({date: dayjs().format(), value: this.quantity >= 1});
     }
 
