@@ -32,6 +32,15 @@ const getOneProduct = async (req, res) => {
             barcode: barcode,
         });
 
+        // Take the opportunity to update the product data (because the data evolves on open food facts)
+        let productData = await getOFFdata(barcode);
+
+        if (productData) {
+            product.data = productData
+        }
+
+        await product.save();
+
         res.status(200).json({product: product.export()});
 
     } catch (error) {

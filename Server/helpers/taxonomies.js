@@ -12,8 +12,6 @@ const OPEN_FOOD_FACTS_TAXONOMIES = [
     "additives_classes",
     "ingredients_analysis",
     "nova_groups",
-    "nutrients",
-    "nutrient_levels",
     "additives",
     "allergens",
     "ingredients",
@@ -40,7 +38,6 @@ try {
     global.additives_classes_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/additives_classes.json`);
     global.ingredients_analysis_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/ingredients_analysis.json`);
     global.nova_groups_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/nova_groups.json`);
-    global.nutrient_levels_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/nutrient_levels.json`);
     global.categories_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/categories.json`);
     global.labels_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/labels.json`);
     global.countries_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/countries.json`);
@@ -98,7 +95,6 @@ function convertTagsFieldsWithTaxonomies(productData) {
         additives_tags,
         ingredients_tags,
         ingredients_analysis_tags,
-        nutrient_levels_tags
     } = productData;
 
     return {
@@ -113,7 +109,6 @@ function convertTagsFieldsWithTaxonomies(productData) {
         additives_tags: additives_tags?.map(tag => getTagName(tag, "additives_tags")),
         ingredients_tags: ingredients_tags?.map(tag => getTagName(tag, "ingredients_tags",)),
         ingredients_analysis_tags: ingredients_analysis_tags?.map(tag => getTagName(tag, "ingredients_analysis_tags")),
-        nutrient_levels_tags: nutrient_levels_tags?.map(tag => getTagName(tag, "nutrient_levels_tags"))
     };
 
 }

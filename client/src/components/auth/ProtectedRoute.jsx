@@ -6,7 +6,7 @@ import {selectAuthFeatures} from "../../features/authSlice";
 
 export default function ProtectedRoute({children, ...rest}) {
     const {isAuthenticated, isLoading} = useSelector((state) => selectAuthFeatures(state));
-    console.log({isAuthenticated, isLoading})
+
     return <Route {...rest}>
         {!isLoading &&
         <>
