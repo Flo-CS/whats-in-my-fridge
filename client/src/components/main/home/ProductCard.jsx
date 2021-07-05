@@ -3,13 +3,11 @@ import propTypes from "prop-types";
 import React from "react";
 import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
-import {ReactComponent as MinusIcon} from "../../../assets/icons/minus.svg";
-
-import {ReactComponent as PlusIcon} from "../../../assets/icons/plus.svg";
 import {deleteProduct, updateProductQuantity} from "../../../features/productSlice";
 import {truncateString} from "../../../helpers/miscellaneous";
 
 import "./ProductCard.scss";
+import ProductQuantityControls from "./ProductQuantityControls";
 
 export default function ProductCard({barcode, quantity, productData}) {
 
@@ -17,15 +15,15 @@ export default function ProductCard({barcode, quantity, productData}) {
     const dispatch = useDispatch();
 
 
-    function handleIncreaseQuantityButtonClick() {
+    function handleIncreaseQuantity() {
         dispatch(updateProductQuantity({barcode: barcode, quantity: quantity + 1}));
 
     }
 
-    function handleDecreaseQuantityButtonClick() {
+    function handleDecreaseQuantity() {
         // Verify if the quantity don't go lower or equal than 1 and delete the product if it's the case
         if (quantity - 1 <= -1) {
-            if (window.confirm("Voulez vous définitivement supprimer ce produit")) {
+            if (window.confirm("Voulez vous définitivement supprimer ce produit ?")) {
                 dispatch(deleteProduct({barcode}));
             }
         } else {
@@ -61,23 +59,13 @@ export default function ProductCard({barcode, quantity, productData}) {
                         src={image_url}
                     />
                 </div>
-            </div>
 
-            <div className="product-card__controls">
-                <button
-                    className="product-card__button"
-                    onClick={handleIncreaseQuantityButtonClick}
-                >
-                    <PlusIcon className="product-card__button-icon"/>
-                </button>
-                <p className="product-card__quantity-indicator">{quantity}</p>
-                <button
-                    className="product-card__button"
-                    onClick={handleDecreaseQuantityButtonClick}
-                >
-                    <MinusIcon className="product-card__button-icon"/>
-                </button>
             </div>
+            <ProductQuantityControls quantity={quantity} direction="vertical"
+                                     onDecreaseQuantity={handleDecreaseQuantity}
+                                     onIncreaseQuantity={handleIncreaseQuantity}/>
+
+
         </div>
     );
 }
@@ -85,7 +73,7 @@ export default function ProductCard({barcode, quantity, productData}) {
 ProductCard.propTypes = {
     barcode: propTypes.string.isRequired,
     quantity: propTypes.number.isRequired,
-    productData: propTypes.object.isRequired,
+    productData: propTypes.object.isRequired
+}
 
-};
 

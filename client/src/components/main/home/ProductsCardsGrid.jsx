@@ -17,7 +17,6 @@ export default function ProductsCardsGrid({products}) {
                         barcode={product.barcode}
                         quantity={product.quantity}
                         productData={product.data}
-
                     />
                 );
             })}

@@ -1,12 +1,32 @@
 import propTypes from "prop-types";
 import React from "react";
-
-import "./ProductContent.scss";
 import ProductFieldsCategory from "./ProductFieldsCategory";
 import ProductNutritionTableField from "./ProductNutritionTableField";
 import ProductTagsField from "./ProductTagsField";
+import ProductQuantityControls from "../home/ProductQuantityControls";
+import {deleteProduct, updateProductQuantity} from "../../../features/productSlice";
+import {useDispatch} from "react-redux";
+import "./ProductContent.scss";
 
-export default function ProductContent({productData}) {
+export default function ProductContent({productData, quantity, barcode}) {
+
+    const dispatch = useDispatch();
+
+    function handleIncreaseQuantity() {
+        dispatch(updateProductQuantity({barcode: barcode, quantity: quantity + 1}));
+    }
+
+    function handleDecreaseQuantity() {
+        // Verify if the quantity don't go lower or equal than 1 and delete the product if it's the case
+        if (quantity - 1 <= -1) {
+            if (window.confirm("Voulez vous définitivement supprimer ce produit ?")) {
+                dispatch(deleteProduct({barcode}));
+            }
+        } else {
+            dispatch(updateProductQuantity({barcode: barcode, quantity: quantity - 1}));
+        }
+    }
+
     const {
         nutriscore_grade,
         nova_group,
@@ -51,7 +71,14 @@ export default function ProductContent({productData}) {
                                                                  src={`/static/images/nova-group-${nova}.svg`}
                                                                  alt=""/>
             </div>
+
+
         </div>
+        <div className="product-content__quantity-controls">
+            <ProductQuantityControls direction="horizontal" onIncreaseQuantity={handleIncreaseQuantity}
+                                     onDecreaseQuantity={handleDecreaseQuantity} quantity={quantity}/>
+        </div>
+
         <ProductFieldsCategory name="Ingrédients">
             <ProductTagsField fieldName="Additifs" tags={additives_tags}/>
             <ProductTagsField fieldName="Analyse des ingrédients" tags={ingredients_analysis_tags}/>
@@ -79,5 +106,6 @@ export default function ProductContent({productData}) {
 
 ProductContent.propTypes = {
     productData: propTypes.object.isRequired,
-
+    quantity: propTypes.number.isRequired,
+    barcode: propTypes.string.isRequired
 };

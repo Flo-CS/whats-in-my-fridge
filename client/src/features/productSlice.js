@@ -76,6 +76,7 @@ const productSlice = createSlice({
         },
         [addProduct.rejected]: (state, action) => {
             state.productsError = action.error;
+            state.activeProductError = action.error
             toast.error("Le produit n'a pas pu être ajouté, vérifiez le code barre");
         },
 
@@ -88,6 +89,8 @@ const productSlice = createSlice({
                 state.products[productIndex].presences = action.payload.presences;
                 state.products[productIndex].quantity = action.payload.quantity;
             }
+            state.activeProduct.presences = action.payload.presences
+            state.activeProduct.quantity = action.payload.quantity
         },
         [updateProductQuantity.rejected]: (state, action) => {
             state.productsError = action.error;
