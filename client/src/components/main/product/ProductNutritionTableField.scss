@@ -22,6 +22,11 @@
     text-align: left;
     border-bottom: 1px solid $color4;
     padding: 5px;
+    line-height: 1rem;
+
+    span {
+      font-weight: 600;
+    }
   }
 
 }

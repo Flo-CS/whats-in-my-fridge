@@ -23,9 +23,6 @@ export default function StatsView() {
 
     return <div className="stats-view">
 
-
-
-
         <DateRangeAndTimeUnitPicker onDatesChange={handleDatesChange}/>
         {productsStatsIsLoading === false ?
             <>

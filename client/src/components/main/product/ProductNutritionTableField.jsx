@@ -8,19 +8,26 @@ function ProductNutritionTableFieldRow({name, nutriments, fieldKey, isWith, nutr
 
     const rowClass = classNames("product-nutrition-table-field__row", {"product-nutrition-table-field__row--is-indented": isWith});
 
-    const nutrientsLevelsConversions = {
-        "low": "(faible)",
-        "moderate": "(modéré)",
-        "high": "(élevé)"
+    const nutrientLevelsConversions = {
+        "low": {name: "(faible)", color: "#00bf00"},
+        "moderate": {name: "(modéré)", color: "#ffcc00"},
+        "high": {name: "(élevé)", color: "#ff1900"}
     }
 
     const value_100g = nutriments[`${fieldKey}_100g`]
     const value_serving = nutriments[`${fieldKey}_serving`]
     const value_unit = nutriments[`${fieldKey}_unit`]
 
+    const nutrientLevelsInfos = nutrientLevelsConversions[nutrientLevel]
+    const nutrientLevelName = nutrientLevelsInfos ? nutrientLevelsInfos.name : ""
+    const nutrientLevelColor = nutrientLevelsInfos ? nutrientLevelsInfos.color : ""
+
     return <tr className={rowClass}>
         <td> {name}</td>
-        <td>{value_100g ? `${value_100g} ${value_unit} ${nutrientsLevelsConversions[nutrientLevel] || ""}` : "?"}</td>
+
+        <td>{value_100g || 0} {value_unit} <span style={{color: nutrientLevelColor}}>{nutrientLevelName}</span></td>
+
+
         <td>{value_serving ? `${value_serving} ${value_unit}` : "?"}</td>
     </tr>
 }
