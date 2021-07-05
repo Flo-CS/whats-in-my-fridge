@@ -1,6 +1,6 @@
 @import "./../../../variables";
 
-$stripe-color: #cdcdcd;
+
 .product-card {
   position: relative;
   display: flex;
@@ -10,15 +10,15 @@ $stripe-color: #cdcdcd;
 
   border-radius: 5px;
 
-  background-color: #f6f6f6;
+  background-color: $color3;
 
   &:hover {
-    box-shadow: 0 5px 10px -5px transparentize(darken(#f6f6f6, 30%), 0.6), 0 -5px 10px -5px transparentize(darken(#f6f6f6, 30%), 0.6);
+    box-shadow: 0 5px 10px -5px transparentize(darken($color3, 30%), 0.6), 0 -5px 10px -5px transparentize(darken($color3, 30%), 0.6);
 
   }
 
   &--disabled {
-    background-image: linear-gradient(135deg, $stripe-color 2.38%, #f6f6f6 2.38%, #f6f6f6 50%, $stripe-color 50%, $stripe-color 52.38%, #f6f6f6 52.38%, #f6f6f6 100%);
+    background-image: linear-gradient(135deg, $color4 2.38%, #f6f6f6 2.38%, #f6f6f6 50%, $color4 50%, $color4 52.38%, #f6f6f6 52.38%, #f6f6f6 100%);
     background-size: 29.70px 29.70px;
   }
 
@@ -32,15 +32,14 @@ $stripe-color: #cdcdcd;
   }
 
   &__header {
-    padding: 10px;
-    padding-bottom: 0;
+    padding: 10px 10px 0;
   }
 
   &__name {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
 
     &--soft {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
     }
 
     &--bold {
@@ -63,7 +62,7 @@ $stripe-color: #cdcdcd;
     // Hide the alt text
     text-indent: 100%;
     border-radius: 5px;
-    background-color: black;
+    background-color: $color2;
   }
 
   &__controls {
@@ -81,10 +80,7 @@ $stripe-color: #cdcdcd;
     width: 25px;
     height: 25px;
     padding: 0;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background: none;
+    @include reset-button;
 
 
     &-icon {
@@ -98,7 +94,7 @@ $stripe-color: #cdcdcd;
   }
 
   &__quantity-indicator {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1.1rem;
   }
 }

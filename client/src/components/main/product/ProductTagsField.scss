@@ -1,3 +1,5 @@
+@import "./../../../variables";
+
 .product-tags-field {
   font-size: 0.8rem;
   margin-bottom: 10px;
@@ -8,7 +10,7 @@
   }
 
   &__list {
-    line-height: 0.95rem;
+    line-height: 1.05rem;
 
 
     &-item, &-show-more {
@@ -19,12 +21,9 @@
       margin-top: 2px;
 
       button {
-        outline: none;
-        cursor: pointer;
-        background: none;
-        border: none;
-        padding: 0;
+        @include reset-button;
         font-weight: 600;
+        padding: 0;
 
         &:hover {
           text-decoration: underline;

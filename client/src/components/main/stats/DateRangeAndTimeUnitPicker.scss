@@ -23,6 +23,8 @@
     }
 
     input[type="radio"]:checked + label {
+      font-weight: 600;
+
       &:after {
         position: absolute;
         content: '';
@@ -44,21 +46,23 @@
     align-items: center;
   }
 
+  &__date {
+    font-weight: 600;
+
+  }
+
   &__previous-btn, &__next-btn {
+    @include reset-button;
     width: 25px;
     height: 25px;
     padding: 0;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background: none;
 
 
     svg {
       fill: $accent-color;
 
       &:hover {
-        fill: black;
+        fill: $color2;
       }
     }
 

@@ -1,10 +1,13 @@
+@import "./../../../variables";
+
 .product-header {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
   padding: 10px;
-  background-color: #f6f6f6;
+  background-color: $color3;
+  font-size: 0.8rem;
 
   &__image {
     max-width: 100px;
@@ -20,26 +23,18 @@
   }
 
   &__name, &__barcode, &__brands {
-    font-size: 0.8rem;
+
     margin-bottom: 5px;
 
   }
 
   &__name {
     font-weight: 700;
-
-    font-size: 0.9rem;
   }
 
-  &__brands {
+  &__brands, &__quantity {
     font-weight: 600;
-
   }
 
-  &__quantity {
-    font-size: 0.8rem;
-    font-weight: 600;
-
-  }
 
 }

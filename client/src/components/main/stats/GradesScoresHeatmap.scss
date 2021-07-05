@@ -1,3 +1,5 @@
+@import "./../../../variables";
+
 .grades-scores-heatmap {
   margin-bottom: 10px;
   margin-top: 0;
@@ -16,7 +18,7 @@
       height: 30px;
       text-align: center;
       vertical-align: middle;
-      background-color: #f6f6f6;
+      background-color: $color3;
       border-radius: 5px;
     }
 

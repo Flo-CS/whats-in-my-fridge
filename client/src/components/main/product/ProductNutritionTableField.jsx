@@ -11,8 +11,8 @@ function ProductNutritionTableFieldRow({name, value_100g, value_serving, value_u
 
     return <tr className={rowClass}>
         <td> {name}</td>
-        <td>{value_100g ? `${value_100g} ${value_unit}` : ":("}</td>
-        <td>{value_serving ? `${value_serving} ${value_unit}` : ":("}</td>
+        <td>{value_100g ? `${value_100g} ${value_unit}` : "?"}</td>
+        <td>{value_serving ? `${value_serving} ${value_unit}` : "?"}</td>
     </tr>
 }
 

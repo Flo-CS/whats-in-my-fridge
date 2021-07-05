@@ -1,3 +1,5 @@
+@import "./../../../variables";
+
 .product-nutrition-table-field {
   font-size: 0.8rem;
   margin-bottom: 10px;
@@ -13,12 +15,12 @@
   }
 
   thead {
-    background-color: #eaeaea;
+    background-color: $color3;
   }
 
   th, td {
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $color4;
     padding: 5px;
   }
 

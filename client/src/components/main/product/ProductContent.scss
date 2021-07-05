@@ -1,13 +1,15 @@
 .product-content {
 
   width: 100%;
-  padding: 10px;
+  padding: 10px 15px;
 
   &__attributes {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     height: 40px;
+    margin-bottom: 20px;
+
   }
 
   &__attribute-box {
@@ -19,9 +21,6 @@
     }
   }
 
-  &__attributes {
-    margin-bottom: 10px;
-  }
 
   &__attribute {
     max-width: 100%;

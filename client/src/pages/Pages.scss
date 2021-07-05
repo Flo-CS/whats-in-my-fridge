@@ -1,5 +1,4 @@
-$go-button-color: #e7e7e7;
-
+@import "./../variables";
 .register, .login {
   display: flex;
   align-items: center;
@@ -9,7 +8,7 @@ $go-button-color: #e7e7e7;
   height: 100%;
   // h1 selector is used because there is max one h1 per page
   h1 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 40px;
   }
@@ -22,7 +21,7 @@ $go-button-color: #e7e7e7;
     border: none;
     border-radius: 5px;
     outline: none;
-    background-color: $go-button-color;
+    background-color: $color3;
   }
 }
 
