@@ -48,7 +48,7 @@ const authSlice = createSlice({
             // For the moment nothing
         },
         [registerUser.fulfilled]: (state, action) => {
-            // For the moment nothing
+            toast.success("L'inscription a réussi, vous pouvez maintenant vous connecter")
         },
         [registerUser.rejected]: (state, action) => {
             // For the moment nothing
