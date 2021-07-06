@@ -1,14 +1,13 @@
+import {take} from "lodash";
 import propTypes from "prop-types";
 import React, {useState} from "react";
 import "./ProductTagsField.scss";
 
-import {take} from "lodash"
-
 export default function ProductTagsField({fieldName, tags = []}) {
 
-    const [tagsLimit, setTagsLimit] = useState(10)
+    const [tagsLimit, setTagsLimit] = useState(8);
 
-    const isShowMoreButtonActive = tags.length > tagsLimit && tags.length > 10
+    const isShowMoreButtonActive = tags.length > tagsLimit && tags.length > 8;
 
 
     return <div className="product-tags-field">
