@@ -4,23 +4,23 @@ import React from "react";
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis,} from "recharts";
 import {scoreToScoreGrade} from "../../../helpers/product";
 
-import "./ScoreHistoryGraph.scss";
+import "./ScoreHistoryLineChart.scss";
 
-export default function ScoreHistoryGraph({data, isGrade = false}) {
+export default function ScoreHistoryLineChart({data, isGrade = false}) {
 
-    const accentColor = "#80b918"
+    const accentColor = "#80b918";
 
-    return <div className="score-history-graph">
+    return <div className="score-history-line-chart">
 
         <ResponsiveContainer>
 
-            <LineChart data={data} syncId="score-history-graph" margin={{top: 10, right: 10, bottom: 10, left: 0}}>
+            <LineChart data={data} syncId="score-history-line-chart" margin={{top: 10, right: 10, bottom: 10, left: 0}}>
 
                 <CartesianGrid strokeDasharray="3 3"/>
                 <XAxis dataKey="date" tickFormatter={(date) => dayjs(date).format("DD/MM")}
-                       style={{fontSize: "0.7rem"}}/>
+                       style={{fontSize: "0.8rem"}}/>
                 <YAxis width={30}
-                       style={{fontSize: "0.7rem"}}
+                       style={{fontSize: "0.8rem"}}
                        tickFormatter={(score) => isGrade ? scoreToScoreGrade(score) : score}
                        domain={['dataMin - 0.5', 'dataMax + 0.5']}
                        allowDataOverflow={true}
@@ -37,7 +37,7 @@ export default function ScoreHistoryGraph({data, isGrade = false}) {
         </ResponsiveContainer></div>;
 }
 
-ScoreHistoryGraph.propTypes = {
+ScoreHistoryLineChart.propTypes = {
     data: propTypes.array.isRequired,
     isGrade: propTypes.bool
 };
