@@ -1,23 +1,27 @@
 const {OPEN_FOOD_FACTS_API_ENDPOINT, OPEN_FOOD_FACTS_USEFUL_FIELDS} = require("../config");
-const axios = require("axios")
-const _ = require("lodash")
+const axios = require("axios");
+const _ = require("lodash");
+const {OpenFoodFactsError, openFoodFactsErrors} = require("./errors");
 
 async function getOFFdata(barcode) {
 
     const fields = OPEN_FOOD_FACTS_USEFUL_FIELDS.join(",");
 
-    const openFoodFactsResponse = await axios.get(
+    const response = await axios.get(
         `${OPEN_FOOD_FACTS_API_ENDPOINT}/product/${barcode}.json?fields=${fields}`
-    );
+    ).catch(() => {
+        throw new OpenFoodFactsError(openFoodFactsErrors.communication);
+    });
 
-    let productData = openFoodFactsResponse.data.product;
+    let productData = response.data.product;
 
-    // We verify that the product exists and if we have a name for it in open food facts, 0 is status code for error
-    if (openFoodFactsResponse.data.status === 0 || !productData.product_name) {
-        return undefined
-    } else {
-        return productData
-    }
+    // 0 is status code for error
+    if (response.data.status === 0)
+        throw new OpenFoodFactsError(openFoodFactsErrors.noProductFound);
+
+
+    return productData;
+
 }
 
 
@@ -28,13 +32,12 @@ function scoreGradeToScore(grade) {
         "c": 3,
         "d": 2,
         "e": 1
-    }
+    };
 
-    if (!_.isString(grade) || _.isNil(grade)) return
+    if (!_.isString(grade) || _.isNil(grade)) return;
 
-    grade = grade.toLowerCase()
-    return gradeConversions[grade]
+    grade = grade.toLowerCase();
+    return gradeConversions[grade];
 }
 
-
-module.exports = {getOFFdata, scoreGradeToScore}
+module.exports = {getOFFdata, scoreGradeToScore};

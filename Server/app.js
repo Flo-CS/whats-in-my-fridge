@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+const errorsManagerMiddleware = require("./middlewares/errorsManagerMiddleware");
 
 require("dotenv").config();
 
@@ -33,7 +34,7 @@ setInterval(() => {
 const App = express();
 
 // Middlewares
-App.use(morgan("combined"));
+App.use(morgan("short"));
 App.use(cookieParser());
 App.use(cors({credentials: true, origin: true}));
 App.use(bodyParser.json());
@@ -41,6 +42,9 @@ App.use(bodyParser.json());
 // Routes
 App.use("/api/products", productRoute);
 App.use("/api/auth", userRoute);
+
+// Errors manager middleware
+App.use(errorsManagerMiddleware());
 
 App.listen(SERVER_PORT, () => {
     console.log("I'm running :)");

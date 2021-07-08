@@ -1,143 +1,139 @@
 const models = require("./../models/index");
+const {validationErrors} = require("../helpers/errors");
+const {databaseErrors} = require("../helpers/errors");
+const {ValidationError} = require("../helpers/errors");
+const {DatabaseError} = require("../helpers/errors");
 const {getOFFdata} = require("../helpers/product");
 const {ProductsStats} = require("../helpers/productsStats");
 
 
-const getAllProducts = async (req, res) => {
+const getAllProducts = async (req, res, next) => {
+    const products = await models.Product.find({
+        user: req.verifiedToken.id,
+    }).catch(() => {
+        return next(new DatabaseError(databaseErrors.operation));
+    });
 
-    const range = req.query.range || "0-100";
+    return res.status(200).json({products: products.map(product => product.export())});
 
-    const rangeStart = parseInt(range.split("-")[0]);
-    const rangeEnd = parseInt(range.split("-")[1]);
-
-
-    try {
-        let products = await models.Product.find({
-            user: req.verifiedToken.id,
-        }).skip(rangeStart)
-            .limit(rangeEnd);
-
-        res.status(200).json({products: products.map(product => product.export())});
-    } catch (error) {
-        res.status(500).json({error});
-    }
 };
 
-const getOneProduct = async (req, res) => {
+const getOneProduct = async (req, res, next) => {
     const barcode = req.params.barcode;
 
+    const product = await models.Product.findOne({
+        user: req.verifiedToken.id,
+        barcode: barcode,
+    }).catch(() => {
+        return next(new DatabaseError(databaseErrors.operation));
+    });
+
+    // Take the opportunity to update the product data (because the data evolves on open food facts)
     try {
-        const product = await models.Product.findOne({
-            user: req.verifiedToken.id,
-            barcode: barcode,
-        });
-
-        // Take the opportunity to update the product data (because the data evolves on open food facts)
-        let productData = await getOFFdata(barcode);
-
-        if (productData) {
-            product.data = productData
-        }
-
-        await product.save();
-
-        res.status(200).json({product: product.export()});
-
+        product.data = await getOFFdata(barcode);
     } catch (error) {
-        res.status(500).json({error});
+        return next(error);
     }
+
+    await product.save().catch(() => {
+        return next(new DatabaseError(databaseErrors.save));
+    });
+
+    return res.status(200).json({product: product.export()});
 };
 
-const addOneProduct = async (req, res) => {
+const addOneProduct = async (req, res, next) => {
     const barcode = req.params.barcode;
 
-    try {
+    const productToUpdate = await models.Product.findOne({
+        user: req.verifiedToken.id,
+        barcode: barcode,
+    }).catch(() => {
+        return next(new DatabaseError(databaseErrors.operation));
+    });
 
-        const productToUpdate = await models.Product.findOne(
-            {
-                user: req.verifiedToken.id,
-                barcode: barcode,
-            }
-        );
-        // UPDATE PRODUCT QUANTITY IF PRODUCT ALREADY EXISTS
-        if (productToUpdate) {
-            productToUpdate.updateQuantity(productToUpdate.quantity + 1)
-            productToUpdate.save()
+    // UPDATE PRODUCT QUANTITY IF PRODUCT ALREADY EXISTS
+    if (productToUpdate) {
+        productToUpdate.updateQuantity(productToUpdate.quantity + 1);
 
-
-            return res.status(200).json({product: productToUpdate.export(), updated: true});
-        }
-
-        // CREATE NEW PRODUCT IF PRODUCT NOT EXISTS
-        let productData = await getOFFdata(barcode);
-
-        if (!productData) return res.status(404).json({});
-
-
-        const productToCreate = new models.Product({
-            user: req.verifiedToken.id,
-            barcode: barcode,
-            data: productData,
+        productToUpdate.save().catch(() => {
+            return next(new DatabaseError(databaseErrors.save));
         });
 
-
-        await productToCreate.save();
-
-
-        res.status(200).json({product: productToCreate.export(), updated: false});
-    } catch (error) {
-        res.status(500).json({error});
+        return res.status(200).json({product: productToUpdate.export(), updated: true});
     }
+
+    // CREATE NEW PRODUCT IF PRODUCT NOT EXISTS
+    let productData;
+    try {
+        productData = await getOFFdata(barcode);
+    } catch (error) {
+        return next(error);
+    }
+
+    const productToCreate = new models.Product({
+        user: req.verifiedToken.id,
+        barcode: barcode,
+        data: productData,
+    });
+
+    await productToCreate.save().catch(() => {
+        return next(new DatabaseError(databaseErrors.save));
+    });
+
+    return res.status(200).json({product: productToCreate.export(), updated: false});
 };
 
-const getStats = async (req, res) => {
+const getStats = async (req, res, next) => {
     const {startDate, endDate, timeUnit} = req.query;
 
-    try {
-        const products = await models.Product.find({user: req.verifiedToken.id});
+    const products = await models.Product.find({user: req.verifiedToken.id})
+        .catch(() => {
+            return next(new DatabaseError(databaseErrors.operation));
+        });
 
-        const stats = new ProductsStats(products, startDate, endDate, timeUnit).getStats();
 
-        res.status(200).json({stats});
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({error});
-    }
+    const stats = new ProductsStats(products, startDate, endDate, timeUnit).getStats();
+
+
+    return res.status(200).json({stats});
+
 };
 
-const updateOneProductQuantity = async (req, res) => {
+const updateOneProductQuantity = async (req, res, next) => {
     const barcode = req.params.barcode;
     const quantity = req.body.quantity;
 
-    try {
-        const product = await models.Product.findOne(
-            {user: req.verifiedToken.id, barcode: barcode}
-        );
 
-        if (quantity < 0) return res.status(400).json();
+    const product = await models.Product.findOne(
+        {user: req.verifiedToken.id, barcode: barcode}
+    ).catch(() => {
+        return next(new DatabaseError(databaseErrors.operation));
+    });
 
-        product.updateQuantity(quantity)
-        product.save()
+    if (quantity < 0) return next(new ValidationError(validationErrors.quantityLowerThanZero));
 
-        res.status(200).json({presences: product.presences, quantity: product.quantity});
-    } catch (error) {
-        res.status(500).json({error});
-    }
+    product.updateQuantity(quantity);
+
+    product.save().catch(() => {
+        return next(new DatabaseError(databaseErrors.save));
+    });
+
+    return res.status(200).json({presences: product.presences, quantity: product.quantity});
 };
 
-const deleteOneProduct = async (req, res) => {
+const deleteOneProduct = async (req, res, next) => {
     const barcode = req.params.barcode;
 
-    try {
-        const product = await models.Product.findOneAndDelete({
-            user: req.verifiedToken.id,
-            barcode: barcode,
-        });
+    const product = await models.Product.findOneAndDelete({
+        user: req.verifiedToken.id,
+        barcode: barcode,
+    }).catch(() => {
+        return next(new DatabaseError(databaseErrors.operation));
+    });
 
-        res.status(200).json({product: product.export()});
-    } catch (error) {
-        res.status(500).json({error});
-    }
+    res.status(200).json({product: product.export()});
+
 };
 module.exports = {
     getAllProducts,
