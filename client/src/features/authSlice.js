@@ -1,26 +1,24 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {toast} from "react-toastify";
 import Api from "../helpers/api";
+import {asyncThunkErrorWrapper} from "../helpers/miscellaneous";
+
 
 //THUNKS
-const loginUser = createAsyncThunk("auth/loginUser", async ({data}) => {
-    const response = await Api.login(data);
-    return response.data;
+const loginUser = createAsyncThunk("auth/loginUser", async ({data}, {rejectWithValue}) => {
+    return await asyncThunkErrorWrapper(() => Api.login(data), rejectWithValue);
 });
 
-const registerUser = createAsyncThunk("auth/registerUser", async ({data}) => {
-    const response = await Api.register(data);
-    return response.data;
+const registerUser = createAsyncThunk("auth/registerUser", async ({data}, {rejectWithValue}) => {
+    return await asyncThunkErrorWrapper(() => Api.register(data), rejectWithValue);
 });
 
-const checkUserToken = createAsyncThunk("auth/checkToken", async () => {
-    const response = await Api.checkToken();
-    return response.data;
+const checkUserToken = createAsyncThunk("auth/checkToken", async (arg, {rejectWithValue}) => {
+    return await asyncThunkErrorWrapper(() => Api.checkToken(), rejectWithValue);
 });
 
-const logoutUser = createAsyncThunk("auth/logout", async () => {
-    const response = await Api.logout();
-    return response.data;
+const logoutUser = createAsyncThunk("auth/logout", async (arg, {rejectWithValue}) => {
+    return await asyncThunkErrorWrapper(() => Api.logout(), rejectWithValue);
 });
 
 //SLICE
@@ -40,18 +38,23 @@ const authSlice = createSlice({
         [loginUser.rejected]: (state, action) => {
             state.isLoading = false;
             state.isAuthenticated = false;
-            state.error = action.error;
-            toast.error("Impossible de se connecter, vérifiez vos identifiants");
+            state.error = action.payload.errorMessage;
+            toast.error(action.payload.errorMessage);
+
         },
 
         [registerUser.pending]: (state, action) => {
-            // For the moment nothing
+            state.isLoading = true;
         },
         [registerUser.fulfilled]: (state, action) => {
-            toast.success("L'inscription a réussi, vous pouvez maintenant vous connecter")
+            state.isLoading = false;
+            toast.success("L'inscription a réussi, vous pouvez maintenant vous connecter");
         },
         [registerUser.rejected]: (state, action) => {
-            // For the moment nothing
+            state.isLoading = false;
+            state.error = action.payload.errorMessage;
+            toast.error(action.payload.errorMessage);
+
         },
 
         [checkUserToken.pending]: (state, action) => {
@@ -66,15 +69,21 @@ const authSlice = createSlice({
         [checkUserToken.rejected]: (state, action) => {
             state.isLoading = false;
             state.isAuthenticated = false;
-            state.error = action.error;
+            state.error = action.payload.errorMessage;
         },
-
+        [logoutUser.pending]: (state, action) => {
+            state.isLoading = true;
+        },
         [logoutUser.fulfilled]: (state, action) => {
+            state.isLoading = false;
             state.isAuthenticated = false;
             state.user = {};
         },
         [logoutUser.rejected]: (state, action) => {
-            state.error = action.error;
+            state.isLoading = false;
+            state.error = action.payload.errorMessage;
+            toast.error(action.payload.errorMessage);
+
         }
     }
 });

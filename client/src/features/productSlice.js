@@ -1,36 +1,39 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {toast} from "react-toastify";
 import Api from "../helpers/api";
+import {asyncThunkErrorWrapper} from "../helpers/miscellaneous";
+
 
 // THUNKS
-const fetchProducts = createAsyncThunk("products/fetchAll", async () => {
-    const response = await Api.getProducts();
-    return response.data;
+const fetchProducts = createAsyncThunk("products/fetchAll", async (arg, {rejectWithValue}) => {
+    return await asyncThunkErrorWrapper(() => Api.getProducts(), rejectWithValue);
 });
 
-const addProduct = createAsyncThunk("products/add", async ({barcode}) => {
-    const response = await Api.addProduct(barcode);
-    return response.data;
+const addProduct = createAsyncThunk("products/add", async ({barcode}, {rejectWithValue}) => {
+    return await asyncThunkErrorWrapper(() => Api.addProduct(barcode), rejectWithValue);
 });
 
-const updateProductQuantity = createAsyncThunk("products/quantity/update", async ({barcode, quantity}) => {
-    const response = await Api.updateProductQuantity(barcode, quantity);
-    return response.data;
+const updateProductQuantity = createAsyncThunk("products/quantity/update", async ({
+                                                                                      barcode,
+                                                                                      quantity
+                                                                                  }, {rejectWithValue}) => {
+    return await asyncThunkErrorWrapper(() => Api.updateProductQuantity(barcode, quantity), rejectWithValue);
 });
 
-const deleteProduct = createAsyncThunk("products/delete", async ({barcode}) => {
-    const response = await Api.deleteProduct(barcode);
-    return response.data;
+const deleteProduct = createAsyncThunk("products/delete", async ({barcode}, {rejectWithValue}) => {
+    return await asyncThunkErrorWrapper(() => Api.deleteProduct(barcode), rejectWithValue);
 });
 
-const fetchActiveProduct = createAsyncThunk("products/fetchOne", async ({barcode}) => {
-    const response = await Api.getProduct(barcode);
-    return response.data;
+const fetchActiveProduct = createAsyncThunk("products/fetchOne", async ({barcode}, {rejectWithValue}) => {
+    return await asyncThunkErrorWrapper(() => Api.getProduct(barcode), rejectWithValue);
 });
 
-const fetchProductsStats = createAsyncThunk("products/fetchStats", async ({startDate, endDate, timeUnit}) => {
-    const response = await Api.getProductsStats(startDate, endDate, timeUnit);
-    return response.data;
+const fetchProductsStats = createAsyncThunk("products/fetchStats", async ({
+                                                                              startDate,
+                                                                              endDate,
+                                                                              timeUnit
+                                                                          }, {rejectWithValue}) => {
+    return await asyncThunkErrorWrapper(() => Api.getProductsStats(startDate, endDate, timeUnit), rejectWithValue);
 });
 
 
@@ -59,7 +62,8 @@ const productSlice = createSlice({
         },
         [fetchProducts.rejected]: (state, action) => {
             state.productsIsLoading = false;
-            state.productsError = action.error;
+            state.productsError = action.payload.errorMessage;
+            toast.error(action.payload.errorMessage);
         },
 
         [addProduct.fulfilled]: (state, action) => {
@@ -75,9 +79,9 @@ const productSlice = createSlice({
             }
         },
         [addProduct.rejected]: (state, action) => {
-            state.productsError = action.error;
-            state.activeProductError = action.error
-            toast.error("Le produit n'a pas pu être ajouté, vérifiez le code barre");
+            state.productsError = action.payload.errorMessage;
+            state.activeProductError = action.payload.errorMessage;
+            toast.error(action.payload.errorMessage);
         },
 
         [updateProductQuantity.fulfilled]: (state, action) => {
@@ -89,12 +93,14 @@ const productSlice = createSlice({
                 state.products[productIndex].presences = action.payload.presences;
                 state.products[productIndex].quantity = action.payload.quantity;
             }
-            state.activeProduct.presences = action.payload.presences
-            state.activeProduct.quantity = action.payload.quantity
+            state.activeProduct.presences = action.payload.presences;
+            state.activeProduct.quantity = action.payload.quantity;
         },
         [updateProductQuantity.rejected]: (state, action) => {
-            state.productsError = action.error;
-            toast.error("Le produit n'a pas pu être mis à jour");
+            state.productsError = action.payload.errorMessage;
+            state.activeProductError = action.payload.errorMessage;
+            toast.error(action.payload.errorMessage);
+
         },
 
         [deleteProduct.fulfilled]: (state, action) => {
@@ -106,8 +112,9 @@ const productSlice = createSlice({
             }
         },
         [deleteProduct.rejected]: (state, action) => {
-            state.productsError = action.error;
-            toast.error("Le produit n'a pas pu être supprimé");
+            state.productsError = action.payload.errorMessage;
+            toast.error(action.payload.errorMessage);
+
         },
 
         [fetchActiveProduct.pending]: (state, action) => {
@@ -119,7 +126,8 @@ const productSlice = createSlice({
         },
         [fetchActiveProduct.rejected]: (state, action) => {
             state.activeProductIsLoading = false;
-            state.activeProductError = action.error;
+            state.activeProductError = action.payload.errorMessage;
+            toast.error(action.payload.errorMessage);
         },
 
         [fetchProductsStats.pending]: (state, action) => {
@@ -131,7 +139,8 @@ const productSlice = createSlice({
         },
         [fetchProductsStats.rejected]: (state, action) => {
             state.productsStatsIsLoading = false;
-            state.productsStatsError = action.error;
+            state.productsStatsError = action.payload.errorMessage;
+            toast.error(action.payload.errorMessage);
         },
     }
 });

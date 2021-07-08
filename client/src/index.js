@@ -28,7 +28,7 @@ ReactDOM.render(
                 pauseOnFocusLoss
                 pauseOnHover
                 transition={Slide}
-                limit={2}
+                limit={3}
             />
         </Provider>
     </React.StrictMode>,
