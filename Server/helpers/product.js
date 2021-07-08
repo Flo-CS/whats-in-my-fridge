@@ -19,9 +19,7 @@ async function getOFFdata(barcode) {
     if (response.data.status === 0)
         throw new OpenFoodFactsError(openFoodFactsErrors.noProductFound);
 
-
     return productData;
-
 }
 
 
