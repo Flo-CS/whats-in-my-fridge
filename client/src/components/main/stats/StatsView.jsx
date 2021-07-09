@@ -1,6 +1,7 @@
 import React, {useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchProductsStats, selectProductsStatsFeatures} from "../../../features/productSlice";
+import ThreeDotLoading from "../../ThreeDotLoading";
 import DateRangeAndTimeUnitPicker from "./DateRangeAndTimeUnitPicker";
 import GradesScoresHeatmap from "./GradesScoresHeatmap";
 import ScoreHistoryLineChart from "./ScoreHistoryLineChart";
@@ -44,7 +45,7 @@ export default function StatsView() {
 
             </>
             :
-            <p>Chargement...</p>}
+            <ThreeDotLoading/>}
     </div>;
 
 

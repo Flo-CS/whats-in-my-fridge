@@ -2,10 +2,11 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
 import {fetchActiveProduct, selectActiveProductFeatures} from "../../../features/productSlice";
+import ThreeDotLoading from "../../ThreeDotLoading";
 
 import ProductContent from "./ProductContent";
-import ProductHeader from "./ProductHeader";
 import ProductFooter from "./ProductFooter";
+import ProductHeader from "./ProductHeader";
 
 
 export default function ProductView() {
@@ -25,7 +26,7 @@ export default function ProductView() {
                 <ProductContent productData={activeProduct.data} quantity={activeProduct.quantity} barcode={barcode}/>
                 <ProductFooter presences={activeProduct.presences}/>
             </> :
-            <p>Chargement...</p>}
+            <ThreeDotLoading/>}
 
     </div>;
 
