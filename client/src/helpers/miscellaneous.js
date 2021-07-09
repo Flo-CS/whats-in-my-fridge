@@ -21,6 +21,6 @@ function mapValueToRange(value, inMin, inMax, outMin, outMax) {
 }
 
 
-const gradeScoreColors = ["#00bf00", "#73ff00", "#ffcc00", "#ff6600", "#ff1900", "#b0b0b0"];
+const gradeScoreColors = ["#2d7e43", "#97ba38", "#f0ca0d", "#d57b1a", "#c53319"];
 
 export {truncateString, asyncThunkErrorWrapper, gradeScoreColors, mapValueToRange};

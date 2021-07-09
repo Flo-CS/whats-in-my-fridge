@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import propTypes from "prop-types";
 import React from "react";
+import {gradeScoreColors} from "../../../helpers/miscellaneous";
 
 import "./ProductNutritionTableField.scss";
 
@@ -9,9 +10,9 @@ function ProductNutritionTableFieldRow({name, nutriments, fieldKey, isWith, nutr
     const rowClass = classNames("product-nutrition-table-field__row", {"product-nutrition-table-field__row--is-indented": isWith});
 
     const nutrientLevelsConversions = {
-        "low": {name: "(faible)", color: "#00bf00"},
-        "moderate": {name: "(modéré)", color: "#ffcc00"},
-        "high": {name: "(élevé)", color: "#ff1900"}
+        "low": {name: "(faible)", color: gradeScoreColors[0]},
+        "moderate": {name: "(modéré)", color: gradeScoreColors[2]},
+        "high": {name: "(élevé)", color: gradeScoreColors[4]}
     };
 
     const value100g = nutriments[`${fieldKey}_100g`];
