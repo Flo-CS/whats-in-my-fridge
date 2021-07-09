@@ -41,7 +41,7 @@ export default function ProductContent({productData, quantity, barcode}) {
         nutrient_levels = {},
         ingredients_tags = [],
         nutriments = {},
-        serving_size = "?"
+        serving_size
     } = productData;
 
 

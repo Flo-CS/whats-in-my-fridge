@@ -4,7 +4,7 @@ import React from "react";
 
 import "./ProductNutritionTableField.scss";
 
-function ProductNutritionTableFieldRow({name, nutriments, fieldKey, isWith, nutrientLevel}) {
+function ProductNutritionTableFieldRow({name, nutriments, fieldKey, isWith, nutrientLevel, addServingCell}) {
 
     const rowClass = classNames("product-nutrition-table-field__row", {"product-nutrition-table-field__row--is-indented": isWith});
 
@@ -12,24 +12,24 @@ function ProductNutritionTableFieldRow({name, nutriments, fieldKey, isWith, nutr
         "low": {name: "(faible)", color: "#00bf00"},
         "moderate": {name: "(modéré)", color: "#ffcc00"},
         "high": {name: "(élevé)", color: "#ff1900"}
-    }
+    };
 
-    const value_100g = nutriments[`${fieldKey}_100g`]
-    const value_serving = nutriments[`${fieldKey}_serving`]
-    const value_unit = nutriments[`${fieldKey}_unit`]
+    const value100g = nutriments[`${fieldKey}_100g`];
+    const valueServing = nutriments[`${fieldKey}_serving`];
+    const valueUnit = nutriments[`${fieldKey}_unit`];
 
-    const nutrientLevelsInfos = nutrientLevelsConversions[nutrientLevel]
-    const nutrientLevelName = nutrientLevelsInfos ? nutrientLevelsInfos.name : ""
-    const nutrientLevelColor = nutrientLevelsInfos ? nutrientLevelsInfos.color : ""
+    const nutrientLevelsInfos = nutrientLevelsConversions[nutrientLevel];
+    const nutrientLevelName = nutrientLevelsInfos ? nutrientLevelsInfos.name : "";
+    const nutrientLevelColor = nutrientLevelsInfos ? nutrientLevelsInfos.color : "";
+
+    const cell100g = valueUnit ? (value100g || 0) : (value100g || "?");
+    const cellServing = valueUnit ? (valueServing || 0) : (valueServing || "?");
 
     return <tr className={rowClass}>
-        <td> {name}</td>
-
-        <td>{value_100g || 0} {value_unit} <span style={{color: nutrientLevelColor}}>{nutrientLevelName}</span></td>
-
-
-        <td>{value_serving ? `${value_serving} ${value_unit}` : "?"}</td>
-    </tr>
+        <td>{name}</td>
+        <td>{cell100g} {valueUnit} <span style={{color: nutrientLevelColor}}>{nutrientLevelName}</span></td>
+        {addServingCell && <td>{cellServing} {valueUnit}</td>}
+    </tr>;
 }
 
 ProductNutritionTableFieldRow.propTypes = {
@@ -38,7 +38,8 @@ ProductNutritionTableFieldRow.propTypes = {
     nutriments: propTypes.object,
     nutrientLevel: propTypes.string,
     isWith: propTypes.bool,
-}
+    addServingCell: propTypes.bool
+};
 export default function ProductNutritionTableField({fieldName, nutriments, servingSize, nutrientLevels}) {
 
     const necessaryFields = [
@@ -74,7 +75,7 @@ export default function ProductNutritionTableField({fieldName, nutriments, servi
         },
         {key: "fiber", name: "Fibres"},
         {key: "proteins", name: "Proteines"},
-    ]
+    ];
 
     return <div className="product-nutrition-table-field">
         <h4 className="product-nutrition-table-field__name">{fieldName}</h4>
@@ -83,18 +84,19 @@ export default function ProductNutritionTableField({fieldName, nutriments, servi
             <tr>
                 <th>Information</th>
                 <th>Pour 100g / 100ml</th>
-                <th>Par portion de {servingSize}</th>
+                {servingSize && <th>Par portion de {servingSize || "?"}</th>}
             </tr>
             </thead>
             <tbody>
             {necessaryFields.map((infos) => {
-                const {key, name, nutrientLevel, isWith} = infos
+                const {key, name, nutrientLevel, isWith} = infos;
                 return <ProductNutritionTableFieldRow name={name}
                                                       nutriments={nutriments}
                                                       fieldKey={key}
                                                       isWith={isWith}
                                                       nutrientLevel={nutrientLevel}
-                                                      key={key}/>
+                                                      addServingCell={!!servingSize}
+                                                      key={key}/>;
             })
             }
             </tbody>
