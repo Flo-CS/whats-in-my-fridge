@@ -16,4 +16,11 @@ const asyncThunkErrorWrapper = async (asyncApiCallFunc, rejectWithValue) => {
     }
 };
 
-export {truncateString, asyncThunkErrorWrapper};
+function mapValueToRange(value, inMin, inMax, outMin, outMax) {
+    return (value - inMin) / (inMax - inMin) * (outMax - outMin) + outMin;
+}
+
+
+const gradeScoreColors = ["#00bf00", "#73ff00", "#ffcc00", "#ff6600", "#ff1900", "#b0b0b0"];
+
+export {truncateString, asyncThunkErrorWrapper, gradeScoreColors, mapValueToRange};
