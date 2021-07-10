@@ -2,49 +2,36 @@
 
 // TODO: Transform into class
 const axios = require("axios");
-const path = require("path");
 const _ = require("lodash");
 const jsonfile = require("jsonfile");
-
-const OPEN_FOOD_FACTS_TAXONOMIES_ENDPOINT = "https://world.openfoodfacts.org/data/taxonomies";
-const OPEN_FOOD_FACTS_TAXONOMIES = [
-    "categories",
-    "additives_classes",
-    "ingredients_analysis",
-    "nova_groups",
-    "additives",
-    "allergens",
-    "ingredients",
-    "countries",
-    "origins",
-    "labels"];
+const path = require("path")
+const {OPEN_FOOD_FACTS_USEFUL_TAXONOMIES, OPEN_FOOD_FACTS_TAXONOMIES_ENDPOINT} = require("../config");
 
 
-const TAXONOMIES_FILES_PATH = path.join(__dirname, "./../data/taxonomies");
-
+const taxonomiesFilesPath = path.join(__dirname, "./../data/taxonomies");
 
 async function downloadTaxonomiesFiles() {
-    for (const taxonomy of OPEN_FOOD_FACTS_TAXONOMIES) {
+    for (const taxonomy of OPEN_FOOD_FACTS_USEFUL_TAXONOMIES) {
         const url = `${OPEN_FOOD_FACTS_TAXONOMIES_ENDPOINT}/${taxonomy}.json`;
         const response = await axios.get(url);
         console.log("Taxonomy: ", url);
-        jsonfile.writeFileSync(`${TAXONOMIES_FILES_PATH}/${taxonomy}.json`, response.data);
+        jsonfile.writeFileSync(`${taxonomiesFilesPath}/${taxonomy}.json`, response.data);
     }
 }
 
 
 // TAXONOMIES
 try {
-    global.additives_classes_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/additives_classes.json`);
-    global.ingredients_analysis_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/ingredients_analysis.json`);
-    global.nova_groups_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/nova_groups.json`);
-    global.categories_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/categories.json`);
-    global.labels_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/labels.json`);
-    global.countries_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/countries.json`);
-    global.origins_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/origins.json`);
-    global.allergens_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/allergens.json`);
-    global.additives_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/additives.json`);
-    global.ingredients_tags = jsonfile.readFileSync(`${TAXONOMIES_FILES_PATH}/ingredients.json`);
+    global.additives_classes = jsonfile.readFileSync(`${taxonomiesFilesPath}/additives_classes.json`);
+    global.ingredients_analysis = jsonfile.readFileSync(`${taxonomiesFilesPath}/ingredients_analysis.json`);
+    global.nova_groups = jsonfile.readFileSync(`${taxonomiesFilesPath}/nova_groups.json`);
+    global.categories = jsonfile.readFileSync(`${taxonomiesFilesPath}/categories.json`);
+    global.labels = jsonfile.readFileSync(`${taxonomiesFilesPath}/labels.json`);
+    global.countries = jsonfile.readFileSync(`${taxonomiesFilesPath}/countries.json`);
+    global.origins = jsonfile.readFileSync(`${taxonomiesFilesPath}/origins.json`);
+    global.allergens = jsonfile.readFileSync(`${taxonomiesFilesPath}/allergens.json`);
+    global.additives = jsonfile.readFileSync(`${taxonomiesFilesPath}/additives.json`);
+    global.ingredients = jsonfile.readFileSync(`${taxonomiesFilesPath}/ingredients.json`);
 } catch (error) {
     console.error(error);
 }
@@ -62,7 +49,7 @@ function cleanTag(tag) {
     return tagName;
 }
 
-function getTagName(tag, taxonomyName) {
+function getTagInfos(tag, taxonomyName) {
     const taxonomy = global[taxonomyName];
 
     if (!taxonomy) {
@@ -99,18 +86,18 @@ function convertTagsFieldsWithTaxonomies(productData) {
 
     return {
         ...productData,
-        brands_tags: brands_tags?.map(tag => getTagName(tag, "brands_tags")), // No taxonomy for brands
-        categories_tags: categories_tags?.map(tag => getTagName(tag, "categories_tags")),
-        labels_tags: labels_tags?.map(tag => getTagName(tag, "labels_tags")),
-        origins_tags: origins_tags?.map(tag => getTagName(tag, "origins_tags")),
-        countries_tags: countries_tags?.map(tag => getTagName(tag, "countries_tags")),
-        traces_tags: traces_tags?.map(tag => getTagName(tag, "allergens_tags")),
-        allergens_tags: allergens_tags?.map(tag => getTagName(tag, "allergens_tags")),
-        additives_tags: additives_tags?.map(tag => getTagName(tag, "additives_tags")),
-        ingredients_tags: ingredients_tags?.map(tag => getTagName(tag, "ingredients_tags",)),
-        ingredients_analysis_tags: ingredients_analysis_tags?.map(tag => getTagName(tag, "ingredients_analysis_tags")),
+        brands_tags: brands_tags?.map(tag => getTagInfos(tag, "brands_tags")), // No taxonomy for brands
+        categories_tags: categories_tags?.map(tag => getTagInfos(tag, "categories_tags")),
+        labels_tags: labels_tags?.map(tag => getTagInfos(tag, "labels_tags")),
+        origins_tags: origins_tags?.map(tag => getTagInfos(tag, "origins_tags")),
+        countries_tags: countries_tags?.map(tag => getTagInfos(tag, "countries_tags")),
+        traces_tags: traces_tags?.map(tag => getTagInfos(tag, "allergens_tags")),
+        allergens_tags: allergens_tags?.map(tag => getTagInfos(tag, "allergens_tags")),
+        additives_tags: additives_tags?.map(tag => getTagInfos(tag, "additives_tags")),
+        ingredients_tags: ingredients_tags?.map(tag => getTagInfos(tag, "ingredients")),
+        ingredients_analysis_tags: ingredients_analysis_tags?.map(tag => getTagInfos(tag, "ingredients_analysis_tags")),
     };
 
 }
 
-module.exports = {downloadTaxonomiesFiles, convertTagsFieldsWithTaxonomies, getTagName};
+module.exports = {downloadTaxonomiesFiles, convertTagsFieldsWithTaxonomies, getTagName: getTagInfos};

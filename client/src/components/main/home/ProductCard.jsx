@@ -39,7 +39,7 @@ export default function ProductCard({barcode, quantity, productData}) {
     const productCardClass = classNames("product-card", {
         "product-card--disabled": quantity <= 0,
     });
-    const {image_url, brands_tags = [], product_name} = productData;
+    const {image_small_url, brands_tags = [], product_name} = productData;
 
     return (
         <div className={productCardClass}>
@@ -56,7 +56,7 @@ export default function ProductCard({barcode, quantity, productData}) {
                         className="product-card__image"
 
                         alt="Product"
-                        src={image_url}
+                        src={image_small_url}
                     />
                 </div>
 
