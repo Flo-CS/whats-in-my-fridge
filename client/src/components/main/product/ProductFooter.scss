@@ -2,10 +2,19 @@
 
 .product-footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   font-size: 0.8rem;
   background-color: $color3;
-  min-height: 50px;
+  min-height: 60px;
   width: 100%;
+
+  &__link {
+    color: black;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
 }

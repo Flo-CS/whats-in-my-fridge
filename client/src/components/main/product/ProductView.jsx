@@ -24,7 +24,7 @@ export default function ProductView() {
         {activeProductIsLoading === false ? <>
                 <ProductHeader barcode={activeProduct.barcode} productData={activeProduct.data}/>
                 <ProductContent productData={activeProduct.data} quantity={activeProduct.quantity} barcode={barcode}/>
-                <ProductFooter presences={activeProduct.presences}/>
+                <ProductFooter presences={activeProduct.presences} barcode={barcode}/>
             </> :
             <ThreeDotLoading/>}
 

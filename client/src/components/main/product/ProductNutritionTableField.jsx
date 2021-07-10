@@ -85,7 +85,7 @@ export default function ProductNutritionTableField({fieldName, nutriments, servi
             <tr>
                 <th>Information</th>
                 <th>Pour 100g / 100ml</th>
-                {servingSize && <th>Par portion de {servingSize || "?"}</th>}
+                {servingSize && <th>Par portion de {servingSize}</th>}
             </tr>
             </thead>
             <tbody>
