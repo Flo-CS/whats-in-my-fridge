@@ -4,13 +4,13 @@ import React from "react";
 import "./ProductHeader.scss";
 
 export default function ProductHeader({barcode, productData}) {
-    const {image_url, quantity = "", product_name, brands_tags = []} = productData;
+    const {image_small_url, quantity = "", product_name, brands_tags = []} = productData;
 
     const cleanedQuantity = quantity.replace(/(?!\d|\w)\s(?=\w|\d)/g, "");
 
     return <div className="product-header">
 
-        <img className="product-header__image" src={image_url} alt="product"/>
+        <img className="product-header__image" src={image_small_url} alt="product"/>
         <div className="product-header__center">
             <h1 className="product-header__name">
                 {product_name}
