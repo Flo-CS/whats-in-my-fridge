@@ -6,6 +6,7 @@ import ProductQuantityControls from "../home/ProductQuantityControls";
 import "./ProductContent.scss";
 import ProductNutritionTableField from "./ProductNutritionTableField";
 import ProductTagsField from "./ProductTagsField";
+import {cleanScoreField} from "../../../helpers/miscellaneous";
 
 export default function ProductContent({productData, quantity, barcode}) {
 
@@ -45,15 +46,9 @@ export default function ProductContent({productData, quantity, barcode}) {
     } = productData;
 
 
-    const validLetterScores = ["a", "b", "c", "d", "e"];
-    const validNovaGroups = [1, 2, 3, 4];
-
-    let nutriscore = nutriscore_grade?.toLowerCase();
-    nutriscore = validLetterScores.includes(nutriscore) ? nutriscore : "unknown";
-    let ecoscore = ecoscore_grade?.toLowerCase();
-    ecoscore = validLetterScores.includes(ecoscore) ? ecoscore : "unknown";
-    let nova = validNovaGroups.includes(nova_group) ? nova_group : "unknown";
-
+    const nutriscore = cleanScoreField(nutriscore_grade, true)
+    const ecoscore = cleanScoreField(ecoscore_grade, true)
+    const nova = cleanScoreField(nova_group)
 
     return <div className="product-content">
         <div className="product-content__attributes">

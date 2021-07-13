@@ -50,6 +50,9 @@
 
   &__body {
     padding: 10px;
+    display: flex;
+    align-items: center;
+
   }
 
   &__image {
@@ -63,5 +66,15 @@
     text-indent: 100%;
     border-radius: 5px;
     background-color: $color2;
+    margin-right: 10px;
+  }
+
+  &__attribute-image {
+    max-width: 40px;
+    height: 100%;
+    max-height: 30px;
+    object-fit: contain;
+    margin: 3px;
+
   }
 }

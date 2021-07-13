@@ -4,7 +4,7 @@ import React from "react";
 import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {deleteProduct, updateProductQuantity} from "../../../features/productSlice";
-import {truncateString} from "../../../helpers/miscellaneous";
+import {cleanScoreField, truncateString} from "../../../helpers/miscellaneous";
 
 import "./ProductCard.scss";
 import ProductQuantityControls from "./ProductQuantityControls";
@@ -39,7 +39,11 @@ export default function ProductCard({barcode, quantity, productData}) {
     const productCardClass = classNames("product-card", {
         "product-card--disabled": quantity <= 0,
     });
-    const {image_small_url, brands_tags = [], product_name} = productData;
+    const {image_small_url, brands_tags = [], product_name, nutriscore_grade, ecoscore_grade, nova_group} = productData;
+
+    const nutriscore = cleanScoreField(nutriscore_grade, true)
+    const ecoscore = cleanScoreField(ecoscore_grade, true)
+    const nova = cleanScoreField(nova_group)
 
     return (
         <div className={productCardClass}>
@@ -58,6 +62,17 @@ export default function ProductCard({barcode, quantity, productData}) {
                         alt="Product"
                         src={image_small_url}
                     />
+
+                    {nutriscore !== "unknown" && <img className="product-card__attribute-image"
+                                                      src={`/static/images/nutriscore-${nutriscore}.svg`}
+                                                      alt=""/>}
+                    {ecoscore !== "unknown" && <img className="product-card__attribute-image"
+                                                    src={`/static/images/ecoscore-${ecoscore}.svg`}
+                                                    alt=""/>}
+                    {nova !== "unknown" && <img className="product-card__attribute-image"
+                                                src={`/static/images/nova-group-${nova}.svg`}
+                                                alt=""/>}
+
                 </div>
 
             </div>
