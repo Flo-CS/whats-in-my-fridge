@@ -45,13 +45,13 @@ export default function ProductContent({productData, quantity, barcode}) {
     } = productData;
 
 
-    const validScoresGrades = ["a", "b", "c", "d", "e"];
+    const validLetterScores = ["a", "b", "c", "d", "e"];
     const validNovaGroups = [1, 2, 3, 4];
 
     let nutriscore = nutriscore_grade?.toLowerCase();
-    nutriscore = validScoresGrades.includes(nutriscore) ? nutriscore : "unknown";
+    nutriscore = validLetterScores.includes(nutriscore) ? nutriscore : "unknown";
     let ecoscore = ecoscore_grade?.toLowerCase();
-    ecoscore = validScoresGrades.includes(ecoscore) ? ecoscore : "unknown";
+    ecoscore = validLetterScores.includes(ecoscore) ? ecoscore : "unknown";
     let nova = validNovaGroups.includes(nova_group) ? nova_group : "unknown";
 
 

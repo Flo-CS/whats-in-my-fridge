@@ -2,7 +2,7 @@ const _ = require("lodash");
 const dayjs = require("dayjs");
 require("dayjs/locale/fr");
 const isBetween = require("dayjs/plugin/isBetween");
-const {scoreGradeToScore} = require("./product");
+const {letterScoreToScore} = require("./product");
 
 dayjs.extend(isBetween);
 
@@ -39,7 +39,7 @@ class ProductsStats {
                 ecoscore: this.getScoreFieldStats("ecoscore_grade", true),
             },
             specifics: {
-                grades_scores_heatmap: this.getGradesScoresHeatmap()
+                letter_scores_heatmap: this.getLetterScoresHeatmap()
             }
         };
     }
@@ -63,11 +63,11 @@ class ProductsStats {
         }).value();
     }
 
-    computeProductsAverageScoreFieldByDate(field, date, isGrade = false) {
+    computeProductsAverageScoreFieldByDate(field, date, isLetterScore = false) {
         return _(this.getPresentsProductsByDate(date, this.timeScale))
             .map(product => {
-                if (isGrade) {
-                    return scoreGradeToScore(product.data[field]);
+                if (isLetterScore) {
+                    return letterScoreToScore(product.data[field]);
                 }
                 return product.data[field];
             })
@@ -75,9 +75,9 @@ class ProductsStats {
             .mean();
     }
 
-    getProductsScoreFieldHistory(field, isGrade = false) {
+    getProductsScoreFieldHistory(field, isLetterScore = false) {
         return _(this.requiredCalculationDates).map(requiredDate => {
-            const averageScoreByDate = this.computeProductsAverageScoreFieldByDate(field, requiredDate, isGrade);
+            const averageScoreByDate = this.computeProductsAverageScoreFieldByDate(field, requiredDate, isLetterScore);
 
             return {date: requiredDate, average: averageScoreByDate};
 
@@ -86,15 +86,15 @@ class ProductsStats {
 
 
     // Nova, ecoscore, nutriscore
-    getScoreFieldStats(field, isGrade = false) {
+    getScoreFieldStats(field, isLetterScore = false) {
         return {
-            average_history: this.getProductsScoreFieldHistory(field, isGrade),
-            current_average: this.computeProductsAverageScoreFieldByDate(field, dayjs(), isGrade),
+            average_history: this.getProductsScoreFieldHistory(field, isLetterScore),
+            current_average: this.computeProductsAverageScoreFieldByDate(field, dayjs(), isLetterScore),
         };
     }
 
 
-    getGradesScoresHeatmap() {
+    getLetterScoresHeatmap() {
         let xLabels, yLabels
         xLabels = yLabels = ["A", "B", "C", "D", "E", "?"]
 

@@ -23,8 +23,8 @@ async function getOFFdata(barcode) {
 }
 
 
-function scoreGradeToScore(grade) {
-    const gradeConversions = {
+function letterScoreToScore(letter) {
+    const letterConversions = {
         "a": 5,
         "b": 4,
         "c": 3,
@@ -32,10 +32,10 @@ function scoreGradeToScore(grade) {
         "e": 1
     };
 
-    if (!_.isString(grade) || _.isNil(grade)) return;
+    if (!_.isString(letter) || _.isNil(letter)) return;
 
-    grade = grade.toLowerCase();
-    return gradeConversions[grade];
+    letter = letter.toLowerCase();
+    return letterConversions[letter];
 }
 
-module.exports = {getOFFdata, scoreGradeToScore};
+module.exports = {getOFFdata, letterScoreToScore};

@@ -1,7 +1,7 @@
 import {isInteger, isNil} from "lodash"
 
-export function scoreToScoreGrade(score) {
-    const gradeConversions = {
+export function scoreToLetterScore(score) {
+    const letterScoreConversions = {
         1: "E",
         2: "D",
         3: "C",
@@ -11,5 +11,5 @@ export function scoreToScoreGrade(score) {
 
     if (!isInteger(score) || isNil(score)) return
 
-    return gradeConversions[score]
+    return letterScoreConversions[score]
 }
