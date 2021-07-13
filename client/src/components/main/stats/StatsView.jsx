@@ -1,7 +1,7 @@
 import React, {useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchProductsStats, selectProductsStatsFeatures} from "../../../features/productSlice";
-import {gradeScoreColors} from "../../../helpers/miscellaneous";
+import {letterScoresColors} from "../../../helpers/miscellaneous";
 import ThreeDotLoading from "../../ThreeDotLoading";
 import DateRangeAndTimeUnitPicker from "./DateRangeAndTimeUnitPicker";
 import ScoreHistoryLineChart from "./ScoreHistoryLineChart";
@@ -23,9 +23,9 @@ export default function StatsView() {
     }, [dispatch]);
 
 
-    const gradesScoresHeatmapLabels = specifics?.grades_scores_heatmap?.xLabels.map((label, i) => ({
+    const letterScoresHeatmapLabels = specifics?.letter_scores_heatmap?.xLabels.map((label, i) => ({
         name: label,
-        color: gradeScoreColors[i]
+        color: letterScoresColors[i]
     }));
 
     return <div className="stats-view">
@@ -38,16 +38,16 @@ export default function StatsView() {
                              outOfStock={stock?.out_of_stock_count}/>
                 <hr className="stats-view__separator"/>
                 <p className="stats-view__title">Nutriscore moyen (plus haut est meilleur)</p>
-                <ScoreHistoryLineChart data={scores?.nutriscore?.average_history} isGrade/>
+                <ScoreHistoryLineChart data={scores?.nutriscore?.average_history} isLetterScore/>
                 <p className="stats-view__title">Ecoscore moyen (plus haut est meilleur)</p>
-                <ScoreHistoryLineChart data={scores?.ecoscore?.average_history} isGrade/>
+                <ScoreHistoryLineChart data={scores?.ecoscore?.average_history} isLetterScore/>
                 <p className="stats-view__title">Novascore moyen (plus bas est meilleur)</p>
                 <ScoreHistoryLineChart data={scores?.nova?.average_history}/>
                 <p className="stats-view__title">Nombre de produits en fonction du nutriscore (horizontal) et ecoscore
                     (vertical)</p>
-                <ScoresHeatmap xLabels={gradesScoresHeatmapLabels}
-                               yLabels={gradesScoresHeatmapLabels}
-                               data={specifics?.grades_scores_heatmap?.data}
+                <ScoresHeatmap xLabels={letterScoresHeatmapLabels}
+                               yLabels={letterScoresHeatmapLabels}
+                               data={specifics?.letter_scores_heatmap?.data}
                                accentColor="#80b918"/>
             </>
             :

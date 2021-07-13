@@ -2,11 +2,11 @@ import dayjs from "dayjs";
 import propTypes from "prop-types";
 import React from "react";
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis,} from "recharts";
-import {scoreToScoreGrade} from "../../../helpers/product";
+import {scoreToLetterScore} from "../../../helpers/product";
 
 import "./ScoreHistoryLineChart.scss";
 
-export default function ScoreHistoryLineChart({data, isGrade = false}) {
+export default function ScoreHistoryLineChart({data, isLetterScore = false}) {
 
     const accentColor = "#80b918";
 
@@ -21,10 +21,10 @@ export default function ScoreHistoryLineChart({data, isGrade = false}) {
                        style={{fontSize: "0.8rem"}}/>
                 <YAxis width={30}
                        style={{fontSize: "0.8rem"}}
-                       tickFormatter={(score) => isGrade ? scoreToScoreGrade(score) : score}
+                       tickFormatter={(score) => isLetterScore ? scoreToLetterScore(score) : score}
                        domain={['dataMin - 0.5', 'dataMax + 0.5']}
                        allowDataOverflow={true}
-                       ticks={isGrade ? [1, 2, 3, 4, 5] : [1, 2, 3, 4]}
+                       ticks={isLetterScore ? [1, 2, 3, 4, 5] : [1, 2, 3, 4]}
                 />
                 <Tooltip labelFormatter={(date => dayjs(date).format("DD/MM"))}
                          formatter={(value) => Math.round(value * 10) / 10}/>
@@ -39,5 +39,5 @@ export default function ScoreHistoryLineChart({data, isGrade = false}) {
 
 ScoreHistoryLineChart.propTypes = {
     data: propTypes.array.isRequired,
-    isGrade: propTypes.bool
+    isLetterScore: propTypes.bool
 };

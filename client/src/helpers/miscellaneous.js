@@ -4,6 +4,10 @@ function truncateString(str, size) {
     return str.slice(0, size) + "...";
 }
 
+function mapValueToRange(value, inMin, inMax, outMin, outMax) {
+    return (value - inMin) / (inMax - inMin) * (outMax - outMin) + outMin;
+}
+
 const asyncThunkErrorWrapper = async (asyncApiCallFunc, rejectWithValue) => {
     try {
         const response = await asyncApiCallFunc();
@@ -16,11 +20,7 @@ const asyncThunkErrorWrapper = async (asyncApiCallFunc, rejectWithValue) => {
     }
 };
 
-function mapValueToRange(value, inMin, inMax, outMin, outMax) {
-    return (value - inMin) / (inMax - inMin) * (outMax - outMin) + outMin;
-}
 
+const letterScoresColors = ["#2d7e43", "#97ba38", "#f0ca0d", "#d57b1a", "#c53319"];
 
-const gradeScoreColors = ["#2d7e43", "#97ba38", "#f0ca0d", "#d57b1a", "#c53319"];
-
-export {truncateString, asyncThunkErrorWrapper, gradeScoreColors, mapValueToRange};
+export {truncateString, asyncThunkErrorWrapper, letterScoresColors, mapValueToRange};
