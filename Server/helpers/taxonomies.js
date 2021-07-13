@@ -2,7 +2,6 @@
 
 // TODO: Transform into class
 const axios = require("axios");
-const _ = require("lodash");
 const jsonfile = require("jsonfile");
 const path = require("path")
 const {OPEN_FOOD_FACTS_USEFUL_TAXONOMIES, OPEN_FOOD_FACTS_TAXONOMIES_ENDPOINT} = require("../config");
@@ -32,6 +31,7 @@ try {
     global.allergens = jsonfile.readFileSync(`${taxonomiesFilesPath}/allergens.json`);
     global.additives = jsonfile.readFileSync(`${taxonomiesFilesPath}/additives.json`);
     global.ingredients = jsonfile.readFileSync(`${taxonomiesFilesPath}/ingredients.json`);
+    global.brands = jsonfile.readFileSync(`${taxonomiesFilesPath}/brands.json`)
 } catch (error) {
     console.error(error);
 }
@@ -52,19 +52,14 @@ function cleanTag(tag) {
 function getTagInfos(tag, taxonomyName) {
     const taxonomy = global[taxonomyName];
 
-    if (!taxonomy) {
-        return {
-            converted: false, // For the frontend: to know if the tag was present in the taxonomy
-            name: cleanTag(tag)
-        };
-    }
-
     const tagTaxonomy = taxonomy[tag];
-    const tagName = _.get(tagTaxonomy, `name.fr`);
+    const tagName = tagTaxonomy?.name?.fr
+    const tagWikidata = tagTaxonomy?.wikidata?.en
 
     return {
-        converted: !!tagName,
-        name: tagName ? tagName : cleanTag(tag)
+        isInTaxonomy: !!tagName, // For the frontend: to know if the tag was present in the taxonomy
+        name: tagName ? tagName : cleanTag(tag),
+        wikidata: tagWikidata
     };
 }
 
@@ -86,18 +81,18 @@ function convertTagsFieldsWithTaxonomies(productData) {
 
     return {
         ...productData,
-        brands_tags: brands_tags?.map(tag => getTagInfos(tag, "brands_tags")), // No taxonomy for brands
-        categories_tags: categories_tags?.map(tag => getTagInfos(tag, "categories_tags")),
-        labels_tags: labels_tags?.map(tag => getTagInfos(tag, "labels_tags")),
-        origins_tags: origins_tags?.map(tag => getTagInfos(tag, "origins_tags")),
-        countries_tags: countries_tags?.map(tag => getTagInfos(tag, "countries_tags")),
-        traces_tags: traces_tags?.map(tag => getTagInfos(tag, "allergens_tags")),
-        allergens_tags: allergens_tags?.map(tag => getTagInfos(tag, "allergens_tags")),
-        additives_tags: additives_tags?.map(tag => getTagInfos(tag, "additives_tags")),
+        brands_tags: brands_tags?.map(tag => getTagInfos(tag, "brands")),
+        categories_tags: categories_tags?.map(tag => getTagInfos(tag, "categories")),
+        labels_tags: labels_tags?.map(tag => getTagInfos(tag, "labels")),
+        origins_tags: origins_tags?.map(tag => getTagInfos(tag, "origins")),
+        countries_tags: countries_tags?.map(tag => getTagInfos(tag, "countries")),
+        traces_tags: traces_tags?.map(tag => getTagInfos(tag, "allergens")),
+        allergens_tags: allergens_tags?.map(tag => getTagInfos(tag, "allergens")),
+        additives_tags: additives_tags?.map(tag => getTagInfos(tag, "additives")),
         ingredients_tags: ingredients_tags?.map(tag => getTagInfos(tag, "ingredients")),
-        ingredients_analysis_tags: ingredients_analysis_tags?.map(tag => getTagInfos(tag, "ingredients_analysis_tags")),
+        ingredients_analysis_tags: ingredients_analysis_tags?.map(tag => getTagInfos(tag, "ingredients_analysis")),
     };
 
 }
 
-module.exports = {downloadTaxonomiesFiles, convertTagsFieldsWithTaxonomies, getTagName: getTagInfos};
+module.exports = {downloadTaxonomiesFiles, convertTagsFieldsWithTaxonomies, getTagInfos};

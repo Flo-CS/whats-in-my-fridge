@@ -6,7 +6,6 @@ const OPEN_FOOD_FACTS_USEFUL_FIELDS = ["product_name",
     "quantity",
     "nutriscore_grade",
     "nova_group",
-    "nova_groups_tags",
     "image_small_url",
     "categories_tags",
     "labels_tags",
@@ -21,7 +20,7 @@ const OPEN_FOOD_FACTS_USEFUL_FIELDS = ["product_name",
     "ecoscore_grade",
     "nutrient_levels",
     "serving_size",
-    "nutriments",];
+    "nutriments"];
 
 const OPEN_FOOD_FACTS_USEFUL_TAXONOMIES = [
     "categories",
@@ -33,7 +32,8 @@ const OPEN_FOOD_FACTS_USEFUL_TAXONOMIES = [
     "ingredients",
     "countries",
     "origins",
-    "labels"];
+    "labels",
+    "brands"];
 
 
 module.exports = {
