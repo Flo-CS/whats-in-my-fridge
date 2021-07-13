@@ -3,34 +3,54 @@ import propTypes from "prop-types";
 import React, {useState} from "react";
 import "./ProductTagsField.scss";
 import TagInfosModal from "../TagInfosModal";
+import {ReactComponent as InformationIcon} from "./../../../assets/icons/information.svg";
 
+function ProductTagsFieldList({tags, onMoreInfosButtonClick}) {
+
+    const [tagsLimit, setTagsLimit] = useState(8);
+
+    const isShowMoreButtonActive = tags.length > tagsLimit && tags.length > 8;
+
+    return <ul className="product-tags-field__list">
+        {take(tags, tagsLimit).map((tag) => {
+            return <li className="product-tags-field__list-item" key={tag.name}>{tag.name}
+                {tag.wikidata &&
+                <button
+                    className="product-tags-field__more-infos-button"
+                    onClick={() => onMoreInfosButtonClick(tag.wikidata)}>
+                    <InformationIcon/>
+                </button>}
+            </li>;
+        })}
+        {isShowMoreButtonActive && <li className="product-tags-field__list-show-more">
+            <button onClick={() => setTagsLimit(tags.length)}>Afficher plus</button>
+        </li>}
+    </ul>
+}
+
+ProductTagsFieldList.propTypes = {
+    tags: propTypes.array,
+    onMoreInfosButtonClick: propTypes.func.isRequired,
+};
 
 export default function ProductTagsField({fieldName, tags = []}) {
 
-    const [tagsLimit, setTagsLimit] = useState(8);
+
     const [isTagInfosModalOpen, setIsTagInfosModalOpen] = useState(false)
     const [wikidataQID, setWikidataQID] = useState(null)
 
-    const isShowMoreButtonActive = tags.length > tagsLimit && tags.length > 8;
+    function handleMoreInfosButtonClick(wikidataQID) {
+        setWikidataQID(wikidataQID)
+        setIsTagInfosModalOpen(true)
+    }
+
 
     return <div className="product-tags-field">
         <h4 className="product-tags-field__name">{fieldName}</h4>
         {tags.length === 0 ?
             <p className="product-tags-field__no-tags">Vide ou non renseigné</p>
             :
-            <ul className="product-tags-field__list">
-                {take(tags, tagsLimit).map((tag) => {
-                    return <li className="product-tags-field__list-item" key={tag.name}>{tag.name}
-                        {tag.wikidata && <button onClick={() => {
-                            setWikidataQID(tag.wikidata)
-                            setIsTagInfosModalOpen(true)
-                        }}/>}
-                    </li>;
-                })}
-                {isShowMoreButtonActive && <li className="product-tags-field__list-show-more">
-                    <button onClick={() => setTagsLimit(tags.length)}>Afficher plus</button>
-                </li>}
-            </ul>
+            <ProductTagsFieldList tags={tags} onMoreInfosButtonClick={handleMoreInfosButtonClick}/>
         }
         {isTagInfosModalOpen &&
         <TagInfosModal onClose={() => setIsTagInfosModalOpen(false)} wikidataQID={wikidataQID}/>}

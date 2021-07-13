@@ -36,5 +36,25 @@
     font-style: italic;
     margin-left: 10px;
   }
+
+  &__more-infos-button {
+    @include reset-button;
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    vertical-align: middle;
+    margin-left: 3px;
+    border-radius: 50%;
+    background-color: $color3;
+
+    &:hover {
+      background-color: $color4;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
 

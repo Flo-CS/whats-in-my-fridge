@@ -31,6 +31,7 @@ async function getWikipediaDataByTitle(title) {
             redirects: 1,
             exintro: 1,
             explaintext: 1,
+            exsentences: 3,
             origin: "*"
         }
     }).catch(() => {
