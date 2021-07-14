@@ -56,8 +56,6 @@ async function getWikipediaPageDataByWikidataQID(wikidataQID) {
         return null
 
     return wikipediaData?.query?.pages[wikipediaPageID]
-
-
 }
 
 export {getWikipediaPageDataByWikidataQID}

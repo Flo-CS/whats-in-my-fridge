@@ -17,7 +17,7 @@ function ProductTagsFieldList({tags, onMoreInfosButtonClick}) {
                 {tag.wikidata &&
                 <button
                     className="product-tags-field__more-infos-button"
-                    onClick={() => onMoreInfosButtonClick(tag.wikidata)}>
+                    onClick={() => onMoreInfosButtonClick(tag)}>
                     <InformationIcon/>
                 </button>}
             </li>;
@@ -37,10 +37,14 @@ export default function ProductTagsField({fieldName, tags = []}) {
 
 
     const [isTagInfosModalOpen, setIsTagInfosModalOpen] = useState(false)
-    const [wikidataQID, setWikidataQID] = useState(null)
+    const [tagInfos, setTagInfos] = useState({
+        wikidataQID: null,
+        name: null,
+        categoryName: fieldName
+    })
 
-    function handleMoreInfosButtonClick(wikidataQID) {
-        setWikidataQID(wikidataQID)
+    function handleMoreInfosButtonClick({wikidata, name}) {
+        setTagInfos({...tagInfos, wikidataQID: wikidata, name: name})
         setIsTagInfosModalOpen(true)
     }
 
@@ -53,7 +57,7 @@ export default function ProductTagsField({fieldName, tags = []}) {
             <ProductTagsFieldList tags={tags} onMoreInfosButtonClick={handleMoreInfosButtonClick}/>
         }
         {isTagInfosModalOpen &&
-        <TagInfosModal onClose={() => setIsTagInfosModalOpen(false)} wikidataQID={wikidataQID}/>}
+        <TagInfosModal onClose={() => setIsTagInfosModalOpen(false)} tagInfos={tagInfos}/>}
     </div>;
 }
 
