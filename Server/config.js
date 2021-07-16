@@ -26,7 +26,6 @@ const OPEN_FOOD_FACTS_USEFUL_TAXONOMIES = [
     "categories",
     "additives_classes",
     "ingredients_analysis",
-    "nova_groups",
     "additives",
     "allergens",
     "ingredients",

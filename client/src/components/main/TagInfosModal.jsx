@@ -1,28 +1,27 @@
+import propTypes from "prop-types";
 import React, {useEffect, useState} from 'react';
 import Modal from "react-modal";
-import propTypes from "prop-types"
 import {getWikipediaPageDataByWikidataQID} from "../../helpers/wikipediaAPI";
-
-import "./TagInfosModal.scss"
 import ThreeDotLoading from "../ThreeDotLoading";
 
+import "./TagInfosModal.scss";
+
 export default function TagInfosModal({tagInfos, onClose}) {
-    const [wikipediaData, setWikipediaData] = useState(null)
-    const [isLoading, setIsLoading] = useState(true)
+    const [wikipediaData, setWikipediaData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     Modal.setAppElement('body');
 
 
     useEffect(() => {
         (async () => {
-            const data = await getWikipediaPageDataByWikidataQID(tagInfos.wikidataQID)
-            setWikipediaData(data)
-            setIsLoading(false)
-        })()
+            const data = await getWikipediaPageDataByWikidataQID(tagInfos.wikidataQID);
+            setWikipediaData(data);
+            setIsLoading(false);
+        })();
     }, [tagInfos.wikidataQID]);
 
     const {description, extract, pageid} = wikipediaData || {}
-
 
     return <Modal
         isOpen={true}

@@ -1,12 +1,12 @@
 @import "./../../variables";
 
 .tag-infos-modal {
-  border-radius: 5px;
-  background-color: $color1;
-  padding: 20px;
+  font-size: 0.8rem;
   max-width: 500px;
   margin: 30px;
-  font-size: 0.8rem;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: $color1;
 
   &__overlay {
     position: fixed;
@@ -25,11 +25,11 @@
     display: block;
     width: 90px;
     height: 30px;
-    border-radius: 5px;
+    margin: 20px auto auto;
     padding: 0;
-    background-color: $accent-color;
     color: white;
-    margin: 10px auto auto;
+    border-radius: 5px;
+    background-color: $accent-color;
   }
 
   &__title {
