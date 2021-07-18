@@ -2,22 +2,24 @@
 
 .tag-infos-modal {
   font-size: 0.8rem;
+  overflow-y: auto;
   width: 100%;
   max-width: 500px;
-  margin: 30px;
+  max-height: 100%;
   padding: 20px;
   border-radius: 5px;
   background-color: $color1;
 
   &__overlay {
     position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    padding: 30px;
     background-color: rgba(0, 0, 0, .5);
   }
 
