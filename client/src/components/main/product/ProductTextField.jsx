@@ -3,12 +3,12 @@ import React from "react";
 
 import "./ProductTextField.scss";
 
-export default function ProductTextField({title, text, seeMoreUrl}) {
+export default function ProductTextField({fieldName, text, seeMoreUrl}) {
     if (!text)
         return null;
 
     return <div className="product-text-field">
-        <p className="product-text-field__paragraph-title">{title}</p>
+        <p className="product-text-field__paragraph-title">{fieldName}</p>
         <p className="product-text-field__paragraph">
             {text}{" "}
             {seeMoreUrl &&
@@ -20,7 +20,7 @@ export default function ProductTextField({title, text, seeMoreUrl}) {
 }
 
 ProductTextField.propTypes = {
-    title: propTypes.string.isRequired,
+    fieldName: propTypes.string.isRequired,
     seeMoreUrl: propTypes.string,
     text: propTypes.string,
 };

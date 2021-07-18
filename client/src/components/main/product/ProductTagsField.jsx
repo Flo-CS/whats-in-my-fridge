@@ -1,9 +1,9 @@
 import {take} from "lodash";
 import propTypes from "prop-types";
 import React, {useState} from "react";
-import "./ProductTagsField.scss";
 import TagInfosModal from "../TagInfosModal";
 import {ReactComponent as InformationIcon} from "./../../../assets/icons/information.svg";
+import "./ProductTagsField.scss";
 
 function ProductTagsFieldList({tags, onMoreInfosButtonClick}) {
 
@@ -13,9 +13,10 @@ function ProductTagsFieldList({tags, onMoreInfosButtonClick}) {
 
     return <ul className="product-tags-field__list">
         {take(tags, tagsLimit).map((tag) => {
+            const isMoreInfosButtonActive = Object.keys(tag).length > 2;
+
             return <li className="product-tags-field__list-item" key={tag.name}>{tag.name}
-                {tag.wikidata &&
-                <button
+                {isMoreInfosButtonActive && <button
                     className="product-tags-field__more-infos-button"
                     onClick={() => onMoreInfosButtonClick(tag)}>
                     <InformationIcon/>
@@ -25,7 +26,7 @@ function ProductTagsFieldList({tags, onMoreInfosButtonClick}) {
         {isShowMoreButtonActive && <li className="product-tags-field__list-show-more">
             <button onClick={() => setTagsLimit(tags.length)}>Afficher plus</button>
         </li>}
-    </ul>
+    </ul>;
 }
 
 ProductTagsFieldList.propTypes = {
@@ -33,35 +34,32 @@ ProductTagsFieldList.propTypes = {
     onMoreInfosButtonClick: propTypes.func.isRequired,
 };
 
-export default function ProductTagsField({fieldName, tags = []}) {
+export default function ProductTagsField({fieldName, tags = [], isShownWhenEmpty = true}) {
+    const [isTagInfosModalOpen, setIsTagInfosModalOpen] = useState(false);
+    const [tagInfos, setTagInfos] = useState({});
 
-
-    const [isTagInfosModalOpen, setIsTagInfosModalOpen] = useState(false)
-    const [tagInfos, setTagInfos] = useState({
-        wikidataQID: null,
-        name: null,
-        categoryName: fieldName
-    })
-
-    function handleMoreInfosButtonClick({wikidata, name}) {
-        setTagInfos({...tagInfos, wikidataQID: wikidata, name: name})
-        setIsTagInfosModalOpen(true)
+    function handleMoreInfosButtonClick(tag) {
+        setTagInfos({categoryName: fieldName, ...tag});
+        setIsTagInfosModalOpen(true);
     }
 
+    if (tags.length === 0 && !isShownWhenEmpty)
+        return null;
 
     return <div className="product-tags-field">
-        <h4 className="product-tags-field__name">{fieldName}</h4>
+        <p className="product-tags-field__name">{fieldName}</p>
         {tags.length === 0 ?
             <p className="product-tags-field__no-tags">Vide ou non renseigné</p>
             :
             <ProductTagsFieldList tags={tags} onMoreInfosButtonClick={handleMoreInfosButtonClick}/>
         }
         {isTagInfosModalOpen &&
-        <TagInfosModal onClose={() => setIsTagInfosModalOpen(false)} tagInfos={tagInfos}/>}
+        <TagInfosModal onClose={() => setIsTagInfosModalOpen(false)} infos={tagInfos}/>}
     </div>;
 }
 
 ProductTagsField.propTypes = {
     fieldName: propTypes.string.isRequired,
     tags: propTypes.array,
+    isShownWhenEmpty: propTypes.bool
 };

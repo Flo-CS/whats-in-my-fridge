@@ -1,0 +1,62 @@
+{
+  "en:no": {
+    "name": {
+      "fr": "Non"
+    }
+  },
+  "en:moderate": {
+    "name": {
+      "fr": "Modéré"
+    }
+  },
+  "en:high": {
+    "name": {
+      "fr": "Élevé"
+    }
+  },
+  "en:maybe": {
+    "name": {
+      "fr": "Peut être"
+    }
+  },
+  "en:yes": {
+    "name": {
+      "fr": "Oui"
+    }
+  },
+  "en:infants": {
+    "name": {
+      "fr": "Nourrissons (< 1 an)"
+    }
+  },
+  "en:toddlers": {
+    "name": {
+      "fr": "Jeunes enfants (1 à 2 ans)"
+    }
+  },
+  "en:children": {
+    "name": {
+      "fr": "Enfants (3 à 9 ans)"
+    }
+  },
+  "en:adolescents": {
+    "name": {
+      "fr": "Adolescents (10 à 17 ans)"
+    }
+  },
+  "en:adults": {
+    "name": {
+      "fr": "Adultes (18 à 64 ans)"
+    }
+  },
+  "en:elderly": {
+    "name": {
+      "fr": "Personnes âgées (> 65 ans)"
+    }
+  },
+  "en:no-group": {
+    "name": {
+      "fr": "Aucun groupe"
+    }
+  }
+}
