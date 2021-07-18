@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import {round} from "lodash";
 import propTypes from "prop-types";
 import React from "react";
 import {letterScoresColors} from "../../../helpers/miscellaneous";
@@ -15,8 +16,8 @@ function ProductNutritionTableFieldRow({name, nutriments, fieldKey, isWith, nutr
         "high": {name: "(élevé)", color: letterScoresColors[4]}
     };
 
-    const value100g = nutriments[`${fieldKey}_100g`];
-    const valueServing = nutriments[`${fieldKey}_serving`];
+    const value100g = round(nutriments[`${fieldKey}_100g`], 2);
+    const valueServing = round(nutriments[`${fieldKey}_serving`], 2);
     const valueUnit = nutriments[`${fieldKey}_unit`];
 
     const nutrientLevelsInfos = nutrientLevelsConversions[nutrientLevel];
