@@ -1,3 +1,3 @@
 node_modules
 .env
-data/taxonomies
+/data/taxonomies/

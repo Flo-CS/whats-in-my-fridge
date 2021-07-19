@@ -23,9 +23,13 @@ export default function BottomPanel() {
         setIsScanning(true);
     }
 
-    function onBarcodeDetected(result) {
-        setBarcode(result.codeResult.code);
+    function handleScannerClose() {
         setIsScanning(false);
+    }
+
+    function handleBarcodeDetected(result) {
+        setIsScanning(false);
+        setBarcode(result.codeResult.code);
     }
 
 
@@ -60,7 +64,7 @@ export default function BottomPanel() {
             </button>
             {isScanning &&
             ReactDOM.createPortal(
-                <Scanner onDetected={onBarcodeDetected}/>,
+                <Scanner onDetected={handleBarcodeDetected} onClose={handleScannerClose}/>,
                 document.querySelector("#root")
             )}
         </div>

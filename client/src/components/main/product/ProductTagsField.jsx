@@ -12,10 +12,10 @@ function ProductTagsFieldList({tags, onMoreInfosButtonClick}) {
     const isShowMoreButtonActive = tags.length > tagsLimit && tags.length > 8;
 
     return <ul className="product-tags-field__list">
-        {take(tags, tagsLimit).map((tag) => {
+        {take(tags, tagsLimit).map((tag, i) => {
             const isMoreInfosButtonActive = Object.keys(tag).length > 2;
 
-            return <li className="product-tags-field__list-item" key={tag.name}>{tag.name}
+            return <li className="product-tags-field__list-item" key={tag.name + i}>{tag.name}
                 {isMoreInfosButtonActive && <button
                     className="product-tags-field__more-infos-button"
                     onClick={() => onMoreInfosButtonClick(tag)}>

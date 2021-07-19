@@ -61,6 +61,8 @@ export default function TagInfosModal({infos, onClose}) {
             <>
                 <h1 className="tag-infos-modal__title">{categoryName} : {name} {wikiDescription && `(${wikiDescription})`}</h1>
                 <ProductTextField fieldName="Description" text={description}/>
+                <ProductTextField fieldName="Wikipedia" text={wikiExtract}
+                                  seeMoreUrl={`https://fr.wikipedia.org/?curid=${wikiPageId}`}/>
                 <ProductTagsField fieldName="Fonctions" tags={additives_classes} isShownWhenEmpty={false}/>
                 <ProductTextField fieldName="Risque de surexposition" text={efsa_evaluation_overexposure_risk}/>
                 <ProductTagsField
@@ -77,8 +79,6 @@ export default function TagInfosModal({infos, onClose}) {
                 <ProductTextField fieldName="Region" text={region}/>
                 <ProductTextField fieldName="Dose journalière" text={daily_value}/>
                 <ProductTextField fieldName="Unité" text={unit}/>
-                <ProductTextField fieldName="Wikipedia" text={wikiExtract}
-                                  seeMoreUrl={`https://fr.wikipedia.org/?curid=${wikiPageId}`}/>
 
                 <button onClick={() => onClose()} className="tag-infos-modal__close-button">Fermer</button>
             </>
