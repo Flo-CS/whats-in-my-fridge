@@ -1,5 +1,4 @@
 import axios from "axios";
-import {SERVER_API_ENDPOINT} from "../config";
 
 class Api {
     init() {
@@ -7,7 +6,7 @@ class Api {
             Accept: "application/json",
         };
         return axios.create({
-            baseURL: SERVER_API_ENDPOINT,
+            baseURL: "/api",
             headers: headers,
             withCredentials: true
         });

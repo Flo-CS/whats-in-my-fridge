@@ -1,4 +1,3 @@
-const SERVER_PORT = 8080;
 const OPEN_FOOD_FACTS_API_ENDPOINT = "https://world.openfoodfacts.org/api/v0";
 const OPEN_FOOD_FACTS_TAXONOMIES_ENDPOINT = "https://world.openfoodfacts.org/data/taxonomies";
 const OPEN_FOOD_FACTS_USEFUL_FIELDS = ["product_name",
@@ -39,7 +38,6 @@ const TAGS_CORRECTIONS = {
 };
 
 module.exports = {
-    SERVER_PORT,
     OPEN_FOOD_FACTS_API_ENDPOINT,
     OPEN_FOOD_FACTS_USEFUL_FIELDS,
     OPEN_FOOD_FACTS_TAXONOMIES_ENDPOINT,

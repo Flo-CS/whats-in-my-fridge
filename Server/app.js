@@ -4,11 +4,12 @@ const morgan = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+const path = require("path");
+
 const errorsManagerMiddleware = require("./middlewares/errorsManagerMiddleware");
 
 require("dotenv").config();
 
-const {SERVER_PORT} = require("./config");
 const productRoute = require("./routes/productRoute");
 const userRoute = require("./routes/userRoute");
 const {downloadTaxonomiesFiles} = require("./helpers/taxonomies");
@@ -25,11 +26,6 @@ mongoose
     .then(() => console.log("DB connected :)"))
     .catch((error) => console.log(error));
 
-// Download taxonomies and facets files task (to maintain data updated)
-setInterval(() => {
-    downloadTaxonomiesFiles();
-}, 60 * 60 * 1000);
-
 // Setup Express App
 const App = express();
 
@@ -43,9 +39,24 @@ App.use(bodyParser.json());
 App.use("/api/products", productRoute);
 App.use("/api/auth", userRoute);
 
+
+// Download taxonomies and facets files task (to maintain data updated)
+setInterval(() => {
+    downloadTaxonomiesFiles();
+}, 60 * 60 * 1000);
+
+if (process.env.IS_PRODUCTION_ENVIRONMENT === "YES") {
+    downloadTaxonomiesFiles();
+    App.use(express.static(path.join(__dirname, 'client/build')));
+    App.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    });
+}
+
 // Errors manager middleware
 App.use(errorsManagerMiddleware());
 
-App.listen(SERVER_PORT, () => {
-    console.log("I'm running :)");
+
+App.listen(process.env.PORT, () => {
+    console.log(`I'm running on ${process.env.PORT} :)`);
 });
