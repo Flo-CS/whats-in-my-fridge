@@ -1,8 +1,11 @@
+import dayjs from "dayjs";
+import "dayjs/locale/fr";
 import React from "react";
 import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
 import {Slide, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+
 
 import App from "./App";
 import store from "./features/store";
@@ -10,6 +13,8 @@ import store from "./features/store";
 import "./index.scss";
 
 import reportWebVitals from "./reportWebVitals";
+
+dayjs.locale("fr");
 
 ReactDOM.render(
     <React.StrictMode>

@@ -13,27 +13,27 @@ const productSchema = new mongoose.Schema(
     }
 );
 
-productSchema.methods.export = function() {
-    const product = this.toJSON()
+productSchema.methods.export = function () {
+    const product = this.toJSON();
 
-    product.data = convertTagsFieldsWithTaxonomies(product.data)
+    product.data = convertTagsFieldsWithTaxonomies(product.data);
 
-    return product
-}
-productSchema.methods.updateQuantity =  function(quantity) {
+    return product;
+};
+productSchema.methods.updateQuantity = function (quantity) {
     this.quantity = quantity;
 
-    const lastIndex = this.presences.length - 1
+    const lastIndex = this.presences.length - 1;
 
 
     if (dayjs().isSame(this.presences[lastIndex].date, "day")) {
-        this.presences[lastIndex] = {date: dayjs().format(), value: this.quantity >= 1}
+        this.presences[lastIndex] = {date: dayjs().format(), value: this.quantity >= 1};
     } else {
         this.presences.push({date: dayjs().format(), value: this.quantity >= 1});
     }
 
     this.markModified("presences");
-}
+};
 productSchema.methods.wasPresentOn = function (date, granularity) {
     return this.presences.some((currentPresence, i, presences) => {
         const nextPresence = presences[i + 1];
@@ -42,10 +42,10 @@ productSchema.methods.wasPresentOn = function (date, granularity) {
         const presenceEndDate = nextPresence ? dayjs(nextPresence.date) : dayjs().add(1, granularity);
 
         return date.isBetween(presenceStartDate, presenceEndDate, granularity, "[)")
-            && currentPresence.value === true
-    })
+            && currentPresence.value === true;
+    });
 
-}
+};
 
 
 module.exports = mongoose.model("Product", productSchema, "Products");

@@ -4,10 +4,14 @@
 const axios = require("axios");
 const jsonfile = require("jsonfile");
 const path = require("path");
-const {OPEN_FOOD_FACTS_USEFUL_TAXONOMIES, OPEN_FOOD_FACTS_TAXONOMIES_ENDPOINT, TAGS_CORRECTIONS} = require("../config");
+const {
+    OPEN_FOOD_FACTS_USEFUL_TAXONOMIES,
+    OPEN_FOOD_FACTS_TAXONOMIES_ENDPOINT,
+    TAGS_CORRECTIONS
+} = require("./constants");
 
 
-const taxonomiesFilesPath = path.join(__dirname, "./../data/taxonomies");
+const taxonomiesFilesPath = path.join(__dirname, "./../../data/taxonomies");
 
 async function downloadTaxonomiesFiles() {
     for (const taxonomy of OPEN_FOOD_FACTS_USEFUL_TAXONOMIES) {

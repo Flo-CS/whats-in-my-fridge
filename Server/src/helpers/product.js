@@ -1,4 +1,4 @@
-const {OPEN_FOOD_FACTS_API_ENDPOINT, OPEN_FOOD_FACTS_USEFUL_FIELDS} = require("../config");
+const {OPEN_FOOD_FACTS_API_ENDPOINT, OPEN_FOOD_FACTS_USEFUL_FIELDS} = require("./constants");
 const axios = require("axios");
 const _ = require("lodash");
 const {OpenFoodFactsError, openFoodFactsErrors} = require("./errors");

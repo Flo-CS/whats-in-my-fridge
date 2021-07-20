@@ -20,9 +20,9 @@ class ProductsStats {
         this.timeUnit = timeUnit;
         this.timeScale = timeUnitToTimeScale[timeUnit];
 
-        this.presentProducts = this.getPresentsProductsByDate(this.startDate, this.timeUnit)
+        this.presentProducts = this.getPresentsProductsByDate(this.startDate, this.timeUnit);
 
-        this.requiredCalculationDates = this.getRequiredCalculationDates()
+        this.requiredCalculationDates = this.getRequiredCalculationDates();
     }
 
 
@@ -95,25 +95,25 @@ class ProductsStats {
 
 
     getLetterScoresHeatmap() {
-        let xLabels, yLabels
-        xLabels = yLabels = ["A", "B", "C", "D", "E", "?"]
+        let xLabels, yLabels;
+        xLabels = yLabels = ["A", "B", "C", "D", "E", "?"];
 
         // Initialize a 2D array filled with 0
         const data = new Array(yLabels.length).fill(0).map(() => new Array(xLabels.length).fill(0));
 
         for (const product of this.presentProducts) {
 
-            const {nutriscore_grade, ecoscore_grade} = product.data
-            const nutriscore = nutriscore_grade?.toUpperCase()
-            const ecoscore = ecoscore_grade?.toUpperCase()
+            const {nutriscore_grade, ecoscore_grade} = product.data;
+            const nutriscore = nutriscore_grade?.toUpperCase();
+            const ecoscore = ecoscore_grade?.toUpperCase();
 
-            const xIndex = xLabels.includes(nutriscore) ? xLabels.indexOf(nutriscore) : xLabels.length - 1
-            const yIndex = yLabels.includes(ecoscore) ? yLabels.indexOf(ecoscore) : yLabels.length - 1
+            const xIndex = xLabels.includes(nutriscore) ? xLabels.indexOf(nutriscore) : xLabels.length - 1;
+            const yIndex = yLabels.includes(ecoscore) ? yLabels.indexOf(ecoscore) : yLabels.length - 1;
 
-            data[yIndex][xIndex] += 1
+            data[yIndex][xIndex] += 1;
         }
 
-        return {xLabels, yLabels, data}
+        return {xLabels, yLabels, data};
 
     }
 }

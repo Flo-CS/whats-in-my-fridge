@@ -1,4 +1,4 @@
-const models = require("./../models/index");
+const models = require("../models");
 const {validationErrors} = require("../helpers/errors");
 const {databaseErrors} = require("../helpers/errors");
 const {ValidationError} = require("../helpers/errors");

@@ -42,11 +42,15 @@ App.use("/api/auth", userRoute);
 
 // Download taxonomies and facets files task (to maintain data updated)
 setInterval(() => {
-    downloadTaxonomiesFiles();
+    (async () => {
+        await downloadTaxonomiesFiles();
+    })();
 }, 60 * 60 * 1000);
 
-if (process.env.IS_PRODUCTION_ENVIRONMENT === "YES") {
-    downloadTaxonomiesFiles();
+if (process.env.ENVIRONMENT === "YES") {
+    (async () => {
+        await downloadTaxonomiesFiles();
+    })();
     App.use(express.static(path.join(__dirname, 'client/build')));
     App.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, 'client/build', 'index.html'));

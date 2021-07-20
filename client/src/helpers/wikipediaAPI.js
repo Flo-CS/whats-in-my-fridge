@@ -1,5 +1,5 @@
 import axios from "axios";
-import {WIKIDATA_API_ENDPOINT, WIKIPEDIA_API_ENDPOINT} from "../config";
+import {WIKIDATA_API_ENDPOINT, WIKIPEDIA_API_ENDPOINT} from "./constants";
 
 async function getWikidataDataByQID(qid) {
     const response = await axios.get(WIKIDATA_API_ENDPOINT, {
