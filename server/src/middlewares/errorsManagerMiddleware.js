@@ -17,7 +17,7 @@ function errorsManagerMiddleware() {
                 details: error.details
             });
 
-        return res.status(500).json({errorMessage: "une erreur inconnue s'est produite"});
+        return res.status(500).json({errorMessage: "Une erreur inconnue s'est produite"});
 
     };
 }

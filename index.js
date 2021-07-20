@@ -11,7 +11,7 @@ require("dotenv").config();
 
 const productRoute = require("./server/src/routes/productRoute");
 const userRoute = require("./server/src/routes/userRoute");
-const {downloadTaxonomiesFiles} = require("./server/src/helpers/taxonomies");
+const {downloadTaxonomiesFiles, loadTaxonomiesFiles} = require("./server/src/helpers/taxonomies");
 
 // Setup DB connection
 mongoose
@@ -25,17 +25,23 @@ mongoose
     .catch((error) => console.log(error));
 
 
+try {
 // Download taxonomies and facets files task (to maintain data updated)
-setInterval(() => {
-    (async () => {
-        await downloadTaxonomiesFiles();
-    })();
-}, 60 * 60 * 1000);
+    if (process.env.ENVIRONMENT === "PRODUCTION") {
+        (async () => {
+            await downloadTaxonomiesFiles();
+        })();
+    }
 
-if (process.env.ENVIRONMENT === "PRODUCTION") {
-    (async () => {
-        await downloadTaxonomiesFiles();
-    })();
+    setInterval(() => {
+        (async () => {
+            await downloadTaxonomiesFiles();
+        })();
+
+    }, 60 * 60 * 1000);
+
+} catch (error) {
+    process.exit(1);
 }
 
 // Setup Express App
@@ -51,9 +57,6 @@ App.use(cors({credentials: true, origin: corsOrigin}));
 // Routes
 App.use("/api/products", productRoute);
 App.use("/api/auth", userRoute);
-
-
-
 
 // Errors manager middleware
 App.use(errorsManagerMiddleware());

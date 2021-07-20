@@ -1,7 +1,7 @@
 class CustomError extends Error {
     constructor(error) {
         super(error.message);
-        this.statusCode = error.statusCode;
+        this.statusCode = error.statusCode || 500;
     }
 }
 
@@ -74,12 +74,21 @@ class AuthError extends CustomError {
 // OPEN FOOD FACTS ERROR
 const openFoodFactsErrors = {
     noProductFound: {
-        message: "Le produit n'existe pas dans la source de données OFF",
+        message: "Le produit n'existe pas dans la source de données Open Food Facts",
         statusCode: 404
     },
     communication: {
-        message: "La communication avec la source des données OFF a échoué",
+        message: "La communication avec la source des données Open Food Facts a échoué",
     },
+    readTaxonomiesFiles: {
+        message: "Impossible de lire les fichiers de taxonomies d'Open Food Facts"
+    },
+    downloadTaxonomiesFiles: {
+        message: "Impossible de télécharger les fichiers de taxonomies d'Open Food Facts"
+    },
+    convertTags: {
+        message: "Impossible d'obtenir les informations liées aux tags"
+    }
 };
 
 class OpenFoodFactsError extends CustomError {
