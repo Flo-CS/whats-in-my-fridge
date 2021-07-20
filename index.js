@@ -27,21 +27,21 @@ mongoose
 
 try {
 // Download taxonomies and facets files task (to maintain data updated)
-    if (process.env.ENVIRONMENT === "PRODUCTION") {
-        (async () => {
-            await downloadTaxonomiesFiles();
-        })();
+    if (process.env.DOWNLOAD_TAXONOMIES_ON_EACH_RUN === "TRUE") {
+        downloadTaxonomiesFiles().then(() => {
+            loadTaxonomiesFiles();
+        });
     }
 
-    setInterval(() => {
-        (async () => {
-            await downloadTaxonomiesFiles();
-            loadTaxonomiesFiles();
-        })();
+    if (process.env.DOWNLOAD_TAXONOMIES_REGULARLY === "TRUE") {
+        setInterval(() => {
+            downloadTaxonomiesFiles().then(() => {
+                loadTaxonomiesFiles();
+            });
+        }, 60 * 60 * 1000);
+    }
 
-    }, 60 * 60 * 1000);
 
-    loadTaxonomiesFiles();
 
 } catch (error) {
     console.log(error);
