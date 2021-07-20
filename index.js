@@ -4,15 +4,14 @@ const morgan = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const path = require("path");
 
-const errorsManagerMiddleware = require("./middlewares/errorsManagerMiddleware");
+const errorsManagerMiddleware = require("./server/src/middlewares/errorsManagerMiddleware");
 
 require("dotenv").config();
 
-const productRoute = require("./routes/productRoute");
-const userRoute = require("./routes/userRoute");
-const {downloadTaxonomiesFiles} = require("./helpers/taxonomies");
+const productRoute = require("./server/src/routes/productRoute");
+const userRoute = require("./server/src/routes/userRoute");
+const {downloadTaxonomiesFiles} = require("./server/src/helpers/taxonomies");
 
 // Setup DB connection
 mongoose
@@ -51,10 +50,6 @@ if (process.env.ENVIRONMENT === "PRODUCTION") {
     (async () => {
         await downloadTaxonomiesFiles();
     })();
-    App.use(express.static(path.join(__dirname, 'client/build')));
-    App.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-    });
 }
 
 // Errors manager middleware
