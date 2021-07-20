@@ -4,6 +4,7 @@ class Api {
     init() {
         const headers = {
             Accept: "application/json",
+            "Content-Type": "application/json"
         };
         return axios.create({
             baseURL: process.env.REACT_APP_ENVIRONMENT === "PRODUCTION" ? process.env.REACT_APP_API_URL : "/api",

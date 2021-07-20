@@ -80,7 +80,7 @@ const loginUser = async (req, res, next) => {
         expiresIn: "30d"
     });
 
-    res.cookie("token", token, {httpOnly: true});
+    res.cookie("token", token, {httpOnly: true, sameSite: "None", secure: true});
 
     res.status(200).json({email});
 };
@@ -94,7 +94,7 @@ const checkUserToken = async (req, res) => {
 
 const logoutUser = async (req, res) => {
     // In the future logout will be more advanced than a simple token deletion
-    res.cookie("token", {maxAge: 0});
+    res.cookie("token", {maxAge: 0, sameSite: "None", secure: true});
     res.status(200).json();
 };
 
