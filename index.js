@@ -24,6 +24,20 @@ mongoose
     .then(() => console.log("DB connected :)"))
     .catch((error) => console.log(error));
 
+
+// Download taxonomies and facets files task (to maintain data updated)
+setInterval(() => {
+    (async () => {
+        await downloadTaxonomiesFiles();
+    })();
+}, 60 * 60 * 1000);
+
+if (process.env.ENVIRONMENT === "PRODUCTION") {
+    (async () => {
+        await downloadTaxonomiesFiles();
+    })();
+}
+
 // Setup Express App
 const App = express();
 
@@ -39,18 +53,7 @@ App.use("/api/products", productRoute);
 App.use("/api/auth", userRoute);
 
 
-// Download taxonomies and facets files task (to maintain data updated)
-setInterval(() => {
-    (async () => {
-        await downloadTaxonomiesFiles();
-    })();
-}, 60 * 60 * 1000);
 
-if (process.env.ENVIRONMENT === "PRODUCTION") {
-    (async () => {
-        await downloadTaxonomiesFiles();
-    })();
-}
 
 // Errors manager middleware
 App.use(errorsManagerMiddleware());
