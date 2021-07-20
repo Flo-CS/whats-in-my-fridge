@@ -76,6 +76,7 @@ const productSlice = createSlice({
                 if (productIndex > -1) {
                     state.products[productIndex] = action.payload.product;
                 }
+            toast.success("Produit ajouté avec succès");
             }
         },
         [addProduct.rejected]: (state, action) => {
