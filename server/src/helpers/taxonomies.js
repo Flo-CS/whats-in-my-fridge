@@ -26,7 +26,6 @@ async function downloadTaxonomiesFiles() {
             jsonfile.writeFileSync(`${taxonomiesFilesPath}/${taxonomy}.json`, response.data);
             console.log(url);
         }
-        loadTaxonomiesFiles();
     } catch (error) {
         throw new OpenFoodFactsError(openFoodFactsErrors.downloadTaxonomiesFiles);
     }
