@@ -14,7 +14,6 @@ const productRoute = require("./routes/productRoute");
 const userRoute = require("./routes/userRoute");
 const {downloadTaxonomiesFiles} = require("./helpers/taxonomies");
 
-
 // Setup DB connection
 mongoose
     .connect(process.env.DB_CONNECTION, {
@@ -32,8 +31,9 @@ const App = express();
 // Middlewares
 App.use(morgan("short"));
 App.use(cookieParser());
-App.use(cors({credentials: true, origin: true}));
 App.use(bodyParser.json());
+const corsOrigin = process.env.ENVIRONMENT === "PRODUCTION" ? [process.env.CLIENT_URL] : true;
+App.use(cors({credentials: true, origin: corsOrigin}));
 
 // Routes
 App.use("/api/products", productRoute);
@@ -47,7 +47,7 @@ setInterval(() => {
     })();
 }, 60 * 60 * 1000);
 
-if (process.env.ENVIRONMENT === "YES") {
+if (process.env.ENVIRONMENT === "PRODUCTION") {
     (async () => {
         await downloadTaxonomiesFiles();
     })();
