@@ -45,7 +45,7 @@ const App = express();
 App.use(morgan("short"));
 App.use(cookieParser());
 App.use(bodyParser.json());
-const corsOrigin = process.env.ENVIRONMENT === "PRODUCTION" ? [process.env.CLIENT_URL] : true;
+const corsOrigin = process.env.ENVIRONMENT === "PRODUCTION" ? process.env.CLIENT_URL : true;
 App.use(cors({credentials: true, origin: corsOrigin}));
 
 // Routes
