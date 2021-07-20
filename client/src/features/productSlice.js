@@ -69,6 +69,7 @@ const productSlice = createSlice({
         [addProduct.fulfilled]: (state, action) => {
             if (action.payload.updated === false) {
                 state.products.push(action.payload.product);
+                toast.success("Produit ajouté avec succès");
             } else {
                 const productIndex = state.products.findIndex(
                     (product) => product.barcode === action.meta.arg.barcode
