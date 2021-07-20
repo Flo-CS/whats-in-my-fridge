@@ -44,7 +44,7 @@ try {
     loadTaxonomiesFiles();
 
 } catch (error) {
-    process.exit(1);
+    console.log(error);
 }
 
 // Setup Express App
