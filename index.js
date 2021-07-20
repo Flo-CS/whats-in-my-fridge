@@ -36,9 +36,12 @@ try {
     setInterval(() => {
         (async () => {
             await downloadTaxonomiesFiles();
+            loadTaxonomiesFiles();
         })();
 
     }, 60 * 60 * 1000);
+
+    loadTaxonomiesFiles();
 
 } catch (error) {
     process.exit(1);
