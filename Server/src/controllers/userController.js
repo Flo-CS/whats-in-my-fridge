@@ -76,11 +76,10 @@ const loginUser = async (req, res, next) => {
         return next(new AuthError(authErrors.invalidPassword));
 
     const token = jwt.sign({email, id: user._id}, process.env.JWT_SECRET_KEY, {
-        // TODO : Change the token expiration delay
-        expiresIn: "30d"
+        expiresIn: "10d"
     });
 
-    res.cookie("token", token, {httpOnly: true, sameSite: "None", secure: true});
+    res.cookie("token", token, {httpOnly: true, sameSite: "None", secure: true, maxAge: 10 * 24 * 60 * 60 * 1000});
 
     res.status(200).json({email});
 };
@@ -94,7 +93,7 @@ const checkUserToken = async (req, res) => {
 
 const logoutUser = async (req, res) => {
     // In the future logout will be more advanced than a simple token deletion
-    res.cookie("token", {maxAge: 0, sameSite: "None", secure: true});
+    res.cookie("token", undefined, {maxAge: 0, sameSite: "None", secure: true});
     res.status(200).json();
 };
 

@@ -25,26 +25,16 @@ mongoose
     .catch((error) => console.log(error));
 
 
-try {
-// Download taxonomies and facets files task (to maintain data updated)
-    if (process.env.DOWNLOAD_TAXONOMIES_ON_EACH_RUN === "TRUE") {
-        downloadTaxonomiesFiles().then(() => {
+downloadTaxonomiesFiles(false).then(() => {
+    loadTaxonomiesFiles();
+});
+
+if (process.env.DOWNLOAD_TAXONOMIES_REGULARLY === "TRUE") {
+    setInterval(() => {
+        downloadTaxonomiesFiles(true).then(() => {
             loadTaxonomiesFiles();
         });
-    }
-
-    if (process.env.DOWNLOAD_TAXONOMIES_REGULARLY === "TRUE") {
-        setInterval(() => {
-            downloadTaxonomiesFiles().then(() => {
-                loadTaxonomiesFiles();
-            });
-        }, 60 * 60 * 1000);
-    }
-
-
-
-} catch (error) {
-    console.log(error);
+    }, 60 * 60 * 1000);
 }
 
 // Setup Express App

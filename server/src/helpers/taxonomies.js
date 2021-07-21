@@ -15,15 +15,17 @@ const {
 
 const taxonomiesFilesPath = path.join(__dirname, "./../../data/taxonomies");
 
-async function downloadTaxonomiesFiles() {
+async function downloadTaxonomiesFiles(update = false) {
     try {
-        if (!fs.existsSync(taxonomiesFilesPath)) {
-            fs.mkdirSync(taxonomiesFilesPath, {recursive: true});
-        }
         for (const taxonomy of OPEN_FOOD_FACTS_USEFUL_TAXONOMIES) {
             const url = `${OPEN_FOOD_FACTS_TAXONOMIES_ENDPOINT}/${taxonomy}.json`;
+            const path = `${taxonomiesFilesPath}/${taxonomy}.json`;
+
+            if (fs.existsSync(path) && !update)
+                return;
+
             const response = await axios.get(url);
-            jsonfile.writeFileSync(`${taxonomiesFilesPath}/${taxonomy}.json`, response.data);
+            jsonfile.writeFileSync(path, response.data);
             console.log(url);
         }
     } catch (error) {
