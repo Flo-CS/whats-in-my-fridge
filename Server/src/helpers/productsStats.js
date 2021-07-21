@@ -1,10 +1,10 @@
 const _ = require("lodash");
 const dayjs = require("dayjs");
-require("dayjs/locale/fr");
 const isBetween = require("dayjs/plugin/isBetween");
 const {letterScoreToScore} = require("./product");
 
 dayjs.extend(isBetween);
+
 
 const timeUnitToTimeScale = {
     "year": "month",
@@ -14,6 +14,7 @@ const timeUnitToTimeScale = {
 class ProductsStats {
 
     constructor(products, startDate, endDate, timeUnit) {
+
         this.products = products;
         this.startDate = dayjs(startDate);
         this.endDate = dayjs(endDate);

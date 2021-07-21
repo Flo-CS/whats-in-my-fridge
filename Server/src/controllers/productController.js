@@ -1,4 +1,5 @@
 const models = require("../models");
+const dayjs = require("dayjs");
 const {validationErrors} = require("../helpers/errors");
 const {databaseErrors} = require("../helpers/errors");
 const {ValidationError} = require("../helpers/errors");
@@ -75,6 +76,7 @@ const addOneProduct = async (req, res, next) => {
         user: req.verifiedToken.id,
         barcode: barcode,
         data: productData,
+        presences: [{date: dayjs().toISOString(), value: true}]
     });
 
     await productToCreate.save().catch(() => {

@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema(
         user: {type: mongoose.Schema.Types.ObjectId, ref: "User", required: true},
         barcode: {type: mongoose.Schema.Types.String, required: true},
         data: {type: mongoose.Schema.Types.Object, required: true},
-        presences: {type: mongoose.Schema.Types.Array, default: [{date: dayjs().format(), value: true}]},
+        presences: {type: mongoose.Schema.Types.Array, required: true},
         quantity: {type: mongoose.Schema.Types.Number, default: 1}
     }
 );
@@ -27,9 +27,9 @@ productSchema.methods.updateQuantity = function (quantity) {
 
 
     if (dayjs().isSame(this.presences[lastIndex].date, "day")) {
-        this.presences[lastIndex] = {date: dayjs().format(), value: this.quantity >= 1};
+        this.presences[lastIndex] = {date: dayjs().toISOString(), value: this.quantity >= 1};
     } else {
-        this.presences.push({date: dayjs().format(), value: this.quantity >= 1});
+        this.presences.push({date: dayjs().toISOString(), value: this.quantity >= 1});
     }
 
     this.markModified("presences");
