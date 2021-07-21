@@ -1,14 +1,16 @@
 @import "./../../../variables";
 
 .product-footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
   font-size: 0.8rem;
-  background-color: $color3;
-  min-height: 60px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   width: 100%;
+  min-height: 60px;
+  padding: 0 10px;
+  text-align: center;
+  background-color: $color3;
 
   &__link {
     color: black;
