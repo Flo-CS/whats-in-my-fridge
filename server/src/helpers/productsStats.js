@@ -1,10 +1,12 @@
 const _ = require("lodash");
 const dayjs = require("dayjs");
 const isBetween = require("dayjs/plugin/isBetween");
+const utc = require("dayjs/plugin/utc");
+
 const {letterScoreToScore} = require("./product");
 
 dayjs.extend(isBetween);
-
+dayjs.extend(utc);
 
 const timeUnitToTimeScale = {
     "year": "month",
@@ -14,12 +16,13 @@ const timeUnitToTimeScale = {
 class ProductsStats {
 
     constructor(products, startDate, endDate, timeUnit) {
-
         this.products = products;
-        this.startDate = dayjs(startDate);
-        this.endDate = dayjs(endDate);
+        this.startDate = dayjs.utc(startDate);
+        this.endDate = dayjs.utc(endDate);
         this.timeUnit = timeUnit;
         this.timeScale = timeUnitToTimeScale[timeUnit];
+
+        console.log(this.startDate.format());
 
         this.presentProducts = this.getPresentsProductsByDate(this.startDate, this.timeUnit);
 
@@ -90,7 +93,7 @@ class ProductsStats {
     getScoreFieldStats(field, isLetterScore = false) {
         return {
             average_history: this.getProductsScoreFieldHistory(field, isLetterScore),
-            current_average: this.computeProductsAverageScoreFieldByDate(field, dayjs(), isLetterScore),
+            current_average: this.computeProductsAverageScoreFieldByDate(field, dayjs.utc(), isLetterScore),
         };
     }
 

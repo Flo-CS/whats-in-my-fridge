@@ -76,7 +76,7 @@ const addOneProduct = async (req, res, next) => {
         user: req.verifiedToken.id,
         barcode: barcode,
         data: productData,
-        presences: [{date: dayjs().toISOString(), value: true}]
+        presences: [{date: dayjs.utc().format(), value: true}]
     });
 
     await productToCreate.save().catch(() => {
@@ -87,7 +87,7 @@ const addOneProduct = async (req, res, next) => {
 };
 
 const getStats = async (req, res, next) => {
-    const {startDate, endDate, timeUnit} = req.query;
+    const {startDate, endDate, timeUnit} = req.body;
 
     const products = await models.Product.find({user: req.verifiedToken.id})
         .catch(() => {

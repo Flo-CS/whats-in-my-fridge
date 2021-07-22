@@ -16,8 +16,8 @@ export default function StatsView() {
 
     const handleDatesChange = useCallback((startDate, endDate, timeUnit) => {
         dispatch(fetchProductsStats({
-            startDate: startDate.toISOString(),
-            endDate: endDate.toISOString(),
+            startDate: startDate.utc(true).format(),
+            endDate: endDate.utc(true).format(),
             timeUnit
         }));
     }, [dispatch]);

@@ -50,7 +50,7 @@ class Api {
     }
 
     getProductsStats(startDate, endDate, timeUnit) {
-        return this.init().get(`/products/stats?startDate=${startDate}&endDate=${endDate}&timeUnit=${timeUnit}`);
+        return this.init().post(`/products/stats`, {startDate, endDate, timeUnit});
     }
 }
 

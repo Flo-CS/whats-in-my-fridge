@@ -26,10 +26,10 @@ productSchema.methods.updateQuantity = function (quantity) {
     const lastIndex = this.presences.length - 1;
 
 
-    if (dayjs().isSame(this.presences[lastIndex].date, "day")) {
-        this.presences[lastIndex] = {date: dayjs().toISOString(), value: this.quantity >= 1};
+    if (dayjs.utc().isSame(this.presences[lastIndex].date, "day")) {
+        this.presences[lastIndex] = {date: dayjs.utc().format(), value: this.quantity >= 1};
     } else {
-        this.presences.push({date: dayjs().toISOString(), value: this.quantity >= 1});
+        this.presences.push({date: dayjs.utc().format(), value: this.quantity >= 1});
     }
 
     this.markModified("presences");
@@ -38,8 +38,8 @@ productSchema.methods.wasPresentOn = function (date, granularity) {
     return this.presences.some((currentPresence, i, presences) => {
         const nextPresence = presences[i + 1];
 
-        const presenceStartDate = dayjs(currentPresence.date);
-        const presenceEndDate = nextPresence ? dayjs(nextPresence.date) : dayjs().add(1, granularity);
+        const presenceStartDate = dayjs.utc(currentPresence.date);
+        const presenceEndDate = nextPresence ? dayjs.utc(nextPresence.date) : dayjs.utc().add(1, granularity);
 
         return date.isBetween(presenceStartDate, presenceEndDate, granularity, "[)")
             && currentPresence.value === true;

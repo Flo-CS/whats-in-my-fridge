@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 import propTypes from "prop-types";
 import React, {useEffect, useState} from "react";
 
@@ -6,6 +7,7 @@ import {ReactComponent as BackIcon} from "./../../../assets/icons/back.svg";
 import {ReactComponent as NextIcon} from "./../../../assets/icons/next.svg";
 import "./DateRangeAndTimeUnitPicker.scss";
 
+dayjs.extend(utc);
 
 export default function DateRangeAndTimeUnitPicker({onDatesChange}) {
     const [timeUnit, setTimeUnit] = useState("month");
