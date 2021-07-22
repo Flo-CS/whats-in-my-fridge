@@ -22,8 +22,6 @@ class ProductsStats {
         this.timeUnit = timeUnit;
         this.timeScale = timeUnitToTimeScale[timeUnit];
 
-        console.log(this.startDate.format());
-
         this.presentProducts = this.getPresentsProductsByDate(this.startDate, this.timeUnit);
 
         this.requiredCalculationDates = this.getRequiredCalculationDates();
