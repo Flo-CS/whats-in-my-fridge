@@ -24,7 +24,7 @@ const logoutUser = createAsyncThunk("auth/logout", async (arg, {rejectWithValue}
 //SLICE
 const authSlice = createSlice({
     name: "auth",
-    initialState: {user: {}, isAuthenticated: false, isLoading: true, error: ""},
+    initialState: {user: {}, isAuthenticated: false, isLoading: true, error: null},
     reducers: {},
     extraReducers: {
         [loginUser.pending]: (state, action) => {

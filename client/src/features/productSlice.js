@@ -43,13 +43,11 @@ const productSlice = createSlice({
     initialState: {
         products: [],
         productsIsLoading: true,
-        productsError: null,
         activeProduct: {},
         activeProductIsLoading: true,
-        activeProductError: null,
         productsStats: {},
         productsStatsIsLoading: true,
-        productsStatsError: null
+        error: null,
     },
     reducers: {},
     extraReducers: {
@@ -62,7 +60,7 @@ const productSlice = createSlice({
         },
         [fetchProducts.rejected]: (state, action) => {
             state.productsIsLoading = false;
-            state.productsError = action.payload.errorMessage;
+            state.error = action.payload.errorMessage;
             toast.error(action.payload.errorMessage);
         },
 
@@ -77,12 +75,11 @@ const productSlice = createSlice({
                 if (productIndex > -1) {
                     state.products[productIndex] = action.payload.product;
                 }
-            toast.success("Produit ajouté avec succès");
+                toast.success("Produit ajouté avec succès");
             }
         },
         [addProduct.rejected]: (state, action) => {
-            state.productsError = action.payload.errorMessage;
-            state.activeProductError = action.payload.errorMessage;
+            state.error = action.payload.errorMessage;
             toast.error(action.payload.errorMessage);
         },
 
@@ -99,8 +96,7 @@ const productSlice = createSlice({
             state.activeProduct.quantity = action.payload.quantity;
         },
         [updateProductQuantity.rejected]: (state, action) => {
-            state.productsError = action.payload.errorMessage;
-            state.activeProductError = action.payload.errorMessage;
+            state.error = action.payload.errorMessage;
             toast.error(action.payload.errorMessage);
 
         },
@@ -114,9 +110,8 @@ const productSlice = createSlice({
             }
         },
         [deleteProduct.rejected]: (state, action) => {
-            state.productsError = action.payload.errorMessage;
+            state.error = action.payload.errorMessage;
             toast.error(action.payload.errorMessage);
-
         },
 
         [fetchActiveProduct.pending]: (state, action) => {
@@ -128,7 +123,7 @@ const productSlice = createSlice({
         },
         [fetchActiveProduct.rejected]: (state, action) => {
             state.activeProductIsLoading = false;
-            state.activeProductError = action.payload.errorMessage;
+            state.error = action.payload.errorMessage;
             toast.error(action.payload.errorMessage);
         },
 
@@ -141,7 +136,7 @@ const productSlice = createSlice({
         },
         [fetchProductsStats.rejected]: (state, action) => {
             state.productsStatsIsLoading = false;
-            state.productsStatsError = action.payload.errorMessage;
+            state.error = action.payload.errorMessage;
             toast.error(action.payload.errorMessage);
         },
     }
@@ -150,18 +145,18 @@ const productSlice = createSlice({
 
 // SELECTORS
 function selectProductsFeatures(state) {
-    const {products, productsIsLoading, productsError} = state.products;
-    return {products, productsIsLoading, productsError};
+    const {products, productsIsLoading} = state.products;
+    return {products, productsIsLoading};
 }
 
 function selectActiveProductFeatures(state) {
-    const {activeProduct, activeProductIsLoading, activeProductError} = state.products;
-    return {activeProduct, activeProductIsLoading, activeProductError};
+    const {activeProduct, activeProductIsLoading} = state.products;
+    return {activeProduct, activeProductIsLoading};
 }
 
 function selectProductsStatsFeatures(state) {
-    const {productsStats, productsStatsIsLoading, productsStatsError} = state.products;
-    return {productsStats, productsStatsIsLoading, productsStatsError};
+    const {productsStats, productsStatsIsLoading} = state.products;
+    return {productsStats, productsStatsIsLoading};
 }
 
 export {
