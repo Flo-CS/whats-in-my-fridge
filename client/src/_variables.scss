@@ -17,3 +17,12 @@ $color4: #cdcdcd;
   cursor: pointer;
   background: none;
 }
+
+@mixin green-button() {
+  @include reset-button();
+  background-color: $accent-color;
+  color: white;
+  &:hover {
+    background-color: darken($accent-color, 5%);
+  }
+}

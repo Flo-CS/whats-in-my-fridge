@@ -18,8 +18,11 @@ export default function HomeView() {
 
     //TODO : Make a loading component
     return <div className="home-view">
-        {productsIsLoading === false ? <ProductsCardsGrid products={products}/> :
-            <ThreeDotLoading/>}
+        {!productsIsLoading ?
+            <ProductsCardsGrid products={products}/>
+            :
+            <ThreeDotLoading/>
+        }
         <BottomPanel/>
     </div>;
 }
