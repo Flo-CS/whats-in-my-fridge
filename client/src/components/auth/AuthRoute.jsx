@@ -6,7 +6,7 @@ import {selectAuthFeatures} from "../../features/authSlice";
 
 
 export default function AuthRoute({children, ...rest}) {
-    const {isAuthenticated} = useSelector((state) => selectAuthFeatures(state));
+    const {isAuthenticated} = useSelector(selectAuthFeatures);
     // TODO : Redirect to previous location instead of "/"
     return <Route {...rest}>
         {isAuthenticated === true ?

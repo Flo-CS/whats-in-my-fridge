@@ -11,7 +11,7 @@ import StockCounts from "./StockCounts";
 
 export default function StatsView() {
     const dispatch = useDispatch();
-    const {productsStats, productsStatsIsLoading} = useSelector(state => selectProductsStatsFeatures(state));
+    const {productsStats, productsStatsIsLoading} = useSelector(selectProductsStatsFeatures);
     const {stock, scores, specifics} = productsStats;
 
     const handleDatesChange = useCallback((startDate, endDate, timeUnit) => {

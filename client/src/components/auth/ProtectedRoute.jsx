@@ -5,7 +5,7 @@ import {Redirect, Route} from "react-router-dom";
 import {selectAuthFeatures} from "../../features/authSlice";
 
 export default function ProtectedRoute({children, ...rest}) {
-    const {isAuthenticated, isLoading} = useSelector((state) => selectAuthFeatures(state));
+    const {isAuthenticated, isLoading} = useSelector(selectAuthFeatures);
 
     return <Route {...rest}>
         {!isLoading &&

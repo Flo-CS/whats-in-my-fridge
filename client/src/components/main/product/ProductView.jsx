@@ -12,7 +12,7 @@ import ProductHeader from "./ProductHeader";
 export default function ProductView() {
     const dispatch = useDispatch();
     const {barcode} = useParams();
-    const {activeProduct, activeProductIsLoading} = useSelector((state) => selectActiveProductFeatures(state));
+    const {activeProduct, activeProductIsLoading} = useSelector(selectActiveProductFeatures);
 
 
     useEffect(() => {

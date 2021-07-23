@@ -10,7 +10,7 @@ import ProductsCardsGrid from "./ProductsCardsGrid";
 
 export default function HomeView() {
     const dispatch = useDispatch();
-    const {products, productsIsLoading} = useSelector((state) => selectProductsFeatures(state));
+    const {products, productsIsLoading} = useSelector(selectProductsFeatures);
 
     useEffect(() => {
         dispatch(fetchProducts());
