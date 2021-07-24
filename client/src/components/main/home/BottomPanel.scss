@@ -5,8 +5,8 @@
   display: flex;
   width: 100%;
   max-width: 800px;
-  min-height: 35px;
-  margin: auto 0 15px;
+  height: 35px;
+  margin: auto 0 10px;
   padding: 0 10px;
 
   &__input-group {
@@ -26,6 +26,10 @@
     border-bottom-left-radius: 3px;
     outline: none;
     background-color: $color3;
+
+    &::placeholder {
+      letter-spacing: normal;
+    }
   }
 
   &__add-button,
@@ -34,9 +38,6 @@
   }
 
   &__add-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     min-width: 35px;
     padding: 5px;
     border-top-right-radius: 3px;

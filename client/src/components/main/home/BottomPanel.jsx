@@ -39,6 +39,7 @@ export default function BottomPanel() {
                 <input
                     className="bottom-panel__barcode-input"
                     type="tel"
+                    placeholder="Entrez un code barre"
                     value={barcode}
                     onChange={(e) => {
                         setBarcode(e.target.value.replace(/\D/g, ""))
