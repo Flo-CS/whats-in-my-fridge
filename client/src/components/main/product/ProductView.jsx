@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
-import {fetchActiveProduct, selectActiveProductFeatures} from "../../../features/productSlice";
+import {fetchActiveProduct, selectActiveProduct} from "../../../features/productSlice";
 import ThreeDotLoading from "../../ThreeDotLoading";
 
 import ProductContent from "./ProductContent";
@@ -12,7 +12,8 @@ import ProductHeader from "./ProductHeader";
 export default function ProductView() {
     const dispatch = useDispatch();
     const {barcode} = useParams();
-    const {activeProduct, activeProductIsLoading} = useSelector(selectActiveProductFeatures);
+    const activeProduct = useSelector(selectActiveProduct);
+    const isLoading = useSelector(state => state.products.activeProductIsLoading);
 
 
     useEffect(() => {
@@ -21,7 +22,7 @@ export default function ProductView() {
 
 
     return <div className="product-view">
-        {activeProductIsLoading === false ? <>
+        {isLoading === false ? <>
                 <ProductHeader barcode={activeProduct.barcode} productData={activeProduct.data}/>
                 <ProductContent productData={activeProduct.data} quantity={activeProduct.quantity} barcode={barcode}/>
                 <ProductFooter presences={activeProduct.presences} barcode={barcode}/>

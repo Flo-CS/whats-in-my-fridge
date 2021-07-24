@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import propTypes from "prop-types";
 import React from "react";
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis,} from "recharts";
-import {scoreToLetterScore} from "../../../helpers/product";
+import {scoreToLetterScore} from "../../../helpers/miscellaneous";
 
 import "./ScoreHistoryLineChart.scss";
 

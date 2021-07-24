@@ -1,3 +1,5 @@
+import {isInteger, isNil, orderBy, reverse} from "lodash";
+
 function truncateString(str, size) {
     if (str.length <= size) return str;
 
@@ -34,6 +36,44 @@ const asyncThunkErrorWrapper = async (asyncApiCallFunc, rejectWithValue) => {
 };
 
 
+function sortProducts(products, sortName, sortDirection) {
+    switch (sortName) {
+        case "QUANTITY":
+            return orderBy(products, ["quantity"], [sortDirection]);
+        case "BARCODE":
+            return orderBy(products, ["barcode"], [sortDirection]);
+        case "NAME":
+            return orderBy(products, ["data.product_name"], [sortDirection]);
+        default:
+            if (sortDirection === "desc")
+                return reverse(products.slice());
+            return products;
+    }
+}
+
+
+export function scoreToLetterScore(score) {
+    const letterScoreConversions = {
+        1: "E",
+        2: "D",
+        3: "C",
+        4: "B",
+        5: "A"
+    };
+
+    if (!isInteger(score) || isNil(score)) return;
+
+    return letterScoreConversions[score];
+}
+
 const letterScoresColors = ["#2d7e43", "#97ba38", "#f0ca0d", "#d57b1a", "#c53319"];
 
-export {truncateString, asyncThunkErrorWrapper, letterScoresColors, cleanScoreField, mapValueToRange};
+
+export {
+    truncateString,
+    asyncThunkErrorWrapper,
+    letterScoresColors,
+    cleanScoreField,
+    mapValueToRange,
+    sortProducts
+};

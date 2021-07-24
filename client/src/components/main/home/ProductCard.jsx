@@ -39,11 +39,18 @@ export default function ProductCard({barcode, quantity, productData}) {
     const productCardClass = classNames("product-card", {
         "product-card--disabled": quantity <= 0,
     });
-    const {image_small_url, brands_tags = [], product_name, nutriscore_grade, ecoscore_grade, nova_group} = productData;
+    const {
+        image_small_url,
+        brands_tags = [],
+        product_name = "Nom inconnu",
+        nutriscore_grade,
+        ecoscore_grade,
+        nova_group
+    } = productData;
 
-    const nutriscore = cleanScoreField(nutriscore_grade, true)
-    const ecoscore = cleanScoreField(ecoscore_grade, true)
-    const nova = cleanScoreField(nova_group)
+    const nutriscore = cleanScoreField(nutriscore_grade, true);
+    const ecoscore = cleanScoreField(ecoscore_grade, true);
+    const nova = cleanScoreField(nova_group);
 
     return (
         <div className={productCardClass}>
@@ -89,6 +96,6 @@ ProductCard.propTypes = {
     barcode: propTypes.string.isRequired,
     quantity: propTypes.number.isRequired,
     productData: propTypes.object.isRequired
-}
+};
 
 

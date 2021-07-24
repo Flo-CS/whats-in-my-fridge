@@ -1,6 +1,6 @@
 import React, {useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchProductsStats, selectProductsStatsFeatures} from "../../../features/productSlice";
+import {fetchProductsStats, selectProductsStats} from "../../../features/productSlice";
 import {letterScoresColors} from "../../../helpers/miscellaneous";
 import ThreeDotLoading from "../../ThreeDotLoading";
 import DateRangeAndTimeUnitPicker from "./DateRangeAndTimeUnitPicker";
@@ -11,7 +11,9 @@ import StockCounts from "./StockCounts";
 
 export default function StatsView() {
     const dispatch = useDispatch();
-    const {productsStats, productsStatsIsLoading} = useSelector(selectProductsStatsFeatures);
+    const productsStats = useSelector(selectProductsStats);
+    const isLoading = useSelector(state => state.products.productsStatsIsLoading);
+
     const {stock, scores, specifics} = productsStats;
 
     const handleDatesChange = useCallback((startDate, endDate, timeUnit) => {
@@ -31,7 +33,7 @@ export default function StatsView() {
     return <div className="stats-view">
 
         <DateRangeAndTimeUnitPicker onDatesChange={handleDatesChange}/>
-        {productsStatsIsLoading === false ?
+        {isLoading === false ?
             <>
                 <StockCounts total={stock?.total_count}
                              inStock={stock?.in_stock_count}

@@ -1,7 +1,9 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSelector, createSlice} from "@reduxjs/toolkit";
+import Fuse from "fuse.js";
 import {toast} from "react-toastify";
 import Api from "../helpers/api";
-import {asyncThunkErrorWrapper} from "../helpers/miscellaneous";
+import {asyncThunkErrorWrapper, sortProducts} from "../helpers/miscellaneous";
+import {selectSortOptions} from "./filtersSlice";
 
 
 // THUNKS
@@ -35,7 +37,6 @@ const fetchProductsStats = createAsyncThunk("products/fetchStats", async ({
                                                                           }, {rejectWithValue}) => {
     return await asyncThunkErrorWrapper(() => Api.getProductsStats(startDate, endDate, timeUnit), rejectWithValue);
 });
-
 
 // SLICE
 const productSlice = createSlice({
@@ -142,21 +143,42 @@ const productSlice = createSlice({
     }
 });
 
+const fuse = new Fuse([], {
+    keys: ["data.product_name", "data.brands_tags.name", "data.categories_tags.name", "data.labels_tags.name",
+        "data.additives_tags.name", "barcode"],
+    threshold: 0.4,
+    distance: 50
+});
+
 
 // SELECTORS
-function selectProductsFeatures(state) {
-    const {products, productsIsLoading} = state.products;
-    return {products, productsIsLoading};
+function selectFilteredProducts(state) {
+    const {products} = state.products;
+    const {text} = state.filters;
+
+    // Filter by text
+    fuse.setCollection(products);
+    const filteredProducts = text ? fuse.search(text).map(result => result.item) : products;
+
+    return filteredProducts;
 }
 
-function selectActiveProductFeatures(state) {
-    const {activeProduct, activeProductIsLoading} = state.products;
-    return {activeProduct, activeProductIsLoading};
+
+const selectFilteredAndSortedProducts = createSelector(
+    selectFilteredProducts, selectSortOptions,
+    (filteredProducts, sortOptions) => {
+        return sortProducts(filteredProducts, sortOptions.name, sortOptions.direction);
+    });
+
+
+function selectActiveProduct(state) {
+    const {activeProduct} = state.products;
+    return activeProduct;
 }
 
-function selectProductsStatsFeatures(state) {
-    const {productsStats, productsStatsIsLoading} = state.products;
-    return {productsStats, productsStatsIsLoading};
+function selectProductsStats(state) {
+    const {productsStats} = state.products;
+    return productsStats;
 }
 
 export {
@@ -166,9 +188,9 @@ export {
     deleteProduct,
     fetchActiveProduct,
     fetchProductsStats,
-    selectProductsFeatures,
-    selectActiveProductFeatures,
-    selectProductsStatsFeatures
+    selectFilteredAndSortedProducts,
+    selectActiveProduct,
+    selectProductsStats
 };
 
 export default productSlice.reducer;

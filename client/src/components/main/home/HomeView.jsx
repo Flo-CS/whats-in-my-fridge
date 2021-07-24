@@ -1,16 +1,18 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchProducts, selectProductsFeatures,} from "../../../features/productSlice.js";
+import {fetchProducts, selectFilteredAndSortedProducts} from "../../../features/productSlice.js";
 import ThreeDotLoading from "../../ThreeDotLoading";
 
 import "../Views.scss";
 
 import BottomPanel from "./BottomPanel";
 import ProductsCardsGrid from "./ProductsCardsGrid";
+import SearchBar from "./SearchBar";
 
 export default function HomeView() {
     const dispatch = useDispatch();
-    const {products, productsIsLoading} = useSelector(selectProductsFeatures);
+    const transformedProducts = useSelector(selectFilteredAndSortedProducts);
+    const isLoading = useSelector(state => state.products.productsIsLoading);
 
     useEffect(() => {
         dispatch(fetchProducts());
@@ -18,8 +20,9 @@ export default function HomeView() {
 
     //TODO : Make a loading component
     return <div className="home-view">
-        {!productsIsLoading ?
-            <ProductsCardsGrid products={products}/>
+        <SearchBar/>
+        {!isLoading ?
+            <ProductsCardsGrid products={transformedProducts}/>
             :
             <ThreeDotLoading/>
         }
