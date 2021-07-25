@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 import classNames from "classnames"
 import {ReactComponent as PlusIcon} from "../../../assets/icons/plus.svg";
 import {ReactComponent as MinusIcon} from "../../../assets/icons/minus.svg";
+import {ReactComponent as TrashIcon} from "../../../assets/icons/trash.svg";
+
 
 import "./ProductQuantityControls.scss"
 
@@ -21,7 +23,12 @@ export default function ProductQuantityControls({direction, quantity, onIncrease
             className="product-quantity-controls__button"
             onClick={onDecreaseQuantity}
         >
-            <MinusIcon className="product-quantity-controls__button-icon"/>
+            {quantity > 0 ?
+                <MinusIcon className="product-quantity-controls__button-icon"/>
+                :
+                <TrashIcon
+                    className="product-quantity-controls__button-icon product-quantity-controls__button-icon--caution"/>
+            }
         </button>
     </div>
 }

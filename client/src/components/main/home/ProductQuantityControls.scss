@@ -33,6 +33,12 @@
       &:hover {
         fill: $accent-color;
       }
+
+      &--caution {
+        &:hover {
+          fill: red;
+        }
+      }
     }
   }
 
