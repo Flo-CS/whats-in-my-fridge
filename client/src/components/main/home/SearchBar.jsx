@@ -1,30 +1,21 @@
 import classNames from "classnames";
 import React, {createRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {setSortOptions, setTextFilter} from "../../../features/filtersSlice";
+import {setSortParameters, setTextFilter} from "../../../features/filtersSlice";
 import {ReactComponent as ArrowDownIcon} from "./../../../assets/icons/arrow-down.svg";
 import {ReactComponent as ArrowUpIcon} from "./../../../assets/icons/arrow-up.svg";
 import {ReactComponent as SortIcon} from "./../../../assets/icons/sort.svg";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
+import {SORT_OPTIONS} from "../../../helpers/constants";
 
 import "./SearchBar.scss";
-import useOnClickOutside from "../../hooks/useOnClickOutside";
-
-const sortItems = [
-    {label: "Nom", name: "NAME", direction: "asc"},
-    {label: "Quantité", name: "QUANTITY", direction: "desc"},
-    {label: "Date de modification", name: "MODIFICATION_DATE", direction: "desc"},
-    {label: "Nutriscore", name: "NUTRISCORE", direction: "asc"},
-    {label: "Ecoscore", name: "ECOSCORE", direction: "asc"},
-    {label: "Nova", name: "NOVA", direction: "asc"},
-    {label: "Pertinence", name: "RELEVANCE", direction: "asc"},
-];
 
 export default function SearchBar() {
     const dispatch = useDispatch();
     const [sortMenuOpen, setIsSortMenuOpen] = useState(false);
-    const [sortOptionNameBeforeInput, setSortOptionNameBeforeInput] = useState(null)
+    const [sortOptionBeforeInput, setSortOptionBeforeInput] = useState(null)
 
-    const {text: textFilter, sortOptions} = useSelector(state => state.filters);
+    const {text: textFilter, sortParameters} = useSelector(state => state.filters);
 
     const sortRef = createRef()
     useOnClickOutside(sortRef, () => setIsSortMenuOpen(false));
@@ -34,24 +25,29 @@ export default function SearchBar() {
         const inputText = e.target.value
 
         if (inputText.length === 1 && inputText.length > textFilter) {
-            dispatch(setSortOptions({direction: "asc", name: "RELEVANCE"}));
-            setSortOptionNameBeforeInput(sortOptions.name)
+            dispatch(setSortParameters(SORT_OPTIONS.RELEVANCE));
+            setSortOptionBeforeInput(sortParameters)
         }
         if (inputText.length === 0) {
-            dispatch(setSortOptions({...sortOptions, name: sortOptionNameBeforeInput}))
+            dispatch(setSortParameters(sortOptionBeforeInput))
         }
         dispatch(setTextFilter(inputText));
     }
 
-    function handleSwapButtonClick() {
-        dispatch(setSortOptions({
-            ...sortOptions,
-            direction: sortOptions.direction === "asc" ? "desc" : "asc"
+    function handleSwapSortDirectionButtonClick() {
+        dispatch(setSortParameters({
+            ...sortParameters,
+            direction: sortParameters.direction === "asc" ? "desc" : "asc"
         }));
+
     }
 
-    function handleSortOptionItemClick(sortOptionItem) {
-        dispatch(setSortOptions({direction: sortOptionItem.direction, name: sortOptionItem.name}));
+    function handleSortOptionItemClick(selectedSortOption) {
+        dispatch(setSortParameters({name: selectedSortOption.name, direction: selectedSortOption.direction}));
+
+        if (textFilter.length > 0) {
+            setSortOptionBeforeInput(selectedSortOption)
+        }
         setIsSortMenuOpen(false);
     }
 
@@ -67,19 +63,20 @@ export default function SearchBar() {
             </button>
             {sortMenuOpen &&
             <div className="search-bar__sort-items">
-                {sortItems.map(item => {
-                    const sortItemClass = classNames("search-bar__sort-item", {"search-bar__sort-item--selected": item.name === sortOptions.name});
-                    return <button className={sortItemClass} key={item.name}
-                                   onClick={() => handleSortOptionItemClick(item)}>
-                        {item.label}
+                {Object.values(SORT_OPTIONS).map(sortOption => {
+                    const sortItemClass = classNames("search-bar__sort-item", {"search-bar__sort-item--selected": sortOption.name === sortParameters.name});
+                    return <button className={sortItemClass} key={sortOption.name}
+                                   onClick={() => handleSortOptionItemClick(sortOption)}
+                                   disabled={sortOption.name === SORT_OPTIONS.RELEVANCE.name}>
+                        {sortOption.label}
                     </button>;
                 })}
             </div>
             }
 
         </div>
-        <button className="search-bar__swap-button" onClick={handleSwapButtonClick}>
-            {sortOptions.direction === "asc" ? <ArrowDownIcon/> : <ArrowUpIcon/>}
+        <button className="search-bar__swap-button" onClick={handleSwapSortDirectionButtonClick}>
+            {sortParameters.direction === "asc" ? <ArrowDownIcon/> : <ArrowUpIcon/>}
         </button>
     </div>;
 }

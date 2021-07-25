@@ -1,18 +1,19 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {SORT_OPTIONS} from "../helpers/constants";
 
 const filtersSlice = createSlice({
     name: "filters",
     initialState: {
-        sortOptions: {
-            name: "NAME",
-            direction: "asc"
+        sortParameters: {
+            name: SORT_OPTIONS.NAME.name,
+            direction: SORT_OPTIONS.NAME.direction
         },
         text: ""
 
     },
     reducers: {
-        setSortOptions: (state, action) => {
-            state.sortOptions = action.payload;
+        setSortParameters: (state, action) => {
+            state.sortParameters = action.payload;
         },
         setTextFilter: (state, action) => {
             state.text = action.payload;
@@ -21,12 +22,12 @@ const filtersSlice = createSlice({
 });
 
 
-function selectSortOptions(state) {
-    return state.filters.sortOptions;
+function selectSortParameters(state) {
+    return state.filters.sortParameters;
 }
 
-export {selectSortOptions};
+export {selectSortParameters};
 
-export const {setSortOptions, setTextFilter} = filtersSlice.actions;
+export const {setSortParameters, setTextFilter} = filtersSlice.actions;
 
 export default filtersSlice.reducer;

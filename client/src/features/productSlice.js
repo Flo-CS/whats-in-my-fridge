@@ -3,7 +3,7 @@ import Fuse from "fuse.js";
 import {toast} from "react-toastify";
 import Api from "../helpers/api";
 import {asyncThunkErrorWrapper, sortProducts} from "../helpers/miscellaneous";
-import {selectSortOptions} from "./filtersSlice";
+import {selectSortParameters} from "./filtersSlice";
 
 
 // THUNKS
@@ -165,9 +165,9 @@ function selectFilteredProducts(state) {
 
 
 const selectFilteredAndSortedProducts = createSelector(
-    selectFilteredProducts, selectSortOptions,
-    (filteredProducts, sortOptions) => {
-        return sortProducts(filteredProducts, sortOptions.name, sortOptions.direction);
+    selectFilteredProducts, selectSortParameters,
+    (filteredProducts, sortParameters) => {
+        return sortProducts(filteredProducts, sortParameters.name, sortParameters.direction);
     });
 
 
