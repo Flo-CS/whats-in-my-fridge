@@ -13,7 +13,7 @@ import "./SearchBar.scss";
 export default function SearchBar() {
     const dispatch = useDispatch();
     const [sortMenuOpen, setIsSortMenuOpen] = useState(false);
-    const [sortOptionBeforeInput, setSortOptionBeforeInput] = useState(null)
+    const [sortOptionBeforeInput, setSortOptionBeforeInput] = useState(SORT_OPTIONS.NAME)
 
     const {text: textFilter, sortParameters} = useSelector(state => state.filters);
 
