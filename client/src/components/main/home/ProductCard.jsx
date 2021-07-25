@@ -1,23 +1,37 @@
 import classNames from "classnames";
 import propTypes from "prop-types";
-import React from "react";
-import {useDispatch} from "react-redux";
+import React, {useEffect, useRef} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {deleteProduct, updateProductQuantity} from "../../../features/productSlice";
 import {cleanScoreField, truncateString} from "../../../helpers/miscellaneous";
 
 import "./ProductCard.scss";
 import ProductQuantityControls from "./ProductQuantityControls";
+import {selectSortParameters} from "../../../features/filtersSlice";
+import {SORT_OPTIONS} from "../../../helpers/constants";
 
 export default function ProductCard({barcode, quantity, productData}) {
 
     const history = useHistory();
     const dispatch = useDispatch();
+    const productCardRef = useRef(null)
+    const sortParameters = useSelector(selectSortParameters)
+
+    useEffect(() => {
+        try {
+            if (sortParameters.name !== SORT_OPTIONS.QUANTITY.name)
+                return
+            productCardRef.current.scrollIntoView()
+        } catch (e) {
+        }
+
+    }, [quantity, sortParameters.name]);
 
 
     function handleIncreaseQuantity() {
+        // run this function from an event handler or an effect to execute scroll
         dispatch(updateProductQuantity({barcode: barcode, quantity: quantity + 1}));
-
     }
 
     function handleDecreaseQuantity() {
@@ -53,7 +67,7 @@ export default function ProductCard({barcode, quantity, productData}) {
     const nova = cleanScoreField(nova_group);
 
     return (
-        <div className={productCardClass}>
+        <div className={productCardClass} ref={productCardRef}>
             <div className="product-card__content" onClick={handleCardClick}
                  onKeyDown={handleCardClick} role="button" tabIndex="0"> {/*role is mandatory to respect a11y*/}
                 <div className="product-card__header">
