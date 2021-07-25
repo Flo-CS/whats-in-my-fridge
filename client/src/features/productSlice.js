@@ -146,8 +146,8 @@ const productSlice = createSlice({
 const fuse = new Fuse([], {
     keys: ["data.product_name", "data.brands_tags.name", "data.categories_tags.name", "data.labels_tags.name",
         "data.additives_tags.name", "barcode"],
-    threshold: 0.4,
-    distance: 50
+    threshold: 0.3,
+    ignoreLocation: true
 });
 
 
