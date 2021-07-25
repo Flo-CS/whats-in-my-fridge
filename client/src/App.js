@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 
 import MainPage from "./pages/MainPage";
 import RegisterPage from "./pages/RegisterPage";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 
 function App() {
@@ -27,9 +28,9 @@ function App() {
                 <Route exact path="/register">
                     <RegisterPage/>
                 </Route>
-                <Route path="/">
+                <ProtectedRoute path="/">
                     <MainPage/>
-                </Route>
+                </ProtectedRoute>
             </Switch>
         </Router>
     </div>;
