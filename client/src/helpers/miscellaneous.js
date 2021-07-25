@@ -1,4 +1,5 @@
-import {isInteger, isNil, orderBy, reverse} from "lodash";
+import {isInteger, isNil, last, orderBy, reverse} from "lodash";
+import dayjs from "dayjs";
 
 function truncateString(str, size) {
     if (str.length <= size) return str;
@@ -38,16 +39,24 @@ const asyncThunkErrorWrapper = async (asyncApiCallFunc, rejectWithValue) => {
 
 function sortProducts(products, sortName, sortDirection) {
     switch (sortName) {
-        case "QUANTITY":
-            return orderBy(products, ["quantity"], [sortDirection]);
-        case "BARCODE":
-            return orderBy(products, ["barcode"], [sortDirection]);
         case "NAME":
             return orderBy(products, ["data.product_name"], [sortDirection]);
-        default:
+        case "QUANTITY":
+            return orderBy(products, ["quantity"], [sortDirection]);
+        case "MODIFICATION_DATE":
+            return orderBy(products, [(product) => dayjs(last(product.presences).date)], [sortDirection])
+        case "NUTRISCORE":
+            return orderBy(products, ["data.nutriscore_grade"], [sortDirection]);
+        case "ECOSCORE":
+            return orderBy(products, ["data.ecoscore_grade"], [sortDirection]);
+        case "NOVA":
+            return orderBy(products, ["data.nova_group"], [sortDirection]);
+        case "RELEVANCE":
             if (sortDirection === "desc")
                 return reverse(products.slice());
             return products;
+        default:
+            return products
     }
 }
 
