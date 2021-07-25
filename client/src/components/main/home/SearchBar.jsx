@@ -16,7 +16,7 @@ const sortItems = [
     {label: "Nutriscore", name: "NUTRISCORE", direction: "asc"},
     {label: "Ecoscore", name: "ECOSCORE", direction: "asc"},
     {label: "Nova", name: "NOVA", direction: "asc"},
-    {label: "Pertinence", name: "RELEVANCE", direction: "desc"},
+    {label: "Pertinence", name: "RELEVANCE", direction: "asc"},
 ];
 
 export default function SearchBar() {
@@ -34,7 +34,7 @@ export default function SearchBar() {
         const inputText = e.target.value
 
         if (inputText.length === 1 && inputText.length > textFilter) {
-            dispatch(setSortOptions({...sortOptions, name: "RELEVANCE"}));
+            dispatch(setSortOptions({direction: "asc", name: "RELEVANCE"}));
             setSortOptionNameBeforeInput(sortOptions.name)
         }
         if (inputText.length === 0) {
