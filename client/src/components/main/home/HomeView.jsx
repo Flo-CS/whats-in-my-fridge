@@ -8,6 +8,7 @@ import "../Views.scss";
 import BottomPanel from "./BottomPanel";
 import ProductsCardsGrid from "./ProductsCardsGrid";
 import SearchBar from "./SearchBar";
+import NoProduct from "./NoProduct";
 
 export default function HomeView() {
     const dispatch = useDispatch();
@@ -22,7 +23,10 @@ export default function HomeView() {
     return <div className="home-view">
         <SearchBar/>
         {!isLoading ?
-            <ProductsCardsGrid products={transformedProducts}/>
+            transformedProducts.length === 0 ?
+                <NoProduct/>
+                :
+                <ProductsCardsGrid products={transformedProducts}/>
             :
             <ThreeDotLoading/>
         }
