@@ -35,7 +35,7 @@ export default function Scanner({onDetected, onClose}) {
                     facingMode: "environment",
                 },
                 decoder: {
-                    readers: ["code_128_reader", "ean_reader", "ean_8_reader", "upc_reader"],
+                    readers: ["ean_reader", "ean_8_reader"],
                 },
                 locate: true,
                 locator: {
