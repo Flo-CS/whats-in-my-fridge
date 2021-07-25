@@ -28,13 +28,17 @@
 
   &__sort {
     position: relative;
-    margin-right: 10px;
+    max-width: 100px;
+    width: 100%;
+
 
     &-button {
       display: flex;
       align-items: center;
       justify-content: space-evenly;
-      min-width: 100px;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+
       padding: 8px;
 
       svg {
@@ -75,7 +79,10 @@
   }
 
   &__swap-button {
-    min-width: 35px;
+    max-width: 35px;
+    width: 100%;
     padding: 5px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
   }
 }
