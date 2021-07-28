@@ -14,16 +14,21 @@ export default function Scanner({onDetected, onClose}) {
 
 
     async function changeFlashlightState(state) {
-        const track = Quagga.CameraAccess.getActiveTrack();
+        try {
 
-        if (!track) return;
-        if (!track.getCapabilities().torch) return;
+            const track = Quagga.CameraAccess.getActiveTrack();
+
+            if (!track) return;
+            if (!track.getCapabilities().torch) return;
 
 
-        return await track.applyConstraints({advanced: [{torch: state}]}).catch((error) => {
-                return error;
-            }
-        );
+            return await track.applyConstraints({advanced: [{torch: state}]}).catch((error) => {
+                    return error;
+                }
+            );
+        } catch (e) {
+
+        }
     }
 
 
