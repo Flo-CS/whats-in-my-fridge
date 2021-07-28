@@ -27,9 +27,9 @@ export default function BottomPanel() {
         setIsScanning(false);
     }
 
-    function handleBarcodeDetected(result) {
+    function handleBarcodeDetected(barcode) {
         setIsScanning(false);
-        setBarcode(result.codeResult.code);
+        setBarcode(barcode);
     }
 
 

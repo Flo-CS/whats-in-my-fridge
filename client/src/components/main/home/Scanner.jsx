@@ -1,5 +1,5 @@
 import propTypes from "prop-types";
-
+import {countBy, entries, flow, head, last, maxBy, partialRight} from "lodash";
 import Quagga from "quagga";
 import React, {useEffect, useState} from "react";
 
@@ -10,6 +10,8 @@ import "./Scanner.scss";
 
 export default function Scanner({onDetected, onClose}) {
     const [isLightOn, setIsLightOn] = useState(false);
+    const [scannedBarcodes, setScannedBarcodes] = useState([])
+
 
     async function changeFlashlightState(state) {
         const track = Quagga.CameraAccess.getActiveTrack();
@@ -23,6 +25,7 @@ export default function Scanner({onDetected, onClose}) {
             }
         );
     }
+
 
     useEffect(() => {
         Quagga.init({
@@ -49,12 +52,33 @@ export default function Scanner({onDetected, onClose}) {
                 Quagga.start();
             });
 
-        Quagga.onDetected((result) => onDetected(result));
+        Quagga.onDetected((result) => {
+                // Store multiple scan results of the barcode to find the most probable
+                setScannedBarcodes(scannedBarcodes => {
+                        return [...scannedBarcodes, result.codeResult.code]
+                    }
+                )
+            }
+        );
 
         return () => {
             Quagga.stop();
         };
     }, [onDetected]);
+
+    // Wait for 7 detection of the barcode to find the most probable barcode code
+    useEffect(() => {
+        if (scannedBarcodes.length >= 12) {
+
+            const mostProbableBarcode = flow(
+                countBy,
+                entries,
+                partialRight(maxBy, last),
+                head)(scannedBarcodes)
+
+            onDetected(mostProbableBarcode)
+        }
+    }, [scannedBarcodes, onDetected])
 
 
     useEffect(() => {
