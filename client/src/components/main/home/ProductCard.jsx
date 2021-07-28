@@ -20,9 +20,9 @@ export default function ProductCard({barcode, quantity, productData}) {
 
     useEffect(() => {
         try {
-            if (sortParameters.name !== SORT_OPTIONS.QUANTITY.name)
-                return
-            productCardRef.current.scrollIntoView()
+            if ([SORT_OPTIONS.QUANTITY.name, SORT_OPTIONS.MODIFICATION_DATE.name].includes(sortParameters.name)) {
+                productCardRef.current.scrollIntoView()
+            }
         } catch (e) {
         }
 
