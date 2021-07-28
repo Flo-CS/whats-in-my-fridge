@@ -1,4 +1,4 @@
-import {isInteger, isNil, last, orderBy, reverse} from "lodash";
+import {deburr, isInteger, isNil, last, orderBy, reverse} from "lodash";
 import dayjs from "dayjs";
 
 function truncateString(str, size) {
@@ -42,7 +42,7 @@ function sortProducts(products, sortName, sortDirection) {
         case "MODIFICATION_DATE":
             return orderBy(products, [(product) => dayjs(last(product.presences).date)], [sortDirection])
         case "NAME":
-            return orderBy(products, ["data.product_name"], [sortDirection]);
+            return orderBy(products, [(product) => deburr(product.data.product_name)], [sortDirection]);
         case "QUANTITY":
             return orderBy(products, ["quantity"], [sortDirection]);
         case "NUTRISCORE":
