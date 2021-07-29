@@ -7,6 +7,7 @@ import DateRangeAndTimeUnitPicker from "./DateRangeAndTimeUnitPicker";
 import ScoreHistoryLineChart from "./ScoreHistoryLineChart";
 import ScoresHeatmap from "./ScoresHeatmap";
 import StockCounts from "./StockCounts";
+import {ACCENT_COLOR} from "../../../helpers/constants";
 
 
 export default function StatsView() {
@@ -50,7 +51,7 @@ export default function StatsView() {
                 <ScoresHeatmap xLabels={letterScoresHeatmapLabels}
                                yLabels={letterScoresHeatmapLabels}
                                data={specifics?.letter_scores_heatmap?.data}
-                               accentColor="#80b918"/>
+                               accentColor={ACCENT_COLOR}/>
             </>
             :
             <ThreeDotLoading/>}

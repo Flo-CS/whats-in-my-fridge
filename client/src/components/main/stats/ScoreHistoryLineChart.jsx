@@ -3,12 +3,11 @@ import propTypes from "prop-types";
 import React from "react";
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis,} from "recharts";
 import {scoreToLetterScore} from "../../../helpers/miscellaneous";
+import {ACCENT_COLOR} from "../../../helpers/constants";
 
 import "./ScoreHistoryLineChart.scss";
 
 export default function ScoreHistoryLineChart({data, isLetterScore = false}) {
-
-    const accentColor = "#80b918";
 
     return <div className="score-history-line-chart">
 
@@ -28,9 +27,9 @@ export default function ScoreHistoryLineChart({data, isLetterScore = false}) {
                 />
                 <Tooltip labelFormatter={(date => dayjs(date).format("DD/MM"))}
                          formatter={(value) => Math.round(value * 10) / 10}/>
-                <Line dataKey="average" type="monotone" stroke={accentColor} strokeWidth={2} isAnimationActive={false}
+                <Line dataKey="average" type="monotone" stroke={ACCENT_COLOR} strokeWidth={2} isAnimationActive={false}
                       connectNulls
-                      dot={{fill: accentColor, r: 2}}/>
+                      dot={{fill: ACCENT_COLOR, r: 2}}/>
 
             </LineChart>
 
