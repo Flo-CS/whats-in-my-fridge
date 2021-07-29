@@ -1,7 +1,7 @@
 import {take} from "lodash";
 import propTypes from "prop-types";
 import React, {useState} from "react";
-import TagInfosModal from "../TagInfosModal";
+import TagInfosModal from "./TagInfosModal";
 import {ReactComponent as InformationIcon} from "./../../../assets/icons/information.svg";
 import "./ProductTagsField.scss";
 

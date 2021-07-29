@@ -1,10 +1,10 @@
 import propTypes from "prop-types";
 import React, {useEffect, useState} from 'react';
 import Modal from "react-modal";
-import {getWikipediaPageDataByWikidataQID} from "../../helpers/wikipediaAPI";
-import ThreeDotLoading from "../ThreeDotLoading";
-import ProductTagsField from "./product/ProductTagsField";
-import ProductTextField from "./product/ProductTextField";
+import {getWikipediaPageDataByWikidataQID} from "../../../helpers/wikipediaAPI";
+import ThreeDotLoading from "../../ThreeDotLoading";
+import ProductTagsField from "./ProductTagsField";
+import ProductTextField from "./ProductTextField";
 
 import "./TagInfosModal.scss";
 

@@ -1,33 +1,19 @@
 import classNames from "classnames";
 import propTypes from "prop-types";
-import React, {useEffect, useRef} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, {useRef} from "react";
+import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {deleteProduct, updateProductQuantity} from "../../../features/productSlice";
 import {cleanScoreField, truncateString} from "../../../helpers/miscellaneous";
 
 import "./ProductCard.scss";
 import ProductQuantityControls from "./ProductQuantityControls";
-import {selectSortParameters} from "../../../features/filtersSlice";
-import {SORT_OPTIONS} from "../../../helpers/constants";
 
 export default function ProductCard({barcode, quantity, productData}) {
 
     const history = useHistory();
     const dispatch = useDispatch();
     const productCardRef = useRef(null)
-    const sortParameters = useSelector(selectSortParameters)
-
-    useEffect(() => {
-        try {
-            if ([SORT_OPTIONS.QUANTITY.name, SORT_OPTIONS.MODIFICATION_DATE.name].includes(sortParameters.name)) {
-                productCardRef.current.scrollIntoView()
-            }
-        } catch (e) {
-        }
-
-    }, [quantity, sortParameters.name]);
-
 
     function handleIncreaseQuantity() {
         // run this function from an event handler or an effect to execute scroll
