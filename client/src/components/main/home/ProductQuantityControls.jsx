@@ -19,17 +19,17 @@ export default function ProductQuantityControls({direction, quantity, onIncrease
             <PlusIcon className="product-quantity-controls__button-icon"/>
         </button>
         <p className="product-quantity-controls__quantity-indicator">{quantity}</p>
-        <button
-            className="product-quantity-controls__button"
-            onClick={onDecreaseQuantity}
-        >
-            {quantity > 0 ?
+        {quantity > 0 ?
+            <button className="product-quantity-controls__button"
+                    onClick={onDecreaseQuantity}>
                 <MinusIcon className="product-quantity-controls__button-icon"/>
-                :
-                <TrashIcon
-                    className="product-quantity-controls__button-icon product-quantity-controls__button-icon--caution"/>
-            }
-        </button>
+            </button>
+            :
+            <button className="product-quantity-controls__button product-quantity-controls__button--caution"
+                    onClick={onDecreaseQuantity}>
+                <TrashIcon className="product-quantity-controls__button-icon"/>
+            </button>
+        }
     </div>
 }
 
