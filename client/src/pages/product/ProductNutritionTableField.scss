@@ -1,0 +1,38 @@
+@import "../../variables";
+
+.product-nutrition-table-field {
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+
+  &__name {
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  &__table {
+    max-width: 100%;
+    margin: 0 10px;
+  }
+
+  thead {
+    background-color: $color3;
+  }
+
+  th, td {
+    text-align: left;
+    border-bottom: 1px solid $color4;
+    padding: 5px;
+    line-height: 1rem;
+
+    span {
+      font-weight: 600;
+    }
+  }
+
+}
+
+.product-nutrition-table-field__row {
+  &--is-indented td:first-child {
+    padding-left: 20px;
+  }
+}

@@ -1,0 +1,42 @@
+@import "../../variables";
+
+.product-content {
+
+  width: 100%;
+  padding: 10px 15px;
+
+  &__attributes {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 40px;
+    margin-bottom: 10px;
+
+  }
+
+  &__attribute-box {
+    height: 100%;
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+
+  &__attribute {
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+  }
+
+  &__quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+
+}

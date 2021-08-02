@@ -1,0 +1,22 @@
+@import "../../variables";
+
+.product-footer {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  min-height: 60px;
+  padding: 0 10px;
+  text-align: center;
+  background-color: $color3;
+
+  &__link {
+    color: black;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+}

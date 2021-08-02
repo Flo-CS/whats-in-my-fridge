@@ -1,0 +1,17 @@
+@import "../../variables";
+
+.no-product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 0.8rem;
+
+  p {
+    background-color: $color3;
+    padding: 20px;
+    border-radius: 5px;
+
+  }
+}

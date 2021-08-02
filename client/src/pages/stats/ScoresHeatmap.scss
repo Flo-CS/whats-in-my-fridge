@@ -1,0 +1,30 @@
+@import "../../variables";
+
+.scores-heatmap {
+  font-size: 0.8rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+
+  &__table {
+    border-spacing: 3px;
+    border-collapse: separate;
+
+    tr:first-child td:first-child {
+      background: none;
+    }
+
+    td {
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      vertical-align: middle;
+      background-color: $color3;
+      border-radius: 5px;
+    }
+
+    td.scores-heatmap__label {
+      font-weight: 700;
+      background: none;
+    }
+  }
+}

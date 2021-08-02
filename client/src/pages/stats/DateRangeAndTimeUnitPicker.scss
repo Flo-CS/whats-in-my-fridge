@@ -1,0 +1,71 @@
+@import "../../variables";
+
+.date-range-and-time-unit-picker {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+
+  &__time-unit-select {
+    margin-bottom: 10px;
+
+    input[type="radio"] {
+      display: none;
+
+    }
+
+    label {
+      position: relative;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+
+    input[type="radio"]:checked + label {
+      font-weight: 600;
+
+      &:after {
+        position: absolute;
+        content: '';
+        height: 2px;
+        width: 100%;
+        bottom: -2px;
+
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        background-color: $accent-color;
+      }
+    }
+
+  }
+
+  &__date-select {
+    display: flex;
+    align-items: center;
+  }
+
+  &__date {
+    font-weight: 600;
+
+  }
+
+  &__previous-btn, &__next-btn {
+    @include reset-button;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+
+
+    svg {
+      fill: $accent-color;
+
+      &:hover {
+        fill: $color2;
+      }
+    }
+
+
+  }
+}
