@@ -2,7 +2,7 @@ import classNames from "classnames";
 import {round} from "lodash";
 import propTypes from "prop-types";
 import React from "react";
-import {letterScoresColors} from "../../../helpers/miscellaneous";
+import {LETTER_SCORES_COLORS} from "../../../helpers/constants";
 
 import "./ProductNutritionTableField.scss";
 
@@ -11,9 +11,9 @@ function ProductNutritionTableFieldRow({name, nutriments, fieldKey, isWith, nutr
     const rowClass = classNames("product-nutrition-table-field__row", {"product-nutrition-table-field__row--is-indented": isWith});
 
     const nutrientLevelsConversions = {
-        "low": {name: "(faible)", color: letterScoresColors[0]},
-        "moderate": {name: "(modéré)", color: letterScoresColors[2]},
-        "high": {name: "(élevé)", color: letterScoresColors[4]}
+        "low": {name: "(faible)", color: LETTER_SCORES_COLORS[0]},
+        "moderate": {name: "(modéré)", color: LETTER_SCORES_COLORS[2]},
+        "high": {name: "(élevé)", color: LETTER_SCORES_COLORS[4]}
     };
 
     const value100g = round(nutriments[`${fieldKey}_100g`], 2);

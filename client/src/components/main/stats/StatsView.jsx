@@ -1,13 +1,12 @@
 import React, {useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchProductsStats, selectProductsStats} from "../../../features/productSlice";
-import {letterScoresColors} from "../../../helpers/miscellaneous";
+import {ACCENT_COLOR, LETTER_SCORES_COLORS} from "../../../helpers/constants";
 import ThreeDotLoading from "../../ThreeDotLoading";
 import DateRangeAndTimeUnitPicker from "./DateRangeAndTimeUnitPicker";
 import ScoreHistoryLineChart from "./ScoreHistoryLineChart";
 import ScoresHeatmap from "./ScoresHeatmap";
 import StockCounts from "./StockCounts";
-import {ACCENT_COLOR} from "../../../helpers/constants";
 
 
 export default function StatsView() {
@@ -28,7 +27,7 @@ export default function StatsView() {
 
     const letterScoresHeatmapLabels = specifics?.letter_scores_heatmap?.xLabels.map((label, i) => ({
         name: label,
-        color: letterScoresColors[i]
+        color: LETTER_SCORES_COLORS[i]
     }));
 
     return <div className="stats-view">

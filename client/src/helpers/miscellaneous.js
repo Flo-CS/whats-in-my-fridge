@@ -1,5 +1,5 @@
-import {deburr, isInteger, isNil, last, orderBy, reverse} from "lodash";
 import dayjs from "dayjs";
+import {deburr, isInteger, isNil, last, orderBy, reverse} from "lodash";
 
 function truncateString(str, size) {
     if (str.length <= size) return str;
@@ -76,13 +76,11 @@ export function scoreToLetterScore(score) {
     return letterScoreConversions[score];
 }
 
-const letterScoresColors = ["#2d7e43", "#97ba38", "#f0ca0d", "#d57b1a", "#c53319"];
 
 
 export {
     truncateString,
     asyncThunkErrorWrapper,
-    letterScoresColors,
     cleanScoreField,
     mapValueToRange,
     sortProducts

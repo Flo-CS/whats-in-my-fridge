@@ -9,8 +9,11 @@ const SORT_OPTIONS = {
     ECOSCORE: {label: "Ecoscore", name: "ECOSCORE", direction: "asc"},
     NOVA: {label: "Nova", name: "NOVA", direction: "asc"},
     RELEVANCE: {label: "Pertinence", name: "RELEVANCE", direction: "asc"},
-}
+};
 
 const ACCENT_COLOR = "#2fae26";
 
-export {WIKIDATA_API_ENDPOINT, WIKIPEDIA_API_ENDPOINT, SORT_OPTIONS, ACCENT_COLOR};
+const LETTER_SCORES_COLORS = ["#2d7e43", "#97ba38", "#f0ca0d", "#d57b1a", "#c53319"];
+
+
+export {WIKIDATA_API_ENDPOINT, WIKIPEDIA_API_ENDPOINT, SORT_OPTIONS, ACCENT_COLOR, LETTER_SCORES_COLORS};

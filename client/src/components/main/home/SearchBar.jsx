@@ -2,18 +2,18 @@ import classNames from "classnames";
 import React, {createRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setSortParameters, setTextFilter} from "../../../features/filtersSlice";
+import {SORT_OPTIONS} from "../../../helpers/constants";
+import useOnClickOutside from "../../../hooks/useOnClickOutside";
 import {ReactComponent as ArrowDownIcon} from "./../../../assets/icons/arrow-down.svg";
 import {ReactComponent as ArrowUpIcon} from "./../../../assets/icons/arrow-up.svg";
 import {ReactComponent as SortIcon} from "./../../../assets/icons/sort.svg";
-import useOnClickOutside from "../../hooks/useOnClickOutside";
-import {SORT_OPTIONS} from "../../../helpers/constants";
 
 import "./SearchBar.scss";
 
 export default function SearchBar() {
     const dispatch = useDispatch();
     const [sortMenuOpen, setIsSortMenuOpen] = useState(false);
-    const [sortOptionBeforeInput, setSortOptionBeforeInput] = useState(SORT_OPTIONS.MODIFICATION_DATE)
+    const [sortOptionBeforeInput, setSortOptionBeforeInput] = useState(SORT_OPTIONS.MODIFICATION_DATE);
 
     const {text: textFilter, sortParameters} = useSelector(state => state.filters);
 
