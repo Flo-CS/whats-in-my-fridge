@@ -17,5 +17,8 @@ export default function AuthRoute({children, ...rest}) {
 }
 
 AuthRoute.propTypes = {
-    children: propTypes.element.isRequired
-}
+    children: propTypes.oneOfType([
+        propTypes.element,
+        propTypes.arrayOf(propTypes.element)
+    ])
+};

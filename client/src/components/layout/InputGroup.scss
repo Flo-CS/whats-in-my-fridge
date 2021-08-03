@@ -1,0 +1,38 @@
+@import "./../../variables";
+
+.input-group {
+  display: flex;
+
+  & > * {
+    margin-right: 0.8em;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &--collapsed {
+    & > * {
+      margin-right: 0;
+    }
+  }
+
+  @include max-width(mobile) {
+    flex-direction: column;
+    justify-content: flex-end;
+    & > * {
+      margin-bottom: 0.8em;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--collapsed {
+      flex-direction: row;
+
+      & > * {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

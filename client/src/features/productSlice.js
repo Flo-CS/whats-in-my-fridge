@@ -173,7 +173,7 @@ function selectFilteredProducts(state) {
 const selectFilteredAndSortedProducts = createSelector(
     selectFilteredProducts, selectSortParameters,
     (filteredProducts, sortParameters) => {
-        return sortProducts(filteredProducts, sortParameters.name, sortParameters.direction);
+        return sortProducts(filteredProducts, sortParameters.key, sortParameters.direction);
     });
 
 

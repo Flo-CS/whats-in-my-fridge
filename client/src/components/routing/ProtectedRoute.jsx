@@ -20,7 +20,9 @@ export default function ProtectedRoute({children, ...rest}) {
     </Route>;
 }
 
-ProtectedRoute.propTypes =
-    {
-        children: propTypes.element.isRequired
-    }
+ProtectedRoute.propTypes = {
+    children: propTypes.oneOfType([
+        propTypes.element,
+        propTypes.arrayOf(propTypes.element)
+    ])
+};

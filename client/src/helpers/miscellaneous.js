@@ -37,10 +37,10 @@ const asyncThunkErrorWrapper = async (asyncApiCallFunc, rejectWithValue) => {
 };
 
 
-function sortProducts(products, sortName, sortDirection) {
-    switch (sortName) {
+function sortProducts(products, sortKey, sortDirection) {
+    switch (sortKey) {
         case "MODIFICATION_DATE":
-            return orderBy(products, [(product) => dayjs(last(product.presences).date)], [sortDirection])
+            return orderBy(products, [(product) => dayjs(last(product.presences).date)], [sortDirection]);
         case "NAME":
             return orderBy(products, [(product) => deburr(product.data.product_name)], [sortDirection]);
         case "QUANTITY":

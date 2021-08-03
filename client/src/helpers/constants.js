@@ -2,13 +2,13 @@ const WIKIDATA_API_ENDPOINT = "https://www.wikidata.org/w/api.php";
 const WIKIPEDIA_API_ENDPOINT = "https://fr.wikipedia.org/w/api.php";
 
 const SORT_OPTIONS = {
-    MODIFICATION_DATE: {label: "Date de modification", name: "MODIFICATION_DATE", direction: "desc"},
-    NAME: {label: "Nom", name: "NAME", direction: "asc"},
-    QUANTITY: {label: "Quantité", name: "QUANTITY", direction: "desc"},
-    NUTRISCORE: {label: "Nutriscore", name: "NUTRISCORE", direction: "asc"},
-    ECOSCORE: {label: "Ecoscore", name: "ECOSCORE", direction: "asc"},
-    NOVA: {label: "Nova", name: "NOVA", direction: "asc"},
-    RELEVANCE: {label: "Pertinence", name: "RELEVANCE", direction: "asc"},
+    MODIFICATION_DATE: {name: "Date de modification", key: "MODIFICATION_DATE", defaultDirection: "desc"},
+    NAME: {name: "Nom", key: "NAME", defaultDirection: "asc"},
+    QUANTITY: {name: "Quantité", key: "QUANTITY", defaultDirection: "desc"},
+    NUTRISCORE: {name: "Nutriscore", key: "NUTRISCORE", defaultDirection: "asc"},
+    ECOSCORE: {name: "Ecoscore", key: "ECOSCORE", defaultDirection: "asc"},
+    NOVA: {name: "Nova", key: "NOVA", defaultDirection: "asc"},
+    RELEVANCE: {name: "Pertinence", key: "RELEVANCE", defaultDirection: "asc"},
 };
 
 const ACCENT_COLOR = "#2fae26";

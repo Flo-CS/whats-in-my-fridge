@@ -1,9 +1,18 @@
+// SCREEN SIZES
 $sm-screen: 640px;
 $md-screen: 768px;
 $lg-screen: 1024px;
 $xl-screen: 1280px;
 $xxl-screen: 1536px;
 
+$breakpoints: (
+        mobile : $sm-screen,
+        tablet: $md-screen,
+        desktop: $lg-screen
+);
+
+
+// COLORS
 $app-background-color: #FFFFFF;
 
 $font-color-white: #FFFFFF;
@@ -19,12 +28,44 @@ $secondary-element-color: #F2F2F2;
 $tertiary-element-color: #E7E7E7;
 
 
+// FONT SIZES
+$giant-font-size: 1.625rem;
+$big-font-size: 1rem;
+$medium-font-size: 0.875rem;
+$little-font-size: 0.75rem;
+
+
+// SIZES
+$control-border-radius: 3px;
+
+
+// MIXINS
 @mixin reset-button() {
   outline: none;
   border: none;
   cursor: pointer;
   background: none;
 }
+
+@mixin reset-input() {
+  outline: none;
+  border: none;
+  background: none;
+}
+
+@mixin button-colorization($color) {
+  background-color: $color;
+  &:hover, &:focus {
+    background-color: scale-color($color, $lightness: -3%);
+  }
+}
+
+@mixin max-width($breakpoint) {
+  @media screen and (max-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
 
 @mixin green-button() {
   @include reset-button();

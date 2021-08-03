@@ -1,0 +1,34 @@
+@import "./../../variables";
+
+$sizes: (small:20px,
+        medium: 30px,
+        big:40px);
+
+$variants: (primary: ($primary-element-color, $font-color-white),
+        secondary: ($secondary-element-color, $font-color-dark-grey),
+        tertiary: ($tertiary-element-color, $font-color-dark-grey));
+
+
+.button {
+  @include reset-button();
+  font-size: $medium-font-size;
+  padding: 0.4em;
+  border-radius: $control-border-radius;
+
+  @each $name, $size in $sizes {
+    &--#{$name} {
+      height: $size;
+    }
+    &--square {
+      width: $size;
+      padding: 0.6em;
+    }
+  }
+
+  @each $name, $colors in $variants {
+    &--#{$name} {
+      @include button-colorization(nth($colors, 1));
+      color: nth($colors, 2);
+    }
+  }
+}
