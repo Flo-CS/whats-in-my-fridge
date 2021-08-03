@@ -17,10 +17,10 @@
   }
 
   &__link {
-    color: black;
+    color: $font-color-black;
 
     &:hover {
-      color: $accent-color;
+      color: $primary-element-color;
     }
   }
 }

@@ -7,7 +7,7 @@
   justify-content: center;
   width: 40px;
   height: 100%;
-  background-color: $color3;
+  background-color: $secondary-background-color;
 
   &__profile {
     width: 40px;
@@ -58,17 +58,17 @@
     &-icon {
       width: 90%;
       height: 90%;
-      fill: $color2;
+      fill: $font-color-black;
     }
   }
 
   &__profile--active,
   &__menu-item--active {
-    border-left: 3px solid $accent-color;
+    border-left: 3px solid $primary-element-color;
 
     svg {
-      fill: $accent-color;
       transition: fill 0.3s;
+      fill: $primary-element-color;
     }
   }
 }

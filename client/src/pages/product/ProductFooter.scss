@@ -10,13 +10,13 @@
   min-height: 60px;
   padding: 0 10px;
   text-align: center;
-  background-color: $color3;
+  background-color: $secondary-background-color;
 
   &__link {
-    color: black;
+    color: $font-color-black;
 
     &:hover {
-      color: $accent-color;
+      color: $primary-element-color;
     }
   }
 }

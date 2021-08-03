@@ -10,15 +10,15 @@
 
   border-radius: 5px;
 
-  background-color: $color3;
+  background-color: $secondary-background-color;
 
   &:hover {
-    box-shadow: 0 5px 10px -5px transparentize(darken($color3, 30%), 0.6), 0 -5px 10px -5px transparentize(darken($color3, 30%), 0.6);
+    box-shadow: 0 5px 10px -5px transparentize(darken($secondary-background-color, 30%), 0.6), 0 -5px 10px -5px transparentize(darken($secondary-background-color, 30%), 0.6);
 
   }
 
   &--disabled {
-    background-image: linear-gradient(135deg, $color4 2.38%, #f6f6f6 2.38%, #f6f6f6 50%, $color4 50%, $color4 52.38%, #f6f6f6 52.38%, #f6f6f6 100%);
+    background-image: linear-gradient(135deg, $primary-background-color 2.38%, #f6f6f6 2.38%, #f6f6f6 50%, $primary-background-color 50%, $primary-background-color 52.38%, #f6f6f6 52.38%, #f6f6f6 100%);
     background-size: 29.70px 29.70px;
   }
 
@@ -60,13 +60,13 @@
     width: auto;
     max-width: 100px;
     max-height: 50px;
-    white-space: nowrap;
+    margin-right: 10px;
 
     // Hide the alt text
+    white-space: nowrap;
     text-indent: 100%;
     border-radius: 5px;
-    background-color: $color2;
-    margin-right: 10px;
+    background-color: $secondary-element-color;
   }
 
   &__attribute-image {

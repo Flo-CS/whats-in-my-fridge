@@ -41,14 +41,14 @@
     @include reset-button;
     width: 15px;
     height: 15px;
+    margin-left: 3px;
     padding: 0;
     vertical-align: middle;
-    margin-left: 3px;
     border-radius: 50%;
-    background-color: $color3;
+    background-color: $secondary-background-color;
 
     &:hover {
-      background-color: $color4;
+      background-color: $primary-background-color;
     }
 
     svg {

@@ -1,13 +1,13 @@
 @import "../../variables";
 
 .product-header {
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
   padding: 10px;
-  background-color: $color3;
-  font-size: 0.8rem;
+  background-color: $secondary-background-color;
 
   &__image {
     max-width: 100px;

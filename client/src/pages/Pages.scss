@@ -22,7 +22,7 @@
     border: none;
     border-radius: 5px;
     outline: none;
-    background-color: $color3;
+    background-color: $secondary-background-color;
   }
 }
 
@@ -44,7 +44,7 @@
     width: 80%;
     margin: 10px 0;
     border: none;
-    border-top: 1px solid $color2;
+    border-top: 1px solid $font-color-black;
   }
 
   &__title {
@@ -65,7 +65,7 @@
   &__email, &__password {
     margin-bottom: 10px;
     padding: 5px;
-    border: 1px $accent-color solid;
+    border: 1px $primary-element-color solid;
     border-radius: 5px;
   }
 
@@ -76,9 +76,9 @@
   &__submit-button {
     @include reset-button;
     padding: 10px;
-    color: #ffffff;
+    color: $font-color-white;
     border-radius: 5px;
-    background-color: $accent-color;
+    background-color: $primary-element-color;
 
   }
 

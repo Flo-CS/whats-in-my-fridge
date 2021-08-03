@@ -4,11 +4,19 @@ $lg-screen: 1024px;
 $xl-screen: 1280px;
 $xxl-screen: 1536px;
 
-$accent-color: #2fae26;
-$color3: #f6f6f6;
-$color2: #000000;
-$color1: #ffffff;
-$color4: #cdcdcd;
+$app-background-color: #FFFFFF;
+
+$font-color-white: #FFFFFF;
+$font-color-light-grey: #808080;
+$font-color-dark-grey: #404040;
+$font-color-black: #000000;
+
+$primary-background-color: #FAFAFA;
+$secondary-background-color: #F7F7F7;
+
+$primary-element-color: #2FAE26;
+$secondary-element-color: #F2F2F2;
+$tertiary-element-color: #E7E7E7;
 
 
 @mixin reset-button() {
@@ -20,9 +28,9 @@ $color4: #cdcdcd;
 
 @mixin green-button() {
   @include reset-button();
-  background-color: $accent-color;
-  color: white;
+  background-color: $primary-element-color;
+  color: $font-color-white;
   &:hover {
-    background-color: darken($accent-color, 5%);
+    background-color: darken($primary-element-color, 5%);
   }
 }
