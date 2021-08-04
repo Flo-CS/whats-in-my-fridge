@@ -49,13 +49,11 @@
     }
 
     &:last-child {
-      border-bottom-right-radius: $control-border-radius;
-      border-bottom-left-radius: $control-border-radius;
+      @include border-radius-bottom($control-border-radius)
     }
 
     &:first-child {
-      border-top-left-radius: $control-border-radius;
-      border-top-right-radius: $control-border-radius;
+      @include border-radius-top($control-border-radius)
     }
   }
 }

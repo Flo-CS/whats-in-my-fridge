@@ -60,6 +60,26 @@ $control-border-radius: 3px;
   }
 }
 
+@mixin border-radius-right($size) {
+  border-bottom-right-radius: $size;
+  border-top-right-radius: $size;
+}
+
+@mixin border-radius-left($size) {
+  border-bottom-left-radius: $size;
+  border-top-left-radius: $size;
+}
+
+@mixin border-radius-top($size) {
+  border-top-left-radius: $size;
+  border-top-right-radius: $size;
+}
+
+@mixin border-radius-bottom($size) {
+  border-bottom-left-radius: $size;
+  border-bottom-right-radius: $size;
+}
+
 @mixin max-width($breakpoint) {
   @media screen and (max-width: map-get($breakpoints, $breakpoint)) {
     @content;
