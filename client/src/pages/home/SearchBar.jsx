@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import SortControl from "../../components/dropdown/SortControl";
+import SortControl from "../../components/controls/SortControl";
 import SearchInput from "../../components/input/SearchInput";
 import {setSortParameters, setTextFilter} from "../../features/filtersSlice";
 import {SORT_OPTIONS} from "../../helpers/constants";
