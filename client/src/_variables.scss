@@ -80,8 +80,13 @@ $control-border-radius: 3px;
   border-bottom-right-radius: $size;
 }
 
-@mixin max-width($breakpoint) {
-  @media screen and (max-width: map-get($breakpoints, $breakpoint)) {
+@mixin border-radius($size) {
+  @include border-radius-top($size);
+  @include border-radius-bottom($size)
+}
+
+@mixin min-width($breakpoint) {
+  @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
     @content;
   }
 }

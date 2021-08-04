@@ -1,11 +1,7 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {ReactComponent as ArrowDownIcon} from "../../assets/icons/arrow-down.svg";
-import {ReactComponent as ArrowUpIcon} from "../../assets/icons/arrow-up.svg";
-import Button from "../../components/button/Button";
-import Dropdown from "../../components/dropdown/Dropdown";
+import SortControl from "../../components/dropdown/SortControl";
 import SearchInput from "../../components/input/SearchInput";
-import InputGroup from "../../components/layout/InputGroup";
 import {setSortParameters, setTextFilter} from "../../features/filtersSlice";
 import {SORT_OPTIONS} from "../../helpers/constants";
 
@@ -36,7 +32,7 @@ export default function SearchBar() {
         dispatch(setTextFilter(inputText));
     }
 
-    function handleSwapSortDirectionButtonClick() {
+    function handleSortDirectionChange() {
         dispatch(setSortParameters({
             ...sortParameters,
             direction: sortParameters.direction === "asc" ? "desc" : "asc"
@@ -57,19 +53,15 @@ export default function SearchBar() {
 
 
     return <div className="search-bar">
-        <InputGroup>
-            <SearchInput placeholder="Rechercher des produits"
-                         onChange={handleSearchInputChange}
-                         value={textFilter}/>
-            <InputGroup isCollapsed>
-                <Dropdown onOptionChange={handleDropdownOptionChange}
-                          options={Object.values(SORT_OPTIONS)}
-                          selectedOption={sortParameters.key}
-                          title="Trier par"/>
-                <Button onClick={handleSwapSortDirectionButtonClick} size="big" variant="primary" shape="square">
-                    {sortParameters.direction === "asc" ? <ArrowDownIcon/> : <ArrowUpIcon/>}
-                </Button>
-            </InputGroup>
-        </InputGroup>
+        <SearchInput placeholder="Rechercher des produits"
+                     onChange={handleSearchInputChange}
+                     value={textFilter}/>
+
+        <SortControl onOptionChange={handleDropdownOptionChange}
+                     onDirectionChange={handleSortDirectionChange}
+                     options={Object.values(SORT_OPTIONS)}
+                     selectedOption={sortParameters.key}
+                     direction={sortParameters.direction}
+                     title="Trier par"/>
     </div>;
 }
