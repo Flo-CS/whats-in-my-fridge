@@ -19,6 +19,7 @@ $font-color-white: #FFFFFF;
 $font-color-light-grey: #808080;
 $font-color-dark-grey: #404040;
 $font-color-black: #000000;
+$font-color-warning: #dc1919;
 
 $primary-background-color: #FAFAFA;
 $secondary-background-color: #F7F7F7;
@@ -30,13 +31,15 @@ $tertiary-element-color: #E7E7E7;
 
 // FONT SIZES
 $giant-font-size: 1.625rem;
-$big-font-size: 1rem;
-$medium-font-size: 0.875rem;
+$big-font-size: 1.25rem;
+$medium-font-size: 1rem;
+$normal-font-size: 0.875rem;
 $little-font-size: 0.75rem;
 
 
 // SIZES
 $control-border-radius: 3px;
+$card-border-radius: 5px;
 
 
 // MIXINS
@@ -78,11 +81,6 @@ $control-border-radius: 3px;
 @mixin border-radius-bottom($size) {
   border-bottom-left-radius: $size;
   border-bottom-right-radius: $size;
-}
-
-@mixin border-radius($size) {
-  @include border-radius-top($size);
-  @include border-radius-bottom($size)
 }
 
 @mixin min-width($breakpoint) {

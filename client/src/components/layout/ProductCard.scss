@@ -1,0 +1,132 @@
+@import "../../variables";
+
+$container-width: 40px;
+$container-padding: 10px;
+$card-height: 100px;
+$image-width: $container-width - $container-padding;
+$image-max-height: $card-height - $container-padding * 2;
+
+.product-card {
+  font-size: $normal-font-size;
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: $card-height;
+  border-radius: $card-border-radius;
+  background-color: $primary-background-color;
+
+  &__image-container {
+    overflow: hidden;
+    width: $container-width;
+    padding: $container-padding 0 $container-padding $container-padding;
+  }
+
+  &__image {
+    display: block;
+    width: $image-width;
+    height: auto;
+    border-radius: $card-border-radius;
+
+    &--rotated {
+      width: auto;
+      max-width: $image-max-height;
+      height: $image-width;
+      transform: rotate(90deg) translateY(-100%);
+      transform-origin: top left;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  &__name {
+    font-weight: 600;
+    margin-bottom: 0.25em;
+  }
+
+  &__brands {
+    color: $font-color-dark-grey;
+  }
+
+  &__attributes {
+    display: flex;
+    margin-top: auto;
+  }
+
+  &__attribute {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &-label {
+      font-size: $little-font-size;
+      margin-right: 5px;
+      color: $font-color-light-grey;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &-value {
+      font-size: $medium-font-size;
+      font-weight: 700;
+      color: $font-color-light-grey;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__button {
+    @include reset-button();
+    @include button-colorization($secondary-element-color);
+    width: 30px;
+    height: 30px;
+    padding: 4px;
+
+    &:first-child {
+      border-top-right-radius: $card-border-radius;
+    }
+
+    &:last-child {
+      border-bottom-right-radius: $card-border-radius;
+    }
+
+    &-icon {
+      color: $font-color-dark-grey;
+      fill: $font-color-dark-grey;
+    }
+
+    $self: &;
+
+    &--warning {
+      padding: 6px;
+
+      #{$self}-icon {
+        fill: $font-color-warning;
+      }
+    }
+  }
+
+  &__quantity {
+    font-size: $big-font-size;
+    font-weight: 600;
+    color: $font-color-dark-grey;
+  }
+
+}

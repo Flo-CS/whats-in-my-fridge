@@ -25,16 +25,16 @@ async function getOFFdata(barcode) {
 
 function letterScoreToScore(letter) {
     const letterConversions = {
-        "a": 5,
-        "b": 4,
-        "c": 3,
-        "d": 2,
-        "e": 1
+        "A": 5,
+        "B": 4,
+        "C": 3,
+        "D": 2,
+        "E": 1
     };
 
     if (!_.isString(letter) || _.isNil(letter)) return;
 
-    letter = letter.toLowerCase();
+    letter = letter.toUpperCase();
     return letterConversions[letter];
 }
 

@@ -25,9 +25,9 @@ export default function StatsPage() {
     }, [dispatch]);
 
 
-    const letterScoresHeatmapLabels = specifics?.letter_scores_heatmap?.xLabels.map((label, i) => ({
-        name: label,
-        color: LETTER_SCORES_COLORS[i]
+    const letterScoresHeatmapLabels = specifics?.letter_scores_heatmap?.xLabels.map((score) => ({
+        name: score,
+        color: LETTER_SCORES_COLORS[score]
     }));
 
     return <div className="stats-page">

@@ -1,7 +1,7 @@
 @import "./../../variables";
 
 .sort-control {
-  font-size: $medium-font-size;
+  font-size: $normal-font-size;
   display: flex;
 
   &__dropdown {
@@ -40,7 +40,7 @@
       z-index: 9999;
       right: 0;
       width: 100%;
-      margin-top: 0.4em;
+      margin-top: 8px;
       background-color: $secondary-background-color;
     }
 

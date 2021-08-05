@@ -2,7 +2,7 @@ import propTypes from "prop-types";
 import React from "react";
 import {useDispatch} from "react-redux";
 import {deleteProduct, updateProductQuantity} from "../../features/productSlice";
-import {cleanScoreField} from "../../helpers/miscellaneous";
+import {formatScore} from "../../helpers/miscellaneous";
 import ProductQuantityControls from "../home/ProductQuantityControls";
 import "./ProductContent.scss";
 import ProductNutritionTableField from "./ProductNutritionTableField";
@@ -46,9 +46,9 @@ export default function ProductContent({productData, quantity, barcode}) {
     } = productData;
 
 
-    const nutriscore = cleanScoreField(nutriscore_grade, true)
-    const ecoscore = cleanScoreField(ecoscore_grade, true)
-    const nova = cleanScoreField(nova_group)
+    const nutriscore = formatScore(nutriscore_grade, true);
+    const ecoscore = formatScore(ecoscore_grade, true);
+    const nova = formatScore(nova_group);
 
     return <div className="product-content">
         <div className="product-content__attributes">

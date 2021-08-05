@@ -11,16 +11,16 @@ function mapValueToRange(value, inMin, inMax, outMin, outMax) {
     return (value - inMin) / (inMax - inMin) * (outMax - outMin) + outMin;
 }
 
-function cleanScoreField(score, isLetterScore = false) {
-    const validLetterScores = ["a", "b", "c", "d", "e"];
+function formatScore(score, isLetterScore = false) {
+    const validLetterScores = ["A", "B", "C", "D", "E"];
     const validNovaGroups = [1, 2, 3, 4];
 
     if (isLetterScore) {
-        score = score?.toLowerCase();
-        return validLetterScores.includes(score) ? score : "unknown";
+        score = score?.toUpperCase();
+        return validLetterScores.includes(score) ? score : "?";
     }
 
-    return validNovaGroups.includes(score) ? score : "unknown";
+    return validNovaGroups.includes(score) ? score : "?";
 }
 
 
@@ -77,11 +77,10 @@ export function scoreToLetterScore(score) {
 }
 
 
-
 export {
     truncateString,
     asyncThunkErrorWrapper,
-    cleanScoreField,
+    formatScore,
     mapValueToRange,
     sortProducts
 };
