@@ -1,12 +1,12 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import ProductsCardsGrid from "../../components/card/ProductsCardsGrid";
+import SearchBar from "../../components/layout/SearchBar";
 import ThreeDotLoading from "../../components/loading/ThreeDotLoading";
 import {fetchProducts, selectFilteredAndSortedProducts} from "../../features/productSlice.js";
 
 import "./HomePage.scss";
 import NoProduct from "./NoProduct";
-import SearchBar from "./SearchBar";
 
 export default function HomePage() {
     const dispatch = useDispatch();
