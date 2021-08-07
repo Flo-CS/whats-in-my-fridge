@@ -25,6 +25,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    color: $font-color-light-grey;
 
 
     &-icon {
@@ -35,8 +36,10 @@
     $self: &;
 
     &--selected {
+      color: $font-color-black;
+
       #{$self}-icon {
-        fill: $font-color-black;
+        fill: $primary-element-color;
       }
     }
   }
