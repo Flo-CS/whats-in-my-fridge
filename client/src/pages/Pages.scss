@@ -26,17 +26,18 @@
   }
 }
 
-.home-page, .product-page, .stats-page {
+
+.product-page, .stats-page {
   display: flex;
-  overflow: hidden;
   align-items: center;
   flex-direction: column;
   width: 100%;
   height: 100%;
 }
 
-.product-page, .stats-page {
-  overflow-y: auto;
+.stats-page {
+  margin-bottom: $navigation-bar-size;
+  padding: $page-content-spacing;
 }
 
 .stats-page {

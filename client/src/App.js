@@ -1,15 +1,17 @@
 import React, {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
-
 import "./App.scss";
+import {ReactComponent as HomeIcon} from "./assets/icons/home.svg";
+import {ReactComponent as ProfileIcon} from "./assets/icons/person-circle.svg";
+import {ReactComponent as StatsIcon} from "./assets/icons/stats-chart.svg";
+import NavigationBar from "./components/layout/NavigationBar";
 import AuthRoute from "./components/routing/AuthRoute";
 import ProtectedRoute from "./components/routing/ProtectedRoute";
 import {checkUserToken} from "./features/authSlice";
+import {PATHS} from "./helpers/constants";
 import HomePage from "./pages/home/HomePage";
 import LoginPage from "./pages/login/LoginPage";
-import MainSidebar from "./pages/MainSidebar";
-
 import "./pages/Pages.scss";
 import ProductPage from "./pages/product/ProductPage";
 import RegisterPage from "./pages/register/RegisterPage";
@@ -22,26 +24,44 @@ function App() {
         dispatch(checkUserToken());
     }, [dispatch]);
 
+
+    const navItems = [
+        {
+            path: PATHS.HOME,
+            Icon: HomeIcon,
+            name: "Produits"
+        },
+        {
+            path: PATHS.STATS,
+            Icon: StatsIcon,
+            name: "Stats"
+        },
+        {
+            path: PATHS.PROFILE,
+            Icon: ProfileIcon,
+            name: "Profile"
+        }];
+
+
     return <div className="app">
         <Router>
             <Switch>
-                <AuthRoute exact path="/login">
+                <AuthRoute path="/login">
                     <LoginPage/>
                 </AuthRoute>
-                <Route exact path="/register">
+                <Route path="/register">
                     <RegisterPage/>
                 </Route>
-                <ProtectedRoute exact path="/">
-                    <MainSidebar/>
-                    <HomePage/>
-                </ProtectedRoute>
                 <ProtectedRoute path="/products/:barcode">
-                    <MainSidebar/>
                     <ProductPage/>
                 </ProtectedRoute>
+                <ProtectedRoute exact path="/">
+                    <HomePage/>
+                    <NavigationBar items={navItems}/>
+                </ProtectedRoute>
                 <ProtectedRoute path="/stats">
-                    <MainSidebar/>
                     <StatsPage/>
+                    <NavigationBar items={navItems}/>
                 </ProtectedRoute>
                 <Redirect from="*" to="/"/>
             </Switch>

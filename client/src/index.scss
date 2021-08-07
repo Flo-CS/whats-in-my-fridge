@@ -81,13 +81,12 @@ time,
 mark,
 audio,
 video {
+  font: inherit;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  border: 0;
-  font: inherit;
   vertical-align: baseline;
-
-  box-sizing: border-box;
+  border: 0;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -127,23 +126,18 @@ q:after {
 }
 
 table {
-  border-collapse: collapse;
   border-spacing: 0;
+  border-collapse: collapse;
 }
 
-// SIZE
 
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
 html,
 body,
 #root {
-  width: 100vw;
-  height: 100vh;
-}
-
-// FONT
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
-body {
   font-family: "Open Sans", sans-serif;
+  width: 100%;
+  height: 100%;
 }
 
 input,

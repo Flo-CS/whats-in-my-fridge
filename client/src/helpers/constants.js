@@ -16,5 +16,22 @@ const ACCENT_COLOR = "#2fae26";
 const LETTER_SCORES_COLORS = {"A": "#2d7e43", "B": "#97ba38", "C": "#f0ca0d", "D": "#d57b1a", "E": "#c53319"};
 const NOVA_COLORS = {1: "#00ac00", 2: "#ffcd00", 3: "#ff6600", 4: "#ff0000"};
 
+const PATHS = {
+    HOME: "/",
+    PROFILE: "/profile",
+    STATS: "/stats",
+    PRODUCT_DETAILS: (barcode) => `/products/${barcode}`,
+    REGISTER: "/register",
+    LOGIN: "/login"
+};
 
-export {WIKIDATA_API_ENDPOINT, WIKIPEDIA_API_ENDPOINT, SORT_OPTIONS, ACCENT_COLOR, LETTER_SCORES_COLORS, NOVA_COLORS};
+
+export {
+    WIKIDATA_API_ENDPOINT,
+    WIKIPEDIA_API_ENDPOINT,
+    SORT_OPTIONS,
+    ACCENT_COLOR,
+    LETTER_SCORES_COLORS,
+    NOVA_COLORS,
+    PATHS
+};

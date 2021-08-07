@@ -5,21 +5,26 @@
   flex-direction: column;
   width: 100%;
   max-width: 1000px;
-  margin-top: 15px;
-  padding: 0 10px;
+  margin-bottom: 20px;
 
   & > * {
     margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   @include min-width(mobile) {
     flex-direction: row;
     & > * {
       margin-right: 10px;
+      margin-bottom: 0;
 
       &:last-child {
         margin-right: 0;
       }
     }
   }
+
 }

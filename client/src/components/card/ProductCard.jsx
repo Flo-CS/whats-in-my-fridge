@@ -7,7 +7,7 @@ import {ReactComponent as MinusIcon} from "../../assets/icons/minus.svg";
 import {ReactComponent as PlusIcon} from "../../assets/icons/plus.svg";
 import {ReactComponent as TrashIcon} from "../../assets/icons/trash.svg";
 import {deleteProduct, updateProductQuantity} from "../../features/productSlice";
-import {LETTER_SCORES_COLORS, NOVA_COLORS} from "../../helpers/constants";
+import {LETTER_SCORES_COLORS, NOVA_COLORS, PATHS} from "../../helpers/constants";
 import {truncateString} from "../../helpers/miscellaneous";
 
 import "./ProductCard.scss";
@@ -35,7 +35,7 @@ export default function ProductCard({barcode, quantity, imageUrl, brands, name, 
     }
 
     function handleCardClick() {
-        history.push(`/products/${barcode}`);
+        history.push(PATHS.PRODUCT_DETAILS(barcode));
     }
 
     function handleImageLoad(e) {

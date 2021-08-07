@@ -1,0 +1,49 @@
+@import "../../variables";
+
+.navigation-bar {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: $navigation-bar-size;
+  padding: 0 50px;
+  background-color: $primary-background-color;
+
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__button {
+    @include reset-button();
+    font-size: $little-font-size;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+
+    &-icon {
+      height: 1.6em;
+      fill: $font-color-light-grey;
+    }
+
+    $self: &;
+
+    &--selected {
+      #{$self}-icon {
+        fill: $font-color-black;
+      }
+    }
+  }
+
+  @include min-width(mobile) {
+    &__buttons {
+      width: 250px;
+    }
+  }
+}

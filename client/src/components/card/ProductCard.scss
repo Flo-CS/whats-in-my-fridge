@@ -8,7 +8,6 @@ $image-max-height: $card-height - $container-padding * 2;
 
 .product-card {
   font-size: $normal-font-size;
-  position: relative;
   display: flex;
   width: 100%;
   height: $card-height;
