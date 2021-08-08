@@ -10,6 +10,7 @@ import {formatScore} from "../../helpers/miscellaneous";
 import ProductContent from "./ProductContent";
 import ProductFooter from "./ProductFooter";
 import ProductPageHeader from "./ProductPageHeader";
+import ScoresBox from "./ScoresBox";
 
 
 export default function ProductPage() {
@@ -52,6 +53,7 @@ export default function ProductPage() {
                                    quantityInTheProduct={cleanedQuantity}
                                    imageUrl={image_small_url}
                                    quantity={product.quantity}/>
+                <ScoresBox nutriscore={nutriscore} ecoscore={ecoscore} nova={nova}/>
                 <ProductContent productData={product.data} quantity={product.quantity} barcode={product.barcode}/>
                 <ProductFooter presences={product.presences} barcode={product.barcode}/>
             </> :

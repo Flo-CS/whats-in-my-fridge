@@ -4,9 +4,10 @@
   font-size: $normal-font-size;
   position: relative;
   width: 100%;
+  margin-bottom: 15px;
   padding: $page-content-spacing + 10px;
-  background-color: $primary-background-color;
   @include border-radius-bottom($card-border-radius*2);
+  background-color: $primary-background-color;
 
   &__inner {
     display: flex;
@@ -99,6 +100,7 @@
 
 
   @include min-width(mobile) {
+    margin-bottom: 0;
 
     &__inner {
       flex-direction: row;

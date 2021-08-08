@@ -119,7 +119,7 @@ ProductCard.propTypes = {
     name: PropTypes.string,
     nutriscore: PropTypes.string,
     ecoscore: PropTypes.string,
-    nova: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf(["?"])])
+    nova: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 

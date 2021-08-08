@@ -1,0 +1,33 @@
+@import "./../../variables";
+
+.scores-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 350px;
+  height: 70px;
+  margin: $page-content-spacing;
+  border-radius: $card-border-radius * 2;
+  background-color: $primary-background-color;
+
+
+  &__score {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__value {
+    font-size: $giant-font-size;
+    font-weight: 700;
+    margin-bottom: 0.3em;
+    color: $font-color-light-grey;
+  }
+
+  &__label {
+    color: $font-color-light-grey;
+  }
+
+}
+
