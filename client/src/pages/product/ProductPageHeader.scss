@@ -1,0 +1,143 @@
+@import "../../variables";
+
+.product-page-header {
+  font-size: $normal-font-size;
+  position: relative;
+  width: 100%;
+  padding: $page-content-spacing + 10px;
+  background-color: $primary-background-color;
+  @include border-radius-bottom($card-border-radius*2);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: $max-content-width;
+    height: 100%;
+    margin: auto;
+  }
+
+  &__image {
+    max-width: 150px;
+    max-height: 120px;
+    margin-bottom: 1.5em;
+    border-radius: $card-border-radius;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  &__body {
+    width: 100%;
+  }
+
+  &__name, &__brands {
+    margin-bottom: 0.6em;
+  }
+
+  &__name {
+    font-size: $medium-font-size;
+    font-weight: 600;
+  }
+
+  &__barcode {
+    color: $font-color-light-grey;
+  }
+
+  &__size {
+    float: right;
+  }
+
+  &__back-button {
+    @include reset-button();
+    position: absolute;
+    top: $page-content-spacing;
+    left: $page-content-spacing;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+
+    &-icon {
+      height: 100%;
+      color: $font-color-dark-grey;
+    }
+  }
+
+  &__controls {
+    position: absolute;
+    bottom: -15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 100px;
+  }
+
+  &__quantity-button {
+    @include reset-button();
+    @include button-colorization($primary-element-color);
+    width: 30px;
+    height: 30px;
+    padding: 4px;
+    border-radius: $control-border-radius;
+
+    &-icon {
+      color: $font-color-white;
+      fill: $font-color-white;
+    }
+
+    &--warning {
+      padding: 6px;
+      @include button-colorization($font-color-warning)
+    }
+  }
+
+  &__quantity {
+    font-size: $big-font-size;
+    font-weight: 600;
+    color: $font-color-dark-grey;
+  }
+
+
+  @include min-width(mobile) {
+
+    &__inner {
+      flex-direction: row;
+    }
+
+    &__back-button {
+      position: static;
+      width: 25px;
+      height: 25px;
+      margin-right: 20px;
+
+    }
+
+    &__image {
+      max-height: 80px;
+      margin-right: 3em;
+      margin-bottom: 0;
+
+    }
+
+    &__body {
+      position: relative;
+      width: auto;
+      min-width: 200px;
+      margin-right: 3em;
+
+    }
+
+    &__size {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      float: none;
+    }
+
+    &__controls {
+      position: static;
+    }
+
+  }
+
+}

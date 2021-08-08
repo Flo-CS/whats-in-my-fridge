@@ -25,6 +25,7 @@ const PATHS = {
     LOGIN: "/login"
 };
 
+const QUANTITY_REGEX = /(\d+\s*[^\d\W]+)/g;
 
 export {
     WIKIDATA_API_ENDPOINT,
@@ -33,5 +34,6 @@ export {
     ACCENT_COLOR,
     LETTER_SCORES_COLORS,
     NOVA_COLORS,
-    PATHS
+    PATHS,
+    QUANTITY_REGEX
 };

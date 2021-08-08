@@ -51,6 +51,9 @@ export default function ProductCard({barcode, quantity, imageUrl, brands, name, 
     });
 
     const productImageClass = classNames("product-card__image", {"product-card__image--rotated": isProductImageRotated});
+    const isDeleteButtonActive = quantity <= 0;
+    const downButtonClass = classNames("product-card__button", {"product-card__button--warning": isDeleteButtonActive});
+
 
     return (
         <div className={productCardClass} ref={productCardRef}>
@@ -98,16 +101,11 @@ export default function ProductCard({barcode, quantity, imageUrl, brands, name, 
                     <PlusIcon className="product-card__button-icon"/>
                 </button>
                 <p className="product-card__quantity">{quantity}</p>
-                {quantity > 0 ?
-                    <button className="product-card__button" onClick={handleDecreaseQuantity}>
-                        <MinusIcon className="product-card__button-icon"/>
-                    </button>
-                    :
-                    <button className="product-card__button product-card__button--warning"
-                            onClick={handleDeleteProduct}>
-                        <TrashIcon className="product-card__button-icon"/>
-                    </button>
-                }
+                <button className={downButtonClass}
+                        onClick={isDeleteButtonActive ? handleDeleteProduct : handleDecreaseQuantity}>
+                    {isDeleteButtonActive ? <TrashIcon className="product-card__button-icon"/> :
+                        <MinusIcon className="product-card__button-icon"/>}
+                </button>
             </div>
         </div>
     );
