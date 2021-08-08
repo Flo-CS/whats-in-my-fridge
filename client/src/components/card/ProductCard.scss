@@ -52,12 +52,12 @@ $image-max-height: $card-height - $container-padding * 2;
     color: $font-color-dark-grey;
   }
 
-  &__attributes {
+  &__scores {
     display: flex;
     margin-top: auto;
   }
 
-  &__attribute {
+  &__score {
     display: flex;
     align-items: center;
     margin-right: 10px;

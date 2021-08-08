@@ -72,24 +72,24 @@ export default function ProductCard({barcode, quantity, imageUrl, brands, name, 
                 <p className="product-card__brands">
                     {truncateString(brands, 40)}
                 </p>
-                <div className="product-card__attributes">
-                    <p className="product-card__attribute">
-                        <span className="product-card__attribute-label">Nutriscore</span>
-                        <span className="product-card__attribute-value"
+                <div className="product-card__scores">
+                    <p className="product-card__score">
+                        <span className="product-card__score-label">Nutriscore</span>
+                        <span className="product-card__score-value"
                               style={{color: LETTER_SCORES_COLORS[nutriscore]}}>
                             {nutriscore}
                         </span>
                     </p>
-                    <p className="product-card__attribute">
-                        <span className="product-card__attribute-label">Ecoscore</span>
-                        <span className="product-card__attribute-value"
+                    <p className="product-card__score">
+                        <span className="product-card__score-label">Ecoscore</span>
+                        <span className="product-card__score-value"
                               style={{color: LETTER_SCORES_COLORS[ecoscore]}}>
                             {ecoscore}
                         </span>
                     </p>
-                    <p className="product-card__attribute">
-                        <span className="product-card__attribute-label">Nova</span>
-                        <span className="product-card__attribute-value"
+                    <p className="product-card__score">
+                        <span className="product-card__score-label">Nova</span>
+                        <span className="product-card__score-value"
                               style={{color: NOVA_COLORS[nova]}}>
                             {nova}
                         </span>
