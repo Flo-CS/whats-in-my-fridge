@@ -1,0 +1,13 @@
+@import "./../../variables";
+
+.product-page-field {
+  width: 100%;
+  max-width: $max-content-width;
+  margin-top: $page-content-spacing;
+
+  &__title {
+    font-size: $medium-font-size;
+    font-weight: 600;
+    margin-bottom: 0.8em;
+  }
+}

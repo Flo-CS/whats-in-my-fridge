@@ -6,9 +6,11 @@ import ThreeDotLoading from "../../components/loading/ThreeDotLoading";
 import {fetchActiveProduct, selectActiveProduct} from "../../features/productSlice";
 import {QUANTITY_REGEX} from "../../helpers/constants";
 import {formatScore} from "../../helpers/miscellaneous";
-
-import ProductContent from "./ProductContent";
+import NutritionalInformation from "./NutritionalInformation";
 import ProductFooter from "./ProductFooter";
+
+import ProductPageBody from "./ProductPageBody";
+import ProductPageField from "./ProductPageField";
 import ProductPageHeader from "./ProductPageHeader";
 import ScoresBox from "./ScoresBox";
 
@@ -33,7 +35,11 @@ export default function ProductPage() {
         nutriscore_grade,
         ecoscore_grade,
         nova_group,
-        quantity
+        quantity,
+        nutrient_levels = {},
+        nutriments = {},
+        serving_size
+
     } = product.data || {};
 
     const nutriscore = formatScore(nutriscore_grade, true);
@@ -53,8 +59,13 @@ export default function ProductPage() {
                                    quantityInTheProduct={cleanedQuantity}
                                    imageUrl={image_small_url}
                                    quantity={product.quantity}/>
-                <ScoresBox nutriscore={nutriscore} ecoscore={ecoscore} nova={nova}/>
-                <ProductContent productData={product.data} quantity={product.quantity} barcode={product.barcode}/>
+                <ProductPageBody>
+                    <ScoresBox nutriscore={nutriscore} ecoscore={ecoscore} nova={nova}/>
+                    <ProductPageField title="Informations nutritionnelles">
+                        <NutritionalInformation nutriments={nutriments} nutrientLevels={nutrient_levels}
+                                                servingSize={serving_size}/>
+                    </ProductPageField>
+                </ProductPageBody>
                 <ProductFooter presences={product.presences} barcode={product.barcode}/>
             </> :
             <ThreeDotLoading/>}

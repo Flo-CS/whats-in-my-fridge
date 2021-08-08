@@ -1,0 +1,50 @@
+@import "./../../variables";
+
+.nutritional-information {
+  width: 100%;
+
+  &__portion {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8em;
+
+    &-label {
+      margin-right: 0.6em;
+      color: $font-color-light-grey;
+    }
+
+    &-radio {
+      position: fixed;
+      pointer-events: none;
+      opacity: 0;
+
+      &:checked + &-label {
+        color: $font-color-white;
+        background-color: $primary-element-color;
+      }
+
+      &-label {
+        display: inline-flex;
+        align-items: center;
+        height: 30px;
+        padding: 0 1em;
+        color: $font-color-dark-grey;
+        background-color: #e4e4e4;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &:first-of-type {
+          @include border-radius-left($control-border-radius)
+        }
+
+        &:last-of-type {
+          @include border-radius-right($control-border-radius)
+
+        }
+
+      }
+    }
+  }
+}
