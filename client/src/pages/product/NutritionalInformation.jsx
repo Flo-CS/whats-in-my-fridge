@@ -82,7 +82,7 @@ function NutritionalInformation({nutriments, servingSize, nutrientLevels}) {
                            value="serving"
                            checked={selectedSize === "serving"}/>
                     <label className="nutritional-information__size-radio-label"
-                           htmlFor="size-radio-serving">Portion de {servingSize || "?"}</label>
+                           htmlFor="size-radio-serving">Portion {servingSize || "?"}</label>
 
                 </div>
             </div>

@@ -9,7 +9,7 @@
     &-item {
       display: inline-block;
       margin-right: 1em;
-      margin-bottom: 0.4em;
+      margin-bottom: 0.6em;
 
       &-color {
         display: inline-block;
@@ -59,6 +59,7 @@
 
   &__value {
     font-size: $little-font-size;
+    font-weight: 600;
     display: inline-block;
     text-align: right;
   }

@@ -6,7 +6,7 @@
   &__size {
     display: flex;
     align-items: center;
-    margin-bottom: 0.8em;
+    margin-bottom: 1em;
 
     &-label {
       margin-right: 0.6em;
@@ -20,7 +20,7 @@
 
       &:checked + &-label {
         color: $font-color-white;
-        background-color: $primary-element-color;
+        @include button-colorization($primary-element-color);
       }
 
       &-label {
@@ -29,7 +29,8 @@
         height: 30px;
         padding: 0 1em;
         color: $font-color-dark-grey;
-        background-color: $secondary-element-color;
+        @include button-colorization($secondary-element-color);
+
 
         &:hover {
           cursor: pointer;
@@ -49,7 +50,7 @@
   }
 
   &__energy {
-    margin-bottom: 0.6em;
+    margin-bottom: 1em;
 
     &-icon {
       $width: 25px;

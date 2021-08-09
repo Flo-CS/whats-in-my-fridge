@@ -62,7 +62,7 @@ $max-content-width: 1000px;
 @mixin button-colorization($color) {
   background-color: $color;
   &:hover, &:focus {
-    background-color: scale-color($color, $lightness: -3%);
+    background-color: scale-color($color, $lightness: -5%);
   }
 }
 

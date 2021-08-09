@@ -20,6 +20,7 @@ function ScoresBox({nutriscore, ecoscore, nova}) {
                 </p>
                 <p className="scores-box__label">Nutriscore</p>
             </div>
+            <div className="scores-box__separation"/>
             <div className="scores-box__score">
                 <p className="scores-box__value"
                    style={{color: LETTER_SCORES_COLORS[ecoscore]}}>
@@ -27,6 +28,7 @@ function ScoresBox({nutriscore, ecoscore, nova}) {
                 </p>
                 <p className="scores-box__label">Ecoscore</p>
             </div>
+            <div className="scores-box__separation"/>
             <div className="scores-box__score">
                 <p className="scores-box__value"
                    style={{color: NOVA_COLORS[nova]}}>

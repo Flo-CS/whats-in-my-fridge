@@ -3,7 +3,7 @@
 .scores-box {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 100%;
   max-width: 350px;
   height: 70px;
@@ -26,6 +26,13 @@
 
   &__label {
     color: $font-color-light-grey;
+  }
+
+  &__separation {
+    display: inline-block;
+    width: 1px;
+    height: 60%;
+    background-color: $tertiary-element-color;
   }
 
 }
