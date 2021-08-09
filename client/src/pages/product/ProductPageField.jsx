@@ -12,7 +12,9 @@ function ProductPageField({title, children}) {
     return (
         <div className="product-page-field">
             <p className="product-page-field__title">{title}</p>
-            {children}
+            <div className="product-page-field__content">
+                {children}
+            </div>
         </div>
     );
 }

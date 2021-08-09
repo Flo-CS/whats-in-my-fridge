@@ -25,7 +25,9 @@ const PATHS = {
     LOGIN: "/login"
 };
 
-const QUANTITY_REGEX = /(\d+\s*[^\d\W]+)/g;
+const QUANTITY_REGEX = /((\d+\.?\d+)\s*[^\d\W]+)/g;
+
+const KJ_TO_KCAL_FACTOR = 0.2388;
 
 export {
     WIKIDATA_API_ENDPOINT,
@@ -35,5 +37,6 @@ export {
     LETTER_SCORES_COLORS,
     NOVA_COLORS,
     PATHS,
-    QUANTITY_REGEX
+    QUANTITY_REGEX,
+    KJ_TO_KCAL_FACTOR
 };

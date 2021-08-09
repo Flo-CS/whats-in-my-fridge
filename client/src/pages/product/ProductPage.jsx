@@ -35,7 +35,7 @@ export default function ProductPage() {
         nutriscore_grade,
         ecoscore_grade,
         nova_group,
-        quantity,
+        quantity: size,
         nutrient_levels = {},
         nutriments = {},
         serving_size
@@ -49,21 +49,22 @@ export default function ProductPage() {
     const brands = capitalize(brands_tags.map(tag => tag.name).join(", "));
     const name = capitalize(product_name);
 
-    const cleanedQuantity = quantity?.match(QUANTITY_REGEX)?.[0] || quantity;
+    const cleanedSize = size?.match(QUANTITY_REGEX)?.[0] || size;
+    const cleanedServingSize = serving_size?.match(QUANTITY_REGEX)?.[0];
 
     return <div className="product-page">
         {isLoading === false ? <>
                 <ProductPageHeader barcode={product.barcode}
                                    name={name}
                                    brands={brands}
-                                   quantityInTheProduct={cleanedQuantity}
+                                   size={cleanedSize}
                                    imageUrl={image_small_url}
                                    quantity={product.quantity}/>
                 <ProductPageBody>
                     <ScoresBox nutriscore={nutriscore} ecoscore={ecoscore} nova={nova}/>
                     <ProductPageField title="Informations nutritionnelles">
                         <NutritionalInformation nutriments={nutriments} nutrientLevels={nutrient_levels}
-                                                servingSize={serving_size}/>
+                                                servingSize={cleanedServingSize}/>
                     </ProductPageField>
                 </ProductPageBody>
                 <ProductFooter presences={product.presences} barcode={product.barcode}/>

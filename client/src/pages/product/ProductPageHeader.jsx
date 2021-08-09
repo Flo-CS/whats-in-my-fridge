@@ -15,12 +15,12 @@ ProductPageHeader.propTypes = {
     barcode: PropTypes.string,
     imageUrl: PropTypes.string,
     name: PropTypes.string,
-    quantityInTheProduct: PropTypes.string,
+    size: PropTypes.string,
     brands: PropTypes.string,
     quantity: PropTypes.number.isRequired
 };
 
-export default function ProductPageHeader({barcode, imageUrl, name, quantity, quantityInTheProduct, brands}) {
+export default function ProductPageHeader({barcode, imageUrl, name, quantity, size, brands}) {
 
     const history = useHistory();
     const dispatch = useDispatch();
@@ -57,7 +57,7 @@ export default function ProductPageHeader({barcode, imageUrl, name, quantity, qu
                 <h1 className="product-page-header__name">{name}</h1>
                 <p className="product-page-header__brands">{brands}</p>
                 <p className="product-page-header__barcode">{barcode}</p>
-                <p className="product-page-header__size">{quantityInTheProduct}</p>
+                <p className="product-page-header__size">{size}</p>
             </div>
             <div className="product-page-header__controls">
                 <button className={downButtonClass}
