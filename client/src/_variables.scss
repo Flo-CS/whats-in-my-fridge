@@ -19,7 +19,7 @@ $font-color-white: #FFFFFF;
 $font-color-light-grey: #808080;
 $font-color-dark-grey: #404040;
 $font-color-black: #000000;
-$font-color-warning: #dc1919;
+$font-color-warning: #e01111;
 
 $primary-background-color: #FAFAFA;
 $secondary-background-color: #F7F7F7;
@@ -43,6 +43,8 @@ $card-border-radius: 5px;
 $navigation-bar-size: 50px;
 $page-content-spacing: 20px;
 $max-content-width: 1000px;
+
+//TODO: Create content spacing variables (separation between each element of field for example)
 
 
 // MIXINS

@@ -2,7 +2,9 @@ import PropTypes from 'prop-types';
 import React, {useState} from 'react';
 
 import {ReactComponent as FlameIcon} from "../../assets/icons/flame.svg";
+import ChipList from "../../components/data display/ChipList";
 import {KJ_TO_KCAL_FACTOR} from "../../helpers/constants";
+import Chip from "./../../components/data display/Chip";
 
 import "./NutritionalInformation.scss";
 
@@ -93,6 +95,16 @@ function NutritionalInformation({nutriments, servingSize, nutrientLevels}) {
             </span> kcal
             </p>
             <PercentageBar items={percentageBarItems} max={sizeToValue[selectedSize]} unit="g"/>
+            <ChipList>
+                <Chip>
+                    <Chip.TextPart text={getNutrimentValue("proteins")} variant="primary"/>
+                    <Chip.TextPart text="Protéines"/>
+                </Chip>
+                <Chip>
+                    <Chip.TextPart text={getNutrimentValue("fiber")} variant="primary"/>
+                    <Chip.TextPart text="Fibres"/>
+                </Chip>
+            </ChipList>
         </div>
     );
 }

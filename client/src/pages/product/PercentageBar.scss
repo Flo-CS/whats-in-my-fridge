@@ -2,6 +2,7 @@
 
 .percentage-bar {
   width: 100%;
+  margin-bottom: 1em;
 
   &__legend {
     margin-bottom: 8px;
@@ -59,7 +60,6 @@
 
   &__value {
     font-size: $little-font-size;
-    font-weight: 600;
     display: inline-block;
     text-align: right;
   }

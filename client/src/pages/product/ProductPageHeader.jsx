@@ -7,6 +7,7 @@ import {ReactComponent as MinusIcon} from "../../assets/icons/minus.svg";
 import {ReactComponent as PlusIcon} from "../../assets/icons/plus.svg";
 import {ReactComponent as TrashIcon} from "../../assets/icons/trash.svg";
 import {deleteProduct, updateProductQuantity} from "../../features/productSlice";
+import {PATHS} from "../../helpers/constants";
 import {ReactComponent as BackIcon} from "./../../assets/icons/chevron-back.svg";
 
 import "./ProductPageHeader.scss";
@@ -41,7 +42,7 @@ export default function ProductPageHeader({barcode, imageUrl, name, quantity, si
     }
 
     function handleBackButtonClick() {
-        history.goBack();
+        history.push(PATHS.HOME);
     }
 
     const isDeleteButtonActive = quantity <= 0;

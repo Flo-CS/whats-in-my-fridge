@@ -1,0 +1,12 @@
+$vertical-spacing: 5px;
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -$vertical-spacing;
+
+  & > * {
+    margin-right: 10px;
+    margin-bottom: $vertical-spacing;
+  }
+}

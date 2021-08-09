@@ -1,0 +1,98 @@
+@import "./../../variables";
+
+.chip {
+  display: flex;
+  height: 30px;
+
+  $chip: &;
+
+  &__button {
+    @include reset-button();
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0;
+  }
+
+  &__icon {
+    height: 100%;
+  }
+
+  &__part {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 0.7em;
+    background-color: $secondary-background-color;
+
+
+    &:first-child {
+      @include border-radius-left($card-border-radius);
+    }
+
+    &:last-child {
+      @include border-radius-right($card-border-radius)
+    }
+
+
+    &--primary {
+      background-color: $primary-element-color;
+
+      #{$chip}__text {
+        font-weight: 600;
+        color: $font-color-white;
+      }
+
+      #{$chip}__icon {
+        color: $font-color-white;
+        fill: $font-color-white;
+      }
+    }
+
+    &--secondary {
+      background-color: $secondary-element-color;
+
+      #{$chip}__text {
+        font-weight: 600;
+
+        color: $font-color-dark-grey;
+      }
+
+      #{$chip}__icon {
+        color: $font-color-dark-grey;
+        fill: $font-color-dark-grey;
+      }
+    }
+
+    &--warning {
+      background-color: $font-color-warning;
+
+      #{$chip}__text {
+        font-weight: 600;
+        color: $font-color-white;
+      }
+
+      #{$chip}__icon {
+        color: $font-color-white;
+        fill: $font-color-white;
+      }
+    }
+
+    &--with-icon {
+      padding: 0.3em;
+    }
+
+    &--full {
+      padding: 0;
+    }
+
+    &--clickable {
+      cursor: pointer;
+    }
+  }
+}
+
