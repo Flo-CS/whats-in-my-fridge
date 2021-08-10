@@ -86,7 +86,7 @@ const openFoodFactsErrors = {
     downloadTaxonomiesFiles: {
         message: "Impossible de télécharger les fichiers de taxonomies d'Open Food Facts"
     },
-    convertTags: {
+    getTagInfos: {
         message: "Impossible d'obtenir les informations liées aux tags"
     }
 };

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const dayjs = require("dayjs");
-const {convertTagsFieldsWithTaxonomies} = require("../helpers/taxonomies");
+const {getTagsInfos} = require("../helpers/taxonomies");
 
 
 const productSchema = new mongoose.Schema(
@@ -16,7 +16,24 @@ const productSchema = new mongoose.Schema(
 productSchema.methods.export = function () {
     const product = this.toJSON();
 
-    product.data = convertTagsFieldsWithTaxonomies(product.data);
+    const tagsFieldsWithAssociatedTaxonomy = [
+        {field: "brands", taxonomyName: "brands"},
+        {field: "categories", taxonomyName: "categories"},
+        {field: "labels", taxonomyName: "labels"},
+        {field: "origins", taxonomyName: "origins"},
+        {field: "countries", taxonomyName: "countries"},
+        {field: "traces", taxonomyName: "allergens"},
+        {field: "allergens", taxonomyName: "allergens"},
+        {field: "additives", taxonomyName: "additives"},
+        {field: "ingredients", taxonomyName: "ingredients"},
+        {field: "ingredients_analysis", taxonomyName: "ingredients_analysis"},
+    ];
+
+    // Replace the current tags list by the list of infos about each tag
+    for (const {field, taxonomyName} of tagsFieldsWithAssociatedTaxonomy) {
+        const fieldName = `${field}_tags`;
+        product.data[fieldName] = getTagsInfos(product.data[fieldName], taxonomyName);
+    }
 
     return product;
 };

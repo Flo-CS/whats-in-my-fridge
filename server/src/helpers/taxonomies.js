@@ -22,7 +22,7 @@ async function downloadTaxonomiesFiles(update = false) {
             const path = `${taxonomiesFilesPath}/${taxonomy}.json`;
 
             if (fs.existsSync(path) && !update)
-                return;
+                continue;
 
             const response = await axios.get(url);
             jsonfile.writeFileSync(path, response.data);
@@ -55,7 +55,7 @@ function loadTaxonomiesFiles() {
 
 
 // To clean the tag if he was not present in taxonomy or if there is no taxonomy for this type of tag
-function cleanTag(tag) {
+function formatTag(tag) {
     let tagName = removeCountryCodeFromTag(tag);
     // Remove specials characters
     tagName = tagName.replace(/[-_]/g, " ");
@@ -70,109 +70,95 @@ function removeCountryCodeFromTag(tag) {
     return splitTag[splitTag.length - 1];
 }
 
+function getTagTaxonomy(tag, taxonomyName) {
+    const taxonomyFile = global[taxonomyName];
 
-function getTagInfos(tag, taxonomyName) {
-    if (!tag)
-        return;
-
+    // Just clean the tag string
     tag = tag.trim().toLowerCase();
 
-    const tagCorrection = TAGS_CORRECTIONS[tag];
-    tag = tagCorrection || tag;
+    // Try to find a manual correction of the writing of the tag (in the case where the tag is very often "used" but not found in the taxonomy because of a writing error)
+    tag = TAGS_CORRECTIONS[tag] || tag;
 
-    const taxonomy = global[taxonomyName];
-    let tagTaxonomy = taxonomy[tag];
+    let tagTaxonomy = taxonomyFile[tag];
 
+    // If the taxonomy is still not found, try adding the country prefix "en".
+    // TODO : Think about its usefulness and the problems it may cause
     if (!tagTaxonomy) {
         tag = `en:${removeCountryCodeFromTag(tag)}`;
-        tagTaxonomy = taxonomy[tag];
+        tagTaxonomy = taxonomyFile[tag];
     }
 
-    if (!tagTaxonomy)
-        return {
-            name: cleanTag(tag),
-            isInTaxonomy: false,
-        };
-
-    const {
-        name, // For all type of tag (specific to user language)
-        description, // For all type of tag (specific to user language)
-        wikidata, // For all type of tag
-        vegetarian, // For ingredients, additives
-        vegan, // For ingredients, additives
-        from_palm_oil, // For ingredients, additives
-        additives_classes, // For additives
-        efsa_evaluation_overexposure_risk, // For additives (tag string)
-        efsa_evaluation_adi, // For additives
-        efsa_evaluation_exposure_mean_greater_than_adi, // For additives (tags string)
-        efsa_evaluation_exposure_95th_greater_than_adi, // For additives (tags string)
-        country, // For categories
-        origins, // For categories (tags string)
-        region, // For categories (specific to user language)
-        parents, // For all type of tags (tags list)
-        children, // For all type of tags (tags list)
-        daily_value, // For nutrients (string of number separate by commas)
-        unit // For nutrients
-    } = tagTaxonomy;
-
-    return {
-        name: name?.fr ? name?.fr : cleanTag(tag),
-        isInTaxonomy: !!name?.fr,
-        description: description?.fr,
-        wikidata: wikidata?.en,
-        vegetarian: getTagInfos(vegetarian?.en, "miscellaneous")?.name,
-        vegan: getTagInfos(vegan?.en, "miscellaneous")?.name,
-        from_palm_oil: getTagInfos(from_palm_oil?.en, "miscellaneous")?.name,
-        additives_classes: additives_classes?.en
-            ?.split(",").map(additiveClass => getTagInfos(additiveClass, "additives_classes")),
-        efsa_evaluation_overexposure_risk: getTagInfos(efsa_evaluation_overexposure_risk?.en, "miscellaneous")?.name,
-        efsa_evaluation_adi: efsa_evaluation_adi?.en,
-        efsa_evaluation_exposure_mean_greater_than_adi: efsa_evaluation_exposure_mean_greater_than_adi?.en
-            ?.split(",").map(populationCategory => getTagInfos(populationCategory, "miscellaneous")),
-        efsa_evaluation_exposure_95th_greater_than_adi: efsa_evaluation_exposure_95th_greater_than_adi?.en
-            ?.split(",").map(populationCategory => getTagInfos(populationCategory, "miscellaneous")),
-        country: country?.en,
-        origins: origins?.en
-            ?.split(",").map(origin => getTagInfos(origin, "origins")),
-        region: region?.fr,
-        daily_value: daily_value?.en,
-        unit: unit?.en
-    };
+    return tagTaxonomy;
 }
 
-// Translate tags from fields preceded with _tags which are lists containing tags ids, for example, traduce "en:beverages" to
-// an object containing the name Beverages (or Boissons in french) as well as other infos like wikidata QID etc.
-function convertTagsFieldsWithTaxonomies(productData) {
+function getTagInfos(tag, taxonomyName) {
     try {
-        const {
-            brands_tags,
-            categories_tags,
-            labels_tags,
-            origins_tags,
-            countries_tags,
-            traces_tags,
-            allergens_tags,
-            additives_tags,
-            ingredients_tags,
-            ingredients_analysis_tags,
-        } = productData;
+        if (!tag) return null;
 
+        const tagTaxonomy = getTagTaxonomy(tag, taxonomyName);
+
+        if (!tagTaxonomy)
+            return {
+                name: formatTag(tag),
+                isInTaxonomy: false,
+            };
+
+        const {
+            name, // For all type of tag (specific to user language)
+            description, // For all type of tag (specific to user language)
+            wikidata, // For all type of tag
+            vegetarian, // For ingredients, additives
+            vegan, // For ingredients, additives
+            from_palm_oil, // For ingredients, additives
+            additives_classes, // For additives
+            efsa_evaluation_overexposure_risk, // For additives (tag string)
+            efsa_evaluation_adi, // For additives
+            efsa_evaluation_exposure_mean_greater_than_adi, // For additives (tags string)
+            efsa_evaluation_exposure_95th_greater_than_adi, // For additives (tags string)
+            country, // For categories
+            origins, // For categories (tags string)
+            region, // For categories (specific to user language)
+        } = tagTaxonomy;
+
+        // TODO: Is the "miscellaneous" taxonomy file really necessary? Isn't it better to just translate on the fly?
         return {
-            ...productData,
-            brands_tags: brands_tags?.map(tag => getTagInfos(tag, "brands")),
-            categories_tags: categories_tags?.map(tag => getTagInfos(tag, "categories")),
-            labels_tags: labels_tags?.map(tag => getTagInfos(tag, "labels")),
-            origins_tags: origins_tags?.map(tag => getTagInfos(tag, "origins")),
-            countries_tags: countries_tags?.map(tag => getTagInfos(tag, "countries")),
-            traces_tags: traces_tags?.map(tag => getTagInfos(tag, "allergens")),
-            allergens_tags: allergens_tags?.map(tag => getTagInfos(tag, "allergens")),
-            additives_tags: additives_tags?.map(tag => getTagInfos(tag, "additives")),
-            ingredients_tags: ingredients_tags?.map(tag => getTagInfos(tag, "ingredients")),
-            ingredients_analysis_tags: ingredients_analysis_tags?.map(tag => getTagInfos(tag, "ingredients_analysis")),
+            key: tag,
+            name: name?.fr || formatTag(tag),
+            isInTaxonomy: !!name?.fr,
+            description: description?.fr,
+            wikidata: wikidata?.en,
+            vegetarian: getTagInfos(vegetarian?.en, "miscellaneous")?.name,
+            vegan: getTagInfos(vegan?.en, "miscellaneous")?.name,
+            from_palm_oil: getTagInfos(from_palm_oil?.en, "miscellaneous")?.name,
+            additives_classes: additives_classes?.en
+                ?.split(",").map(additiveClass => getTagInfos(additiveClass, "additives_classes")),
+            efsa_evaluation_overexposure_risk: getTagInfos(efsa_evaluation_overexposure_risk?.en, "miscellaneous")?.name,
+            efsa_evaluation_adi: efsa_evaluation_adi?.en,
+            efsa_evaluation_exposure_mean_greater_than_adi: efsa_evaluation_exposure_mean_greater_than_adi?.en
+                ?.split(",").map(populationCategory => getTagInfos(populationCategory, "miscellaneous")),
+            efsa_evaluation_exposure_95th_greater_than_adi: efsa_evaluation_exposure_95th_greater_than_adi?.en
+                ?.split(",").map(populationCategory => getTagInfos(populationCategory, "miscellaneous")),
+            country: country?.en,
+            origins: origins?.en
+                ?.split(",").map(origin => getTagInfos(origin, "origins")),
+            region: region?.fr,
         };
+
     } catch (error) {
-        throw new OpenFoodFactsError(openFoodFactsErrors.convertTags);
+        throw new OpenFoodFactsError(openFoodFactsErrors.getTagInfos);
     }
 }
 
-module.exports = {downloadTaxonomiesFiles, loadTaxonomiesFiles, convertTagsFieldsWithTaxonomies, getTagInfos};
+
+// Translate tags (that come from a field preceded with _tags, this fields are lists containing tags ids, like en:chocolate or fr:label-rouge), for example, traduce "en:beverages" to
+// an object containing the associated name: Beverages (or Boissons in french) as well as other infos: wikidata QID etc.
+function getTagsInfos(tags, taxonomyName) {
+    return tags?.map((tag) => getTagInfos(tag, taxonomyName));
+}
+
+module.exports = {
+    downloadTaxonomiesFiles,
+    loadTaxonomiesFiles,
+    getTagsInfos,
+    getTagInfos: getTagInfos
+};

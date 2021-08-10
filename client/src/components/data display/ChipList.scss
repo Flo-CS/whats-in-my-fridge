@@ -3,7 +3,7 @@ $vertical-spacing: 5px;
 .chip-list {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: -$vertical-spacing;
+  margin-bottom: -$vertical-spacing; // To cancel last row margin
 
   & > * {
     margin-right: 10px;
