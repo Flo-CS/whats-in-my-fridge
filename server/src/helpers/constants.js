@@ -42,16 +42,17 @@ const TAGS_CORRECTIONS = {
     "en:stabilizer": "en:stabiliser"
 };
 
-const MAIN_NUTRIMENTS_NAMES = [
+const NUTRIMENTS_KEYS = [
     "energy-kj",
     "energy-kcal",
     "fat",
     "saturated-fat",
     "sugars",
-    "salt"
+    "salt",
+    "fiber",
+    "iron",
+    "proteins" // TODO: Add more
 ];
-
-const OTHERS_NUTRIMENTS_NAMES = [];
 
 
 module.exports = {
@@ -62,6 +63,5 @@ module.exports = {
     TAGS_CORRECTIONS,
     OPEN_FOOD_FACTS_TAXONOMIES_FILES_PATH,
     OPEN_FOOD_FACTS_TRADUCTIONS_FILE_PATH,
-    MAIN_NUTRIMENTS_NAMES,
-    OTHERS_NUTRIMENTS_NAMES
+    NUTRIMENTS_KEYS
 };

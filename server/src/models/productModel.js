@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const dayjs = require("dayjs");
 const {getTagsInfos} = require("../helpers/open food facts/tags");
+const {transformNutriments} = require("../helpers/open food facts/nutriments");
 
 
 const productSchema = new mongoose.Schema(
@@ -35,7 +36,8 @@ productSchema.methods.export = function () {
         product.data[fieldName] = getTagsInfos(product.data[fieldName], taxonomyName);
     }
 
-    //
+    // Replace nutriments object by more convenient to use object
+    product.data.nutriments = transformNutriments(product.data.nutriments);
 
     return product;
 };

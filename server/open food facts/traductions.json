@@ -52,5 +52,14 @@
   },
   "salt": {
     "fr": "Sel"
+  },
+  "fiber": {
+    "fr": "Fibres"
+  },
+  "iron": {
+    "fr": "Fer"
+  },
+  "proteins": {
+    "fr": "Protéines"
   }
 }

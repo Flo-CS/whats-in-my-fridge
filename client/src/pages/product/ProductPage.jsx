@@ -36,8 +36,8 @@ export default function ProductPage() {
         ecoscore_grade,
         nova_group,
         quantity: size,
-        nutrient_levels = {},
-        nutriments = {},
+        nutrient_levels,
+        nutriments,
         serving_size
 
     } = product.data || {};
@@ -50,7 +50,7 @@ export default function ProductPage() {
     const name = capitalize(product_name);
 
     const cleanedSize = size?.match(QUANTITY_REGEX)?.[0] || size;
-    const cleanedServingSize = serving_size?.match(QUANTITY_REGEX)?.[0];
+    const cleanedServingSize = serving_size?.match(QUANTITY_REGEX)?.[0] || serving_size;
 
     return <div className="product-page">
         {isLoading === false ? <>
@@ -61,9 +61,12 @@ export default function ProductPage() {
                                    imageUrl={image_small_url}
                                    quantity={product.quantity}/>
                 <ProductPageBody>
-                    <ScoresBox nutriscore={nutriscore} ecoscore={ecoscore} nova={nova}/>
+                    <ScoresBox nutriscore={nutriscore}
+                               ecoscore={ecoscore}
+                               nova={nova}/>
                     <ProductPageField title="Informations nutritionnelles">
-                        <NutritionalInformation nutriments={nutriments} nutrientLevels={nutrient_levels}
+                        <NutritionalInformation nutriments={nutriments}
+                                                nutrientLevels={nutrient_levels}
                                                 servingSize={cleanedServingSize}/>
                     </ProductPageField>
                 </ProductPageBody>

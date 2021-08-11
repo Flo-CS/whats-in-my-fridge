@@ -21,31 +21,23 @@ function getTagData(tag, taxonomyName) {
     const taxonomyFile = global[taxonomyName];
 
     // Just clean the tag string
-    tag = tag.trim().toLowerCase();
+    const cleanedTag = tag.trim().toLowerCase();
 
     // Try to find a manual correction of the writing of the tag (in the case where the tag is very often "used" but not found in the taxonomy because of a writing error)
-    tag = TAGS_CORRECTIONS[tag] || tag;
+    const correctedTag = TAGS_CORRECTIONS[cleanedTag] || cleanedTag;
 
-    let tagTaxonomy = taxonomyFile[tag];
-
-    // If the taxonomy is still not found, try adding the country prefix "en".
-    // TODO : Think about its usefulness and the problems it may cause
-    if (!tagTaxonomy) {
-        tag = `en:${removeCountryCodeFromTag(tag)}`;
-        tagTaxonomy = taxonomyFile[tag];
-    }
-
-    return tagTaxonomy;
+    return taxonomyFile[correctedTag];
 }
 
 function getTagInfos(tag, taxonomyName) {
     try {
-        if (!tag) return null;
+        if (!tag) return null; // TODO: Is it useful ?
 
         const tagData = getTagData(tag, taxonomyName);
 
         if (!tagData)
             return {
+                key: tag,
                 name: formatTag(tag),
                 isInTaxonomy: false,
             };

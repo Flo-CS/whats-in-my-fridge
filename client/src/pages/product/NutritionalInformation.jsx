@@ -1,6 +1,6 @@
+import {omit, round} from "lodash";
 import PropTypes from 'prop-types';
 import React, {useState} from 'react';
-
 import {ReactComponent as FlameIcon} from "../../assets/icons/flame.svg";
 import ChipList from "../../components/data display/ChipList";
 import {KJ_TO_KCAL_FACTOR} from "../../helpers/constants";
@@ -16,6 +16,8 @@ NutritionalInformation.propTypes = {
     nutrientLevels: PropTypes.object
 };
 
+const MAIN_NUTRIMENTS_KEYS = ["energy-kcal", "energy-kj", "fat", "saturated-fat", "sugars", "salt"];
+
 // TODO : HANDLE DIFFERENT UNITS
 function NutritionalInformation({nutriments, servingSize, nutrientLevels}) {
 
@@ -26,41 +28,33 @@ function NutritionalInformation({nutriments, servingSize, nutrientLevels}) {
         "serving": parseFloat(servingSize)
     };
 
-    function getNutrimentValue(nutrimentName) {
-        return nutriments[`${nutrimentName}_${selectedSize}`];
+    function getNutrimentField(key, field) {
+        return nutriments?.[key]?.[field];
     }
 
-    const energy = getNutrimentValue("energy-kcal") || Math.round(getNutrimentValue("energy-kj") * KJ_TO_KCAL_FACTOR);
-
     // TODO: CHANGE COLOR AND USE NUTRIENT LEVELS TO GIVE A POINT OF REFERENCE TO THE USER
-    const percentageBarItems = [
-        {
-            name: "Matières grasses",
-            value: getNutrimentValue("fat"),
-            color: "#FF0000"
-        },
-        {
-            name: "Acides gras saturés",
-            value: getNutrimentValue("saturated-fat"),
-            color: "#FF7A00"
-        },
-        {
-            name: "Sucres",
-            value: getNutrimentValue("sugars"),
-            color: "#FFB800"
-        },
-        {
-            name: "Sel",
-            value: getNutrimentValue("salt"),
-            color: "#FFD600"
-        }
+    const nutrimentsItems = [
+        {key: "fat", color: "#FF0000"},
+        {key: "saturated-fat", color: "#FF7A00"},
+        {key: "sugars", color: "#FFB800"},
+        {key: "salt", color: "#FFD600"}
     ];
 
+    const percentageBarItems = nutrimentsItems.map(({key, color}) => {
+        return {
+            name: getNutrimentField(key, "name"),
+            value: getNutrimentField(key, selectedSize),
+            color: color
+        };
+    });
 
     function handleSizeChange(e) {
         setSelectedSize(e.target.value);
     }
 
+    const energy = getNutrimentField("energy-kcal", selectedSize) || round(getNutrimentField("energy-kj", selectedSize) * KJ_TO_KCAL_FACTOR, 1);
+
+    const othersNutriments = omit(nutriments, MAIN_NUTRIMENTS_KEYS);
 
     return (
         <div className="nutritional-information">
@@ -96,14 +90,13 @@ function NutritionalInformation({nutriments, servingSize, nutrientLevels}) {
             </p>
             <PercentageBar items={percentageBarItems} max={sizeToValue[selectedSize]} unit="g"/>
             <ChipList>
-                <Chip>
-                    <Chip.TextPart text={getNutrimentValue("proteins")} variant="primary"/>
-                    <Chip.TextPart text="Protéines"/>
-                </Chip>
-                <Chip>
-                    <Chip.TextPart text={getNutrimentValue("fiber")} variant="primary"/>
-                    <Chip.TextPart text="Fibres"/>
-                </Chip>
+                {Object.values(othersNutriments).map(nutriment => {
+                    return <Chip key={nutriment.name}>
+                        <Chip.TextPart text={`${nutriment[selectedSize]} ${nutriment.unit}`} variant="primary"/>
+                        <Chip.TextPart text={nutriment.name}/>
+                    </Chip>;
+                })
+                }
             </ChipList>
         </div>
     );
