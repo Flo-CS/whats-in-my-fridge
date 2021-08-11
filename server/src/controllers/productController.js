@@ -4,7 +4,7 @@ const {validationErrors} = require("../helpers/errors");
 const {databaseErrors} = require("../helpers/errors");
 const {ValidationError} = require("../helpers/errors");
 const {DatabaseError} = require("../helpers/errors");
-const {getOFFdata} = require("../helpers/product");
+const {getOFFdata} = require("../helpers/open food facts/api");
 const {ProductsStats} = require("../helpers/productsStats");
 
 

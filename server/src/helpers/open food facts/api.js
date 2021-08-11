@@ -1,7 +1,6 @@
-const {OPEN_FOOD_FACTS_API_ENDPOINT, OPEN_FOOD_FACTS_USEFUL_FIELDS} = require("./constants");
+const {OPEN_FOOD_FACTS_API_ENDPOINT, OPEN_FOOD_FACTS_USEFUL_FIELDS} = require("../constants");
 const axios = require("axios");
-const _ = require("lodash");
-const {OpenFoodFactsError, openFoodFactsErrors} = require("./errors");
+const {OpenFoodFactsError, openFoodFactsErrors} = require("../errors");
 
 async function getOFFdata(barcode) {
 
@@ -23,19 +22,4 @@ async function getOFFdata(barcode) {
 }
 
 
-function letterScoreToScore(letter) {
-    const letterConversions = {
-        "A": 5,
-        "B": 4,
-        "C": 3,
-        "D": 2,
-        "E": 1
-    };
-
-    if (!_.isString(letter) || _.isNil(letter)) return;
-
-    letter = letter.toUpperCase();
-    return letterConversions[letter];
-}
-
-module.exports = {getOFFdata, letterScoreToScore};
+module.exports = {getOFFdata};

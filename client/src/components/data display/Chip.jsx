@@ -18,7 +18,7 @@ function Chip({children}) {
 }
 
 ChipTextPart.propTypes = {
-    text: PropTypes.string,
+    text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     variant: PropTypes.oneOf(["primary", "secondary", "warning"])
 };
 

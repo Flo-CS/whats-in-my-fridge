@@ -83,6 +83,9 @@ const openFoodFactsErrors = {
     readTaxonomiesFiles: {
         message: "Impossible de lire les fichiers de taxonomies d'Open Food Facts"
     },
+    readTraductionsFile: {
+        message: "Impossible de lire les fichiers de traductions Open Food Facts"
+    },
     downloadTaxonomiesFiles: {
         message: "Impossible de télécharger les fichiers de taxonomies d'Open Food Facts"
     },

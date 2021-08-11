@@ -1,3 +1,4 @@
+const path = require("path");
 const OPEN_FOOD_FACTS_API_ENDPOINT = "https://world.openfoodfacts.org/api/v0";
 const OPEN_FOOD_FACTS_TAXONOMIES_ENDPOINT = "https://world.openfoodfacts.org/data/taxonomies";
 const OPEN_FOOD_FACTS_USEFUL_FIELDS = ["product_name",
@@ -33,14 +34,34 @@ const OPEN_FOOD_FACTS_USEFUL_TAXONOMIES = [
     "labels",
     "brands"];
 
+const OPEN_FOOD_FACTS_TAXONOMIES_FILES_PATH = path.join(__dirname, "./../../open food facts/taxonomies");
+const OPEN_FOOD_FACTS_TRADUCTIONS_FILE_PATH = path.join(__dirname, "./../../open food facts/traductions.json");
+
+
 const TAGS_CORRECTIONS = {
     "en:stabilizer": "en:stabiliser"
 };
+
+const MAIN_NUTRIMENTS_NAMES = [
+    "energy-kj",
+    "energy-kcal",
+    "fat",
+    "saturated-fat",
+    "sugars",
+    "salt"
+];
+
+const OTHERS_NUTRIMENTS_NAMES = [];
+
 
 module.exports = {
     OPEN_FOOD_FACTS_API_ENDPOINT,
     OPEN_FOOD_FACTS_USEFUL_FIELDS,
     OPEN_FOOD_FACTS_TAXONOMIES_ENDPOINT,
     OPEN_FOOD_FACTS_USEFUL_TAXONOMIES,
-    TAGS_CORRECTIONS
+    TAGS_CORRECTIONS,
+    OPEN_FOOD_FACTS_TAXONOMIES_FILES_PATH,
+    OPEN_FOOD_FACTS_TRADUCTIONS_FILE_PATH,
+    MAIN_NUTRIMENTS_NAMES,
+    OTHERS_NUTRIMENTS_NAMES
 };

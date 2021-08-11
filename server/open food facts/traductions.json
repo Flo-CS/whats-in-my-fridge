@@ -1,0 +1,56 @@
+{
+  "no": {
+    "fr": "Non"
+  },
+  "moderate": {
+    "fr": "Modéré"
+  },
+  "high": {
+    "fr": "Élevé"
+  },
+  "maybe": {
+    "fr": "Peut être"
+  },
+  "yes": {
+    "fr": "Oui"
+  },
+  "infants": {
+    "fr": "Nourrissons (< 1 an)"
+  },
+  "toddlers": {
+    "fr": "Jeunes enfants (1 à 2 ans)"
+  },
+  "children": {
+    "fr": "Enfants (3 à 9 ans)"
+  },
+  "adolescents": {
+    "fr": "Adolescents (10 à 17 ans)"
+  },
+  "adults": {
+    "fr": "Adultes (18 à 64 ans)"
+  },
+  "elderly": {
+    "fr": "Personnes âgées (> 65 ans)"
+  },
+  "no-group": {
+    "fr": "Aucun groupe"
+  },
+  "energy_kj": {
+    "fr": "Énergie"
+  },
+  "energy_kcal": {
+    "fr": "Énergie"
+  },
+  "fat": {
+    "fr": "Matières grasses"
+  },
+  "saturated-fat": {
+    "fr": "Acides gras saturés"
+  },
+  "sugars": {
+    "fr": "Sucres"
+  },
+  "salt": {
+    "fr": "Sel"
+  }
+}

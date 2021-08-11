@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const dayjs = require("dayjs");
-const {getTagsInfos} = require("../helpers/taxonomies");
+const {getTagsInfos} = require("../helpers/open food facts/tags");
 
 
 const productSchema = new mongoose.Schema(
@@ -29,11 +29,13 @@ productSchema.methods.export = function () {
         {field: "ingredients_analysis", taxonomyName: "ingredients_analysis"},
     ];
 
-    // Replace the current tags list by the list of infos about each tag
+    // Replace each current tags list by the list of infos about each tag
     for (const {field, taxonomyName} of tagsFieldsWithAssociatedTaxonomy) {
         const fieldName = `${field}_tags`;
         product.data[fieldName] = getTagsInfos(product.data[fieldName], taxonomyName);
     }
+
+    //
 
     return product;
 };

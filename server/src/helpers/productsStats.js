@@ -3,7 +3,7 @@ const dayjs = require("dayjs");
 const isBetween = require("dayjs/plugin/isBetween");
 const utc = require("dayjs/plugin/utc");
 
-const {letterScoreToScore} = require("./product");
+const {letterScoreToScore} = require("./open food facts/scores");
 
 dayjs.extend(isBetween);
 dayjs.extend(utc);

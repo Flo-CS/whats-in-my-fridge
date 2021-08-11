@@ -11,7 +11,7 @@ require("dotenv").config();
 
 const productRoute = require("./server/src/routes/productRoute");
 const userRoute = require("./server/src/routes/userRoute");
-const {downloadTaxonomiesFiles, loadTaxonomiesFiles} = require("./server/src/helpers/taxonomies");
+const {downloadTaxonomiesFiles, loadTaxonomiesFiles} = require("./server/src/helpers/open food facts/taxonomies");
 
 // Setup DB connection
 mongoose
@@ -28,6 +28,7 @@ mongoose
 downloadTaxonomiesFiles(false).then(() => {
     loadTaxonomiesFiles();
 });
+
 
 if (process.env.DOWNLOAD_TAXONOMIES_REGULARLY === "TRUE") {
     setInterval(() => {
