@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import React, {useRef, useState} from "react";
 import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
-import {ReactComponent as MinusIcon} from "../../assets/icons/minus.svg";
-import {ReactComponent as PlusIcon} from "../../assets/icons/plus.svg";
-import {ReactComponent as TrashIcon} from "../../assets/icons/trash.svg";
-import {deleteProduct, updateProductQuantity} from "../../features/productSlice";
-import {LETTER_SCORES_COLORS, NOVA_COLORS, PATHS} from "../../helpers/constants";
-import {truncateString} from "../../helpers/miscellaneous";
+import {ReactComponent as MinusIcon} from "../../../assets/icons/minus.svg";
+import {ReactComponent as PlusIcon} from "../../../assets/icons/plus.svg";
+import {ReactComponent as TrashIcon} from "../../../assets/icons/trash.svg";
+import {deleteProduct, updateProductQuantity} from "../../../features/productSlice";
+import {LETTER_SCORES_COLORS, NOVA_COLORS, PATHS} from "../../../helpers/constants";
+import {truncateString} from "../../../helpers/miscellaneous";
 
 import "./ProductCard.scss";
 

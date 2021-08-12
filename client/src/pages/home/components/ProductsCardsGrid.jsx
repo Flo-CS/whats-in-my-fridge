@@ -1,7 +1,7 @@
 import {capitalize} from "lodash";
 import propTypes from "prop-types";
 import React from "react";
-import {formatScore} from "../../helpers/miscellaneous";
+import {formatScore} from "../../../helpers/miscellaneous";
 
 import ProductCard from "./ProductCard";
 

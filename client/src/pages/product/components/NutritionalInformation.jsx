@@ -2,15 +2,15 @@ import convert from "convert-units";
 import {omit, round} from "lodash";
 import PropTypes from 'prop-types';
 import React, {useState} from 'react';
-import {ReactComponent as FlameIcon} from "../../assets/icons/flame.svg";
-import ChipList from "../../components/data display/ChipList";
-import Switch from "../../components/input/Switch";
-import {KJ_TO_KCAL_FACTOR} from "../../helpers/constants";
-import Chip from "./../../components/data display/Chip";
+import {ReactComponent as FlameIcon} from "../../../assets/icons/flame.svg";
+import Chip from "../../../components/data display/Chip";
+import ChipList from "../../../components/data display/ChipList";
+
+import PercentageBar from "../../../components/data display/PercentageBar";
+import Switch from "../../../components/input/Switch";
+import {KJ_TO_KCAL_FACTOR} from "../../../helpers/constants";
 
 import "./NutritionalInformation.scss";
-
-import PercentageBar from "./PercentageBar";
 
 NutritionalInformation.propTypes = {
     nutriments: PropTypes.object,

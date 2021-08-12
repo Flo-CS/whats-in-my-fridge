@@ -1,4 +1,4 @@
-@import "../../variables";
+@import "../../../variables";
 
 .product-page-header {
   font-size: $normal-font-size;
@@ -75,15 +75,15 @@
 
   &__quantity-button {
     @include reset-button();
-    @include button-colorization($primary-element-color);
+    @include button-colorization($secondary-element-color);
     width: 30px;
     height: 30px;
     padding: 4px;
     border-radius: $control-border-radius;
 
     &-icon {
-      color: $font-color-white;
-      fill: $font-color-white;
+      color: $font-color-dark-grey;
+      fill: $font-color-dark-grey;
     }
 
     &--warning {

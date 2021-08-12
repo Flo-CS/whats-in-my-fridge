@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {setSortParameters, setTextFilter} from "../../features/filtersSlice";
-import {SORT_OPTIONS} from "../../helpers/constants";
-import SortControl from "../controls/SortControl";
-import SearchInput from "../input/SearchInput";
+import SortControl from "../../../components/controls/SortControl";
+import SearchInput from "../../../components/input/SearchInput";
+import {setSortParameters, setTextFilter} from "../../../features/filtersSlice";
+import {SORT_OPTIONS} from "../../../helpers/constants";
 
 import "./SearchBar.scss";
 

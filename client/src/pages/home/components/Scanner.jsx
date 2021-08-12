@@ -3,8 +3,8 @@ import propTypes from "prop-types";
 import Quagga from "quagga";
 import React, {useEffect, useState} from "react";
 
-import {ReactComponent as CloseIcon} from "../../assets/icons/close.svg";
-import {ReactComponent as FlashIcon} from "../../assets/icons/flash.svg";
+import {ReactComponent as CloseIcon} from "../../../assets/icons/close.svg";
+import {ReactComponent as FlashIcon} from "../../../assets/icons/flash.svg";
 
 import "./Scanner.scss";
 

@@ -2,17 +2,16 @@ import {capitalize} from "lodash";
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
+import ScoresBox from "../../components/data display/ScoresBox";
 import ThreeDotLoading from "../../components/loading/ThreeDotLoading";
 import {fetchActiveProduct, selectActiveProduct} from "../../features/productSlice";
-import {QUANTITY_REGEX} from "../../helpers/constants";
+import {LETTER_SCORES_COLORS, NOVA_COLORS, QUANTITY_REGEX} from "../../helpers/constants";
 import {formatScore} from "../../helpers/miscellaneous";
-import NutritionalInformation from "./NutritionalInformation";
-import ProductFooter from "./ProductFooter";
-
-import ProductPageBody from "./ProductPageBody";
-import ProductPageField from "./ProductPageField";
-import ProductPageHeader from "./ProductPageHeader";
-import ScoresBox from "./ScoresBox";
+import NutritionalInformation from "./components/NutritionalInformation";
+import ProductPageBody from "./components/ProductPageBody";
+import ProductPageField from "./components/ProductPageField";
+import ProductPageHeader from "./components/ProductPageHeader";
+import "./ProductPage.scss";
 
 
 export default function ProductPage() {
@@ -52,6 +51,22 @@ export default function ProductPage() {
     const cleanedSize = size?.match(QUANTITY_REGEX)?.[0] || size;
     const cleanedServingSize = serving_size?.match(QUANTITY_REGEX)?.[0] || serving_size;
 
+    const scoresBoxItems = [{
+        name: "Nutriscore",
+        value: nutriscore,
+        color: LETTER_SCORES_COLORS[nutriscore]
+    },
+        {
+            name: "Ecoscore",
+            value: ecoscore,
+            color: LETTER_SCORES_COLORS[ecoscore]
+        },
+        {
+            name: "Nova",
+            value: nova,
+            color: NOVA_COLORS[nova]
+        }];
+
     return <div className="product-page">
         {isLoading === false ? <>
                 <ProductPageHeader barcode={product.barcode}
@@ -61,16 +76,13 @@ export default function ProductPage() {
                                    imageUrl={image_small_url}
                                    quantity={product.quantity}/>
                 <ProductPageBody>
-                    <ScoresBox nutriscore={nutriscore}
-                               ecoscore={ecoscore}
-                               nova={nova}/>
+                    <ScoresBox items={scoresBoxItems}/>
                     <ProductPageField title="Informations nutritionnelles">
                         <NutritionalInformation nutriments={nutriments}
                                                 nutrientLevels={nutrient_levels}
                                                 servingSize={cleanedServingSize}/>
                     </ProductPageField>
                 </ProductPageBody>
-                <ProductFooter presences={product.presences} barcode={product.barcode}/>
             </> :
             <ThreeDotLoading/>}
 

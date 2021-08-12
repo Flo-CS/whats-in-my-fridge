@@ -1,12 +1,9 @@
-@import "./../../variables";
+@import "../../variables";
 
 .scores-box {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
-  max-width: 350px;
-  height: 70px;
+  height: 80px;
   border-radius: $card-border-radius * 2;
   background-color: $primary-background-color;
 
@@ -15,6 +12,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    min-width: 80px;
+    margin: 0 20px;
   }
 
   &__value {
