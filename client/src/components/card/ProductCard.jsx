@@ -64,7 +64,8 @@ export default function ProductCard({barcode, quantity, imageUrl, brands, name, 
                      src={imageUrl}
                 />
             </div>
-            <div className="product-card__content" onClick={handleCardClick} onKeyDown={handleCardClick} role="button"
+            <div className="product-card__content" onClick={handleCardClick}
+                 onKeyDown={(e) => e.key === "Enter" && handleCardClick()} role="button"
                  tabIndex="0"> {/*role is mandatory to respect a11y*/}
                 <p className="product-card__name">
                     {truncateString(name, 30)}
