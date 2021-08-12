@@ -61,5 +61,17 @@
   },
   "proteins": {
     "fr": "Protéines"
+  },
+  "sodium": {
+    "fr": "Sodium"
+  },
+  "magnesium": {
+    "fr": "Magnésium"
+  },
+  "phosphorus": {
+    "fr": "Phosphore"
+  },
+  "vitamin-b1": {
+    "fr": "Vitamine B1"
   }
 }

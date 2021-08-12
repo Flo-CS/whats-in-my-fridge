@@ -1,0 +1,48 @@
+@import "./../../variables";
+
+.switch {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+
+  &__label {
+    margin-right: 0.6em;
+    color: $font-color-light-grey;
+  }
+
+  &__radio {
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+
+    &:checked + &-label {
+      color: $font-color-white;
+      @include button-colorization($primary-element-color);
+    }
+
+    &-label {
+      display: inline-flex;
+      align-items: center;
+      height: 30px;
+      padding: 0 1em;
+      color: $font-color-dark-grey;
+      @include button-colorization($secondary-element-color);
+
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:first-of-type {
+        @include border-radius-left($control-border-radius)
+      }
+
+      &:last-of-type {
+        @include border-radius-right($control-border-radius)
+
+      }
+
+    }
+  }
+}
+

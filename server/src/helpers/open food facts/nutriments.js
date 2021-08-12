@@ -1,11 +1,11 @@
-const {NUTRIMENTS_KEYS} = require("../constants");
+const {USEFUL_NUTRIMENTS_KEYS} = require("../constants");
 const {getTraduction} = require("./traductions");
 
 // Transform the nutriments object which come from the Open Food Facts into a more convenient object to use (with, if available, the traduction for the nutriment)
 function transformNutriments(oldNutriments) {
     const nutriments = {};
 
-    for (const nutrimentKey of NUTRIMENTS_KEYS) {
+    for (const nutrimentKey of USEFUL_NUTRIMENTS_KEYS) {
         const nutrimentInfos = getNutrimentInfos(oldNutriments, nutrimentKey);
 
         if (!nutrimentInfos) continue;

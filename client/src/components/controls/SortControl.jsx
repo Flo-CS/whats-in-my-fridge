@@ -16,10 +16,10 @@ SortControl.propTypes = {
     options: PropTypes.arrayOf(PropTypes.object).isRequired,
     direction: PropTypes.string,
     selectedOption: PropTypes.string,
-    title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
-function SortControl({onOptionChange, onDirectionChange, options, selectedOption, direction, title}) {
+function SortControl({onOptionChange, onDirectionChange, options, selectedOption, direction, label}) {
     const [isOpen, setIsOpen] = useState(false);
 
     const selectRef = createRef();
@@ -45,7 +45,7 @@ function SortControl({onOptionChange, onDirectionChange, options, selectedOption
         <div className="sort-control" ref={selectRef}>
             <div className="sort-control__dropdown">
                 <button className="sort-control__dropdown-button" onClick={toggleOptionsMenu}>
-                    <span>{title} <strong className="sort-control__dropdown-button-strong">{selectedOptionName}</strong></span>
+                    <span>{label} <strong className="sort-control__dropdown-button-strong">{selectedOptionName}</strong></span>
                     <ChevronDownIcon className="sort-control__dropdown-button-icon"/>
                 </button>
                 {isOpen &&

@@ -1,8 +1,10 @@
+import convert from "convert-units";
 import {omit, round} from "lodash";
 import PropTypes from 'prop-types';
 import React, {useState} from 'react';
 import {ReactComponent as FlameIcon} from "../../assets/icons/flame.svg";
 import ChipList from "../../components/data display/ChipList";
+import Switch from "../../components/input/Switch";
 import {KJ_TO_KCAL_FACTOR} from "../../helpers/constants";
 import Chip from "./../../components/data display/Chip";
 
@@ -21,78 +23,71 @@ const MAIN_NUTRIMENTS_KEYS = ["energy-kcal", "energy-kj", "fat", "saturated-fat"
 // TODO : HANDLE DIFFERENT UNITS
 function NutritionalInformation({nutriments, servingSize, nutrientLevels}) {
 
-    const [selectedSize, setSelectedSize] = useState("100g");
-
-    const sizeToValue = {
-        "100g": 100,
-        "serving": parseFloat(servingSize)
-    };
+    const [sizeKey, setSizeKey] = useState("100g");
 
     function getNutrimentField(key, field) {
         return nutriments?.[key]?.[field];
     }
 
-    // TODO: CHANGE COLOR AND USE NUTRIENT LEVELS TO GIVE A POINT OF REFERENCE TO THE USER
-    const nutrimentsItems = [
-        {key: "fat", color: "#FF0000"},
-        {key: "saturated-fat", color: "#FF7A00"},
-        {key: "sugars", color: "#FFB800"},
-        {key: "salt", color: "#FFD600"}
+    const sizeKeyToValue = {
+        "100g": 100,
+        "serving": parseFloat(servingSize)
+    };
+
+    const switchItems = [
+        {key: "100g", name: "100 g"},
+        {key: "serving", name: `Portion ${servingSize}`}
     ];
 
-    const percentageBarItems = nutrimentsItems.map(({key, color}) => {
-        return {
-            name: getNutrimentField(key, "name"),
-            value: getNutrimentField(key, selectedSize),
-            color: color
-        };
-    });
+    // TODO: Change color and use nutrient levels to give a point of reference to the user
+    const percentageBarItems = [
+        {
+            name: getNutrimentField("fat", "name"),
+            value: getNutrimentField("fat", sizeKey),
+            color: "#FF0000"
+        },
+        {
+            name: getNutrimentField("saturated-fat", "name"),
+            value: getNutrimentField("saturated-fat", sizeKey),
+            color: "#FF7A00"
+        },
+        {
+            name: getNutrimentField("sugars", "name"),
+            value: getNutrimentField("sugars", sizeKey),
+            color: "#FFB800"
+        },
+        {
+            name: getNutrimentField("salt", "name"),
+            value: getNutrimentField("salt", sizeKey),
+            color: "#FFD600"
+        }
+    ];
 
-    function handleSizeChange(e) {
-        setSelectedSize(e.target.value);
-    }
-
-    const energy = getNutrimentField("energy-kcal", selectedSize) || round(getNutrimentField("energy-kj", selectedSize) * KJ_TO_KCAL_FACTOR, 1);
+    let energyKj = getNutrimentField("energy-kj", sizeKey);
+    let energyKcal = getNutrimentField("energy-kcal", sizeKey) || round(energyKj * KJ_TO_KCAL_FACTOR, 1);
 
     const othersNutriments = omit(nutriments, MAIN_NUTRIMENTS_KEYS);
 
     return (
         <div className="nutritional-information">
-            <div className="nutritional-information__size">
-                <p className="nutritional-information__size-label">Par quantité de</p>
-                <div className="nutritional-information__size-switch">
-                    <input name="size-radio"
-                           id="size-radio-100g"
-                           type="radio"
-                           className="nutritional-information__size-radio"
-                           value="100g"
-                           onChange={handleSizeChange}
-                           checked={selectedSize === "100g"}/>
-                    <label className="nutritional-information__size-radio-label"
-                           htmlFor="size-radio-100g">100g</label>
-                    <input name="size-radio"
-                           id="size-radio-serving"
-                           type="radio"
-                           className="nutritional-information__size-radio"
-                           onChange={handleSizeChange}
-                           value="serving"
-                           checked={selectedSize === "serving"}/>
-                    <label className="nutritional-information__size-radio-label"
-                           htmlFor="size-radio-serving">Portion {servingSize || "?"}</label>
-
-                </div>
-            </div>
-            <p className="nutritional-information__energy"><FlameIcon
-                className="nutritional-information__energy-icon"/><span
-                className="nutritional-information__energy--strong">
-                {energy}
-            </span> kcal
+            <Switch label="Par quantité de"
+                    options={switchItems}
+                    selectedOption={sizeKey}
+                    onOptionChange={(sizeKey) => setSizeKey(sizeKey)}
+            />
+            <p className="nutritional-information__energy">
+                <FlameIcon className="nutritional-information__energy-icon"/>
+                <span className="nutritional-information__energy--strong">{energyKcal}</span> kcal
             </p>
-            <PercentageBar items={percentageBarItems} max={sizeToValue[selectedSize]} unit="g"/>
+            <PercentageBar items={percentageBarItems} max={sizeKeyToValue[sizeKey]} unit="g"/>
             <ChipList>
                 {Object.values(othersNutriments).map(nutriment => {
+                    let {val, unit} = convert(nutriment[sizeKey]).from(nutriment.unit).toBest();
+
+                    val = round(val, 3);
+
                     return <Chip key={nutriment.name}>
-                        <Chip.TextPart text={`${nutriment[selectedSize]} ${nutriment.unit}`} variant="primary"/>
+                        <Chip.TextPart text={`${val} ${unit}`} variant="secondary"/>
                         <Chip.TextPart text={nutriment.name}/>
                     </Chip>;
                 })

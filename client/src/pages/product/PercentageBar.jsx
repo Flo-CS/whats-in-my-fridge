@@ -69,7 +69,7 @@ PercentageBarLegendItem.propTypes = {
 function PercentageBarLegendItem({name, value, unit, color}) {
     return <p key={name} className="percentage-bar__legend-item">
         <span className="percentage-bar__legend-item-color" style={{backgroundColor: color}}/>
-        <span className="percentage-bar__legend-item--strong">{value}{unit || ""}</span> {name}
+        <span className="percentage-bar__legend-item--strong">{value} {unit || ""}</span> {name}
     </p>;
 }
 

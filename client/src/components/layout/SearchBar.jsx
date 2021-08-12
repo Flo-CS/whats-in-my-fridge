@@ -62,6 +62,6 @@ export default function SearchBar() {
                      options={Object.values(SORT_OPTIONS)}
                      selectedOption={sortParameters.key}
                      direction={sortParameters.direction}
-                     title="Trier par"/>
+                     label="Trier par"/>
     </div>;
 }

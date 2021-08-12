@@ -42,16 +42,56 @@ const TAGS_CORRECTIONS = {
     "en:stabilizer": "en:stabiliser"
 };
 
-const NUTRIMENTS_KEYS = [
-    "energy-kj",
+const USEFUL_NUTRIMENTS_KEYS = [
+    "alcohol",
+    "biotin",
+    "caffeine",
+    "calcium",
+    "chloride",
+    "chromium",
+    "copper",
     "energy-kcal",
+    "energy-kj",
     "fat",
-    "saturated-fat",
-    "sugars",
-    "salt",
     "fiber",
+    "fluoride",
+    "fructose",
+    "fruits-vegetables-nuts",
+    "glucose",
+    "iodine",
     "iron",
-    "proteins" // TODO: Add more
+    "lactose",
+    "magnesium",
+    "maltose",
+    "manganese",
+    "omega-3-fat",
+    "omega-6-fat",
+    "omega-9-fat",
+    "pantothenic-acid",
+    "ph",
+    "phosphorus",
+    "potassium",
+    "proteins",
+    "salt",
+    "saturated-fat",
+    "selenium",
+    "sodium",
+    "sucrose",
+    "sugars",
+    "taurine",
+    "trans-fat",
+    "vitamin-a",
+    "vitamin-b1",
+    "vitamin-b2",
+    "vitamin-b6",
+    "vitamin-b9",
+    "vitamin-b12",
+    "vitamin-c",
+    "vitamin-d",
+    "vitamin-e",
+    "vitamin-k",
+    "zinc",
+    // TODO: Add more
 ];
 
 
@@ -63,5 +103,5 @@ module.exports = {
     TAGS_CORRECTIONS,
     OPEN_FOOD_FACTS_TAXONOMIES_FILES_PATH,
     OPEN_FOOD_FACTS_TRADUCTIONS_FILE_PATH,
-    NUTRIMENTS_KEYS
+    USEFUL_NUTRIMENTS_KEYS
 };
