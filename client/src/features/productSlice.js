@@ -145,12 +145,12 @@ const productSlice = createSlice({
 
 const fuse = new Fuse([], {
     keys: [{name: "data.product_name", weight: 1.4},
-        {name: "data.brands_tags.name", weight: 1.2},
-        {name: "data.categories_tags.name", weight: 1.2},
-        "data.labels_tags.name",
-        "data.additives_tags.name",
-        "data.countries_tags.name",
-        "data.origins_tags.name",
+        {name: "data.brands.name", weight: 1.2},
+        {name: "data.categories.name", weight: 1.2},
+        "data.labels.name",
+        "data.additives.name",
+        "data.countries.name",
+        "data.origins.name",
         "barcode"],
     threshold: 0.4,
     ignoreLocation: true

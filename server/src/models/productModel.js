@@ -33,7 +33,8 @@ productSchema.methods.export = function () {
     // Replace each current tags list by the list of infos about each tag
     for (const {field, taxonomyName} of tagsFieldsWithAssociatedTaxonomy) {
         const fieldName = `${field}_tags`;
-        product.data[fieldName] = getTagsInfos(product.data[fieldName], taxonomyName);
+        product.data[field] = getTagsInfos(product.data[fieldName], taxonomyName);
+        product.data[fieldName] = undefined;
     }
 
     // Replace nutriments object by more convenient to use object

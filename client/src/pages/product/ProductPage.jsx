@@ -29,7 +29,7 @@ export default function ProductPage() {
 
     const {
         image_small_url,
-        brands_tags = [],
+        brands = [],
         product_name = "Nom inconnu",
         nutriscore_grade,
         ecoscore_grade,
@@ -45,7 +45,7 @@ export default function ProductPage() {
     const ecoscore = formatScore(ecoscore_grade, true);
     const nova = formatScore(nova_group);
 
-    const brands = capitalize(brands_tags.map(tag => tag.name).join(", "));
+    const brandsText = capitalize(brands.map(tag => tag.name).join(", "));
     const name = capitalize(product_name);
 
     const cleanedSize = size?.match(QUANTITY_REGEX)?.[0] || size;
@@ -71,7 +71,7 @@ export default function ProductPage() {
         {isLoading === false ? <>
                 <ProductPageHeader barcode={product.barcode}
                                    name={name}
-                                   brands={brands}
+                                   brands={brandsText}
                                    size={cleanedSize}
                                    imageUrl={image_small_url}
                                    quantity={product.quantity}/>

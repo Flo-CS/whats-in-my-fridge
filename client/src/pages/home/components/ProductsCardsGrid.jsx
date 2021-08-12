@@ -14,9 +14,9 @@ export default function ProductsCardsGrid({products}) {
         <div className="products-cards-grid__wrapper">
             <div className="products-cards-grid">
                 {products.map((product) => {
-                    const {
+                    let {
                         image_small_url,
-                        brands_tags = [],
+                        brands = [],
                         product_name = "Nom inconnu",
                         nutriscore_grade,
                         ecoscore_grade,
@@ -27,7 +27,7 @@ export default function ProductsCardsGrid({products}) {
                     const ecoscore = formatScore(ecoscore_grade, true);
                     const nova = formatScore(nova_group);
 
-                    const brands = capitalize(brands_tags.map(tag => tag.name).join(", "));
+                    const brandsText = capitalize(brands.map(tag => tag.name).join(", "));
 
                     const name = capitalize(product_name);
 
@@ -37,7 +37,7 @@ export default function ProductsCardsGrid({products}) {
                             barcode={product.barcode}
                             quantity={product.quantity}
                             imageUrl={image_small_url}
-                            brands={brands}
+                            brands={brandsText}
                             name={name}
                             nutriscore={nutriscore}
                             ecoscore={ecoscore}
