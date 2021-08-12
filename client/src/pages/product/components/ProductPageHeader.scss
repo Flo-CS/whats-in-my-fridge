@@ -86,9 +86,16 @@
       fill: $font-color-dark-grey;
     }
 
+    $quantity-button: &;
+
     &--warning {
       padding: 6px;
-      @include button-colorization($font-color-warning)
+      @include button-colorization($font-color-warning);
+
+      #{$quantity-button}-icon {
+        fill: $font-color-white;
+      }
+
     }
   }
 
