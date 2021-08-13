@@ -7,7 +7,13 @@ import ThreeDotLoading from "../../components/loading/ThreeDotLoading";
 import {fetchActiveProduct, selectActiveProduct} from "../../features/productSlice";
 import {LETTER_SCORES_COLORS, NOVA_COLORS, QUANTITY_REGEX} from "../../helpers/constants";
 import {formatScore} from "../../helpers/miscellaneous";
-import NutritionalInformation from "./components/NutritionalInformation";
+import Additives from "./components/fields/Additives";
+import Allergens from "./components/fields/Allergens";
+import Categories from "./components/fields/Categories";
+import IngredientsAndAnalysis from "./components/fields/IngredientsAndAnalysis";
+import Labels from "./components/fields/Labels";
+import NutritionalInformation from "./components/fields/NutritionalInformation";
+import Origins from "./components/fields/Origins";
 import ProductPageBody from "./components/ProductPageBody";
 import ProductPageField from "./components/ProductPageField";
 import ProductPageHeader from "./components/ProductPageHeader";
@@ -30,6 +36,15 @@ export default function ProductPage() {
     const {
         image_small_url,
         brands = [],
+        additives = [],
+        labels = [],
+        ingredients = [],
+        ingredients_analysis = [],
+        allergens = [],
+        traces = [],
+        origins = [],
+        countries = [],
+        categories = [],
         product_name = "Nom inconnu",
         nutriscore_grade,
         ecoscore_grade,
@@ -81,6 +96,30 @@ export default function ProductPage() {
                         <NutritionalInformation nutriments={nutriments}
                                                 nutrientLevels={nutrient_levels}
                                                 servingSize={cleanedServingSize}/>
+                    </ProductPageField>
+                    <ProductPageField title="Additifs">
+                        <Additives additives={additives}/>
+                    </ProductPageField>
+                    <ProductPageField title="Labels">
+                        <Labels labels={labels}/>
+                    </ProductPageField>
+                    <ProductPageField title="Ingrédients et analyse">
+                        <IngredientsAndAnalysis ingredients={ingredients} ingredientsAnalysis={ingredients_analysis}/>
+                    </ProductPageField>
+                    <ProductPageField title="Allergènes / intolérances">
+                        <Allergens allergens={allergens}/>
+                    </ProductPageField>
+                    <ProductPageField title="Traces éventuelles">
+                        <Allergens allergens={traces}/>
+                    </ProductPageField>
+                    <ProductPageField title="Origines des ingrédients">
+                        <Origins origins={origins}/>
+                    </ProductPageField>
+                    <ProductPageField title="Pays de vente">
+                        <Origins origins={countries}/>
+                    </ProductPageField>
+                    <ProductPageField title="Catégories">
+                        <Categories categories={categories}/>
                     </ProductPageField>
                 </ProductPageBody>
             </> :

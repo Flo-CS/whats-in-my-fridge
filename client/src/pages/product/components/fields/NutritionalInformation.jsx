@@ -2,13 +2,13 @@ import convert from "convert-units";
 import {omit, round} from "lodash";
 import PropTypes from 'prop-types';
 import React, {useState} from 'react';
-import {ReactComponent as FlameIcon} from "../../../assets/icons/flame.svg";
-import Chip from "../../../components/data display/Chip";
-import ChipList from "../../../components/data display/ChipList";
+import {ReactComponent as FlameIcon} from "../../../../assets/icons/flame.svg";
+import Chip from "../../../../components/data display/Chip";
+import ChipList from "../../../../components/data display/ChipList";
 
-import PercentageBar from "../../../components/data display/PercentageBar";
-import Switch from "../../../components/input/Switch";
-import {KJ_TO_KCAL_FACTOR} from "../../../helpers/constants";
+import PercentageBar from "../../../../components/data display/PercentageBar";
+import Switch from "../../../../components/input/Switch";
+import {KJ_TO_KCAL_FACTOR} from "../../../../helpers/constants";
 
 import "./NutritionalInformation.scss";
 
@@ -87,7 +87,7 @@ function NutritionalInformation({nutriments, servingSize, nutrientLevels}) {
                     val = round(val, 3);
 
                     return <Chip key={nutriment.name}>
-                        <Chip.TextPart text={`${val} ${unit}`} variant="secondary"/>
+                        <Chip.TextPart text={`${val} ${unit}`} variant="primary"/>
                         <Chip.TextPart text={nutriment.name}/>
                     </Chip>;
                 })

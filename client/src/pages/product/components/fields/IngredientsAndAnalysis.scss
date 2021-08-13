@@ -1,0 +1,9 @@
+@import "./../../../../variables";
+
+.ingredients-and-analysis {
+  &__separation {
+    height: 1px;
+    margin: 0.8em 0;
+    background-color: $secondary-element-color;
+  }
+}

@@ -58,6 +58,7 @@ function getTagInfos(tag, taxonomyName) {
             origins, // For categories (tags string)
             region, // For categories (specific to user language)
             country_code_2, // For countries and origins
+            official_country_code_2 // For countries and origins
         } = tagData;
 
         // TODO: Is the "miscellaneous" taxonomy file really necessary? Isn't it better to just translate on the fly?
@@ -82,7 +83,7 @@ function getTagInfos(tag, taxonomyName) {
             origins: origins?.en
                 ?.split(",").map(origin => getTagInfos(origin, "origins")),
             region: region?.fr,
-            country_code: country_code_2?.en?.toLowerCase()
+            country_code: (official_country_code_2?.en || country_code_2?.en)?.toLowerCase()
         };
 
     } catch (error) {

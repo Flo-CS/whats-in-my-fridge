@@ -30,7 +30,7 @@ function ChipTextPart({text, variant}) {
 }
 
 ChipIconPart.propTypes = {
-    Icon: PropTypes.elementType.isRequired,
+    Icon: PropTypes.elementType,
     isFull: PropTypes.bool,
     onClick: PropTypes.func,
     variant: PropTypes.oneOf(["primary", "secondary", "warning"])
@@ -49,9 +49,9 @@ function ChipIconPart({Icon, isFull, onClick, variant}) {
     return <div className={chipPartClass}>
         {isClickable ?
             <button onClick={onClick} className="chip__button">
-                <Icon className="chip__icon"/>
+                {Icon && <Icon className="chip__icon"/>}
             </button> :
-            <Icon className="chip__icon"/>}
+            Icon && <Icon className="chip__icon"/>}
     </div>;
 }
 
