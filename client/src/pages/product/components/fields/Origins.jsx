@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Chip from "../../../../components/data display/Chip";
 import ChipList from "../../../../components/data display/ChipList";
-import useDynamicAssetImport from "../../../../hooks/useDynamicImport";
+import useDynamicAssetImport from "../../../../hooks/useDynamicAssetImport";
 
 Origins.propTypes = {
     origins: PropTypes.arrayOf(PropTypes.object).isRequired
