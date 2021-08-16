@@ -13,6 +13,12 @@ const {
 
 async function downloadTaxonomiesFiles(update = false) {
     try {
+        // Create directory if doesn't exist
+        if (!fs.existsSync(OPEN_FOOD_FACTS_TAXONOMIES_FILES_PATH)) {
+            fs.mkdirSync(OPEN_FOOD_FACTS_TAXONOMIES_FILES_PATH, {recursive: true})
+        }
+
+        // Download each taxonomy file only if it doesn't exist (except if the update parameter is set to true)
         for (const taxonomy of OPEN_FOOD_FACTS_USEFUL_TAXONOMIES) {
             const url = `${OPEN_FOOD_FACTS_TAXONOMIES_ENDPOINT}/${taxonomy}.json`;
             const path = `${OPEN_FOOD_FACTS_TAXONOMIES_FILES_PATH}/${taxonomy}.json`;
