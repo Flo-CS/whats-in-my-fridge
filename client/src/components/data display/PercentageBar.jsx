@@ -7,19 +7,22 @@ import "./PercentageBar.scss";
 
 PercentageBar.propTypes = {
     items: PropTypes.arrayOf(PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        value: PropTypes.number.isRequired,
-        color: PropTypes.string.isRequired,
+        name: PropTypes.string,
+        value: PropTypes.number,
+        color: PropTypes.string,
     })),
     unit: PropTypes.string,
     max: PropTypes.number.isRequired
 };
 
 PercentageBar.defaultProps = {
-    max: 100
+    max: 100,
+    items: []
 };
 
 function PercentageBar({items, unit, max}) {
+    // Filter to keep only valid items
+    items = items.filter((item => item.color && item.name && item.value))
 
     const sortedItems = orderBy(items, "value", "desc");
 

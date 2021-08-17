@@ -34,9 +34,9 @@ function NutritionalInformation({nutriments, servingSize, nutrientLevels}) {
         "serving": parseFloat(servingSize)
     };
 
-    const switchItems = [
+    const switchOptions = [
         {key: "100g", name: "100 g"},
-        {key: "serving", name: `Portion ${servingSize}`}
+        {key: "serving", name: `Portion ${servingSize || "?"}`, disabled: !servingSize}
     ];
 
     // TODO: Change color and use nutrient levels to give a point of reference to the user
@@ -63,15 +63,15 @@ function NutritionalInformation({nutriments, servingSize, nutrientLevels}) {
         }
     ];
 
-    let energyKj = getNutrimentField("energy-kj", sizeKey);
-    let energyKcal = getNutrimentField("energy-kcal", sizeKey) || round(energyKj * KJ_TO_KCAL_FACTOR, 1);
+    let energyKj = getNutrimentField("energy-kj", sizeKey) || "?";
+    let energyKcal = getNutrimentField("energy-kcal", sizeKey) || round(energyKj * KJ_TO_KCAL_FACTOR, 1) || "?";
 
     const othersNutriments = omit(nutriments, MAIN_NUTRIMENTS_KEYS);
 
     return (
         <div className="nutritional-information">
             <Switch label="Par quantité de"
-                    options={switchItems}
+                    options={switchOptions}
                     selectedOption={sizeKey}
                     onOptionChange={(sizeKey) => setSizeKey(sizeKey)}
             />

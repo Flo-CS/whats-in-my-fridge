@@ -7,7 +7,8 @@ Switch.propTypes = {
     onOptionChange: PropTypes.func.isRequired,
     options: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string.isRequired,
-        key: PropTypes.string.isRequired
+        key: PropTypes.string.isRequired,
+        disabled: PropTypes.bool
     })).isRequired,
     selectedOption: PropTypes.string.isRequired,
     label: PropTypes.string
@@ -26,7 +27,8 @@ function Switch({onOptionChange, selectedOption, options, label}) {
                            className="switch__radio"
                            value={option.key}
                            onChange={() => onOptionChange(option.key)}
-                           checked={selectedOption === option.key}/>
+                           checked={selectedOption === option.key}
+                           disabled={option.disabled}/>
                     <label className="switch__radio-label"
                            htmlFor={`switch-radio-${option.key}`}>{option.name}</label>
                 </React.Fragment>;

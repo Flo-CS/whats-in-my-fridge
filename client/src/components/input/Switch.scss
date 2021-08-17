@@ -20,6 +20,10 @@
       @include button-colorization($primary-element-color);
     }
 
+    &:disabled + &-label {
+      cursor: not-allowed;
+    }
+
     &-label {
       display: inline-flex;
       align-items: center;
