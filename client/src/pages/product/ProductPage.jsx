@@ -25,7 +25,7 @@ export default function ProductPage() {
     const {barcode} = useParams();
 
     const product = useSelector(selectActiveProduct);
-    const isLoading = useSelector(state => state.products.activeProductIsLoading);
+    const isLoading = useSelector(state => state.products.activeProductIsLoading) || barcode !== product.barcode; // It's necessary to test that the current loaded product is the product that the user requested to see before showing his data
 
 
     useEffect(() => {
@@ -53,7 +53,6 @@ export default function ProductPage() {
         nutrient_levels,
         nutriments,
         serving_size
-
     } = product.data || {};
 
     const nutriscore = formatScore(nutriscore_grade, true);
