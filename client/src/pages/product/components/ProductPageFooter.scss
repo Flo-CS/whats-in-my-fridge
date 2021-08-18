@@ -1,0 +1,35 @@
+@import "./../../../variables";
+
+.product-page-footer {
+  font-size: $normal-font-size;
+  padding: $page-content-spacing;
+  background-color: $primary-background-color;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-top: auto;
+
+  &__text {
+    margin-top: 0.7em;
+    color: $font-color-dark-grey;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &-strong {
+      font-weight: 600;
+      color: $font-color-black;
+    }
+  }
+
+  &__link {
+    margin-top: 1.1em;
+    color: $font-color-dark-grey;
+
+    &:hover {
+      color: $primary-element-color;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import {capitalize, isEmpty} from "lodash";
+import {capitalize, head, isEmpty, last} from "lodash";
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
@@ -18,6 +18,7 @@ import ProductPageBody from "./components/ProductPageBody";
 import ProductPageHeader from "./components/ProductPageHeader";
 import "./ProductPage.scss";
 import ProductPageField from "./components/ProductPageField";
+import ProductPageFooter from "./components/ProductPageFooter";
 
 
 export default function ProductPage() {
@@ -87,7 +88,7 @@ export default function ProductPage() {
             component: <NutritionalInformation nutriments={nutriments}
                                                nutrientLevels={nutrient_levels}
                                                servingSize={cleanedServingSize}/>,
-            isEmpty: false
+            isEmpty: isEmpty(nutriments)
         },
         {
             title: "Additifs",
@@ -149,6 +150,8 @@ export default function ProductPage() {
                         </ProductPageField>
                     })}
                 </ProductPageBody>
+                <ProductPageFooter barcode={barcode} dateAdded={head(product.presences).date}
+                                   modificationDate={last(product.presences).date}/>
             </> :
             <ThreeDotLoading/>}
 
