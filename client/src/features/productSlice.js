@@ -151,6 +151,7 @@ const fuse = new Fuse([], {
         "data.additives.name",
         "data.countries.name",
         "data.origins.name",
+        "data.ingredients.name",
         "barcode"],
     threshold: 0.4,
     ignoreLocation: true
