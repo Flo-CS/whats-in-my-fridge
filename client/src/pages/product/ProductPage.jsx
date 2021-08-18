@@ -1,4 +1,4 @@
-import {capitalize} from "lodash";
+import {capitalize, isEmpty} from "lodash";
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
@@ -15,9 +15,9 @@ import Labels from "./components/fields/Labels";
 import NutritionalInformation from "./components/fields/NutritionalInformation";
 import Origins from "./components/fields/Origins";
 import ProductPageBody from "./components/ProductPageBody";
-import ProductPageField from "./components/ProductPageField";
 import ProductPageHeader from "./components/ProductPageHeader";
 import "./ProductPage.scss";
+import ProductPageField from "./components/ProductPageField";
 
 
 export default function ProductPage() {
@@ -81,6 +81,56 @@ export default function ProductPage() {
             color: NOVA_COLORS[nova]
         }];
 
+    const fields = [
+        {
+            title: "Informations nutritionnelles",
+            component: <NutritionalInformation nutriments={nutriments}
+                                               nutrientLevels={nutrient_levels}
+                                               servingSize={cleanedServingSize}/>,
+            isEmpty: false
+        },
+        {
+            title: "Additifs",
+            component: <Additives additives={additives}/>,
+            isEmpty: isEmpty(additives)
+        },
+        {
+            title: "Labels",
+            component: <Labels labels={labels}/>,
+            isEmpty: isEmpty(labels)
+        },
+        {
+            title: "Ingrédients et analyse",
+            component: <IngredientsAndAnalysis ingredients={ingredients} ingredientsAnalysis={ingredients_analysis}/>,
+            isEmpty: isEmpty(ingredients)
+        },
+        {
+            title: "Allergènes / intolérances",
+            component: <Allergens allergens={allergens}/>,
+            isEmpty: isEmpty(allergens)
+        },
+        {
+            title: "Traces éventuelles",
+            component: <Allergens allergens={traces}/>,
+            isEmpty: isEmpty(traces)
+        },
+        {
+            title: "Origines des ingrédients",
+            component: <Origins origins={origins}/>,
+            isEmpty: isEmpty(origins)
+        },
+        {
+            title: "Pays de vente",
+            component: <Origins origins={countries}/>,
+            isEmpty: isEmpty(countries)
+        },
+        {
+            title: "Catégories",
+            component: <Categories categories={categories}/>,
+            isEmpty: isEmpty(categories)
+        }
+    ]
+
     return <div className="product-page">
         {isLoading === false ? <>
                 <ProductPageHeader barcode={product.barcode}
@@ -91,35 +141,13 @@ export default function ProductPage() {
                                    quantity={product.quantity}/>
                 <ProductPageBody>
                     <ScoresBox items={scoresBoxItems}/>
-                    <ProductPageField title="Informations nutritionnelles">
-                        <NutritionalInformation nutriments={nutriments}
-                                                nutrientLevels={nutrient_levels}
-                                                servingSize={cleanedServingSize}/>
-                    </ProductPageField>
-                    <ProductPageField title="Additifs">
-                        <Additives additives={additives}/>
-                    </ProductPageField>
-                    <ProductPageField title="Labels">
-                        <Labels labels={labels}/>
-                    </ProductPageField>
-                    <ProductPageField title="Ingrédients et analyse">
-                        <IngredientsAndAnalysis ingredients={ingredients} ingredientsAnalysis={ingredients_analysis}/>
-                    </ProductPageField>
-                    <ProductPageField title="Allergènes / intolérances">
-                        <Allergens allergens={allergens}/>
-                    </ProductPageField>
-                    <ProductPageField title="Traces éventuelles">
-                        <Allergens allergens={traces}/>
-                    </ProductPageField>
-                    <ProductPageField title="Origines des ingrédients">
-                        <Origins origins={origins}/>
-                    </ProductPageField>
-                    <ProductPageField title="Pays de vente">
-                        <Origins origins={countries}/>
-                    </ProductPageField>
-                    <ProductPageField title="Catégories">
-                        <Categories categories={categories}/>
-                    </ProductPageField>
+
+                    {fields.map(field => {
+                        if (field.isEmpty) return null
+                        return <ProductPageField key={field.title} title={field.title}>
+                            {field.component}
+                        </ProductPageField>
+                    })}
                 </ProductPageBody>
             </> :
             <ThreeDotLoading/>}
