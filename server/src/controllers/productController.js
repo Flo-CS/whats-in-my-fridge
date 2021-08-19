@@ -87,7 +87,7 @@ const addOneProduct = async (req, res, next) => {
 };
 
 const getStats = async (req, res, next) => {
-    const {startDate, endDate, timeUnit} = req.body;
+    const {startDate, timeGranularity} = req.body;
 
     const products = await models.Product.find({user: req.verifiedToken.id})
         .catch(() => {
@@ -95,7 +95,7 @@ const getStats = async (req, res, next) => {
         });
 
 
-    const stats = new ProductsStats(products, startDate, endDate, timeUnit).getStats();
+    const stats = new ProductsStats(products, startDate, timeGranularity).getStats();
 
 
     return res.status(200).json({stats});

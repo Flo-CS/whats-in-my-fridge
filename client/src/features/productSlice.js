@@ -32,10 +32,9 @@ const fetchActiveProduct = createAsyncThunk("products/fetchOne", async ({barcode
 
 const fetchProductsStats = createAsyncThunk("products/fetchStats", async ({
                                                                               startDate,
-                                                                              endDate,
-                                                                              timeUnit
+                                                                              timeGranularity
                                                                           }, {rejectWithValue}) => {
-    return await asyncThunkErrorWrapper(() => Api.getProductsStats(startDate, endDate, timeUnit), rejectWithValue);
+    return await asyncThunkErrorWrapper(() => Api.getProductsStats(startDate, timeGranularity), rejectWithValue);
 });
 
 // SLICE

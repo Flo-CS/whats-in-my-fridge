@@ -7,7 +7,7 @@ import {scoreToLetterScore} from "../../helpers/miscellaneous";
 
 import "./ScoreHistoryLineChart.scss";
 
-export default function ScoreHistoryLineChart({data, isLetterScore = false}) {
+export default function ScoreHistoryLineChart({data, isNutriscoreOrEcoscore = false}) {
 
     return <div className="score-history-line-chart">
 
@@ -20,10 +20,10 @@ export default function ScoreHistoryLineChart({data, isLetterScore = false}) {
                        style={{fontSize: "0.8rem"}}/>
                 <YAxis width={30}
                        style={{fontSize: "0.8rem"}}
-                       tickFormatter={(score) => isLetterScore ? scoreToLetterScore(score) : score}
+                       tickFormatter={(score) => isNutriscoreOrEcoscore ? scoreToLetterScore(score) : score}
                        domain={['dataMin - 0.5', 'dataMax + 0.5']}
                        allowDataOverflow={true}
-                       ticks={isLetterScore ? [1, 2, 3, 4, 5] : [1, 2, 3, 4]}
+                       ticks={isNutriscoreOrEcoscore ? [1, 2, 3, 4, 5] : [1, 2, 3, 4]}
                 />
                 <Tooltip labelFormatter={(date => dayjs(date).format("DD/MM"))}
                          formatter={(value) => Math.round(value * 10) / 10}/>

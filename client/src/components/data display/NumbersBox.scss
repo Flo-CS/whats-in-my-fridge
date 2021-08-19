@@ -1,0 +1,78 @@
+@import "../../variables";
+
+.numbers-box {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  border-radius: $card-border-radius * 2;
+  background-color: $primary-background-color;
+
+
+  &__label {
+    color: $font-color-light-grey;
+    margin-bottom: 0.5em;
+
+  }
+
+  &__number {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 25px;
+  }
+
+  &__values {
+    display: flex;
+    align-items: center;
+  }
+
+  &__value {
+    font-size: $giant-font-size;
+    font-weight: 600;
+    color: $font-color-dark-grey;
+  }
+
+  &__difference {
+    margin-left: 0.3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $font-color-light-grey;
+    $difference: &;
+
+    &-icon {
+      width: 1.5em;
+      margin-bottom: -0.2em;
+      fill: $font-color-light-grey;
+    }
+
+    &--red {
+      #{$difference}-icon {
+        fill: $font-color-warning;
+      }
+
+      #{$difference}-value {
+        color: $font-color-warning;
+      }
+    }
+
+    &--green {
+      #{$difference}-icon {
+        fill: $font-color-good;
+      }
+
+      #{$difference}-value {
+        color: $font-color-good;
+      }
+    }
+  }
+
+  &__separation {
+    display: inline-block;
+    width: 1px;
+    height: 60%;
+    background-color: $tertiary-element-color;
+  }
+
+}
+

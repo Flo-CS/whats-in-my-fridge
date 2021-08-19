@@ -8,21 +8,21 @@ const {letterScoreToScore} = require("./open food facts/scores");
 dayjs.extend(isBetween);
 dayjs.extend(utc);
 
-const timeUnitToTimeScale = {
+const timeGranularityToTimeScale = {
     "year": "month",
     "month": "day"
 };
 
 class ProductsStats {
 
-    constructor(products, startDate, endDate, timeUnit) {
+    constructor(products, startDate, timeGranularity) {
         this.products = products;
         this.startDate = dayjs.utc(startDate);
-        this.endDate = dayjs.utc(endDate);
-        this.timeUnit = timeUnit;
-        this.timeScale = timeUnitToTimeScale[timeUnit];
+        this.endDate = dayjs.utc(startDate).endOf(timeGranularity);
+        this.timeGranularity = timeGranularity;
+        this.timeScale = timeGranularityToTimeScale[timeGranularity];
 
-        this.presentProducts = this.getPresentsProductsByDate(this.startDate, this.timeUnit);
+        this.presentProducts = this.getPresentsProductsByDate(this.startDate, this.timeGranularity);
 
         this.requiredCalculationDates = this.getRequiredCalculationDates();
     }

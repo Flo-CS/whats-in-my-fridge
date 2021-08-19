@@ -1,0 +1,23 @@
+@import "../../variables";
+
+.date-range-slider {
+  display: flex;
+  align-items: center;
+
+  &__date {
+    margin: 0 0.7em;
+  }
+
+  &__previous-button, &__next-button {
+    @include reset-button;
+    @include button-colorization($secondary-element-color);
+    height: 30px;
+    width: 30px;
+    border-radius: $control-border-radius;
+
+    &-icon {
+      color: $font-color-dark-grey;
+      height: 1.6em;
+    }
+  }
+}
