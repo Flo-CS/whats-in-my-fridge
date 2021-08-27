@@ -1,7 +1,7 @@
-const WIKIDATA_API_ENDPOINT = "https://www.wikidata.org/w/api.php";
-const WIKIPEDIA_API_ENDPOINT = "https://fr.wikipedia.org/w/api.php";
+export const WIKIDATA_API_ENDPOINT = "https://www.wikidata.org/w/api.php";
+export const WIKIPEDIA_API_ENDPOINT = "https://fr.wikipedia.org/w/api.php";
 
-const SORT_OPTIONS = {
+export const SORT_OPTIONS = {
     MODIFICATION_DATE: {name: "Date de modification", key: "MODIFICATION_DATE", defaultDirection: "desc"},
     NAME: {name: "Nom", key: "NAME", defaultDirection: "asc"},
     QUANTITY: {name: "Quantité", key: "QUANTITY", defaultDirection: "desc"},
@@ -11,12 +11,10 @@ const SORT_OPTIONS = {
     RELEVANCE: {name: "Pertinence", key: "RELEVANCE", defaultDirection: "asc"},
 };
 
-const ACCENT_COLOR = "#2fae26";
+export const LETTER_SCORES_COLORS = {"A": "#2d7e43", "B": "#97ba38", "C": "#f0ca0d", "D": "#d57b1a", "E": "#c53319"};
+export const NOVA_COLORS = {1: "#00ac00", 2: "#ffcd00", 3: "#ff6600", 4: "#ff0000"};
 
-const LETTER_SCORES_COLORS = {"A": "#2d7e43", "B": "#97ba38", "C": "#f0ca0d", "D": "#d57b1a", "E": "#c53319"};
-const NOVA_COLORS = {1: "#00ac00", 2: "#ffcd00", 3: "#ff6600", 4: "#ff0000"};
-
-const PATHS = {
+export const PATHS = {
     HOME: "/",
     PROFILE: "/profile",
     STATS: "/stats",
@@ -25,18 +23,24 @@ const PATHS = {
     LOGIN: "/login"
 };
 
-const QUANTITY_REGEX = /((\d+\.?\d+)\s*[^\d\W]+)/g;
+export const QUANTITY_REGEX = /((\d+\.?\d+)\s*[^\d\W]+)/g;
 
-const KJ_TO_KCAL_FACTOR = 0.2388;
+export const KJ_TO_KCAL_FACTOR = 0.2388;
 
-export {
-    WIKIDATA_API_ENDPOINT,
-    WIKIPEDIA_API_ENDPOINT,
-    SORT_OPTIONS,
-    ACCENT_COLOR,
-    LETTER_SCORES_COLORS,
-    NOVA_COLORS,
-    PATHS,
-    QUANTITY_REGEX,
-    KJ_TO_KCAL_FACTOR
-};
+export const ELEMENT_COLORS = {
+    PRIMARY: "#2FAE26",
+    SECONDARY: "#F2F2F2"
+}
+
+export const FONT_COLORS = {
+    LIGHT_GREY: "#808080",
+    DARK_GREY: "#404040"
+
+}
+
+export const FONT_SIZES = {
+    NORMAL: "0.875rem",
+    LITTLE: "0.75rem",
+    MEDIUM: "1rem"
+
+}

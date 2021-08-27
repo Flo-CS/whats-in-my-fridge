@@ -64,11 +64,11 @@ function sortProducts(products, sortKey, sortDirection) {
 
 export function scoreToLetterScore(score) {
     const letterScoreConversions = {
-        1: "E",
-        2: "D",
+        5: "E",
+        4: "D",
         3: "C",
-        4: "B",
-        5: "A"
+        2: "B",
+        1: "A"
     };
 
     if (!isInteger(score) || isNil(score)) return;

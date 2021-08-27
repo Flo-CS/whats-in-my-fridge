@@ -8,6 +8,8 @@ import dayjs from "dayjs";
 import "./StatsPage.scss"
 import NumbersBox from "../../components/data display/NumbersBox";
 import ThreeDotLoading from "../../components/loading/ThreeDotLoading";
+import LetterScoreAverageHistoryChart from "./components/LetterScoreAverageHistoryChart";
+import NovaScoreAverageHistoryChart from "./components/NovaScoreAverageHistoryChart";
 
 
 export default function StatsPage() {
@@ -38,32 +40,44 @@ export default function StatsPage() {
         }
     ]
 
+    const numbersBoxItems = [
+        {
+            name: "Produits",
+            value: productsStats?.stock?.total_count,
+            oldValue: 5
+        },
+        {
+            name: "Présents",
+            value: productsStats?.stock?.in_stock_count,
+            oldValue: 40
+        },
+        {
+            name: "Epuisés",
+            value: productsStats?.stock?.out_of_stock_count,
+            oldValue: 5
+        }]
+
 
     return <div className="stats-page">
         <Switch onOptionChange={(option) => setTimeGranularity(option)} selectedOption={timeGranularity}
                 options={dateGranularitySwitchOptions}/>
         <DateRangeSlider onDateRangeChange={(dateRange) => setStartDate(dateRange.startDate)} startDate={startDate}
                          granularity={timeGranularity}/>
-        {isLoading ?
-            <ThreeDotLoading/>
-            :
-            <NumbersBox items={[
-                {
-                    name: "Produits",
-                    value: productsStats?.stock?.total_count,
-                    oldValue: 5
-                },
-                {
-                    name: "Présents",
-                    value: productsStats?.stock?.in_stock_count,
-                    oldValue: 40
-                },
-                {
-                    name: "Epuisés",
-                    value: productsStats?.stock?.out_of_stock_count,
-                    oldValue: 5
-                }]}/>}
-    </div>;
+        {!isLoading ?
+            <>
+                <NumbersBox items={numbersBoxItems}/>
 
+                <LetterScoreAverageHistoryChart data={productsStats.scores.nutriscore.average_history}
+                                                title="Nutriscore moyen"/>
+                <LetterScoreAverageHistoryChart data={productsStats.scores.ecoscore.average_history}
+                                                title="Ecoscore moyen"/>
+                <NovaScoreAverageHistoryChart data={productsStats.scores.nova.average_history}
+                                              title="Nova moyen"
+                />
+            </>
+            :
+            <ThreeDotLoading/>
+        }
+    </div>;
 
 }

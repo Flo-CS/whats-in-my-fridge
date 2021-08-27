@@ -81,7 +81,7 @@ class ProductsStats {
         return _(this.requiredCalculationDates).map(requiredDate => {
             const averageScoreByDate = this.computeProductsAverageScoreFieldByDate(field, requiredDate, isLetterScore);
 
-            return {date: requiredDate, average: averageScoreByDate};
+            return {date: requiredDate, value: averageScoreByDate};
 
         }).sortBy(average => average.date);
     }
