@@ -10,6 +10,10 @@ import NumbersBox from "../../components/data display/NumbersBox";
 import ThreeDotLoading from "../../components/loading/ThreeDotLoading";
 import LetterScoreAverageHistoryChart from "./components/LetterScoreAverageHistoryChart";
 import NovaScoreAverageHistoryChart from "./components/NovaScoreAverageHistoryChart";
+import Heatmap from "../../components/data display/Heatmap";
+import {values} from "lodash";
+import {LETTER_SCORES_COLORS} from "../../helpers/constants";
+import StatsPageField from "./components/StatsPageField";
 
 
 export default function StatsPage() {
@@ -69,14 +73,25 @@ export default function StatsPage() {
         {!isLoading ?
             <>
                 <NumbersBox items={numbersBoxItems}/>
-
-                <LetterScoreAverageHistoryChart data={productsStats.scores.nutriscore.average_history}
-                                                title="Nutriscore moyen"/>
-                <LetterScoreAverageHistoryChart data={productsStats.scores.ecoscore.average_history}
-                                                title="Ecoscore moyen"/>
-                <NovaScoreAverageHistoryChart data={productsStats.scores.nova.average_history}
-                                              title="Nova moyen"
-                />
+                <StatsPageField title="Nutriscore moyen">
+                    <LetterScoreAverageHistoryChart data={productsStats.scores.nutriscore.average_history}/>
+                </StatsPageField>
+                <StatsPageField title="Ecoscore moyen">
+                    <LetterScoreAverageHistoryChart data={productsStats.scores.ecoscore.average_history}/>
+                </StatsPageField>
+                <StatsPageField title="Nova moyen">
+                    <NovaScoreAverageHistoryChart data={productsStats.scores.nova.average_history}
+                                                  title="Nova moyen"/>
+                </StatsPageField>
+                <StatsPageField title="Nombre de produits">
+                    <Heatmap data={productsStats.specifics.letter_scores_heatmap.data}
+                             xLabels={productsStats.specifics.letter_scores_heatmap.xLabels}
+                             yLabels={productsStats.specifics.letter_scores_heatmap.yLabels}
+                             xLabelsColors={values(LETTER_SCORES_COLORS)}
+                             yLabelsColors={values(LETTER_SCORES_COLORS)}
+                             xName="Nutriscore"
+                             yName="Ecoscore"/>
+                </StatsPageField>
             </>
             :
             <ThreeDotLoading/>

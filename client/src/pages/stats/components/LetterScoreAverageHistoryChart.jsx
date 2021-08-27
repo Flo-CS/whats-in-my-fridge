@@ -10,20 +10,16 @@ import "./ScoreAverageHistoryChart.scss"
 
 LetterScoreAverageHistoryChart.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
-    title: PropTypes.string
 };
 
-function LetterScoreAverageHistoryChart({data, title}) {
+function LetterScoreAverageHistoryChart({data}) {
     return <div className="score-average-history-chart">
-        <h2 className="score-average-history-chart__title">{title}</h2>
         <HistoryAreaChart data={data}
-                          tooltipFormatter={(value) => [Math.round(value * 10) / 10, title]}
+                          tooltipFormatter={(value) => [Math.round(value * 10) / 10, "Note moyenne"]}
                           dateFormatter={(date) => dayjs(date).format("DD/MM")}
                           valueFormatter={(value) => scoreToLetterScore(value)}
                           valueTicks={[1, 2, 3, 4, 5]}
-                          valueTicksColors={values(LETTER_SCORES_COLORS)}
-
-        />
+                          valueTicksColors={values(LETTER_SCORES_COLORS)}/>
     </div>
 
 }

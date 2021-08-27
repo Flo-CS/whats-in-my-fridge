@@ -1,10 +1,13 @@
 @import "./../../../variables";
 
-.score-average-history-chart {
+.stats-page-field {
+  max-width: $max-content-width;
+  margin-top: $page-content-spacing;
   width: 100%;
 
   &__title {
     font-size: $medium-font-size;
     margin-bottom: 1em;
+    font-weight: 600;
   }
 }

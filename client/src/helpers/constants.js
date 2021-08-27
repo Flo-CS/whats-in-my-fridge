@@ -34,7 +34,9 @@ export const ELEMENT_COLORS = {
 
 export const FONT_COLORS = {
     LIGHT_GREY: "#808080",
-    DARK_GREY: "#404040"
+    DARK_GREY: "#404040",
+    WHITE: "#ffffff",
+    DARK: "#000000"
 
 }
 
@@ -42,5 +44,4 @@ export const FONT_SIZES = {
     NORMAL: "0.875rem",
     LITTLE: "0.75rem",
     MEDIUM: "1rem"
-
 }

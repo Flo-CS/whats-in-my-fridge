@@ -1,0 +1,54 @@
+@import "../../variables";
+
+.heatmap {
+  position: relative;
+  display: inline-block;
+
+  // To avoid collision with axis names
+  margin-top: 1em;
+  margin-left: 1em;
+
+  &__x-name, &__y-name {
+    color: $font-color-dark-grey;
+    font-size: $normal-font-size;
+    position: absolute;
+  }
+
+  &__x-name {
+    transform: translate(-25%, -0.8em);
+    top: 0;
+    left: 50%;
+  }
+
+  &__y-name {
+    transform-origin: left top;
+    transform: rotate(-90deg) translate(-85%, -0.8em);
+    left: 0;
+    top: 50%;
+  }
+
+  &__table {
+    border-spacing: 3px;
+    border-collapse: separate;
+
+    td {
+      width: 35px;
+      height: 35px;
+      text-align: center;
+      vertical-align: middle;
+      border-radius: $control-border-radius;
+      font-size: $medium-font-size;
+      color: $font-color-dark-grey;
+      background-color: $secondary-element-color;
+
+      &:first-child {
+        background: none;
+      }
+
+      &.heatmap__label {
+        font-weight: 600;
+        background: none;
+      }
+    }
+  }
+}
