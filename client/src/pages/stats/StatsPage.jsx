@@ -59,10 +59,13 @@ export default function StatsPage() {
 
 
     return <div className="stats-page">
-        <Switch onOptionChange={(option) => setTimeGranularity(option)} selectedOption={timeGranularity}
-                options={dateGranularitySwitchOptions}/>
-        <DateRangeSlider onDateRangeChange={(dateRange) => setStartDate(dateRange.startDate)} startDate={startDate}
-                         granularity={timeGranularity}/>
+        <div className="stats-page__top-controls">
+            <Switch onOptionChange={(option) => setTimeGranularity(option)} selectedOption={timeGranularity}
+                    options={dateGranularitySwitchOptions}/>
+            <DateRangeSlider onDateRangeChange={(dateRange) => setStartDate(dateRange.startDate)} startDate={startDate}
+                             granularity={timeGranularity}/>
+        </div>
+
         {!isLoading ?
             <>
                 <NumbersBox items={numbersBoxItems}/>

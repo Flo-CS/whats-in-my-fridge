@@ -8,4 +8,31 @@
   height: 100%;
   margin-bottom: $navigation-bar-size;
   padding: $page-content-spacing;
+
+  &__top-controls {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: $page-content-spacing;
+
+    & > * {
+      margin-bottom: 0.8em;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    @include min-width(tablet) {
+      flex-direction: row;
+      & > * {
+        margin-bottom: 0;
+        margin-right: 2em;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
 }
