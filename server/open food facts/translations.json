@@ -73,5 +73,20 @@
   },
   "vitamin-b1": {
     "fr": "Vitamine B1"
+  },
+  "vitamin-d": {
+    "fr": "Vitamine D"
+  },
+  "ph": {
+    "fr": "pH"
+  },
+  "calcium": {
+    "fr": "Calcium"
+  },
+  "potassium": {
+    "fr": "Potassium"
+  },
+  "chloride": {
+    "fr": "Chlorure"
   }
 }

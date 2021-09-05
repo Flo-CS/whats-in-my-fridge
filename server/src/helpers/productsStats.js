@@ -3,8 +3,6 @@ const dayjs = require("dayjs");
 const isBetween = require("dayjs/plugin/isBetween");
 const utc = require("dayjs/plugin/utc");
 
-const {letterScoreToScore} = require("./open food facts/scores");
-
 dayjs.extend(isBetween);
 dayjs.extend(utc);
 
@@ -36,9 +34,9 @@ class ProductsStats {
                 out_of_stock_count: this.products.length - this.presentProducts.length,
             },
             scores: {
-                nutriscore: this.getScoreFieldStats("nutriscore_grade", true),
-                nova: this.getScoreFieldStats("nova_group"),
-                ecoscore: this.getScoreFieldStats("ecoscore_grade", true),
+                nutriscore: this.getScoreStats("nutriscore", true),
+                nova: this.getScoreStats("nova"),
+                ecoscore: this.getScoreStats("ecoscore", true),
             },
             specifics: {
                 letter_scores_heatmap: this.getLetterScoresHeatmap()
@@ -65,21 +63,18 @@ class ProductsStats {
         }).value();
     }
 
-    computeProductsAverageScoreFieldByDate(field, date, isLetterScore = false) {
+    computeProductsAverageScoreByDate(scoreName, date) {
         return _(this.getPresentsProductsByDate(date, this.timeScale))
             .map(product => {
-                if (isLetterScore) {
-                    return letterScoreToScore(product.data[field]);
-                }
-                return product.data[field];
+                return product[scoreName].score
             })
             .compact() // Removes all null, undefined values because it distorts the calculation
             .mean();
     }
 
-    getProductsScoreFieldHistory(field, isLetterScore = false) {
+    getProductsScoreHistory(scoreName) {
         return _(this.requiredCalculationDates).map(requiredDate => {
-            const averageScoreByDate = this.computeProductsAverageScoreFieldByDate(field, requiredDate, isLetterScore);
+            const averageScoreByDate = this.computeProductsAverageScoreByDate(scoreName, requiredDate);
 
             return {date: requiredDate, value: averageScoreByDate};
 
@@ -88,10 +83,10 @@ class ProductsStats {
 
 
     // Nova, ecoscore, nutriscore
-    getScoreFieldStats(field, isLetterScore = false) {
+    getScoreStats(scoreName) {
         return {
-            average_history: this.getProductsScoreFieldHistory(field, isLetterScore),
-            current_average: this.computeProductsAverageScoreFieldByDate(field, dayjs.utc(), isLetterScore),
+            average_history: this.getProductsScoreHistory(scoreName),
+            current_average: this.computeProductsAverageScoreByDate(scoreName, dayjs.utc()),
         };
     }
 
@@ -105,12 +100,10 @@ class ProductsStats {
 
         for (const product of this.presentProducts) {
 
-            const {nutriscore_grade, ecoscore_grade} = product.data;
-            const nutriscore = nutriscore_grade?.toUpperCase();
-            const ecoscore = ecoscore_grade?.toUpperCase();
+            const {nutriscore, ecoscore} = product;
 
-            const xIndex = xLabels.includes(nutriscore) ? xLabels.indexOf(nutriscore) : xLabels.length - 1;
-            const yIndex = yLabels.includes(ecoscore) ? yLabels.indexOf(ecoscore) : yLabels.length - 1;
+            const xIndex = nutriscore.grade ? nutriscore.score - 1 : xLabels.length - 1;
+            const yIndex = ecoscore.grade ? ecoscore.score - 1 : yLabels.length - 1;
 
             data[yIndex][xIndex] += 1;
         }

@@ -39,7 +39,7 @@ function getTagInfos(tag, taxonomyName) {
             return {
                 key: tag,
                 name: formatTag(tag),
-                isInTaxonomy: false,
+                is_in_taxonomy: false,
             };
 
         const {
@@ -65,7 +65,7 @@ function getTagInfos(tag, taxonomyName) {
         return {
             key: tag,
             name: name?.fr || formatTag(tag),
-            isInTaxonomy: !!name?.fr,
+            is_in_taxonomy: !!name?.fr,
             description: description?.fr,
             wikidata: wikidata?.en,
             vegetarian: vegetarian?.en,

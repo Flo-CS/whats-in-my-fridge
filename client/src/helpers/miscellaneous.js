@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import {deburr, isInteger, isNil, last, orderBy, reverse} from "lodash";
+import {deburr, last, orderBy, reverse} from "lodash";
 
 function truncateString(str, size) {
     if (str.length <= size) return str;
@@ -10,19 +10,6 @@ function truncateString(str, size) {
 function mapValueToRange(value, inMin, inMax, outMin, outMax) {
     return (value - inMin) / (inMax - inMin) * (outMax - outMin) + outMin;
 }
-
-function formatScore(score, isLetterScore = false) {
-    const validLetterScores = ["A", "B", "C", "D", "E"];
-    const validNovaGroups = [1, 2, 3, 4];
-
-    if (isLetterScore) {
-        score = score?.toUpperCase();
-        return validLetterScores.includes(score) ? score : "?";
-    }
-
-    return validNovaGroups.includes(score) ? score : "?";
-}
-
 
 const asyncThunkErrorWrapper = async (asyncApiCallFunc, rejectWithValue) => {
     try {
@@ -42,7 +29,7 @@ function sortProducts(products, sortKey, sortDirection) {
         case "MODIFICATION_DATE":
             return orderBy(products, [(product) => dayjs(last(product.presences).date)], [sortDirection]);
         case "NAME":
-            return orderBy(products, [(product) => deburr(product.data.product_name)], [sortDirection]);
+            return orderBy(products, [(product) => deburr(product.name)], [sortDirection]);
         case "QUANTITY":
             return orderBy(products, ["quantity"], [sortDirection]);
         case "NUTRISCORE":
@@ -62,25 +49,9 @@ function sortProducts(products, sortKey, sortDirection) {
 }
 
 
-export function scoreToLetterScore(score) {
-    const letterScoreConversions = {
-        5: "E",
-        4: "D",
-        3: "C",
-        2: "B",
-        1: "A"
-    };
-
-    if (!isInteger(score) || isNil(score)) return;
-
-    return letterScoreConversions[score];
-}
-
-
 export {
     truncateString,
     asyncThunkErrorWrapper,
-    formatScore,
     mapValueToRange,
     sortProducts
 };

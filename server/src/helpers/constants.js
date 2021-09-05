@@ -11,7 +11,6 @@ const OPEN_FOOD_FACTS_USEFUL_FIELDS = ["product_name",
     "labels_tags",
     "origins_tags",
     "countries_tags",
-    "ingredients_text",
     "ingredients_tags",
     "allergens_tags",
     "traces_tags",
@@ -94,6 +93,12 @@ const USEFUL_NUTRIMENTS_KEYS = [
     // TODO: Add more
 ];
 
+const SIZE_REGEX = /(?<value>\d+[.,]?\d*)\s*(?<unit>[^\d\W]+)/;
+
+const DEFAULT_UNITS = {
+    "mass": "g",
+    "volume": "ml"
+}
 
 module.exports = {
     OPEN_FOOD_FACTS_API_ENDPOINT,
@@ -103,5 +108,7 @@ module.exports = {
     TAGS_CORRECTIONS,
     OPEN_FOOD_FACTS_TAXONOMIES_FILES_PATH,
     OPEN_FOOD_FACTS_TRANSLATIONS_FILE_PATH,
-    USEFUL_NUTRIMENTS_KEYS
+    USEFUL_NUTRIMENTS_KEYS,
+    SIZE_REGEX,
+    DEFAULT_UNITS
 };

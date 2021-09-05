@@ -23,7 +23,6 @@ export const PATHS = {
     LOGIN: "/login"
 };
 
-export const QUANTITY_REGEX = /((\d+\.?\d+)\s*[^\d\W]+)/g;
 
 export const KJ_TO_KCAL_FACTOR = 0.2388;
 

@@ -80,7 +80,7 @@ export default function HistoryChart({
                     dataKey={valueKey}
                     stroke="url(#line-color)"
                     strokeWidth={2}
-                    dot={false}
+                    dot={{r: 2}}
                     activeDot={{stroke: "white", strokeWidth: 2, r: 8}}
                     isAnimationActive={false}/>
             </LineChart>

@@ -5,8 +5,7 @@ import {useParams} from "react-router-dom";
 import ScoresBox from "../../components/data display/ScoresBox";
 import ThreeDotLoading from "../../components/loading/ThreeDotLoading";
 import {fetchActiveProduct, selectActiveProduct} from "../../features/productSlice";
-import {LETTER_SCORES_COLORS, NOVA_COLORS, QUANTITY_REGEX} from "../../helpers/constants";
-import {formatScore} from "../../helpers/miscellaneous";
+import {LETTER_SCORES_COLORS, NOVA_COLORS} from "../../helpers/constants";
 import Additives from "./components/fields/Additives";
 import Allergens from "./components/fields/Allergens";
 import Categories from "./components/fields/Categories";
@@ -34,8 +33,9 @@ export default function ProductPage() {
     }, [barcode, dispatch]);
 
 
-    const {
-        image_small_url,
+    let {
+        quantity,
+        image_url,
         brands = [],
         additives = [],
         labels = [],
@@ -46,40 +46,33 @@ export default function ProductPage() {
         origins = [],
         countries = [],
         categories = [],
-        product_name = "Nom inconnu",
-        nutriscore_grade,
-        ecoscore_grade,
-        nova_group,
-        quantity: size,
+        name = "Nom inconnu",
+        nutriscore,
+        ecoscore,
+        nova,
+        size,
         nutrient_levels,
         nutriments,
         serving_size
-    } = product.data || {};
-
-    const nutriscore = formatScore(nutriscore_grade, true);
-    const ecoscore = formatScore(ecoscore_grade, true);
-    const nova = formatScore(nova_group);
+    } = product || {};
 
     const brandsText = capitalize(brands.map(tag => tag.name).join(", "));
-    const name = capitalize(product_name);
 
-    const cleanedSize = size?.match(QUANTITY_REGEX)?.[0] || size;
-    const cleanedServingSize = serving_size?.match(QUANTITY_REGEX)?.[0] || serving_size;
-
-    const scoresBoxItems = [{
-        name: "Nutriscore",
-        value: nutriscore,
-        color: LETTER_SCORES_COLORS[nutriscore]
-    },
+    const scoresBoxItems = [
+        {
+            name: "Nutriscore",
+            value: nutriscore?.grade || "?",
+            color: LETTER_SCORES_COLORS[nutriscore?.grade]
+        },
         {
             name: "Ecoscore",
-            value: ecoscore,
-            color: LETTER_SCORES_COLORS[ecoscore]
+            value: ecoscore?.grade || "?",
+            color: LETTER_SCORES_COLORS[ecoscore?.grade]
         },
         {
             name: "Nova",
-            value: nova,
-            color: NOVA_COLORS[nova]
+            value: nova?.grade || "?",
+            color: NOVA_COLORS[nova?.grade]
         }];
 
     const fields = [
@@ -87,7 +80,7 @@ export default function ProductPage() {
             title: "Informations nutritionnelles",
             component: <NutritionalInformation nutriments={nutriments}
                                                nutrientLevels={nutrient_levels}
-                                               servingSize={cleanedServingSize}/>,
+                                               servingSize={serving_size}/>,
             isEmpty: isEmpty(nutriments)
         },
         {
@@ -134,15 +127,14 @@ export default function ProductPage() {
 
     return <div className="product-page">
         {isLoading === false ? <>
-                <ProductPageHeader barcode={product.barcode}
+                <ProductPageHeader barcode={barcode}
                                    name={name}
                                    brands={brandsText}
-                                   size={cleanedSize}
-                                   imageUrl={image_small_url}
-                                   quantity={product.quantity}/>
+                                   size={size}
+                                   imageUrl={image_url}
+                                   quantity={quantity}/>
                 <ProductPageBody>
                     <ScoresBox items={scoresBoxItems}/>
-
                     {fields.map(field => {
                         if (field.isEmpty) return null
                         return <ProductPageField key={field.title} title={field.title}>

@@ -1,21 +1,17 @@
 const models = require("../models");
-const dayjs = require("dayjs");
 const {validationErrors} = require("../helpers/errors");
 const {databaseErrors} = require("../helpers/errors");
 const {ValidationError} = require("../helpers/errors");
 const {DatabaseError} = require("../helpers/errors");
-const {getOFFdata} = require("../helpers/open food facts/api");
 const {ProductsStats} = require("../helpers/productsStats");
 
 
 const getAllProducts = async (req, res, next) => {
     const products = await models.Product.find({
         user: req.verifiedToken.id,
-    }).catch(() => {
-        return next(new DatabaseError(databaseErrors.operation));
-    });
+    }).catch(() => next(new DatabaseError(databaseErrors.operation)));
 
-    return res.status(200).json({products: products.map(product => product.export())});
+    return res.status(200).json({products: products.map(product => product.toJSON())});
 
 };
 
@@ -25,22 +21,9 @@ const getOneProduct = async (req, res, next) => {
     const product = await models.Product.findOne({
         user: req.verifiedToken.id,
         barcode: barcode,
-    }).catch(() => {
-        return next(new DatabaseError(databaseErrors.operation));
-    });
+    }).catch(() => next(new DatabaseError(databaseErrors.operation)));
 
-    // Take the opportunity to update the product data (because the data evolves on open food facts)
-    try {
-        product.data = await getOFFdata(barcode);
-    } catch (error) {
-        return next(error);
-    }
-
-    await product.save().catch(() => {
-        return next(new DatabaseError(databaseErrors.save));
-    });
-
-    return res.status(200).json({product: product.export()});
+    return res.status(200).json({product: product.toJSON()});
 };
 
 const addOneProduct = async (req, res, next) => {
@@ -49,50 +32,34 @@ const addOneProduct = async (req, res, next) => {
     const productToUpdate = await models.Product.findOne({
         user: req.verifiedToken.id,
         barcode: barcode,
-    }).catch(() => {
-        return next(new DatabaseError(databaseErrors.operation));
-    });
+    }).catch(() => next(new DatabaseError(databaseErrors.operation)));
 
     // UPDATE PRODUCT QUANTITY IF PRODUCT ALREADY EXISTS
+    // TODO : Remove that and handle it on frontend ??
     if (productToUpdate) {
         productToUpdate.updateQuantity(productToUpdate.quantity + 1);
 
-        productToUpdate.save().catch(() => {
-            return next(new DatabaseError(databaseErrors.save));
-        });
+        productToUpdate.save().catch(() => next(new DatabaseError(databaseErrors.save)));
 
-        return res.status(200).json({product: productToUpdate.export(), updated: true});
+        return res.status(200).json({product: productToUpdate.toJSON(), updated: true});
     }
 
     // CREATE NEW PRODUCT IF PRODUCT NOT EXISTS
-    let productData;
-    try {
-        productData = await getOFFdata(barcode);
-    } catch (error) {
-        return next(error);
-    }
+    const productToCreate = await models.Product.createFromOFFData(barcode, req.verifiedToken.id)
 
-    const productToCreate = new models.Product({
-        user: req.verifiedToken.id,
-        barcode: barcode,
-        data: productData,
-        presences: [{date: dayjs.utc().format(), value: true}]
+    await productToCreate.save().catch((error) => {
+        console.log(error)
+        next(new DatabaseError(databaseErrors.save))
     });
 
-    await productToCreate.save().catch(() => {
-        return next(new DatabaseError(databaseErrors.save));
-    });
-
-    return res.status(200).json({product: productToCreate.export(), updated: false});
+    return res.status(200).json({product: productToCreate.toJSON(), updated: false});
 };
 
 const getStats = async (req, res, next) => {
     const {startDate, timeGranularity} = req.body;
 
     const products = await models.Product.find({user: req.verifiedToken.id})
-        .catch(() => {
-            return next(new DatabaseError(databaseErrors.operation));
-        });
+        .catch(() => next(new DatabaseError(databaseErrors.operation)));
 
 
     const stats = new ProductsStats(products, startDate, timeGranularity).getStats();
@@ -109,17 +76,13 @@ const updateOneProductQuantity = async (req, res, next) => {
 
     const product = await models.Product.findOne(
         {user: req.verifiedToken.id, barcode: barcode}
-    ).catch(() => {
-        return next(new DatabaseError(databaseErrors.operation));
-    });
+    ).catch(() => next(new DatabaseError(databaseErrors.operation)));
 
     if (quantity < 0) return next(new ValidationError(validationErrors.quantityLowerThanZero));
 
     product.updateQuantity(quantity);
 
-    product.save().catch(() => {
-        return next(new DatabaseError(databaseErrors.save));
-    });
+    product.save().catch(() => next(new DatabaseError(databaseErrors.save)));
 
     return res.status(200).json({presences: product.presences, quantity: product.quantity});
 };
@@ -130,11 +93,9 @@ const deleteOneProduct = async (req, res, next) => {
     const product = await models.Product.findOneAndDelete({
         user: req.verifiedToken.id,
         barcode: barcode,
-    }).catch(() => {
-        return next(new DatabaseError(databaseErrors.operation));
-    });
+    }).catch(() => next(new DatabaseError(databaseErrors.operation)));
 
-    res.status(200).json({product: product.export()});
+    res.status(200).json({product: product.toJSON()});
 
 };
 module.exports = {

@@ -16,7 +16,7 @@ ProductPageHeader.propTypes = {
     barcode: PropTypes.string,
     imageUrl: PropTypes.string,
     name: PropTypes.string,
-    size: PropTypes.string,
+    size: PropTypes.object,
     brands: PropTypes.string,
     quantity: PropTypes.number.isRequired
 };
@@ -58,7 +58,7 @@ export default function ProductPageHeader({barcode, imageUrl, name, quantity, si
                 <h1 className="product-page-header__name">{name}</h1>
                 <p className="product-page-header__brands">{brands}</p>
                 <p className="product-page-header__barcode">{barcode}</p>
-                <p className="product-page-header__size">{size}</p>
+                <p className="product-page-header__size">{size?.value} {size?.unit}</p>
             </div>
             <div className="product-page-header__controls">
                 <button className={downButtonClass}

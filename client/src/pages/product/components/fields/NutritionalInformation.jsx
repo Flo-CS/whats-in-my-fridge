@@ -14,7 +14,7 @@ import "./NutritionalInformation.scss";
 
 NutritionalInformation.propTypes = {
     nutriments: PropTypes.object,
-    servingSize: PropTypes.string,
+    servingSize: PropTypes.object,
     nutrientLevels: PropTypes.object
 };
 
@@ -31,12 +31,16 @@ function NutritionalInformation({nutriments, servingSize, nutrientLevels}) {
 
     const sizeKeyToValue = {
         "100g": 100,
-        "serving": parseFloat(servingSize)
+        "serving": servingSize?.value
     };
 
     const switchOptions = [
-        {key: "100g", name: "100 g"},
-        {key: "serving", name: `Portion ${servingSize || "?"}`, disabled: !servingSize}
+        {key: "100g", name: `100 g/ml`},
+        {
+            key: "serving",
+            name: `Portion ${servingSize?.value || "?"} ${servingSize?.unit}`,
+            disabled: !servingSize?.value
+        }
     ];
 
     // TODO: Change color and use nutrient levels to give a point of reference to the user
@@ -82,13 +86,19 @@ function NutritionalInformation({nutriments, servingSize, nutrientLevels}) {
             <PercentageBar items={percentageBarItems} max={sizeKeyToValue[sizeKey]} unit="g"/>
             <ChipList>
                 {Object.values(othersNutriments).map(nutriment => {
-                    let {val, unit} = convert(nutriment[sizeKey]).from(nutriment.unit).toBest();
+                    let val, unit
 
-                    val = round(val, 3);
+                    try {
+                        ({val, unit} = convert(nutriment[sizeKey]).from(nutriment.unit).toBest())
+                        val = round(val, 3)
+                    } catch {
+                        val = nutriment[sizeKey]
+                        unit = nutriment.unit
+                    }
 
-                    return <Chip key={nutriment.name}>
+                    return <Chip key={nutriment.name || nutriment.key}>
                         <Chip.TextPart text={`${val} ${unit}`} variant="primary"/>
-                        <Chip.TextPart text={nutriment.name}/>
+                        <Chip.TextPart text={nutriment.name || nutriment.key}/>
                     </Chip>;
                 })
                 }

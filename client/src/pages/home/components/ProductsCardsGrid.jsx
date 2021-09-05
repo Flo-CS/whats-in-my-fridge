@@ -1,7 +1,6 @@
 import {capitalize} from "lodash";
 import propTypes from "prop-types";
 import React from "react";
-import {formatScore} from "../../../helpers/miscellaneous";
 
 import ProductCard from "./ProductCard";
 
@@ -15,28 +14,24 @@ export default function ProductsCardsGrid({products}) {
             <div className="products-cards-grid">
                 {products.map((product) => {
                     let {
-                        image_small_url,
+                        barcode,
+                        quantity,
+                        image_url,
                         brands = [],
-                        product_name = "Nom inconnu",
-                        nutriscore_grade,
-                        ecoscore_grade,
-                        nova_group
-                    } = product.data;
-
-                    const nutriscore = formatScore(nutriscore_grade, true);
-                    const ecoscore = formatScore(ecoscore_grade, true);
-                    const nova = formatScore(nova_group);
+                        name = "Nom inconnu",
+                        nutriscore,
+                        ecoscore,
+                        nova
+                    } = product;
 
                     const brandsText = capitalize(brands.map(tag => tag.name).join(", "));
 
-                    const name = capitalize(product_name);
-
                     return (
                         <ProductCard
-                            key={product.barcode}
-                            barcode={product.barcode}
-                            quantity={product.quantity}
-                            imageUrl={image_small_url}
+                            key={barcode}
+                            barcode={barcode}
+                            quantity={quantity}
+                            imageUrl={image_url}
                             brands={brandsText}
                             name={name}
                             nutriscore={nutriscore}

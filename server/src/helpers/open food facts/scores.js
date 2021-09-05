@@ -1,18 +1,14 @@
-const _ = require("lodash");
+function isValidScore(score, isLetterScore = false) {
+    const validLetterScores = ["A", "B", "C", "D", "E"];
+    const validNovaGroups = [1, 2, 3, 4];
 
-function letterScoreToScore(letter) {
-    const letterConversions = {
-        "A": 1,
-        "B": 2,
-        "C": 3,
-        "D": 4,
-        "E": 5
-    };
+    if (isLetterScore) {
+        score = score?.toUpperCase();
+        return validLetterScores.includes(score)
+    }
 
-    if (!_.isString(letter) || _.isNil(letter)) return;
-
-    letter = letter.toUpperCase();
-    return letterConversions[letter];
+    return validNovaGroups.includes(score)
 }
 
-module.exports = {letterScoreToScore};
+
+module.exports = {isValidScore};

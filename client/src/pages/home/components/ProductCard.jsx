@@ -77,22 +77,22 @@ export default function ProductCard({barcode, quantity, imageUrl, brands, name, 
                     <p className="product-card__score">
                         <span className="product-card__score-label">Nutriscore</span>
                         <span className="product-card__score-value"
-                              style={{color: LETTER_SCORES_COLORS[nutriscore]}}>
-                            {nutriscore}
+                              style={{color: LETTER_SCORES_COLORS[nutriscore?.grade]}}>
+                            {nutriscore?.grade || "?"}
                         </span>
                     </p>
                     <p className="product-card__score">
                         <span className="product-card__score-label">Ecoscore</span>
                         <span className="product-card__score-value"
-                              style={{color: LETTER_SCORES_COLORS[ecoscore]}}>
-                            {ecoscore}
+                              style={{color: LETTER_SCORES_COLORS[ecoscore?.grade]}}>
+                            {ecoscore?.grade || "?"}
                         </span>
                     </p>
                     <p className="product-card__score">
                         <span className="product-card__score-label">Nova</span>
                         <span className="product-card__score-value"
-                              style={{color: NOVA_COLORS[nova]}}>
-                            {nova}
+                              style={{color: NOVA_COLORS[nova?.grade]}}>
+                            {nova?.grade || "?"}
                         </span>
                     </p>
                 </div>
@@ -118,9 +118,9 @@ ProductCard.propTypes = {
     imageUrl: PropTypes.string,
     brands: PropTypes.string,
     name: PropTypes.string,
-    nutriscore: PropTypes.string,
-    ecoscore: PropTypes.string,
-    nova: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    nutriscore: PropTypes.object,
+    ecoscore: PropTypes.object,
+    nova: PropTypes.object
 };
 
 
