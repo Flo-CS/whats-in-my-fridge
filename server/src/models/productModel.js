@@ -5,7 +5,12 @@ const {capitalize, mapValues} = require("lodash")
 const {getTagInfos} = require("../helpers/open food facts/tags");
 const {transformNutriments} = require("../helpers/open food facts/nutriments");
 const {getOFFdata} = require("../helpers/open food facts/api");
-const {letterScoreToScore, isValidScore} = require("../helpers/open food facts/scores");
+const {
+    letterScoreToScore,
+    isValidScore,
+    VALID_LETTER_SCORES,
+    VALID_NOVA_GROUPS
+} = require("../helpers/open food facts/scores");
 const {getTranslation} = require("../helpers/open food facts/translations");
 const {parseSizeString, convertValueToBaseUnit} = require("../helpers/open food facts/sizes");
 
@@ -33,15 +38,15 @@ const productSchema = new mongoose.Schema(
             unit: String
         },
         nutriscore: {
-            grade: {type: String, enum: ["A", "B", "C", "D", "E", null]},
+            grade: {type: String, enum: VALID_LETTER_SCORES.concat([null])},
             score: {type: Number, min: 1, max: 5}
         },
         ecoscore: {
-            grade: {type: String, enum: ["A", "B", "C", "D", "E", null]},
+            grade: {type: String, enum: VALID_LETTER_SCORES.concat([null])},
             score: {type: Number, min: 1, max: 5}
         },
         nova: {
-            grade: {type: Number, enum: [1, 2, 3, 4, null]},
+            grade: {type: Number, enum: VALID_NOVA_GROUPS.concat([null])},
             score: {type: Number, min: 1, max: 4}
         },
         image_url: {type: String, trim: true},

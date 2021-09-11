@@ -11,7 +11,9 @@ StatsPageField.propTypes = {
 function StatsPageField({children, title}) {
     return (<div className="stats-page-field">
             <h2 className="stats-page-field__title">{title}</h2>
-            {children}
+            <div className="stats-page-field__content">
+                {children}
+            </div>
         </div>
     );
 }

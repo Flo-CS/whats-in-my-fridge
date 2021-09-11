@@ -2,6 +2,8 @@ const _ = require("lodash");
 const dayjs = require("dayjs");
 const isBetween = require("dayjs/plugin/isBetween");
 const utc = require("dayjs/plugin/utc");
+const {generateHeatmap} = require("./stats");
+const {VALID_LETTER_SCORES, VALID_NOVA_GROUPS} = require("./open food facts/scores");
 
 dayjs.extend(isBetween);
 dayjs.extend(utc);
@@ -28,18 +30,20 @@ class ProductsStats {
 
     getStats() {
         return {
-            stock: {
-                total_count: this.products.length,
-                in_stock_count: this.presentProducts.length,
-                out_of_stock_count: this.products.length - this.presentProducts.length,
+            counts: {
+                total: this.products.length,
+                in_stock: this.presentProducts.length,
+                out_of_stock: this.products.length - this.presentProducts.length,
             },
-            scores: {
-                nutriscore: this.getScoreStats("nutriscore", true),
-                nova: this.getScoreStats("nova"),
-                ecoscore: this.getScoreStats("ecoscore", true),
+            scores_history: {
+                nutriscore: this.getProductsScoreHistory("nutriscore"),
+                nova: this.getProductsScoreHistory("nova"),
+                ecoscore: this.getProductsScoreHistory("ecoscore"),
             },
-            specifics: {
-                letter_scores_heatmap: this.getLetterScoresHeatmap()
+            heatmaps: {
+                nutriscore_ecoscore: generateHeatmap(this.products, "nutriscore.grade", "ecoscore.grade", VALID_LETTER_SCORES, VALID_LETTER_SCORES),
+                nutriscore_nova: generateHeatmap(this.products, "nutriscore.grade", "nova.grade", VALID_LETTER_SCORES, VALID_NOVA_GROUPS),
+                ecoscore_nova: generateHeatmap(this.products, "ecoscore.grade", "nova.grade", VALID_LETTER_SCORES, VALID_NOVA_GROUPS),
             }
         };
     }
@@ -57,10 +61,10 @@ class ProductsStats {
     }
 
     getPresentsProductsByDate(date, timeScale) {
-        return _(this.products).filter(product => {
+        return this.products.filter(product => {
             // Remove all products that had a quantity of 0 on the specified date
             return product.wasPresentOn(date, timeScale);
-        }).value();
+        });
     }
 
     computeProductsAverageScoreByDate(scoreName, date) {
@@ -73,43 +77,12 @@ class ProductsStats {
     }
 
     getProductsScoreHistory(scoreName) {
-        return _(this.requiredCalculationDates).map(requiredDate => {
-            const averageScoreByDate = this.computeProductsAverageScoreByDate(scoreName, requiredDate);
+        return _(this.requiredCalculationDates).map(date => {
+            const averageScoreByDate = this.computeProductsAverageScoreByDate(scoreName, date);
 
-            return {date: requiredDate, value: averageScoreByDate};
+            return {date: date, value: averageScoreByDate};
 
         }).sortBy(average => average.date);
-    }
-
-
-    // Nova, ecoscore, nutriscore
-    getScoreStats(scoreName) {
-        return {
-            average_history: this.getProductsScoreHistory(scoreName),
-            current_average: this.computeProductsAverageScoreByDate(scoreName, dayjs.utc()),
-        };
-    }
-
-
-    getLetterScoresHeatmap() {
-        let xLabels, yLabels;
-        xLabels = yLabels = ["A", "B", "C", "D", "E", "?"];
-
-        // Initialize a 2D array filled with 0
-        const data = new Array(yLabels.length).fill(0).map(() => new Array(xLabels.length).fill(0));
-
-        for (const product of this.presentProducts) {
-
-            const {nutriscore, ecoscore} = product;
-
-            const xIndex = nutriscore.grade ? nutriscore.score - 1 : xLabels.length - 1;
-            const yIndex = ecoscore.grade ? ecoscore.score - 1 : yLabels.length - 1;
-
-            data[yIndex][xIndex] += 1;
-        }
-
-        return {xLabels, yLabels, data};
-
     }
 }
 

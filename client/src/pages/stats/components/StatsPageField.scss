@@ -10,4 +10,14 @@
     margin-bottom: 1em;
     font-weight: 600;
   }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > * {
+      margin-right: $page-content-spacing / 2;
+      margin-bottom: $page-content-spacing / 2;
+    }
+  }
 }
