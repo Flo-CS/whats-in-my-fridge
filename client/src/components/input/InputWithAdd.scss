@@ -1,0 +1,35 @@
+@import "./../../variables";
+
+.input-with-add {
+  display: flex;
+  height: 40px;
+  width: 100%;
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    padding: 0 1em;
+    border-radius: $control-border-radius;
+    @include reset-input();
+    @include border-radius-left($control-border-radius);
+    background-color: $secondary-background-color;
+    color: $font-color-dark-grey;
+
+    &::placeholder {
+      color: $font-color-light-grey;
+    }
+  }
+
+  &__add-button {
+    @include reset-button();
+    @include button-colorization($primary-element-color);
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    @include border-radius-right($control-border-radius);
+    color: $font-color-white;
+  }
+}
+
+
+

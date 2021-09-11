@@ -5,6 +5,7 @@ import "./App.scss";
 import {ReactComponent as HomeIcon} from "./assets/icons/home.svg";
 import {ReactComponent as ProfileIcon} from "./assets/icons/person-circle.svg";
 import {ReactComponent as StatsIcon} from "./assets/icons/stats-chart.svg";
+import {ReactComponent as AddIcon} from "./assets/icons/add.svg";
 import {checkUserToken} from "./features/authSlice";
 import {PATHS} from "./helpers/constants";
 import AuthRoute from "./pages/components/AuthRoute";
@@ -16,6 +17,7 @@ import "./pages/Pages.scss";
 import ProductPage from "./pages/product/ProductPage";
 import RegisterPage from "./pages/register/RegisterPage";
 import StatsPage from "./pages/stats/StatsPage";
+import AddPage from "./pages/add/AddPage";
 
 function App() {
     const dispatch = useDispatch();
@@ -32,6 +34,11 @@ function App() {
             name: "Produits"
         },
         {
+            path: PATHS.ADD_PRODUCT,
+            Icon: AddIcon,
+            name: "Add"
+        },
+        {
             path: PATHS.STATS,
             Icon: StatsIcon,
             name: "Stats"
@@ -40,26 +47,31 @@ function App() {
             path: PATHS.PROFILE,
             Icon: ProfileIcon,
             name: "Profile"
-        }];
+        },
+    ];
 
 
     return <div className="app">
         <Router>
             <Switch>
-                <AuthRoute path="/login">
+                <AuthRoute path={PATHS.LOGIN}>
                     <LoginPage/>
                 </AuthRoute>
-                <Route path="/register">
+                <Route path={PATHS.REGISTER}>
                     <RegisterPage/>
                 </Route>
-                <ProtectedRoute path="/products/:barcode">
+                <ProtectedRoute path={PATHS.ADD_PRODUCT}>
+                    <AddPage/>
+                    <NavigationBar items={navItems}/>
+                </ProtectedRoute>
+                <ProtectedRoute path={PATHS.PRODUCT_DETAILS(":barcode")}>
                     <ProductPage/>
                 </ProtectedRoute>
-                <ProtectedRoute exact path="/">
+                <ProtectedRoute exact path={PATHS.HOME}>
                     <HomePage/>
                     <NavigationBar items={navItems}/>
                 </ProtectedRoute>
-                <ProtectedRoute path="/stats">
+                <ProtectedRoute path={PATHS.STATS}>
                     <StatsPage/>
                     <NavigationBar items={navItems}/>
                 </ProtectedRoute>

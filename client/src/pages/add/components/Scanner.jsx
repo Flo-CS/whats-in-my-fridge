@@ -101,9 +101,10 @@ export default function Scanner({onDetected, onClose}) {
                     <button className="scanner__flash-button" onClick={() => setIsLightOn((isLightOn) => !isLightOn)}>
                         <FlashIcon/>
                     </button>}
+                    {onClose &&
                     <button className="scanner__close-button" onClick={() => onClose()}>
                         <CloseIcon/>
-                    </button>
+                    </button>}
                 </div>
 
             </div>
@@ -113,5 +114,5 @@ export default function Scanner({onDetected, onClose}) {
 
 Scanner.propTypes = {
     onDetected: propTypes.func.isRequired,
-    onClose: propTypes.func.isRequired
+    onClose: propTypes.func
 };

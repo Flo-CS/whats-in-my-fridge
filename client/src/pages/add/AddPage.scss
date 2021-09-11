@@ -1,0 +1,20 @@
+@import "./../../variables";
+
+.add-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: $navigation-bar-size;
+  padding: $page-content-spacing;
+
+  &__body {
+    max-width: $max-content-width * 3/4;
+    width: 100%;
+  }
+
+  &__scanner {
+    margin-top: $page-content-spacing;
+    width: 100%;
+  }
+}

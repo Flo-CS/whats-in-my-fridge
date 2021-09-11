@@ -94,13 +94,3 @@ $max-content-width: 1000px;
     @content;
   }
 }
-
-
-@mixin green-button() {
-  @include reset-button();
-  background-color: $primary-element-color;
-  color: $font-color-white;
-  &:hover {
-    background-color: darken($primary-element-color, 5%);
-  }
-}

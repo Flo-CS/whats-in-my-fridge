@@ -20,7 +20,8 @@ export const PATHS = {
     STATS: "/stats",
     PRODUCT_DETAILS: (barcode) => `/products/${barcode}`,
     REGISTER: "/register",
-    LOGIN: "/login"
+    LOGIN: "/login",
+    ADD_PRODUCT: "/add_product"
 };
 
 
