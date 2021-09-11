@@ -44,9 +44,9 @@ class ProductsStats {
                 ecoscore: this.getProductsScoreHistory("ecoscore"),
             },
             heatmaps: {
-                nutriscore_ecoscore: generateHeatmap(this.products, "nutriscore.grade", "ecoscore.grade", VALID_LETTER_SCORES, VALID_LETTER_SCORES),
-                nutriscore_nova: generateHeatmap(this.products, "nutriscore.grade", "nova.grade", VALID_LETTER_SCORES, VALID_NOVA_GROUPS),
-                ecoscore_nova: generateHeatmap(this.products, "ecoscore.grade", "nova.grade", VALID_LETTER_SCORES, VALID_NOVA_GROUPS),
+                nutriscore_ecoscore: generateHeatmap(this.presentProducts, "nutriscore.grade", "ecoscore.grade", VALID_LETTER_SCORES, VALID_LETTER_SCORES),
+                nutriscore_nova: generateHeatmap(this.presentProducts, "nutriscore.grade", "nova.grade", VALID_LETTER_SCORES, VALID_NOVA_GROUPS),
+                ecoscore_nova: generateHeatmap(this.presentProducts, "ecoscore.grade", "nova.grade", VALID_LETTER_SCORES, VALID_NOVA_GROUPS),
             }
         };
     }
