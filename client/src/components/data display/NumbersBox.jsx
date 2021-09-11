@@ -3,9 +3,11 @@ import React from 'react';
 
 import "./NumbersBox.scss";
 
+
 import {ReactComponent as DownIcon} from "../../assets/icons/down.svg";
 import {ReactComponent as UpIcon} from "../../assets/icons/up.svg";
 import classNames from "classnames";
+import {isNil} from "lodash";
 
 
 NumbersBox.propTypes = {
@@ -29,7 +31,6 @@ export default function NumbersBox({items}) {
                     "numbers-box__difference--green": differenceWithOldValue > 0,
                     "numbers-box__difference--red": differenceWithOldValue < 0
                 })
-
                 return <React.Fragment key={item.name}>
                     <div className="numbers-box__number">
                         <p className="numbers-box__label">{item.name}</p>
@@ -37,7 +38,7 @@ export default function NumbersBox({items}) {
                             <p className="numbers-box__value" style={{color: item.color}}>
                                 {item.value}
                             </p>
-                            {item.oldValue &&
+                            {(!isNil(item.oldValue) && differenceWithOldValue !== 0) &&
                             <div className={differenceClass}>
                                 {differenceWithOldValue > 0 && <UpIcon className="numbers-box__difference-icon"/>}
                                 {differenceWithOldValue < 0 && <DownIcon className="numbers-box__difference-icon"/>}

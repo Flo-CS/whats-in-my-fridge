@@ -47,18 +47,17 @@ export default function StatsPage() {
     const numbersBoxItems = [
         {
             name: "Produits",
-            value: productsStats?.counts?.total,
-            oldValue: 5
+            value: productsStats?.counts?.total
         },
         {
             name: "Présents",
             value: productsStats?.counts?.in_stock,
-            oldValue: 40
+            oldValue: productsStats?.counts?.old_in_stock
         },
         {
             name: "Epuisés",
             value: productsStats?.counts?.out_of_stock,
-            oldValue: 5
+            oldValue: productsStats?.counts?.old_out_of_stock
         }]
 
 

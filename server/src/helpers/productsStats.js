@@ -23,6 +23,7 @@ class ProductsStats {
         this.timeScale = timeGranularityToTimeScale[timeGranularity];
 
         this.presentProducts = this.getPresentsProductsByDate(this.startDate, this.timeGranularity);
+        this.oldPresentProducts = this.getPresentsProductsByDate(this.startDate.subtract(1, this.timeGranularity), this.timeGranularity)
 
         this.requiredCalculationDates = this.getRequiredCalculationDates();
     }
@@ -34,6 +35,8 @@ class ProductsStats {
                 total: this.products.length,
                 in_stock: this.presentProducts.length,
                 out_of_stock: this.products.length - this.presentProducts.length,
+                old_in_stock: this.oldPresentProducts.length,
+                old_out_of_stock: this.products.length - this.oldPresentProducts.length,
             },
             scores_history: {
                 nutriscore: this.getProductsScoreHistory("nutriscore"),
