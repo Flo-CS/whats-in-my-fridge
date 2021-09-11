@@ -6,10 +6,10 @@ const {getTagInfos} = require("../helpers/open food facts/tags");
 const {transformNutriments} = require("../helpers/open food facts/nutriments");
 const {getOFFdata} = require("../helpers/open food facts/api");
 const {
-    letterScoreToScore,
     isValidScore,
     VALID_LETTER_SCORES,
-    VALID_NOVA_GROUPS
+    VALID_NOVA_GROUPS,
+    LETTER_SCORE_CONVERSIONS
 } = require("../helpers/open food facts/scores");
 const {getTranslation} = require("../helpers/open food facts/translations");
 const {parseSizeString, convertValueToBaseUnit} = require("../helpers/open food facts/sizes");
@@ -195,11 +195,11 @@ productSchema.statics.createFromOFFData = async function (barcode, user) {
         },
         nutriscore: {
             grade: nutriscore_grade,
-            score: letterScoreToScore(nutriscore_grade)
+            score: LETTER_SCORE_CONVERSIONS[nutriscore_grade] || null
         },
         ecoscore: {
             grade: ecoscore_grade,
-            score: letterScoreToScore(ecoscore_grade)
+            score: LETTER_SCORE_CONVERSIONS[ecoscore_grade] || null
         },
         nova: {
             grade: nova_grade,
