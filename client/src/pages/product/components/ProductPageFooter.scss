@@ -13,6 +13,7 @@
   &__text {
     margin-top: 0.7em;
     color: $font-color-dark-grey;
+    text-align: center;
 
     &:first-child {
       margin-top: 0;
@@ -25,6 +26,7 @@
   }
 
   &__link {
+    text-align: center;
     margin-top: 1.1em;
     color: $font-color-dark-grey;
 
