@@ -18,6 +18,10 @@
     &::placeholder {
       color: $font-color-light-grey;
     }
+
+    &:disabled {
+      background-color: $tertiary-element-color;
+    }
   }
 
   &__add-button {

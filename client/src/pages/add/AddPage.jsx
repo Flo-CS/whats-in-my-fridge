@@ -9,21 +9,28 @@ import InputWithAdd from "../../components/input/InputWithAdd";
 export default function AddPage() {
     const dispatch = useDispatch()
     const [barcode, setBarcode] = useState("");
+    const [scannedBarcode, setScannedBarcode] = useState("")
 
     const handleBarcodeDetected = useCallback((barcode) => {
-        setBarcode(barcode)
+        setScannedBarcode(barcode)
     }, [])
 
 
     return <div className="add-page">
         <div className="add-page__body">
-            <InputWithAdd onInputChange={(barcode) => setBarcode(barcode)} inputValue={barcode}
+            <InputWithAdd type="number"
+                          onInputChange={(barcode) => setBarcode(barcode)}
+                          inputValue={barcode}
                           onAddButtonClick={() => dispatch(addProduct({barcode}))}
                           inputPlaceholder="Entrer un code-barre"/>
 
             <div className="add-page__scanner">
                 <Scanner onDetected={handleBarcodeDetected}/>
             </div>
+            {scannedBarcode && <InputWithAdd disabled
+                                             inputValue={scannedBarcode}
+                                             onAddButtonClick={() => dispatch(addProduct({barcode: scannedBarcode}))}/>
+            }
         </div>
     </div>;
 }

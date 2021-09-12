@@ -6,19 +6,22 @@ import {ReactComponent as PlusIcon} from "../../assets/icons/plus.svg";
 
 InputWithAdd.propTypes = {
     onAddButtonClick: PropTypes.func.isRequired,
-    onInputChange: PropTypes.func.isRequired,
+    onInputChange: PropTypes.func,
     inputValue: PropTypes.string.isRequired,
-    inputPlaceholder: PropTypes.string
+    inputPlaceholder: PropTypes.string,
+    disabled: PropTypes.bool,
+    type: PropTypes.string
 };
 
-function InputWithAdd({onAddButtonClick, onInputChange, inputValue, inputPlaceholder}) {
+function InputWithAdd({onAddButtonClick, onInputChange, inputValue, inputPlaceholder, disabled, type}) {
     return (
         <div className="input-with-add">
-            <input type="text" className="input-with-add__input"
+            <input type={type} className="input-with-add__input"
                    onKeyUp={(event) => event.key === "Enter" && onAddButtonClick()}
-                   onChange={(event) => onInputChange(event.target.value)}
+                   onChange={(event) => onInputChange && onInputChange(event.target.value)}
                    value={inputValue}
-                   placeholder={inputPlaceholder}/>
+                   placeholder={inputPlaceholder}
+                   disabled={disabled}/>
             <button className="input-with-add__add-button" onClick={onAddButtonClick}>
                 <PlusIcon className="product-card__add-button-icon"/>
             </button>
