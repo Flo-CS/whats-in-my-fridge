@@ -85,8 +85,11 @@ function App() {
 }
 
 // TODO: TEMPORARY, WHILE PROFILE PAGE IS NOT IMPLEMENTED
+
 function Logout() {
     const dispatch = useDispatch()
+
+    //useEffect is necessary here: https://stackoverflow.com/questions/62336340/cannot-update-a-component-while-rendering-a-different-component-warning
     useEffect(() => {
         dispatch(logoutUser())
     }, [])
