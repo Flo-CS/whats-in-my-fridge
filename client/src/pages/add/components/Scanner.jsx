@@ -73,7 +73,7 @@ export default function Scanner({onDetected, onClose}) {
 
     // Wait for 7 detection of the barcode to find the most probable barcode code
     useEffect(() => {
-        if (scannedBarcodes.length >= 12) {
+        if (scannedBarcodes.length >= 7) {
 
             const mostProbableBarcode = flow(
                 countBy,
