@@ -60,8 +60,8 @@ const productSlice = createSlice({
         },
         [fetchProducts.rejected]: (state, action) => {
             state.productsIsLoading = false;
-            state.error = action.payload.errorMessage;
-            toast.error(action.payload.errorMessage);
+            state.error = action.payload.error;
+            toast.error(action.payload.error.message);
         },
 
         [addProduct.fulfilled]: (state, action) => {
@@ -79,8 +79,8 @@ const productSlice = createSlice({
             }
         },
         [addProduct.rejected]: (state, action) => {
-            state.error = action.payload.errorMessage;
-            toast.error(action.payload.errorMessage);
+            state.error = action.payload.error;
+            toast.error(action.payload.error.message);
         },
 
         [updateProductQuantity.fulfilled]: (state, action) => {
@@ -96,8 +96,8 @@ const productSlice = createSlice({
             state.activeProduct.quantity = action.payload.quantity;
         },
         [updateProductQuantity.rejected]: (state, action) => {
-            state.error = action.payload.errorMessage;
-            toast.error(action.payload.errorMessage);
+            state.error = action.payload.error;
+            toast.error(action.payload.error.message);
 
         },
 
@@ -110,8 +110,8 @@ const productSlice = createSlice({
             }
         },
         [deleteProduct.rejected]: (state, action) => {
-            state.error = action.payload.errorMessage;
-            toast.error(action.payload.errorMessage);
+            state.error = action.payload.error;
+            toast.error(action.payload.error.message);
         },
 
         [fetchActiveProduct.pending]: (state, action) => {
@@ -123,8 +123,8 @@ const productSlice = createSlice({
         },
         [fetchActiveProduct.rejected]: (state, action) => {
             state.activeProductIsLoading = false;
-            state.error = action.payload.errorMessage;
-            toast.error(action.payload.errorMessage);
+            state.error = action.payload.error;
+            toast.error(action.payload.error.message);
         },
 
         [fetchProductsStats.pending]: (state, action) => {
@@ -136,8 +136,8 @@ const productSlice = createSlice({
         },
         [fetchProductsStats.rejected]: (state, action) => {
             state.productsStatsIsLoading = false;
-            state.error = action.payload.errorMessage;
-            toast.error(action.payload.errorMessage);
+            state.error = action.payload.error;
+            toast.error(action.payload.error.message);
         },
     }
 });

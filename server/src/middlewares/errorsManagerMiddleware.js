@@ -9,11 +9,13 @@ function errorsManagerMiddleware() {
 
         if (error.message)
             return res.status(error.statusCode || 500).json({
-                errorMessage: error.message,
-                details: error.details
+                error: {
+                    message: error.message,
+                    details: error.details
+                }
             });
 
-        return res.status(500).json({errorMessage: "Une erreur inconnue s'est produite"});
+        return res.status(500).json({error: {message: "Une erreur inconnue s'est produite"}});
 
     };
 }

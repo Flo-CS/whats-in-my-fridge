@@ -38,8 +38,8 @@ const authSlice = createSlice({
         [loginUser.rejected]: (state, action) => {
             state.isLoading = false;
             state.isAuthenticated = false;
-            state.error = action.payload.errorMessage;
-            toast.error(action.payload.errorMessage);
+            state.error = action.payload.error;
+            toast.error(action.payload.error.message);
 
         },
 
@@ -52,8 +52,8 @@ const authSlice = createSlice({
         },
         [registerUser.rejected]: (state, action) => {
             state.isLoading = false;
-            state.error = action.payload.errorMessage;
-            toast.error(action.payload.errorMessage);
+            state.error = action.payload.error;
+            toast.error(action.payload.error.message);
 
         },
 
@@ -69,7 +69,7 @@ const authSlice = createSlice({
         [checkUserToken.rejected]: (state, action) => {
             state.isLoading = false;
             state.isAuthenticated = false;
-            state.error = action.payload.errorMessage;
+            state.error = action.payload.error;
         },
         [logoutUser.pending]: (state, action) => {
             state.isLoading = true;
@@ -81,8 +81,8 @@ const authSlice = createSlice({
         },
         [logoutUser.rejected]: (state, action) => {
             state.isLoading = false;
-            state.error = action.payload.errorMessage;
-            toast.error(action.payload.errorMessage);
+            state.error = action.payload.error;
+            toast.error(action.payload.error.message);
 
         }
     }
