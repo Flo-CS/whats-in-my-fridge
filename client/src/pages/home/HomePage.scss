@@ -5,6 +5,6 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-  margin-bottom: $navigation-bar-size;
   padding: $page-content-spacing;
+  padding-bottom: $navigation-bar-size + $page-content-spacing;
 }
