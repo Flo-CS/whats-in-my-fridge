@@ -4,7 +4,7 @@ const dayjs = require("dayjs");
 const {capitalize, mapValues} = require("lodash")
 const {getTagInfos} = require("../helpers/open food facts/tags");
 const {transformNutriments} = require("../helpers/open food facts/nutriments");
-const {getOFFdata} = require("../helpers/open food facts/api");
+const {fetchOFFData} = require("../helpers/open food facts/api");
 const {
     isValidScore,
     VALID_LETTER_SCORES,
@@ -167,7 +167,7 @@ productSchema.statics.createFromOFFData = async function (barcode, user) {
         additives_tags: additives,
         nutrient_levels,
         nutriments
-    } = await getOFFdata(barcode);
+    } = await fetchOFFData(barcode);
 
     const [sizeValue, sizeUnit] = parseSizeString(size);
     const [servingSizeValue, servingSizeUnit] = parseSizeString(serving_size);

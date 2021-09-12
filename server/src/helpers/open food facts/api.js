@@ -2,7 +2,7 @@ const {OPEN_FOOD_FACTS_API_ENDPOINT, OPEN_FOOD_FACTS_USEFUL_FIELDS} = require(".
 const axios = require("axios");
 const {OpenFoodFactsError, openFoodFactsErrors} = require("../errors");
 
-async function getOFFdata(barcode) {
+async function fetchOFFData(barcode) {
 
     const fields = OPEN_FOOD_FACTS_USEFUL_FIELDS.join(",");
 
@@ -22,4 +22,4 @@ async function getOFFdata(barcode) {
 }
 
 
-module.exports = {getOFFdata};
+module.exports = {fetchOFFData};
