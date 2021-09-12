@@ -11,7 +11,7 @@ function Categories({categories}) {
     return (
         <ChipList>
             {categories.map(category => {
-                    return <Chip key={category.name}>
+                    return <Chip key={category.key}>
                         <Chip.TextPart text={category.name}/>
                     </Chip>;
                 }

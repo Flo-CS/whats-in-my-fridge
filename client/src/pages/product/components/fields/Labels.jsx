@@ -11,7 +11,7 @@ function Labels({labels}) {
     return (
         <ChipList>
             {labels.map(label => {
-                    return <Chip key={label.name}>
+                    return <Chip key={label.key}>
                         <Chip.TextPart text={label.name}/>
                     </Chip>;
                 }

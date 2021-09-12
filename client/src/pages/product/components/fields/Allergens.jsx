@@ -11,7 +11,7 @@ function Allergens({allergens}) {
     return (
         <ChipList>
             {allergens.map(allergen => {
-                    return <Chip key={allergen.name}>
+                    return <Chip key={allergen.key}>
                         <Chip.TextPart text={allergen.name}/>
                     </Chip>;
                 }

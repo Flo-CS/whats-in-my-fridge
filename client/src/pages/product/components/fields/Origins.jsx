@@ -11,7 +11,7 @@ Origins.propTypes = {
 function Origins({origins}) {
     return (
         <ChipList>
-            {origins.map(origin => <OriginChip key={origin.name} origin={origin}/>)}
+            {origins.map(origin => <OriginChip key={origin.key} origin={origin}/>)}
         </ChipList>
     );
 }

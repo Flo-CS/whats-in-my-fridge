@@ -14,7 +14,7 @@ function Additives({additives}) {
                     const split = additive.name.split(" - ");
                     const code = split[0];
                     const label = split[1];
-                    return <Chip key={additive.name}>
+                    return <Chip key={additive.key}>
                         <Chip.TextPart text={code} variant="primary"/>
                         <Chip.TextPart text={label}/>
                     </Chip>;

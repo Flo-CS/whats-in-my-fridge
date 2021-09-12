@@ -16,7 +16,7 @@ function IngredientsAndAnalysis({ingredients, ingredientsAnalysis}) {
     return <div className="ingredients-and-analysis">
         <ChipList>
             {ingredients.map(ingredient => {
-                    return <Chip key={ingredient.name}>
+                    return <Chip key={ingredient.key}>
                         <Chip.TextPart text={ingredient.name}/>
                     </Chip>;
                 }
@@ -25,9 +25,9 @@ function IngredientsAndAnalysis({ingredients, ingredientsAnalysis}) {
         <div className="ingredients-and-analysis__separation"/>
         <ChipList>
             {ingredientsAnalysis.map(ingredientAnalysis => {
-                    return <Chip key={ingredientAnalysis.name}>
-                        <Chip.TextPart text={ingredientAnalysis.name}/>
-                    </Chip>;
+                return <Chip key={ingredientAnalysis.key}>
+                    <Chip.TextPart text={ingredientAnalysis.name}/>
+                </Chip>;
                 }
             )}
         </ChipList>
