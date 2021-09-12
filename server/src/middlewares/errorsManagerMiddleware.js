@@ -3,7 +3,7 @@ const prettyError = new PrettyError();
 
 
 function errorsManagerMiddleware() {
-    return (error, req, res) => {
+    return (error, req, res, next) => {
 
         console.log(prettyError.render(error));
 
