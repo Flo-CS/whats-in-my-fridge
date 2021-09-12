@@ -11,12 +11,14 @@ import {PATHS} from "./helpers/constants";
 import AuthRoute from "./pages/components/AuthRoute";
 import NavigationBar from "./pages/components/NavigationBar";
 import ProtectedRoute from "./pages/components/ProtectedRoute";
-import HomePage from "./pages/home/HomePage";
-import LoginPage from "./pages/login/LoginPage";
-import ProductPage from "./pages/product/ProductPage";
-import RegisterPage from "./pages/register/RegisterPage";
-import StatsPage from "./pages/stats/StatsPage";
-import AddPage from "./pages/add/AddPage";
+import LoadingPage from "./pages/loading/LoadingPage";
+
+const HomePage = React.lazy(() => import("./pages/home/HomePage"));
+const LoginPage = React.lazy(() => import("./pages/login/LoginPage"));
+const ProductPage = React.lazy(() => import("./pages/product/ProductPage"));
+const RegisterPage = React.lazy(() => import("./pages/register/RegisterPage"));
+const StatsPage = React.lazy(() => import("./pages/stats/StatsPage"));
+const AddPage = React.lazy(() => import("./pages/add/AddPage"));
 
 function App() {
     const dispatch = useDispatch();
@@ -51,35 +53,37 @@ function App() {
 
 
     return <div className="app">
-        <Router>
-            <Switch>
-                <AuthRoute path={PATHS.LOGIN}>
-                    <LoginPage/>
-                </AuthRoute>
-                <Route path={PATHS.REGISTER}>
-                    <RegisterPage/>
-                </Route>
-                <ProtectedRoute path={PATHS.ADD_PRODUCT}>
-                    <AddPage/>
-                    <NavigationBar items={navItems}/>
-                </ProtectedRoute>
-                <ProtectedRoute path={PATHS.PRODUCT_DETAILS(":barcode")}>
-                    <ProductPage/>
-                </ProtectedRoute>
-                <ProtectedRoute exact path={PATHS.HOME}>
-                    <HomePage/>
-                    <NavigationBar items={navItems}/>
-                </ProtectedRoute>
-                <ProtectedRoute path={PATHS.STATS}>
-                    <StatsPage/>
-                    <NavigationBar items={navItems}/>
-                </ProtectedRoute>
-                <ProtectedRoute path={PATHS.PROFILE}>
-                    <Logout/>
-                </ProtectedRoute>
-                <Redirect from="*" to="/"/>
-            </Switch>
-        </Router>
+        <React.Suspense fallback={<LoadingPage/>}>
+            <Router>
+                <Switch>
+                    <AuthRoute path={PATHS.LOGIN}>
+                        <LoginPage/>
+                    </AuthRoute>
+                    <Route path={PATHS.REGISTER}>
+                        <RegisterPage/>
+                    </Route>
+                    <ProtectedRoute path={PATHS.ADD_PRODUCT}>
+                        <AddPage/>
+                        <NavigationBar items={navItems}/>
+                    </ProtectedRoute>
+                    <ProtectedRoute path={PATHS.PRODUCT_DETAILS(":barcode")}>
+                        <ProductPage/>
+                    </ProtectedRoute>
+                    <ProtectedRoute exact path={PATHS.HOME}>
+                        <HomePage/>
+                        <NavigationBar items={navItems}/>
+                    </ProtectedRoute>
+                    <ProtectedRoute path={PATHS.STATS}>
+                        <StatsPage/>
+                        <NavigationBar items={navItems}/>
+                    </ProtectedRoute>
+                    <ProtectedRoute path={PATHS.PROFILE}>
+                        <Logout/>
+                    </ProtectedRoute>
+                    <Redirect from="*" to="/"/>
+                </Switch>
+            </Router>
+        </React.Suspense>
     </div>;
 }
 
