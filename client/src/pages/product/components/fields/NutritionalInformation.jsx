@@ -38,7 +38,7 @@ function NutritionalInformation({nutriments, servingSize, nutrientLevels}) {
         {key: "100g", name: `100 g/ml`},
         {
             key: "serving",
-            name: `Portion ${servingSize?.value || "?"} ${servingSize?.unit}`,
+            name: `Portion ${servingSize?.value || "?"} ${servingSize?.unit || ""}`,
             disabled: !servingSize?.value
         }
     ];
