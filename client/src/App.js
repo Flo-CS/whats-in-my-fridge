@@ -13,7 +13,6 @@ import NavigationBar from "./pages/components/NavigationBar";
 import ProtectedRoute from "./pages/components/ProtectedRoute";
 import HomePage from "./pages/home/HomePage";
 import LoginPage from "./pages/login/LoginPage";
-import "./pages/Pages.scss";
 import ProductPage from "./pages/product/ProductPage";
 import RegisterPage from "./pages/register/RegisterPage";
 import StatsPage from "./pages/stats/StatsPage";

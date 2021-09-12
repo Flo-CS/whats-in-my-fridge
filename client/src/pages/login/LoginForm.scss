@@ -1,0 +1,28 @@
+@import "./../../variables";
+
+.login-form {
+  font-size: $normal-font-size;
+  display: flex;
+  flex-direction: column;
+
+  &__email, &__password {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px $primary-element-color solid;
+    border-radius: $control-border-radius;
+  }
+
+  label {
+    margin-bottom: 5px;
+  }
+
+  &__submit-button {
+    @include reset-button;
+    padding: 10px;
+    color: $font-color-white;
+    border-radius: $control-border-radius;
+    @include button-colorization($primary-element-color);
+
+  }
+
+}

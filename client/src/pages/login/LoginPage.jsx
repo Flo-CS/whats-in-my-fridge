@@ -2,8 +2,9 @@ import React from "react";
 import {useHistory} from "react-router-dom";
 import {PATHS} from "../../helpers/constants";
 
-import LoginInputs from "./LoginInputs";
+import LoginForm from "./LoginForm";
 
+import "./LoginPage.scss"
 
 export default function LoginPage() {
     const history = useHistory();
@@ -11,7 +12,7 @@ export default function LoginPage() {
 // Todo : Credit to open food facts (see licence for more infos)
     return <div className="login-page">
         <h1>Connexion</h1>
-        <LoginInputs/>
+        <LoginForm/>
         <button className="login-page__go-register-button" onClick={() => history.push(PATHS.REGISTER)}>Aller
             s&apos;enregistrer
         </button>

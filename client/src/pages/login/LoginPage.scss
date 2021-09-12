@@ -1,0 +1,25 @@
+@import "./../../variables";
+
+.login-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  font-size: $normal-font-size;
+
+  h1 {
+    font-size: $big-font-size;
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+
+  &__go-login-button, &__go-register-button {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: $control-border-radius;
+    @include reset-button();
+    @include button-colorization($secondary-element-color);
+  }
+}
