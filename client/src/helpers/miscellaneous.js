@@ -37,7 +37,7 @@ function sortProducts(products, sortKey, sortDirection) {
         case "ECOSCORE":
             return orderBy(products, ["ecoscore.grade"], [sortDirection]);
         case "NOVA":
-            return orderBy(products, ["nova.group"], [sortDirection]);
+            return orderBy(products, ["nova.grade"], [sortDirection]);
         case "RELEVANCE":
             // There is no need to sort because fuse.js already does it with the match score.
             if (sortDirection === "desc")
