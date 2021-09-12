@@ -36,7 +36,7 @@ function App() {
         {
             path: PATHS.ADD_PRODUCT,
             Icon: AddIcon,
-            name: "Add"
+            name: "Ajouter"
         },
         {
             path: PATHS.STATS,
