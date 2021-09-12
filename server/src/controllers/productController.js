@@ -47,8 +47,7 @@ const addOneProduct = async (req, res, next) => {
     // CREATE NEW PRODUCT IF PRODUCT NOT EXISTS
     const productToCreate = await models.Product.createFromOFFData(barcode, req.verifiedToken.id)
 
-    await productToCreate.save().catch((error) => {
-        console.log(error)
+    await productToCreate.save().catch(() => {
         next(new DatabaseError(databaseErrors.save))
     });
 
