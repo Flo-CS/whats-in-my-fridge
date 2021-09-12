@@ -6,7 +6,7 @@ import {ReactComponent as HomeIcon} from "./assets/icons/home.svg";
 import {ReactComponent as ProfileIcon} from "./assets/icons/person-circle.svg";
 import {ReactComponent as StatsIcon} from "./assets/icons/stats-chart.svg";
 import {ReactComponent as AddIcon} from "./assets/icons/add.svg";
-import {checkUserToken} from "./features/authSlice";
+import {checkUserToken, logoutUser} from "./features/authSlice";
 import {PATHS} from "./helpers/constants";
 import AuthRoute from "./pages/components/AuthRoute";
 import NavigationBar from "./pages/components/NavigationBar";
@@ -46,7 +46,7 @@ function App() {
         {
             path: PATHS.PROFILE,
             Icon: ProfileIcon,
-            name: "Profile"
+            name: "Déconnexion"
         },
     ];
 
@@ -75,10 +75,23 @@ function App() {
                     <StatsPage/>
                     <NavigationBar items={navItems}/>
                 </ProtectedRoute>
+                <ProtectedRoute path={PATHS.PROFILE}>
+                    <Logout/>
+                </ProtectedRoute>
                 <Redirect from="*" to="/"/>
             </Switch>
         </Router>
     </div>;
+}
+
+// TODO: TEMPORARY, WHILE PROFILE PAGE IS NOT IMPLEMENTED
+function Logout() {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(logoutUser())
+    }, [])
+    return <Redirect to={PATHS.LOGIN}/>
+
 }
 
 export default App;
