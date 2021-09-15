@@ -14,6 +14,16 @@ $image-max-height: $card-height - $container-padding * 2;
   border-radius: $card-border-radius;
   background-color: $primary-background-color;
 
+  &--disabled {
+    background: repeating-linear-gradient(
+                    -45deg,
+                    $tertiary-element-color,
+                    $tertiary-element-color 2px,
+                    $secondary-background-color 2px,
+                    $secondary-background-color 20px
+    );
+  }
+
   &__image-container {
     overflow: hidden;
     width: $container-width;
