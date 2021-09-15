@@ -4,6 +4,7 @@ import {toast} from "react-toastify";
 import Api from "../helpers/api";
 import {asyncThunkErrorWrapper, sortProducts} from "../helpers/miscellaneous";
 import {selectSortParameters} from "./filtersSlice";
+import {deburr} from "lodash";
 
 
 // THUNKS
@@ -153,7 +154,13 @@ const fuse = new Fuse([], {
         "ingredients.name",
         "barcode"],
     threshold: 0.4,
-    ignoreLocation: true
+    ignoreLocation: true,
+    // Allows to improve the search
+    // Deburrs string by converting Latin-1 Supplement and Latin Extended-A letters to basic Latin letters and removing combining diacritical marks (from lodash doc)
+    // For the usage of the getFn option, see https://github.com/krisk/Fuse/issues/415#issuecomment-634713640
+    getFn: function () {
+        return deburr(Fuse.config.getFn.apply(this, arguments));
+    }
 });
 
 
@@ -164,7 +171,7 @@ function selectFilteredProducts(state) {
 
     // Filter by text
     fuse.setCollection(products);
-    const filteredProducts = text ? fuse.search(text).map(result => result.item) : products;
+    const filteredProducts = text ? fuse.search(deburr(text)).map(result => result.item) : products;
 
     return filteredProducts;
 }
