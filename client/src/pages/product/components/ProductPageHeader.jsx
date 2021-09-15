@@ -37,7 +37,10 @@ export default function ProductPageHeader({barcode, imageUrl, name, quantity, si
 
     function handleDeleteProduct() {
         if (window.confirm("Voulez vous définitivement supprimer ce produit ?")) {
-            dispatch(deleteProduct({barcode}));
+            dispatch(deleteProduct({barcode})).then(() => {
+                handleBackButtonClick()
+            })
+
         }
     }
 
