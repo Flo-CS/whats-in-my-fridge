@@ -5,8 +5,8 @@ const filtersSlice = createSlice({
     name: "filters",
     initialState: {
         sortParameters: {
-            key: SORT_OPTIONS.MODIFICATION_DATE.key,
-            direction: SORT_OPTIONS.MODIFICATION_DATE.defaultDirection
+            key: SORT_OPTIONS.NAME.key,
+            direction: SORT_OPTIONS.NAME.defaultDirection
         },
         text: ""
 

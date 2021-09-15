@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
-import {deburr, last, orderBy, reverse} from "lodash";
+import {deburr, isNil, last, orderBy, reverse, sum} from "lodash";
+import {SORT_OPTIONS} from "./constants";
 
 function truncateString(str, size) {
     if (str.length <= size) return str;
@@ -26,19 +27,25 @@ const asyncThunkErrorWrapper = async (asyncApiCallFunc, rejectWithValue) => {
 
 function sortProducts(products, sortKey, sortDirection) {
     switch (sortKey) {
-        case "MODIFICATION_DATE":
+        case SORT_OPTIONS.MODIFICATION_DATE.key:
             return orderBy(products, [(product) => dayjs(last(product.presences).date)], [sortDirection]);
-        case "NAME":
+        case SORT_OPTIONS.NAME.key:
             return orderBy(products, [(product) => deburr(product.name)], [sortDirection]);
-        case "QUANTITY":
+        case SORT_OPTIONS.QUANTITY.key:
             return orderBy(products, ["quantity"], [sortDirection]);
-        case "NUTRISCORE":
+        case SORT_OPTIONS.NUTRISCORE.key:
             return orderBy(products, ["nutriscore.grade"], [sortDirection]);
-        case "ECOSCORE":
+        case SORT_OPTIONS.ECOSCORE.key:
             return orderBy(products, ["ecoscore.grade"], [sortDirection]);
-        case "NOVA":
+        case SORT_OPTIONS.NOVA.key:
             return orderBy(products, ["nova.grade"], [sortDirection]);
-        case "RELEVANCE":
+        case SORT_OPTIONS.COMBINED_SCORES.key:
+            return orderBy(products, (product) => {
+                const scores = [product.nutriscore.score, product.ecoscore.score, product.nova.score]
+                const filteredScores = scores.filter(score => !isNil(score))
+                return sum(scores) / filteredScores.length // Sum all the scores with a real value and divide the result by the number of real scores
+            }, [sortDirection])
+        case SORT_OPTIONS.RELEVANCE.key:
             // There is no need to sort because fuse.js already does it with the match score.
             if (sortDirection === "desc")
                 return reverse(products.slice());
