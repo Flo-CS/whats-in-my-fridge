@@ -62,11 +62,11 @@ const productSchema = new mongoose.Schema(
             type: String,
             get: tag => getTagInfos(tag, "labels")
         }],
-        origins: [{
+        ingredients_origins: [{
             type: String,
             get: tag => getTagInfos(tag, "origins")
         }],
-        countries: [{
+        sales_countries: [{
             type: String,
             get: tag => getTagInfos(tag, "countries")
         }],
@@ -158,8 +158,8 @@ productSchema.statics.createFromOFFData = async function (barcode, user) {
         brands_tags: brands,
         categories_tags: categories,
         labels_tags: labels,
-        origins_tags: origins,
-        countries_tags: countries,
+        origins_tags: ingredients_origins,
+        countries_tags: sales_countries,
         ingredients_tags: ingredients,
         allergens_tags: allergens,
         traces_tags: traces,
@@ -209,8 +209,8 @@ productSchema.statics.createFromOFFData = async function (barcode, user) {
         brands,
         categories,
         labels,
-        origins,
-        countries,
+        ingredients_origins,
+        sales_countries,
         ingredients,
         allergens,
         traces,

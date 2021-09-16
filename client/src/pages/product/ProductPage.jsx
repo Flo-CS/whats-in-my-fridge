@@ -43,8 +43,8 @@ export default function ProductPage() {
         ingredients_analysis = [],
         allergens = [],
         traces = [],
-        origins = [],
-        countries = [],
+        ingredients_origins = [],
+        sales_countries = [],
         categories = [],
         name = "Nom inconnu",
         nutriscore,
@@ -110,13 +110,13 @@ export default function ProductPage() {
         },
         {
             title: "Origines des ingrédients",
-            component: <Origins origins={origins}/>,
-            isEmpty: isEmpty(origins)
+            component: <Origins origins={ingredients_origins}/>,
+            isEmpty: isEmpty(ingredients_origins)
         },
         {
             title: "Pays de vente",
-            component: <Origins origins={countries}/>,
-            isEmpty: isEmpty(countries)
+            component: <Origins origins={sales_countries}/>,
+            isEmpty: isEmpty(sales_countries)
         },
         {
             title: "Catégories",
