@@ -88,7 +88,7 @@ const USEFUL_NUTRIMENTS_KEYS = [
     // TODO: Add more
 ];
 
-const SIZE_REGEX = /(?<value>\d+[.,]?\d*)\s*(?<unit>[^\d\W]+)/;
+const SIZE_REGEX = /(?<value>\d+[.,]?\d*)\s*(?<unit>g|l|ml|kg)/i;
 
 const DEFAULT_UNITS = {
     "mass": "g",
