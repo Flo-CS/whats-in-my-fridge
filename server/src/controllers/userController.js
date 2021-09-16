@@ -17,7 +17,7 @@ const registerUser = asyncHandler(async (req, res) => {
     const password = req.body.password;
 
     // Validate the user registration
-    const registerValidation = utils.registerValidation({email, password});
+    const registerValidation = utils.registerSchema.validate({email, password});
 
 
     if (registerValidation.error) {
@@ -56,7 +56,7 @@ const loginUser = asyncHandler(async (req, res) => {
     const password = req.body.password;
 
     // Validate the user login
-    const loginValidation = utils.loginValidation({email, password});
+    const loginValidation = utils.loginSchema.validate({email, password});
 
 
     if (loginValidation.error) {
