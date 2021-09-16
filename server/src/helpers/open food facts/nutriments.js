@@ -1,5 +1,6 @@
 const {USEFUL_NUTRIMENTS_KEYS, DEFAULT_UNITS} = require("../constants");
 const {convertValueToBaseUnit} = require("./sizes");
+const {round} = require("lodash");
 
 // Transform the nutriments object which come from the Open Food Facts into a more convenient object to use (with, if available, the translation for the nutriment)
 function transformNutriments(oldNutriments) {
@@ -18,8 +19,9 @@ function transformNutriments(oldNutriments) {
 
 function extractNutrimentInfos(nutriments, nutrimentKey) {
 
-    const value100g = nutriments[`${nutrimentKey}_100g`];
-    const valueServing = nutriments[`${nutrimentKey}_serving`];
+    // TODO : Won't rounding compromise some data?
+    const value100g = round(nutriments[`${nutrimentKey}_100g`], 8);// Round because openFoodFacts nutriments values have floating point rounding error sometimes
+    const valueServing = round(nutriments[`${nutrimentKey}_serving`], 8);
     const unit = nutriments[`${nutrimentKey}_unit`] || DEFAULT_UNITS.mass // We assume that if there is no unit, the is the default mass unit
 
     if (!value100g && !valueServing) {

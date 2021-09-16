@@ -86,8 +86,9 @@ function NutritionalInformation({nutriments, servingSize, nutrientLevels}) {
             <PercentageBar items={percentageBarItems} max={sizeKeyToValue[sizeKey]} unit="g"/>
             <ChipList>
                 {Object.values(othersNutriments).map(nutriment => {
-                    let val, unit
+                    if (!nutriment[sizeKey]) return null;
 
+                    let val, unit
                     try {
                         ({val, unit} = convert(nutriment[sizeKey]).from(nutriment.unit).toBest())
                         val = round(val, 3)
