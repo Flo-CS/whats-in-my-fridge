@@ -1,103 +1,121 @@
-// To clean the tag if he was not present in taxonomy or if there is no taxonomy for this type of tag
-const {TAGS_CORRECTIONS} = require("../constants");
 const {OpenFoodFactsError, openFoodFactsErrors} = require("../errors");
 
-function formatTag(tag) {
-    let tagName = removeCountryCodeFromTag(tag);
-    // Remove specials characters
-    tagName = tagName.replace(/[-_]/g, " ");
-    // First letter in upper case
-    return tagName.replace(/^\w/, (c) => c.toUpperCase());
-}
+// This class represent a tag and its associated data (like, translated name, vegetarian status etc.)
+class Tag {
+    constructor(tagKey, type, autoUpdate = true) {
+        // Tag key is a string with this shape "<country code>:<name>",
+        // it's useful because we can traduce and get infos about the tag (an additive for example) in different languages without storing this data in the database
+        this.key = tagKey
+        this.type = type
+        this.name = this.getFormattedTag(this.key)
+        this.isInTaxonomy = false
+        this.description = undefined
+        this.wikidata = undefined
+        this.vegetarian = undefined
+        this.vegan = undefined
+        this.fromPalmOil = undefined
+        this.additivesClasses = undefined
+        this.overexposureRisk = undefined
+        this.populationCategories5pctPeopleRiskOverexposure = undefined
+        this.populationCategories50pctPeopleRiskOverexposure = undefined
+        this.country = undefined
+        this.origins = undefined
+        this.region = undefined
+        this.countryCode = undefined
 
+        if (autoUpdate) {
+            this.updateWithTaxonomyInfos()
+        }
+    }
 
-function removeCountryCodeFromTag(tag) {
-    const splitTag = tag.split(":");
+    getFormattedTagKey() {
+        let tagName = this.getTagWithoutCountryCode(this.key);
+        // Remove specials characters
+        tagName = tagName.replace(/[-_]/g, " ");
+        // First letter in upper case
+        return tagName.replace(/^\w/, (c) => c.toUpperCase());
+    }
 
-    return splitTag[splitTag.length - 1];
-}
+    getTagWithoutCountryCode() {
+        const splitTag = this.key.split(":");
+        return splitTag[splitTag.length - 1];
+    }
 
-function getTagData(tag, taxonomyName) {
-    const taxonomyFile = global[taxonomyName];
+    getTagTaxonomyInfos() {
+        if (!this.key || !this.type) return null
+        const taxonomyFile = global[this.type];
+        // Just clean the tag string
+        const cleanedTag = this.key.trim().toLowerCase();
 
-    // Just clean the tag string
-    const cleanedTag = tag.trim().toLowerCase();
+        return taxonomyFile[cleanedTag];
+    }
 
-    // Try to find a manual correction of the writing of the tag (in the case where the tag is very often "used" but not found in the taxonomy because of a writing error)
-    const correctedTag = TAGS_CORRECTIONS[cleanedTag] || cleanedTag;
+    updateWithTaxonomyInfos() {
+        try {
+            const tagInfos = this.getTagTaxonomyInfos()
+            if (!tagInfos) return
 
-    return taxonomyFile[correctedTag];
-}
+            const {
+                name, // For all type of tag (specific to user language)
+                description, // For all type of tag (specific to user language)
+                wikidata, // For all type of tag
+                vegetarian, // For ingredients, additives
+                vegan, // For ingredients, additives
+                from_palm_oil: fromPalmOil, // For ingredients, additives
+                additives_classes: additivesClasses, // For additives
+                efsa_evaluation_overexposure_risk: overexposureRisk, // For additives (tag string)
+                efsa_evaluation_exposure_mean_greater_than_adi: populationCategories50pctPeopleRiskOverexposure, // For additives (tags string)
+                efsa_evaluation_exposure_95th_greater_than_adi: populationCategories5pctPeopleRiskOverexposure, // For additives (tags string)
+                country, // For categories
+                origins, // For categories (tags string)
+                region, // For categories (specific to user language)
+                country_code_2: countryCode2, // For countries and origins
+                official_country_code_2: officialCountryCode2 // For countries and origins
+            } = tagInfos;
 
-function getTagInfos(tag, taxonomyName) {
-    try {
-        if (!tag) return null; // TODO: Is it useful ?
+            this.name = name?.fr || this.name
+            this.isInTaxonomy = !!tagInfos
+            this.description = description?.fr
+            this.wikidata = wikidata?.en
+            this.vegetarian = vegetarian?.en
+            this.vegan = vegan?.en
+            this.fromPalmOil = fromPalmOil?.en
+            this.additivesClasses = additivesClasses?.en?.split(",").map(additiveClass => new Tag(additiveClass, "additives_classes"))
+            this.overexposureRisk = overexposureRisk?.en
+            this.populationCategories50pctPeopleRiskOverexposure = populationCategories50pctPeopleRiskOverexposure?.en?.split(",")
+            this.populationCategories5pctPeopleRiskOverexposure = populationCategories5pctPeopleRiskOverexposure?.en?.split(",")
+            this.country = country?.en
+            this.origins = origins?.en?.split(",").map(origin => new Tag(origin, "origins"))
+            this.region = region?.fr
+            this.countryCode = (officialCountryCode2?.en || countryCode2?.en)?.toLowerCase()
 
-        const tagData = getTagData(tag, taxonomyName);
+        } catch (error) {
+            throw new OpenFoodFactsError(openFoodFactsErrors.getTagInfos);
+        }
+    }
 
-        if (!tagData)
-            return {
-                key: tag,
-                name: formatTag(tag),
-                is_in_taxonomy: false,
-            };
-
-        const {
-            name, // For all type of tag (specific to user language)
-            description, // For all type of tag (specific to user language)
-            wikidata, // For all type of tag
-            vegetarian, // For ingredients, additives
-            vegan, // For ingredients, additives
-            from_palm_oil, // For ingredients, additives
-            additives_classes, // For additives
-            efsa_evaluation_overexposure_risk, // For additives (tag string)
-            efsa_evaluation_adi, // For additives
-            efsa_evaluation_exposure_mean_greater_than_adi, // For additives (tags string)
-            efsa_evaluation_exposure_95th_greater_than_adi, // For additives (tags string)
-            country, // For categories
-            origins, // For categories (tags string)
-            region, // For categories (specific to user language)
-            country_code_2, // For countries and origins
-            official_country_code_2 // For countries and origins
-        } = tagData;
-
-        // TODO: Is the "miscellaneous" taxonomy file really necessary? Isn't it better to just translate on the fly?
+    toJSON() {
         return {
-            key: tag,
-            name: name?.fr || formatTag(tag),
-            is_in_taxonomy: !!name?.fr,
-            description: description?.fr,
-            wikidata: wikidata?.en,
-            vegetarian: vegetarian?.en,
-            vegan: vegan?.en,
-            from_palm_oil: from_palm_oil?.en,
-            additives_classes: additives_classes?.en
-                ?.split(",").map(additiveClass => getTagInfos(additiveClass, "additives_classes")),
-            efsa_evaluation_overexposure_risk: efsa_evaluation_overexposure_risk?.en,
-            efsa_evaluation_adi: efsa_evaluation_adi?.en,
-            efsa_evaluation_exposure_mean_greater_than_adi: efsa_evaluation_exposure_mean_greater_than_adi?.en
-                ?.split(","),
-            efsa_evaluation_exposure_95th_greater_than_adi: efsa_evaluation_exposure_95th_greater_than_adi?.en
-                ?.split(","),
-            country: country?.en,
-            origins: origins?.en
-                ?.split(",").map(origin => getTagInfos(origin, "origins")),
-            region: region?.fr,
-            country_code: (official_country_code_2?.en || country_code_2?.en)?.toLowerCase()
-        };
-
-    } catch (error) {
-        throw new OpenFoodFactsError(openFoodFactsErrors.getTagInfos);
+            key: this.key,
+            name: this.name,
+            is_in_taxonomy: this.isInTaxonomy,
+            description: this.description,
+            wikidata: this.wikidata,
+            vegetarian: this.vegetarian,
+            vegan: this.vegan,
+            from_palm_oil: this.fromPalmOil,
+            additives_classes: this.additivesClasses?.map(additiveClass => additiveClass.toJSON()),
+            overexposure_risk: this.overexposureRisk,
+            population_categories_50pct_people_risk_overexposure: this.populationCategories50pctPeopleRiskOverexposure,
+            population_categories_5pct_people_risk_overexposure: this.populationCategories5pctPeopleRiskOverexposure,
+            country: this.country,
+            origins: this.origins?.map(origin => origin.toJSON()),
+            region: this.region,
+            country_code: this.countryCode,
+        }
     }
 }
 
-
-// Translate tags (that come from a field preceded with _tags, this fields are lists containing tags ids, like en:chocolate or fr:label-rouge), for example, traduce "en:beverages" to an object containing the associated name: Beverages (or Boissons in french) as well as other infos: wikidata QID etc.
-function getTagsInfos(tags, taxonomyName) {
-    return tags?.map((tag) => getTagInfos(tag, taxonomyName));
-}
-
 module.exports = {
-    getTagsInfos,
-    getTagInfos
-};
+    Tag
+}

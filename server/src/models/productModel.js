@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const {Schema} = require("mongoose")
 const dayjs = require("dayjs");
 const {capitalize, mapValues} = require("lodash")
-const {getTagInfos} = require("../helpers/open food facts/tags");
+const {Tag} = require("../helpers/open food facts/tags");
 const {transformNutriments} = require("../helpers/open food facts/nutriments");
 const {fetchOFFData} = require("../helpers/open food facts/api");
 const {
@@ -52,43 +52,43 @@ const productSchema = new mongoose.Schema(
         image_url: {type: String, trim: true},
         brands: [{
             type: String,
-            get: tag => getTagInfos(tag, "brands")
+            get: tag => new Tag(tag, "brands").toJSON()
         }],
         categories: [{
             type: String,
-            get: tag => getTagInfos(tag, "categories")
+            get: tag => new Tag(tag, "categories").toJSON()
         }],
         labels: [{
             type: String,
-            get: tag => getTagInfos(tag, "labels")
+            get: tag => new Tag(tag, "labels").toJSON()
         }],
         ingredients_origins: [{
             type: String,
-            get: tag => getTagInfos(tag, "origins")
+            get: tag => new Tag(tag, "origins").toJSON()
         }],
         sales_countries: [{
             type: String,
-            get: tag => getTagInfos(tag, "countries")
+            get: tag => new Tag(tag, "countries").toJSON()
         }],
         ingredients: [{
             type: String,
-            get: tag => getTagInfos(tag, "ingredients")
+            get: tag => new Tag(tag, "ingredients").toJSON()
         }],
         allergens: [{
             type: String,
-            get: tag => getTagInfos(tag, "allergens")
+            get: tag => new Tag(tag, "allergens").toJSON()
         }],
         traces: [{
             type: String,
-            get: tag => getTagInfos(tag, "allergens")
+            get: tag => new Tag(tag, "allergens").toJSON()
         }],
         ingredients_analysis: [{
             type: String,
-            get: tag => getTagInfos(tag, "ingredients_analysis")
+            get: tag => new Tag(tag, "ingredients_analysis").toJSON()
         }],
         additives: [{
             type: String,
-            get: tag => getTagInfos(tag, "additives")
+            get: tag => new Tag(tag, "additives").toJSON()
         }],
         nutrient_levels: {
             fat: String,

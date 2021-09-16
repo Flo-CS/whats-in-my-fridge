@@ -36,11 +36,6 @@ const OPEN_FOOD_FACTS_USEFUL_TAXONOMIES = [
 const OPEN_FOOD_FACTS_TAXONOMIES_FILES_PATH = path.join(__dirname, "./../../open food facts/taxonomies");
 const OPEN_FOOD_FACTS_TRANSLATIONS_FILE_PATH = path.join(__dirname, "./../../open food facts/translations.json");
 
-
-const TAGS_CORRECTIONS = {
-    "en:stabilizer": "en:stabiliser"
-};
-
 const USEFUL_NUTRIMENTS_KEYS = [
     "alcohol",
     "biotin",
@@ -105,7 +100,6 @@ module.exports = {
     OPEN_FOOD_FACTS_USEFUL_FIELDS,
     OPEN_FOOD_FACTS_TAXONOMIES_ENDPOINT,
     OPEN_FOOD_FACTS_USEFUL_TAXONOMIES,
-    TAGS_CORRECTIONS,
     OPEN_FOOD_FACTS_TAXONOMIES_FILES_PATH,
     OPEN_FOOD_FACTS_TRANSLATIONS_FILE_PATH,
     USEFUL_NUTRIMENTS_KEYS,
