@@ -20,19 +20,21 @@ function extractNutrimentInfos(nutriments, nutrimentKey) {
 
     const value100g = nutriments[`${nutrimentKey}_100g`];
     const valueServing = nutriments[`${nutrimentKey}_serving`];
-    const unit = nutriments[`${nutrimentKey}_unit`]
+    const unit = nutriments[`${nutrimentKey}_unit`] || DEFAULT_UNITS.mass // We assume that if there is no unit, the is the default mass unit
 
     if (!value100g && !valueServing) {
         return null;
     }
-    const [convertedValue100g, , convert100gSuccess] = convertValueToBaseUnit(value100g, unit)
+
+    // We only get the converted unit here because it will be the same for 100g and serving because it's the same unit in entry
+    const [convertedValue100g, convertedUnit, convert100gSuccess] = convertValueToBaseUnit(value100g, unit)
     const [convertedValueServing, , convertServingSuccess] = convertValueToBaseUnit(valueServing, unit)
 
     return {
         key: nutrimentKey,
-        unit: convert100gSuccess || convertServingSuccess ? DEFAULT_UNITS.mass : unit,
-        "100g": convert100gSuccess ? convertedValue100g : value100g,
-        serving: convertServingSuccess ? convertedValueServing : valueServing,
+        unit: (convert100gSuccess || convertServingSuccess) ? convertedUnit : DEFAULT_UNITS.mass, // if at least one conversion is successful, we use the converted unit
+        "100g": convert100gSuccess ? convertedValue100g : null,
+        serving: convertServingSuccess ? convertedValueServing : null,
     };
 }
 

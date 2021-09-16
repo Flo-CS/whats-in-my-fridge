@@ -91,8 +91,8 @@ const USEFUL_NUTRIMENTS_KEYS = [
 const SIZE_REGEX = /(?<value>\d+[.,]?\d*)\s*(?<unit>g|l|ml|kg)/i;
 
 const DEFAULT_UNITS = {
-    "mass": "g",
-    "volume": "ml"
+    mass: "g",
+    volume: "ml"
 }
 
 module.exports = {
