@@ -7,7 +7,7 @@ class Tag {
         // it's useful because we can traduce and get infos about the tag (an additive for example) in different languages without storing this data in the database
         this.key = tagKey
         this.type = type
-        this.name = this.getFormattedTag(this.key)
+        this.name = this.getFormattedTagKey()
         this.isInTaxonomy = false
         this.description = undefined
         this.wikidata = undefined
