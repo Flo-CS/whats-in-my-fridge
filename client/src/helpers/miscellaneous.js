@@ -15,12 +15,9 @@ function mapValueToRange(value, inMin, inMax, outMin, outMax) {
 const asyncThunkErrorWrapper = async (asyncApiCallFunc, rejectWithValue) => {
     try {
         const response = await asyncApiCallFunc();
-        return response.data;
+        return response?.data;
     } catch (error) {
-        if (!error.response)
-            throw error;
-
-        return rejectWithValue(error.response.data);
+        return rejectWithValue(error?.response?.data);
     }
 };
 
