@@ -155,6 +155,7 @@ const fuse = new Fuse([], {
         "barcode"],
     threshold: 0.4,
     ignoreLocation: true,
+    useExtendedSearch: true,
     // Allows to improve the search
     // Deburrs string by converting Latin-1 Supplement and Latin Extended-A letters to basic Latin letters and removing combining diacritical marks (from lodash doc)
     // For the usage of the getFn option, see https://github.com/krisk/Fuse/issues/415#issuecomment-634713640
