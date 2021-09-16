@@ -25,7 +25,7 @@ function OriginChip({origin}) {
 
 
     return <Chip>
-        {Image && <Chip.IconPart Icon={() => <img alt={origin.name} src={image}/>} isFull/>}
+        {image && <Chip.IconPart Icon={() => <img alt={origin.name} src={image}/>} isFull/>}
         <Chip.TextPart text={origin.name}/>
     </Chip>;
 }
