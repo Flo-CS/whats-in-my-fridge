@@ -9,6 +9,7 @@ class Tag {
         this.type = type
         this.name = this.getFormattedTagKey()
         this.isInTaxonomy = false
+        // Taxonomies infos
         this.description = undefined
         this.wikidata = undefined
         this.vegetarian = undefined
@@ -99,19 +100,21 @@ class Tag {
             key: this.key,
             name: this.name,
             is_in_taxonomy: this.isInTaxonomy,
-            description: this.description,
-            wikidata: this.wikidata,
-            vegetarian: this.vegetarian,
-            vegan: this.vegan,
-            from_palm_oil: this.fromPalmOil,
-            additives_classes: this.additivesClasses?.map(additiveClass => additiveClass.toJSON()),
-            overexposure_risk: this.overexposureRisk,
-            population_categories_50pct_people_risk_overexposure: this.populationCategories50pctPeopleRiskOverexposure,
-            population_categories_5pct_people_risk_overexposure: this.populationCategories5pctPeopleRiskOverexposure,
-            country: this.country,
-            origins: this.origins?.map(origin => origin.toJSON()),
-            region: this.region,
-            country_code: this.countryCode,
+            infos: {
+                description: this.description,
+                wikidata: this.wikidata,
+                vegetarian: this.vegetarian,
+                vegan: this.vegan,
+                from_palm_oil: this.fromPalmOil,
+                additives_classes: this.additivesClasses?.map(additiveClass => additiveClass.toJSON()),
+                overexposure_risk: this.overexposureRisk,
+                population_categories_50pct_people_risk_overexposure: this.populationCategories50pctPeopleRiskOverexposure,
+                population_categories_5pct_people_risk_overexposure: this.populationCategories5pctPeopleRiskOverexposure,
+                country: this.country,
+                origins: this.origins?.map(origin => origin.toJSON()),
+                region: this.region,
+                country_code: this.countryCode,
+            }
         }
     }
 }
