@@ -5,6 +5,8 @@ import ChipList from "../../../../components/data display/ChipList";
 
 
 import "./IngredientsAndAnalysis.scss";
+import {isEmpty} from "lodash";
+import {ReactComponent as InfoIcon} from "../../../../assets/icons/information.svg";
 
 IngredientsAndAnalysis.propTypes = {
     ingredients: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -18,6 +20,7 @@ function IngredientsAndAnalysis({ingredients, ingredientsAnalysis}) {
             {ingredients.map(ingredient => {
                     return <Chip key={ingredient.key}>
                         <Chip.TextPart text={ingredient.name}/>
+                        {!isEmpty(ingredient.infos) && <Chip.IconPart Icon={InfoIcon} variant="secondary"/>}
                     </Chip>;
                 }
             )}
