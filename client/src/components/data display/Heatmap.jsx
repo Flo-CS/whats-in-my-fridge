@@ -46,7 +46,7 @@ export default function Heatmap({xLabels, yLabels, xName, yName, xLabelsColors, 
 
                     {row.map((value, j) => {
                             const cellBackgroundColor = Color(ELEMENT_COLORS.PRIMARY).fade(mapValueToRange(value, lowestValue, biggestValue, 0.9, 0))
-                            const cellTextColor = cellBackgroundColor.isDark() ? FONT_COLORS.WHITE : null
+                        const cellTextColor = cellBackgroundColor.alpha() > 0.7 ? FONT_COLORS.WHITE : null
 
                             const cellStyle = value !== 0 ? {
                                 backgroundColor: cellBackgroundColor,
